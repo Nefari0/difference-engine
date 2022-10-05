@@ -5,16 +5,17 @@ var par = parser()
 
 // Vectors
 const max = 250
+const min = -250
 
 // Linear vector generator
 var xVector = []
-for (let i = -max; i < max; i++) {xVector.push(i)}
+for (let i = min; i < max; i++) {xVector.push(i)}
 
 // Circular vector generator
 const circleVector = []
 const fragment = 2*Math.PI/max
 var iteration = 0
-for (let i = 0; i < max; i++) {
+for (let i = min; i < max; i++) {
   iteration += fragment
   circleVector.push(iteration)
 }
@@ -94,14 +95,14 @@ export default function Graph() {
   const vectorMap = (coordArray) => {
     const mappedItems = coordArray.map((el,i) => {
       var locations = {
-        bottom: `${100*el[1]}px`,
-        left: `${100*el[0]}px`,
+        bottom: `${50*el[1]}px`,
+        left: `${50*el[0]}px`,
         borderRadius: "50%",
         backgroundColor: `red`,
         position: "absolute",
         transition: "all 1000ms",
-        width: "5px",
-        height: "5px"
+        width: "2px",
+        height: "2px"
       };
       return <p style={locations} key={i}></p>;
     })

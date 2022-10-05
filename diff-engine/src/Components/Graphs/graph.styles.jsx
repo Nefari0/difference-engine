@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const Table = styled.main`
     position: absolute;
-    height: 1000px;
-    width: 1000px;
-    margin-top: 70px;
-    margin-left:-100px;
+    height: 500px;
+    width: 500px;
+    margin:auto;
     background-color: rgb(240, 240, 240);
     display: flex;
     flex-direction: column;
@@ -20,8 +19,8 @@ export const Table = styled.main`
         position:absolute;
         bottom:-200px;
         height:100px;
-        width:300px;
-        font-size:40px;
+        width:150px;
+        font-size:20px;
     }
 
     input {
@@ -33,6 +32,12 @@ export const Table = styled.main`
         box-shadow: 0px 5px 20px -7px #000000;
         font-size:40px;
     }
+
+    @media (max-width:620px) {
+            transform: scale(0.70);
+            left:-21%;
+            top:-21%;
+        }
 `
 
 export const Row = styled.section`
@@ -47,15 +52,15 @@ export const Row = styled.section`
 
 export const Origin = styled.span`
     position: absolute;
-    left: ${({polars}) => (!polars ? `250px` : `500px`)};
-    bottom:485px;
+    left: ${({polars}) => (!polars ? `125px` : `250px`)};
+    bottom:233px;
     transition: all 1000ms;
 `
 
 export const GridCell = styled.span`
-    height: 96px;
-    width: 96px;
+    height: 48px;
+    width: 48px;
     position: relative;
     margin: 0px;
-    border: 2px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 `
