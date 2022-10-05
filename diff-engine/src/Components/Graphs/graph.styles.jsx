@@ -45,14 +45,10 @@ export const Row = styled.section`
     z-index:1;
 `
 
-export const PolarQuadrants = styled.span`
+export const Origin = styled.span`
     position: absolute;
-    // left: ${({polars}) => (!polars ? `0%` : `50%`)};
-    // top: ${({polars}) => (polars ? `50%` : `100%`)};
-    bottom:500px;
-    left:500px;
-    width: 5px;
-    height: 5px;
+    left: ${({polars}) => (!polars ? `250px` : `500px`)};
+    bottom:485px;
     transition: all 1000ms;
 `
 
