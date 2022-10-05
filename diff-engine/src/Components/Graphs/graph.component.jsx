@@ -1,4 +1,4 @@
-import { Table,Row,GridCell,PolarQuadrants } from "./graph.styles";
+import { Table,Row,GridCell,Origin } from "./graph.styles";
 import { useEffect, useState } from "react";
 import { evaluate,parser,parse,derivative,simplify } from "mathjs";
 var par = parser()
@@ -124,9 +124,9 @@ export default function Graph() {
     <div className="App">
       <Table className="Table">
         <Row>
-          <PolarQuadrants polars={polars}>
+          <Origin polars={polars}>
             {vectorMap(returnPlots())}
-          </PolarQuadrants>
+          </Origin>
           {mappedTiles}
           <input
             type='text'
