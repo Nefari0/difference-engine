@@ -1,12 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
 import Graph from './Components/Graphs/graph.component';
+import { AppContainer,Adapter } from './App.styles';
 
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
+      <Adapter>
         <Graph />
-    </div>
+      </Adapter>
+    </AppContainer>
   );
 }
 
