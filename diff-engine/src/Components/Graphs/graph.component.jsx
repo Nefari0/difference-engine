@@ -1,5 +1,7 @@
 import { Table,Row,GridCell,PolarQuadrants } from "./graph.styles";
 import { useEffect, useState } from "react";
+import { evaluate,parser,parse,derivative,simplify } from "mathjs";
+var par = parser()
 
 export default function Graph() {
 
@@ -7,9 +9,10 @@ export default function Graph() {
     matrix: [],
     polarCoords: [],
     cartCoords:[],
-    polars:false
+    polars:false,
+    mathFunc:'cos(3 * x) + sin(2 * x)'
   });
-  const { matrix, polars, cartCoords, polarCoords } = state;
+  const { matrix, polars, cartCoords, polarCoords, mathFunc } = state;
 
   useEffect(() => {boardFactory()},[]);
   
@@ -18,20 +21,26 @@ export default function Graph() {
     var func = [];
     var coords = [];
     var elements = await [...Array.from(Array(xPoints))];
-    
-    await elements.forEach((el, i) => {
-      func.push(4 + Math.cos(3 * i) + Math.sin(2 * i));
+
+    await elements.forEach((el,i) => {
+      i = i / 100
+      par.set('x',i)
+      func.push(par.evaluate(mathFunc))
     });
     
     await func.forEach((el, x) => {
       coords.push([el * Math.sin(x), el * Math.cos(x)]);
     });
-    await setState({ ...state, polarCoords: coords });
+    await setState({ ...state,
+      polarCoords:coords,
+      polars:true
+    });
     return
   };
 
   // ---- Linear ---- //
-  const linearVector = async () => {  
+  const linearVector = async () => {
+
     const xPoints = 600
     var func = []
     var coords =[]
@@ -39,16 +48,20 @@ export default function Graph() {
 
     await elements.forEach((el,i) => {
       i = i / 100
-      func.push(4 + Math.cos(3 * i) + Math.sin(2 * i))
+      par.set('x',i)
+      func.push(par.evaluate(mathFunc))
     });
     
     await func.forEach((el,x) => {
       x = x / 100
-      console.log(x,el)
       coords.push([x,el])
     });
 
-    await setState({...state,cartCoords:coords})
+    await setState({
+      ...state,
+      cartCoords:coords,
+      polars:false
+    })
     return
   }
 
@@ -84,34 +97,36 @@ export default function Graph() {
     })
     return <div>{mappedItems}</div>
   }
-
-  const switchView = () => {
-    // console.log(returnPlots())
-    setState({...state,polars:!polars})
-  }
   
   const returnPlots = () => {
-    // console.log('hit returnPlots',polars)
     return (polars === true ? polarCoords : cartCoords)
   }
 
-  const initialize = async () => {
-    await polarVector();
-    await linearVector();
-  };
+  const inputHandler = (e) => {
+    e.preventDefault()
+
+    const {name,value} = e.target
+
+    setState({...state,[name]:value})
+  }
 
   return (
     <div className="App">
       <Table className="Table">
         <Row>
           <PolarQuadrants polars={polars}>
-            {/* {vectorMap(polarCoords)} */}
             {vectorMap(returnPlots())}
           </PolarQuadrants>
           {mappedTiles}
-          <button style={{right:'0px'}} onClick={switchView}>Switch Coordinates</button>
-          <button style={{left:'0px'}} onClick={linearVector}>Initialize</button>
-          <button style={{right:'350px'}} onClick={polarVector}>Polar</button>
+          <input
+            required
+            type='text'
+            onChange={inputHandler}
+            placeholder='Type your math function'
+            name="mathFunc"
+          />
+          <button style={{left:'0px'}} onClick={linearVector}>Linear</button>
+          <button style={{right:'0px'}} onClick={polarVector}>Polar</button>
         </Row>
       </Table>
     </div>
