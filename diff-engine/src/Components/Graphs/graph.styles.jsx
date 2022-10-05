@@ -18,9 +18,19 @@ export const Table = styled.main`
 
     button {
         position:absolute;
-        bottom:-150px;
+        bottom:-200px;
         height:100px;
         width:300px;
+        font-size:40px;
+    }
+
+    input {
+        position:absolute;
+        bottom:-80px;
+        height:60px;
+        // width:400px;
+        width:100%;
+        box-shadow: 0px 5px 20px -7px #000000;
         font-size:40px;
     }
 `
@@ -37,8 +47,10 @@ export const Row = styled.section`
 
 export const PolarQuadrants = styled.span`
     position: absolute;
-    left: ${({polars}) => (!polars ? `0%` : `50%`)};
-    top: ${({polars}) => (polars ? `50%` : `100%`)};
+    // left: ${({polars}) => (!polars ? `0%` : `50%`)};
+    // top: ${({polars}) => (polars ? `50%` : `100%`)};
+    bottom:500px;
+    left:500px;
     width: 5px;
     height: 5px;
     transition: all 1000ms;
