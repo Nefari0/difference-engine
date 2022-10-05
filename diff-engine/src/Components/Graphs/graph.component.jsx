@@ -3,6 +3,22 @@ import { useEffect, useState } from "react";
 import { evaluate,parser,parse,derivative,simplify } from "mathjs";
 var par = parser()
 
+// Vectors
+const max = 250
+
+// Linear vector generator
+var xVector = []
+for (let i = -max; i < max; i++) {xVector.push(i)}
+
+// Circular vector generator
+const circleVector = []
+const fragment = 2*Math.PI/max
+var iteration = 0
+for (let i = 0; i < max; i++) {
+  iteration += fragment
+  circleVector.push(iteration)
+}
+
 export default function Graph() {
 
   const [state, setState] = useState({
@@ -17,19 +33,16 @@ export default function Graph() {
   useEffect(() => {boardFactory()},[]);
   
   const polarVector = async () => {
-    const xPoints = 600
     var func = [];
     var coords = [];
-    var elements = await [...Array.from(Array(xPoints))];
 
-    await elements.forEach((el,i) => {
-      i = i / 100
+    await circleVector.forEach((i) => {
       par.set('x',i)
       func.push(par.evaluate(mathFunc))
     });
     
     await func.forEach((el, x) => {
-      coords.push([el * Math.sin(x), el * Math.cos(x)]);
+      coords.push([el * Math.cos(circleVector[x]), el * Math.sin(circleVector[x])]);
     });
     await setState({ ...state,
       polarCoords:coords,
@@ -40,13 +53,10 @@ export default function Graph() {
 
   // ---- Linear ---- //
   const linearVector = async () => {
-
-    const xPoints = 600
     var func = []
     var coords =[]
-    var elements = await [...Array.from(Array(xPoints))];
 
-    await elements.forEach((el,i) => {
+    await xVector.forEach((i) => {
       i = i / 100
       par.set('x',i)
       func.push(par.evaluate(mathFunc))
@@ -119,13 +129,12 @@ export default function Graph() {
           </PolarQuadrants>
           {mappedTiles}
           <input
-            required
             type='text'
             onChange={inputHandler}
-            placeholder='Type your math function'
+            placeholder={mathFunc}
             name="mathFunc"
           />
-          <button style={{left:'0px'}} onClick={linearVector}>Linear</button>
+          <button style={{left:'0px'}} onClick={linearVector}>Cartesian</button>
           <button style={{right:'0px'}} onClick={polarVector}>Polar</button>
         </Row>
       </Table>
