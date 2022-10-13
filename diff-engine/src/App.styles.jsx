@@ -5,17 +5,19 @@ export const AppContainer = styled.main`
     font-family: sans-serif;
     text-align: center;
     width:100vw;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
 `
 
 export const Adapter = styled.section`
     position:relative;
     margin:auto;
-    margin-top:20px;
+    margin-top:100px;
     width:500px;
-    height:500px;
+    height:700px;
 
     @media (max-width:620px) {
         width:350px;
-        height:350px;
     }
 `

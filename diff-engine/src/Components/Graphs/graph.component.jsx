@@ -1,6 +1,17 @@
-import { Table,Row,GridCell,Origin } from "./graph.styles";
+import {
+  Table,
+  Row,
+  GridCell,
+  Origin,
+  BaseButton,
+  MathFormula,
+  Enclosure
+} from "./graph.styles";
+
 import { useEffect, useState } from "react";
 import { evaluate,parser,parse,derivative,simplify } from "mathjs";
+import KeyPad from "./KeyPad/keypad.component";
+import { MathComponent } from "mathjax-react";
 var par = parser()
 
 // Vectors
@@ -27,7 +38,7 @@ export default function Graph() {
     polarCoords: [],
     cartCoords:[],
     polars:false,
-    mathFunc:'(1+cos(3 * x)) + (sin(2 * x))',
+    mathFunc:'cos(3 * x) + sin(2 * x)',
     // mathFunc2:'x**2 + 4*x + 3'
   });
   const { matrix, polars, cartCoords, polarCoords, mathFunc } = state;
@@ -41,6 +52,7 @@ export default function Graph() {
     await circleVector.forEach((i) => {
       par.set('x',i)
       par.set('y',i)
+      par.set('u',i)
       func.push(par.evaluate(mathFunc))
     });
     
@@ -63,6 +75,7 @@ export default function Graph() {
       i = i / 100
       par.set('x',i)
       par.set('y',i)
+      par.set('u',i)
       func.push(par.evaluate(mathFunc))
     });
     
@@ -124,9 +137,12 @@ export default function Graph() {
     setState({...state,[name]:value})
   }
 
+  const formatFunction = (string) => {
+    return(string.replace(/ /g, "").replace(/\*/g, ''))
+  }
+
   const execute = async (e,val) => {
     e.preventDefault()
-    // console.log('hit execute',val)
     console.log('execute state',state)
     await setState({...state,mathFunc:val})
     // await linearVector()
@@ -135,24 +151,34 @@ export default function Graph() {
   return (
     <div className="App">
       <Table className="Table">
+
         <Row>
+          
           <Origin polars={polars}>
             {vectorMap(returnPlots())}
           </Origin>
+          
+          <MathFormula>
+            <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
+          </MathFormula>
+          
           {mappedTiles}
+          
           <input
             type='text'
             onChange={inputHandler}
-            // placeholder={mathFunc}
             value={mathFunc}
             name="mathFunc"
           />
-          <button style={{left:'0px'}} onClick={linearVector}>Cartesian</button>
-          <button style={{right:'0px'}} onClick={polarVector}>Polar</button>
-          {/* <button style={{right:'180px'}} onClick={(e) => execute(e,'x^2 + 4*x + 3')}>x**2 + 4*x + 3</button> */}
-          {/* <button style={{right:'180px',top:'100px'}} onClick={(e) => execute(e,'2*y^2-1')}>2*y**2-1</button> */}
         </Row>
+
       </Table>
+
+      <KeyPad
+        linearVector={linearVector}
+        polarVector={polarVector}
+        execute={execute}
+      />
     </div>
   );
 }
