@@ -1,66 +1,42 @@
 import styled from "styled-components";
 
 export const Enclosure = styled.main`
-// height:600px;
-// width:600px;
-// position:relative;
-
-// background-color:blue;
-    // display:flex;
-    // flex-direction:column;
-
-//     @media (max-width:620px) {
-//         transform: scale(0.70);
-//         left:-21%;
-//         top:-21%;
-//     }
-
-// @media (max-width:400px) {
-//     transform: scale(0.50);
-//     left:-21%;
-//     top:-31%;
-// }
-`
-
-export const Table = styled.div`
-    position: absolute;
-    
-    height: 500px;
-    width: 500px;
-    margin:auto;
-    background-color: rgb(240, 240, 240);
-    display: flex;
-    flex-direction: column;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-    align-items: flex-start;
-    align-content: stretch;
+    height:785px;
+    width:495px;
+    padding:10px;
+    border-radius:10px;
     box-shadow: 0px 5px 20px -7px #000000;
-    z-index: 0;
-    // overflow:hidden;
-
-    input {
-        position:absolute;
-        bottom:-80px;
-        height:60px;
-        width:400px;
-        width:100%;
-        box-shadow: 0px 5px 20px -7px #000000;
-        font-size:40px;
-        z-index:100000000;
-    }
+    display:flex;
+    flex-direction:column;
 
     @media (max-width:620px) {
-            transform: scale(0.70);
-            left:-21%;
-            top:-21%;
-        }
+        transform: scale(0.70);
+        left:-21%;
+        top:-21%;
+    }
 
     @media (max-width:400px) {
         transform: scale(0.50);
         left:-21%;
         top:-31%;
     }
+`
+
+export const Table = styled.div`
+    position: absolute;
+    opacity:.5;
+    height: 500px;
+    width: 500px;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: stretch;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    z-index: 0;
+    overflow:hidden;
+    left:5px;
 `
 
 export const Row = styled.section`
@@ -85,7 +61,7 @@ export const GridCell = styled.span`
     width: 48px;
     position: relative;
     margin: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.5);
 `
 
 export const MathFormula = styled.div`
@@ -94,11 +70,23 @@ export const MathFormula = styled.div`
     right:40px;
     font-size:20px;
 `
-
+    
 export const BaseButton = styled.button`
-position:relative;
+    position:relative;
     width:75px;
     height:75px;
-    // background-color:blue;
     border-radius:50%;
+`
+
+export const DisplayScreen = styled.input`
+    background-color: rgb(240, 240, 240);
+    position:relative;
+    bottom:-505px;
+    height:60px;
+    width:500px;
+    left:-6px;
+    border:none;
+    font-size:40px;
+    z-index:100000000;
+
 `
