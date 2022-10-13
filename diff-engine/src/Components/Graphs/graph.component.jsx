@@ -5,7 +5,8 @@ import {
   Origin,
   BaseButton,
   MathFormula,
-  Enclosure
+  Enclosure,
+  DisplayScreen
 } from "./graph.styles";
 
 import { useEffect, useState } from "react";
@@ -149,9 +150,9 @@ export default function Graph() {
   }
 
   return (
-    <div className="App">
-      <Table className="Table">
+    <Enclosure>
 
+      <Table className="Table">
         <Row>
           
           <Origin polars={polars}>
@@ -164,21 +165,23 @@ export default function Graph() {
           
           {mappedTiles}
           
-          <input
-            type='text'
-            onChange={inputHandler}
-            value={mathFunc}
-            name="mathFunc"
-          />
         </Row>
-
       </Table>
 
+      <DisplayScreen
+        type='text'
+        onChange={inputHandler}
+        value={mathFunc}
+        name="mathFunc"
+      />
+
       <KeyPad
+        formatFunction={formatFunction}
         linearVector={linearVector}
         polarVector={polarVector}
         execute={execute}
       />
-    </div>
+
+    </Enclosure>
   );
-}
+};
