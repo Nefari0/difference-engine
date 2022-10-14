@@ -5,6 +5,15 @@ export const KeyBox = styled.div`
     height: 200px;
     width: 500px;
     bottom:-512px;
+
+    i {
+        font-size:50px;
+    }
+`
+
+export const Param = styled.div`
+    position:absolute;
+    left:0px;
 `
 
 export const BaseButton = styled.button`
