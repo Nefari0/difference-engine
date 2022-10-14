@@ -9,10 +9,21 @@ import {
   DisplayScreen
 } from "./graph.styles";
 
-import { useEffect, useState } from "react";
-import { evaluate,parser,parse,derivative,simplify } from "mathjs";
+import Gaussian from "./KeyPad/Plots/Gaussian/gaus.component";
+
+import {
+  evaluate,
+  parser,
+  parse,
+  derivative,
+  simplify,
+  exp,
+  log
+} from "mathjs";
+ 
 import KeyPad from "./KeyPad/keypad.component";
 import { MathComponent } from "mathjax-react";
+import { useEffect, useState } from "react";
 var par = parser()
 
 // Vectors
@@ -27,7 +38,7 @@ for (let i = min; i < max; i++) {xVector.push(i)}
 const circleVector = []
 const fragment = 2*Math.PI/max
 var iteration = 0
-for (let i = min; i < max; i++) {
+  for (let i = 0; i < (max*2); i++) {
   iteration += fragment
   circleVector.push(iteration)
 }
@@ -35,14 +46,14 @@ for (let i = min; i < max; i++) {
 export default function Graph() {
 
   const [state, setState] = useState({
+    currentView:null,
     matrix: [],
     polarCoords: [],
     cartCoords:[],
     polars:false,
     mathFunc:'cos(3 * x) + sin(2 * x)',
-    // mathFunc2:'x**2 + 4*x + 3'
   });
-  const { matrix, polars, cartCoords, polarCoords, mathFunc } = state;
+  const { matrix, polars, cartCoords, polarCoords, mathFunc, currentView } = state;
 
   useEffect(() => {boardFactory()},[]);
   
@@ -68,7 +79,7 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async () => {
+  const linearVector = async (mathFunc) => {
     var func = []
     var coords =[]
 
@@ -142,11 +153,9 @@ export default function Graph() {
     return(string.replace(/ /g, "").replace(/\*/g, ''))
   }
 
-  const execute = async (e,val) => {
+  const execute = async (e,prop,val) => {
     e.preventDefault()
-    console.log('execute state',state)
-    await setState({...state,mathFunc:val})
-    // await linearVector()
+    await setState({...state,[prop]:val})
   }
 
   return (
@@ -175,12 +184,22 @@ export default function Graph() {
         name="mathFunc"
       />
 
-      <KeyPad
+      {!currentView && <KeyPad
         formatFunction={formatFunction}
         linearVector={linearVector}
         polarVector={polarVector}
         execute={execute}
-      />
+        state={state}
+      />}
+
+      {currentView === 'gaus' ? <Gaussian
+        state={state}
+        setState={setState}
+        formatFunction={formatFunction}
+        linearVector={linearVector}
+        execute={execute}
+        inputHandler={inputHandler}
+      />:null}
 
     </Enclosure>
   );
