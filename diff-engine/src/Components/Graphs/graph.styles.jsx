@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Enclosure = styled.main`
+position:absolute;
     height:785px;
     width:495px;
     padding:10px;
@@ -11,14 +12,14 @@ export const Enclosure = styled.main`
 
     @media (max-width:620px) {
         transform: scale(0.70);
-        left:-21%;
+        left:-24%;
         top:-21%;
     }
 
     @media (max-width:400px) {
         transform: scale(0.50);
-        left:-21%;
-        top:-31%;
+        left:-36%;
+        top:-28%;
     }
 `
 

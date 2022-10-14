@@ -17,7 +17,11 @@ export const Adapter = styled.section`
     width:500px;
     height:700px;
 
-    // @media (max-width:620px) {
-    //     width:350px;
-    // }
+    @media (max-width:620px) {
+        width:350px;
+    }
+
+    @media (max-width:400px) {
+        width:300px;
+    }
 `
