@@ -13,11 +13,11 @@ export const AppContainer = styled.main`
 export const Adapter = styled.section`
     position:relative;
     margin:auto;
-    margin-top:100px;
+    margin-top:50px;
     width:500px;
     height:700px;
 
-    @media (max-width:620px) {
-        width:350px;
-    }
+    // @media (max-width:620px) {
+    //     width:350px;
+    // }
 `
