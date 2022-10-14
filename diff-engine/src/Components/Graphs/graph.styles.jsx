@@ -70,23 +70,22 @@ export const MathFormula = styled.div`
     right:40px;
     font-size:20px;
 `
-    
-export const BaseButton = styled.button`
-    position:relative;
-    width:75px;
-    height:75px;
-    border-radius:50%;
-`
 
-export const DisplayScreen = styled.input`
+export const BaseInput = styled.input`
     background-color: rgb(240, 240, 240);
     position:relative;
+    border:none;
+    font-size:40px;
+    z-index:100000000;
+`
+
+export const ParamInput = styled(BaseInput)`
+    width:100px;
+`
+
+export const DisplayScreen = styled(BaseInput )`
     bottom:-505px;
     height:60px;
     width:500px;
     left:-6px;
-    border:none;
-    font-size:40px;
-    z-index:100000000;
-
 `
