@@ -61,12 +61,17 @@ export default function Graph() {
     var func = [];
     var coords = [];
 
-    await circleVector.forEach((i) => {
-      par.set('x',i)
-      par.set('y',i)
-      par.set('u',i)
-      func.push(par.evaluate(mathFunc))
-    });
+    try {
+
+      await circleVector.forEach((i) => {
+        par.set('x',i)
+        par.set('y',i)
+        par.set('u',i)
+        func.push(par.evaluate(mathFunc))
+      });
+
+    } catch (err) {linearVector('cos(3 * x) + sin(2 * x)')}
+
     
     await func.forEach((el, x) => {
       coords.push([el * Math.cos(circleVector[x]), el * Math.sin(circleVector[x])]);
@@ -80,16 +85,21 @@ export default function Graph() {
 
   // ---- Linear ---- //
   const linearVector = async (mathFunc) => {
+    // console.log('hit linear vector')
     var func = []
     var coords =[]
 
-    await xVector.forEach((i) => {
-      i = i / 100
-      par.set('x',i)
-      par.set('y',i)
-      par.set('u',i)
-      func.push(par.evaluate(mathFunc))
-    });
+    try {
+
+      await xVector.forEach((i) => {
+        i = i / 100
+        par.set('x',i)
+        par.set('y',i)
+        par.set('u',i)
+        func.push(par.evaluate(mathFunc))
+      });
+
+    } catch (err) {linearVector('cos(3 * x) + sin(2 * x)')}
     
     await func.forEach((el,x) => {
       x = x / 100
