@@ -51,10 +51,13 @@ export const Row = styled.section`
 `
 
 export const Origin = styled.span`
+    height:1px;
+    width:1px;
+    background-color:green;
     position: absolute;
     left: ${({polars}) => (!polars ? `125px` : `250px`)};
-    bottom:233px;
     transition: all 1000ms;
+    bottom:235px;
 `
 
 export const GridCell = styled.span`
@@ -70,23 +73,4 @@ export const MathFormula = styled.div`
     top:0px;
     right:40px;
     font-size:20px;
-`
-
-export const BaseInput = styled.input`
-    background-color: rgb(240, 240, 240);
-    position:relative;
-    border:none;
-    font-size:40px;
-    z-index:100000000;
-`
-
-export const ParamInput = styled(BaseInput)`
-    width:100px;
-`
-
-export const DisplayScreen = styled(BaseInput )`
-    bottom:-505px;
-    height:60px;
-    width:500px;
-    left:-6px;
 `
