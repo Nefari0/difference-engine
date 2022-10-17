@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
-import { KeyBox,BaseButton,LargeButton,Param } from "../../keypad.styles";
-import { ParamInput } from "../../../graph.styles";
+import { KeyBox,BaseButton,LargeButton,Param,ParamInput } from "../../keypad.styles";
+// import { ParamInput } from "../../../graph.styles";
 import { MathComponent } from "mathjax-react";
 import { backButton } from "../../../SVG";
 
