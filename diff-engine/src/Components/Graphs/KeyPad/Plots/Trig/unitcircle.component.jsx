@@ -56,7 +56,7 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             {!showDegrees ? <Param>
             <i>radians </i>
             <ParamInput
-                type='text'
+                type='number'
                 onChange={(e) => inputHandler(e)}
                 value={radians}
                 name="radians"
@@ -66,7 +66,7 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             <Param>
             <i>degrees </i>
             <ParamInput
-                type='text'
+                type='number'
                 onChange={(e) => inputHandler(e)}
                 value={degrees}
                 name="degrees"
