@@ -6,10 +6,15 @@ import {
   BaseButton,
   MathFormula,
   Enclosure,
-  DisplayScreen
 } from "./graph.styles";
 
+import { DisplayScreen } from "./KeyPad/keypad.styles";
+
+import UnitCircle from "./KeyPad/Plots/Trig/unitcircle.component";
+import UnitCirclDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 import Gaussian from "./KeyPad/Plots/Gaussian/gaus.component";
+import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
+import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
 import {
   evaluate,
@@ -52,12 +57,28 @@ export default function Graph() {
     cartCoords:[],
     polars:false,
     mathFunc:'cos(3 * x) + sin(2 * x)',
+    unitCircle:null, // Display Unit Circle ?
+
+    // --- Radian / Degree conversion --- //
+    showDegrees:true,
+    degrees:45, // Converting between degrees and radians
+    radians:.79, // Converting between degrees and radians
+
+    displayInput:true // Toggles main input on/off 
   });
-  const { matrix, polars, cartCoords, polarCoords, mathFunc, currentView } = state;
+  const {
+    matrix,
+    polars,
+    cartCoords,
+    polarCoords,
+    mathFunc,
+    currentView,
+    displayInput,
+  } = state;
 
   useEffect(() => {boardFactory()},[]);
   
-  const polarVector = async () => {
+  const polarVector = async (mathFunc) => {
     var func = [];
     var coords = [];
 
@@ -153,9 +174,7 @@ export default function Graph() {
 
   const inputHandler = (e) => {
     e.preventDefault()
-
     const {name,value} = e.target
-
     setState({...state,[name]:value})
   }
 
@@ -175,7 +194,17 @@ export default function Graph() {
         <Row>
           
           <Origin polars={polars}>
+
             {vectorMap(returnPlots())}
+
+            {currentView === 'unit_circle' ? <UnitCirclDisplay
+              formatFunction={formatFunction}
+              linearVector={linearVector}
+              polarVector={polarVector}
+              execute={execute}
+              state={state}
+            />:null}
+
           </Origin>
           
           <MathFormula>
@@ -187,12 +216,12 @@ export default function Graph() {
         </Row>
       </Table>
 
-      <DisplayScreen
+      {displayInput && <DisplayScreen
         type='text'
         onChange={inputHandler}
         value={mathFunc}
         name="mathFunc"
-      />
+      />}
 
       {!currentView && <KeyPad
         formatFunction={formatFunction}
@@ -210,6 +239,18 @@ export default function Graph() {
         execute={execute}
         inputHandler={inputHandler}
       />:null}
+
+      {currentView === 'unit_circle' ? 
+      <UnitCircle
+        state={state}
+        setState={setState}
+        formatFunction={formatFunction}
+        linearVector={linearVector}
+        polarVector={polarVector}
+        execute={execute}
+        inputHandler={inputHandler}
+      />
+      :null}
 
     </Enclosure>
   );
