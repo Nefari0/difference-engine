@@ -21,15 +21,11 @@ const radB = {
 
 const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setState}) => {
 
-    
-    // const { showRadians } = localState
-    const { degrees,showDegrees,radians } = state
+    const { degrees,showDegrees,radians,displayDegrees } = state
 
-    // const [localState,setLocalState] = useState({
-    //     radians:.79
-    // })
-
-    // const { radians } = localState
+    const getAngles = () => {
+        return (displayDegrees ? degrees : radians * (180/Math.PI))
+    }
 
 
     useEffect(() => {
@@ -43,19 +39,6 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
         })
     },[])
 
-    // const returnNewRadians = () => {
-    //     return 
-    // }
-    // const radianInput = (e) => {
-    //     e.preventDefault()
-    //     const {name,value} = e.target
-    //     setLocalState({...localState,[name]:value})
-    //     var newDegreeVal = radians* (Math.PI/180)
-    //     // execute(e,'degrees',newDegreeVal)
-    //     inputHandler()
-    //     console.log('new degree val',newDegreeVal)
-    // }
-
     const close = (e) => {
         e.preventDefault()
         setState({
@@ -63,8 +46,8 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             displayInput:true,
             currentView:null,
             polars:false,
+            mathFunc:'cos(3 * x) + sin(2 * x)',
         })
-        // execute(e,'currentView',null)
     }
 
     return (

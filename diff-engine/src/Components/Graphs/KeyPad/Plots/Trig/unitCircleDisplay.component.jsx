@@ -1,46 +1,56 @@
 import styled from "styled-components"
 import { TheCircle, Theta, ThetaOrigin, ValueDisplay} from "./display.styles"
 import { MathComponent } from "mathjax-react"
-import { useState } from "react"
 import Cos from "./SicCos/cos.component"
 import Sin from "./SicCos/sin.component"
 
 
 const UnitCircleDisplay = ({state}) => {
 
-    const { degrees,showDegrees } = state
+    const { degrees,showDegrees,radians } = state
+
+    const returnDegrees = () => { // Display angle line in degrees or radians
+        return (showDegrees ? degrees : radians * (180/Math.PI))
+    }
+
+    const SinCosParts = () => { // Draw line from origin
+        return (showDegrees ? degrees : radians)
+    }
+
+    const radianVal = () => { // Display radian value
+        return (showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : radians)
+    }
+
+    const degreeVal = () => { // Display degree value
+        return (showDegrees ? degrees : radians * (180/Math.PI))
+    }
 
     const deg = {
         left:'140px',
         top:'-20px',
-        transform: `rotate(${degrees}deg)`,
+        transform: `rotate(${returnDegrees()}deg)`,
     }
 
     const rad = {
         left:'10px',
         top:'-20px',
-        transform: `rotate(${degrees}deg)`,
+        transform: `rotate(${returnDegrees()}deg)`,
     }
 
-    // const returnDegrees = () => {
-    //     return (!showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : degrees * 180/Math.PI)
-    // }
-
-    const radians = (degrees*(Math.PI/180)).toFixed(2)
 
     return (
         <ThetaOrigin>
-            <TheCircle theta={degrees}>
+            <TheCircle theta={returnDegrees()}>
 
                 <Theta>
 
                     <ValueDisplay style={deg}>
-                        <MathComponent tex={String.raw`${degrees}`} />
+                        <MathComponent tex={String.raw`${degreeVal()}`} />
                         <i>deg</i>
                     </ValueDisplay>
 
                     <ValueDisplay style={rad}>
-                        <MathComponent tex={String.raw`${radians}`} />
+                        <MathComponent tex={String.raw`${radianVal()}`} />
                         <i>rad</i>
                     </ValueDisplay>
 
@@ -48,9 +58,9 @@ const UnitCircleDisplay = ({state}) => {
 
             </TheCircle>
 
-            <Sin radians={radians}/>
+            <Sin radians={SinCosParts()}/>
 
-            <Cos radians={radians} />
+            <Cos radians={SinCosParts()} />
 
         </ThetaOrigin>
     )
