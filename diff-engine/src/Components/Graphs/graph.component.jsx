@@ -10,9 +10,9 @@ import {
 
 import { DisplayScreen } from "./KeyPad/keypad.styles";
 
-import UnitCircle from "./KeyPad/Plots/Trig/unitcircle.component";
-import UnitCirclDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
-import Gaussian from "./KeyPad/Plots/Gaussian/gaus.component";
+import UnitCircle from "./Plots/Trig/unitcircle.component";
+import UnitCirclDisplay from "./Plots/Trig/unitCircleDisplay.component";
+import Gaussian from "./Plots/Gaussian/gaus.component";
 import NumberLine from "./NumberLines/nums.component";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
