@@ -213,7 +213,7 @@ export default function Graph() {
             <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
           </MathFormula>
           
-          {mappedTiles}
+          {!polars && mappedTiles}
           <NumberLine parameters={hNumParams} />
           <NumberLine parameters={vNumParams} />
           

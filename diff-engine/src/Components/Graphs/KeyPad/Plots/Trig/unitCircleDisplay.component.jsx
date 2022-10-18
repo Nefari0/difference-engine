@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { TheCircle, Theta, ThetaOrigin, ValueDisplay} from "./display.styles"
 import { MathComponent } from "mathjax-react"
-import Cos from "./SicCos/cos.component"
-import Sin from "./SicCos/sin.component"
+import Cos from "./SinCos/cos.component"
+import Sin from "./SinCos/sin.component"
 
 
 const UnitCircleDisplay = ({state}) => {
