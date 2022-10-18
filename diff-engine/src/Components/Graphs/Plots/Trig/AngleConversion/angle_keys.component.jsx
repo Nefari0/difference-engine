@@ -1,8 +1,8 @@
 import { MathComponent } from "mathjax-react";
 import { useEffect,useState } from "react";
-import { KeyBox,LargeButton,ParamInput,Param,BaseButton  } from "../../KeyPad/keypad.styles";
+import { KeyBox,LargeButton,ParamInput,Param,BaseButton  } from "../../../KeyPad/keypad.styles";
 // import { } from "../../../graph.styles";
-import { backButton } from "../../SVG";
+import { backButton } from "../../../SVG";
 
 const backB = {
     right:'0px'
