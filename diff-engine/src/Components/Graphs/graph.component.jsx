@@ -12,6 +12,7 @@ import { DisplayScreen } from "./KeyPad/keypad.styles";
 
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
 import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
+import CircleGraph from "./Plots/Trig/overlay.component";
 import Gaussian from "./Plots/Gaussian/gaus.component";
 import NumberLine from "./NumberLines/nums.component";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
@@ -205,7 +206,8 @@ export default function Graph() {
               polarVector={polarVector}
               execute={execute}
               state={state}
-            />:null}
+              />:null}
+              {polars && <CircleGraph />}
 
           </Origin>
           
