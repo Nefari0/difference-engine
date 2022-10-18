@@ -13,8 +13,9 @@ import { DisplayScreen } from "./KeyPad/keypad.styles";
 import UnitCircle from "./KeyPad/Plots/Trig/unitcircle.component";
 import UnitCirclDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 import Gaussian from "./KeyPad/Plots/Gaussian/gaus.component";
-import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
-import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
+import NumberLine from "./NumberLines/nums.component";
+// import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
+// import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
 import {
   evaluate,
@@ -27,6 +28,7 @@ import {
 } from "mathjs";
  
 import KeyPad from "./KeyPad/keypad.component";
+import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState } from "react";
 var par = parser()
@@ -55,7 +57,7 @@ export default function Graph() {
     matrix: [],
     polarCoords: [],
     cartCoords:[],
-    polars:false,
+    polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)',
     unitCircle:null, // Display Unit Circle ?
 
@@ -212,6 +214,8 @@ export default function Graph() {
           </MathFormula>
           
           {mappedTiles}
+          <NumberLine parameters={hNumParams} />
+          <NumberLine parameters={vNumParams} />
           
         </Row>
       </Table>
