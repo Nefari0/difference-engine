@@ -13,10 +13,10 @@ const UnitCircleDisplay = ({state}) => {
         return (showDegrees ? degrees : radians * (180/Math.PI))
     }
 
-    const SinCosParts = () => { // Draw line from origin
-        console.log(Math.sin(degrees))
-        return (showDegrees ? degrees : radians)
-    }
+    // const SinCosParts = () => { // Draw line from origin
+    //     console.log(Math.sin(degrees))
+    //     return (showDegrees ? degrees : radians)
+    // }
 
     const radianVal = () => { // Display radian value
         return (showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : parseFloat(radians).toFixed(2))
