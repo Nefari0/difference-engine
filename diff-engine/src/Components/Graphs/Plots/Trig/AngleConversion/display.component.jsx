@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { TheCircle, Theta, ThetaOrigin, ValueDisplay} from "./display.styles"
+import { TheCircle, Theta, ThetaOrigin, ValueDisplay } from "./display.styles"
 import { MathComponent } from "mathjax-react"
 import Cos from "./SinCos/cos.component"
 import Sin from "./SinCos/sin.component"
@@ -13,11 +13,6 @@ const UnitCircleDisplay = ({state}) => {
         return (showDegrees ? degrees : radians * (180/Math.PI))
     }
 
-    // const SinCosParts = () => { // Draw line from origin
-    //     console.log(Math.sin(degrees))
-    //     return (showDegrees ? degrees : radians)
-    // }
-
     const radianVal = () => { // Display radian value
         return (showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : parseFloat(radians).toFixed(2))
     }
@@ -27,13 +22,13 @@ const UnitCircleDisplay = ({state}) => {
     }
 
     const deg = {
-        left:'140px',
+        left:'120px',
         top:'-20px',
         transform: `rotate(${returnDegrees()}deg)`,
     }
 
     const rad = {
-        left:'10px',
+        left:'40px',
         top:'-20px',
         transform: `rotate(${returnDegrees()}deg)`,
     }

@@ -28,15 +28,21 @@ export const Theta = styled.span`
 
 export const ValueDisplay = styled.div`
     position:absolute;
-    height:50px;
+    height:30px;
     width:40px;
-    padding-left:10px;
+    padding:2px;
     background-color:rgb(240, 240, 240);
     display:flex;
     z-index:2;
+    overflow:hidden;
+    transition: all 1000ms;
 
     i {
+        position:absolute;
         font-size:10px;
+        right:0px;
+        padding-right:2px;
+        background-color:rgb(240, 240, 240);
     }
 `
 
@@ -48,10 +54,8 @@ export const SinPart = styled.span`
     left:0px;
     bottom:24px;
     z-index:0;
-    opacity:.5;
     transition: all 1000ms;
 `
-
 
 export const CosPart = styled.span`
     position:absolute;
@@ -61,6 +65,35 @@ export const CosPart = styled.span`
     left:0px;
     bottom:24px;
     z-index:0;
-    opacity:.5;
     transition: all 1000ms;
+`
+
+export const CosPointer = styled.span`
+    position:absolute;
+    width:1px;
+    height:1px;
+    height:${({radians}) => Math.abs(200*Math.sin(radians))}px;
+    z-index:1000;
+    right:0px;
+    border-left-style: dashed;
+    border-left-width: 3px;
+    transition: all 1000ms;
+`
+
+export const SinPointer = styled.span`
+    position:absolute;
+    height:2px;
+    width:${({radians}) => Math.abs(200*Math.cos(radians))}px;
+    z-index:1000;
+    right:0px;
+    border-top-style: dashed;
+    border-top-width: 3px;
+    transition: all 1000ms;
+`
+
+export const PointerOrigin = styled.span`
+    position:absolute;
+    width:1px;
+    heigth:1px;
+    right:0px;
 `
