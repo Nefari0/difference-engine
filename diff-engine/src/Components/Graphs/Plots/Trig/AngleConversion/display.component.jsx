@@ -1,4 +1,5 @@
 import { TheCircle, Theta, ThetaOrigin, ValueDisplay } from "./display.styles"
+import { TrigFunctions } from "./TrigFunctions/functions.component"
 import { MathComponent } from "mathjax-react"
 import Cos from "./SinCos/cos.component"
 import Sin from "./SinCos/sin.component"
@@ -40,6 +41,11 @@ const UnitCircleDisplay = (props) => {
 
     return (
         <ThetaOrigin style={tOrigin}>
+            <TrigFunctions
+                showDegrees={showDegrees}
+                radians={radians}
+                degrees={degrees}
+            />
 
             <TheCircle theta={returnDegrees()}>
                 <Theta style={{left:'200px',top:'196px'}}>
@@ -54,10 +60,7 @@ const UnitCircleDisplay = (props) => {
                         <i>rad</i>
                     </ValueDisplay>
 
-                    <Tan
-                        vectorMap={vectorMap}
-                        theta={radians}
-                    />
+                    <Tan/>
                 </Theta>
 
             </TheCircle>
