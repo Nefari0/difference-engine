@@ -1,8 +1,10 @@
 import { MathComponent } from "mathjax-react";
 import { useEffect,useState } from "react";
 import { KeyBox,LargeButton,ParamInput,Param,BaseButton  } from "../../../KeyPad/keypad.styles";
-// import { } from "../../../graph.styles";
 import { backButton } from "../../../SVG";
+
+// import {parser} from "mathjs";
+// var par = parser()
 
 const backB = {
     right:'0px'
@@ -22,11 +24,6 @@ const radB = {
 const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setState}) => {
 
     const { degrees,showDegrees,radians,displayDegrees } = state
-
-    // const getAngles = () => {
-    //     return (displayDegrees ? degrees : radians * (180/Math.PI))
-    // }
-
 
     useEffect(() => {
         setState({

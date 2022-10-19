@@ -16,6 +16,8 @@ export const ThetaOrigin = styled.div`
     width:10px;
     height:10px;
     position:absolute;
+    // left:-5px;
+    // top:-20px;
 `
     
 export const Theta = styled.span`
@@ -96,4 +98,14 @@ export const PointerOrigin = styled.span`
     width:1px;
     heigth:1px;
     right:0px;
+`
+
+export const TanLine = styled.span`
+    position:absolute;
+    width:200px;
+    height:1px;
+    // background-color:yellow;
+    border-top-style: dashed;
+    border-top-width: 3px;
+    transition: all 1000ms;
 `

@@ -1,13 +1,22 @@
 import styled from "styled-components"
+// import { useEffect } from "react"
 import { TheCircle, Theta, ThetaOrigin, ValueDisplay } from "./display.styles"
 import { MathComponent } from "mathjax-react"
 import Cos from "./SinCos/cos.component"
 import Sin from "./SinCos/sin.component"
+import Tan from "./SinCos/tan.component"
+
+const max = 250
+// const min = -250
+
+// var xVector = []
+// for (let i = min; i < max; i++) {xVector.push(i)}
 
 
-const UnitCircleDisplay = ({state}) => {
+const UnitCircleDisplay = (props) => {
 
-    const { degrees,showDegrees,radians } = state
+    const { state,vectorMap } = props
+    const { degrees,showDegrees,radians,polarVector,arc } = state
 
     const returnDegrees = () => { // Display angle line in degrees or radians
         return (showDegrees ? degrees : radians * (180/Math.PI))
@@ -33,12 +42,11 @@ const UnitCircleDisplay = ({state}) => {
         transform: `rotate(${returnDegrees()}deg)`,
     }
 
-
     return (
         <ThetaOrigin>
-            <TheCircle theta={returnDegrees()}>
 
-                <Theta>
+            <TheCircle theta={returnDegrees()}>
+                <Theta style={{left:'200px',top:'195px'}}>
 
                     <ValueDisplay style={deg}>
                         <MathComponent tex={String.raw`${degreeVal()}`} />
@@ -50,11 +58,14 @@ const UnitCircleDisplay = ({state}) => {
                         <i>rad</i>
                     </ValueDisplay>
 
+                    <Tan
+                        vectorMap={vectorMap}
+                        theta={radians}
+                    />
                 </Theta>
 
             </TheCircle>
-
-            {/* <Sin radians={SinCosParts()}/> */}
+            
             <Sin radians={radianVal()}/>
 
             <Cos radians={radianVal()} />
@@ -64,10 +75,3 @@ const UnitCircleDisplay = ({state}) => {
 }
 
 export default UnitCircleDisplay
-
-const DivTest = styled.span`
-    position:absolute;
-    width:200px;
-    height:4px;
-    background-color:purple;
-`

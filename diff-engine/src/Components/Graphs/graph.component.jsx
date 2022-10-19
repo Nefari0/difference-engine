@@ -199,15 +199,18 @@ export default function Graph() {
           <Origin polars={polars}>
 
             {vectorMap(returnPlots())}
-
-            {currentView === 'unit_circle' ? <UnitCirclDisplay
+            {currentView === 'unit_circle' ?
+            <UnitCirclDisplay
+              vectorMap={vectorMap}
               formatFunction={formatFunction}
               linearVector={linearVector}
               polarVector={polarVector}
               execute={execute}
               state={state}
-              />:null}
-              {polars && <CircleGraph />}
+            />
+            :null}
+
+            {polars && <CircleGraph />}
 
           </Origin>
           
