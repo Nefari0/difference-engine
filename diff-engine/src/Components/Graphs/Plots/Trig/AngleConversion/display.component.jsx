@@ -1,17 +1,8 @@
-import styled from "styled-components"
-// import { useEffect } from "react"
 import { TheCircle, Theta, ThetaOrigin, ValueDisplay } from "./display.styles"
 import { MathComponent } from "mathjax-react"
 import Cos from "./SinCos/cos.component"
 import Sin from "./SinCos/sin.component"
 import Tan from "./SinCos/tan.component"
-
-const max = 250
-// const min = -250
-
-// var xVector = []
-// for (let i = min; i < max; i++) {xVector.push(i)}
-
 
 const UnitCircleDisplay = (props) => {
 
@@ -42,11 +33,16 @@ const UnitCircleDisplay = (props) => {
         transform: `rotate(${returnDegrees()}deg)`,
     }
 
+    const tOrigin = {
+        top:'10px',
+        left:'0px'
+    }
+
     return (
-        <ThetaOrigin>
+        <ThetaOrigin style={tOrigin}>
 
             <TheCircle theta={returnDegrees()}>
-                <Theta style={{left:'200px',top:'195px'}}>
+                <Theta style={{left:'200px',top:'196px'}}>
 
                     <ValueDisplay style={deg}>
                         <MathComponent tex={String.raw`${degreeVal()}`} />

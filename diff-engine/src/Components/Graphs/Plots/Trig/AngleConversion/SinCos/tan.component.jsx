@@ -1,25 +1,27 @@
-// import { ArcCircle,LargeSpot } from "./arc.styles"
 import { TanLine } from "../display.styles"
-import { ThetaOrigin } from "../display.styles"
 
-const Tan = (props) => {
-
-    const { theta } = props
+const Tan = () => {
 
     const tanParams = {
         transform:`rotate(90deg)`,
-        left:'100px',
-        // left:`${201*Math.cos(theta)}px`,
-        // bottom:`${198*Math.sin(theta)}px`,
+        left:'-95px',
         zIndex:'100000'
     }
 
+    const dot = {
+        position:'absolute',
+        right:'-5px',
+        width:'10px',
+        top:'-2.5px',
+        height:'10px',
+        borderRadius:'50%',
+        backgroundColor:'black',
+    }
+
     return (
-
-            // <ThetaOrigin style={{left:'0px',bottom:'0px',backgroundColor:''}}>
-                <TanLine style={tanParams}></TanLine>
-            // </ThetaOrigin>
-
+        <div style={dot}>
+            <TanLine style={tanParams}></TanLine>
+        </div>
     )
 }
 

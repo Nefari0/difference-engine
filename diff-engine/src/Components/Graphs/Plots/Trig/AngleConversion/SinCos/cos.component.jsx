@@ -3,8 +3,8 @@ import { CosPart,ThetaOrigin,CosPointer,PointerOrigin } from "../display.styles"
 const Cos = ({radians}) => {
 
     const rotation = {
-        top:'-40px',
-        left:'-10px',
+        top:'-50px',
+        left:'-5px',
         transform: `rotate(180deg)`,
         zIndex:'0'
     }

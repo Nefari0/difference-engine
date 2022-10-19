@@ -7,17 +7,18 @@ export const TheCircle = styled.div`
     border: solid 1px #555;
     border-radius:50%;
     left:-202px;
-    top:-216px;
+    top:-226px;
     transform: rotate(${({theta}) => -theta}deg);
     transition: all 1000ms;
+
 `
 
 export const ThetaOrigin = styled.div`
-    width:10px;
-    height:10px;
+    width:1px;
+    height:1px;
     position:absolute;
-    // left:-5px;
-    // top:-20px;
+    top:0px;
+    background-color:yellow;
 `
     
 export const Theta = styled.span`
@@ -30,7 +31,7 @@ export const Theta = styled.span`
 
 export const ValueDisplay = styled.div`
     position:absolute;
-    height:30px;
+    height:40px;
     width:40px;
     padding:2px;
     background-color:rgb(240, 240, 240);
@@ -53,7 +54,7 @@ export const SinPart = styled.span`
     height:${({radians}) => Math.abs(200*Math.sin(radians))}px;
     width:4px;
     background-color:red;
-    left:0px;
+    left:-5px;
     bottom:24px;
     z-index:0;
     transition: all 1000ms;
