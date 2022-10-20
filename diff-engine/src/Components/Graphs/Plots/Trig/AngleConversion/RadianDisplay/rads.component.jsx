@@ -1,15 +1,16 @@
-import { MathComponent,Node,MathJax } from "mathjax-react"
+import { MathComponent,Node } from "mathjax-react"
 import { RadianContainer } from "./rads.styles";
 import {
     Fraction,
     evaluate
 } from "mathjs";
-// import { MathJax } from "mathjax-full/js/components/global";
+
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
 // import { fraction } from "mathjs";
 
 const RationalRads = ({theta}) => {
     const angle = 1.57
-    // const angle = 0.79
     const num = angle*100
     const den = 100
 
@@ -40,15 +41,33 @@ const RationalRads = ({theta}) => {
     // var a = x - x.toFixed();
     // var tens = (10).pow(a.toString().length - 2);
 
-    // var numerator = tens * x;
-    // var denominator = tens;
-    const inlineFormula = `k_{n+1} = n^2 + k_n^2 - k_{n-1}`;
+    // --- ORIGINAL --- //
+    // const inlineFormula = '\\pi\\cos (2\\theta) = \\cos^2 \\theta - \\sin^2 \\theta';
+    // const blockFormula = `\\frac{\\pi n!}{k!(n-k)!} = \\binom{n}{k}`;
+    // --------------- //
+
+    // ----PROTOTYPING RADIAN FORMAT----//
+    const piFormat = `\\frac{\\pi}{2}`
+    const cosFormat = `\\frac{\\sqrt{3}}{2}`
+    const sinFormat = '\\frac{-1}{2}'
+    const bynom = `\\binom{n}{k}`
+    const pair = `\\left(${sinFormat},${cosFormat}\\right)`
+    // ---------------------------------//
+
+    const blockStyle = {
+        // transform: 'scale(0.50)',
+        fontSize:'10px',
+
+    }
+
     return (
         <RadianContainer>
-            <h1>text</h1>
-            {/* <MathComponent tex={String.raw`${Math.PI}`}/> */}
-            <MathComponent tex={' pi_{n-1}'}/>
-            {/* <MathJax.Node formula={inlineFormula}  /> */}
+            {/* <InlineMath math={cosFormat} /> */}
+            {/* <BlockMath math={cosFormat} /> */}
+            {/* <BlockMath math={sinFormat} /> */}
+            {/* <BlockMath math={sinFormat+cosFormat} /> */}
+            {/* <BlockMath math={bynom} /> */}
+            <div style={blockStyle}><BlockMath math={pair} /></div>
         </RadianContainer>
     )
 }

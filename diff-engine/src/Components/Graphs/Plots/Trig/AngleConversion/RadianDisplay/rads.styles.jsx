@@ -4,6 +4,6 @@ export const RadianContainer = styled.div`
     position:absolute;
     width:150px;
     height:100px;
-    background-color:blue;
-    color:white;
+    // background-color:blue;
+    // color:white;
 `
