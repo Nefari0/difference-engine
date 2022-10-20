@@ -1,5 +1,4 @@
 import { TrigFunctionDisplay } from "./function.styles";
-import { MathComponent } from "mathjax-react"
 
 export const TrigFunctions = (props) => {
 
