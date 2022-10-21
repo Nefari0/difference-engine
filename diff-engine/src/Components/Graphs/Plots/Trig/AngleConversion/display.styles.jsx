@@ -29,25 +29,25 @@ export const Theta = styled.span`
     background-color:black;
 `
 
-export const ValueDisplay = styled.div`
-    position:absolute;
-    height:40px;
-    width:40px;
-    padding:2px;
-    background-color:rgb(240, 240, 240);
-    display:flex;
-    z-index:2;
-    overflow:hidden;
-    transition: all 1000ms;
+// export const ValueDisplay = styled.div`
+//     position:absolute;
+//     height:40px;
+//     width:40px;
+//     padding:2px;
+//     background-color:rgb(240, 240, 240);
+//     display:flex;
+//     z-index:2;
+//     overflow:hidden;
+//     transition: all 1000ms;
 
-    i {
-        position:absolute;
-        font-size:10px;
-        right:0px;
-        padding-right:2px;
-        background-color:rgb(240, 240, 240);
-    }
-`
+//     i {
+//         position:absolute;
+//         font-size:10px;
+//         right:0px;
+//         padding-right:2px;
+//         background-color:rgb(240, 240, 240);
+//     }
+// `
 
 export const SinPart = styled.span`
     position:absolute;

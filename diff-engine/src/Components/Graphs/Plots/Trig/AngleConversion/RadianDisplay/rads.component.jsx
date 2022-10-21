@@ -2,44 +2,52 @@ import { MathComponent,Node } from "mathjax-react"
 import { RadianContainer } from "./rads.styles";
 import {
     Fraction,
-    evaluate
+    evaluate,
+    Simplify
 } from "mathjs";
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
 // import { fraction } from "mathjs";
 
-const RationalRads = ({theta}) => {
-    const angle = 1.57
-    const num = angle*100
-    const den = 100
+const RationalRads = (props) => {
 
-    const getPi = () => {
-        // is radian less than pi
-        const pi = Math.PI
-        const size = angle/pi
-        const decimals = size.toFixed(2)
-        // const frac = new Fraction(angle,100)
-        // console.log(evaluate(toString(pi)))
+    const { degrees,radians,showDegrees,radianVal,degreeVal,style } = props
+    const pi = Math.PI
 
-        // convert to fraction
-        // gcd(num,den)
-    }
-    // var gcd = function(a, b) {
-    //     console.log('hit gcd',a,b)
-    //     if (!b) {
-    //         console.log('is b',a)
-    //         return a
-    //     };
-        
-        // console.log((b, a % b))
-        // return gcd(b, a % b);
-    // };
-    getPi()
+    // --- THESE ARE VALUES FROM UNIT CIRCLE FOR TESTING --- //
+    // const angle = 3*(Math.PI/4).toFixed(2) // Should equal 2.36...
+    // const angle = (2*Math.PI)/(3).toFixed(2) // Should equal 2.09...
+    // const angle = (Math.PI/6) // === .52
+    // const angle = (Math.PI/4) // .7853
+    // const angle = (Math.PI/3)
+    // const angle = 2*(pi/3)
+    // const angle = 3*(pi/4)
+    // const angle = 5*(pi/6)
+    // const angle = pi
+    // const angle = 7*(pi/6)
+    // const angle = 5*(pi/4)
+    // const angle = 4*(pi/3) // Cant find rationalization
+    // const angle = 3*(pi/2)
+    // const angle = 5*(pi/3) // Cant fint rationalization
+    // const angle = 7*(pi/4)
+    // const angle = 11*(pi/6) // Cant find rationalization
 
-    // var x = 34/35;
-    // var a = x - x.toFixed();
-    // var tens = (10).pow(a.toString().length - 2);
+    // const angle = radians 
+    const angle = radianVal()
+    const decimal = angle/Math.PI
+    const toNumerator = Math.round((decimal*100)) // Working model    
+
+    const fraction = reduce(toNumerator,100)
+    const rad = `\\frac{${fraction[0]}\\pi }{${fraction[1]}}` // Rendered radians
+
+    function reduce(number,denomin){
+        var gcd = function gcd(a,b){
+          return b ? gcd(b, a%b) : a;
+        };
+        gcd = gcd(number,denomin);
+        return [number/gcd, denomin/gcd];
+      }
 
     // --- ORIGINAL --- //
     // const inlineFormula = '\\pi\\cos (2\\theta) = \\cos^2 \\theta - \\sin^2 \\theta';
@@ -54,22 +62,38 @@ const RationalRads = ({theta}) => {
     const pair = `\\left(${sinFormat},${cosFormat}\\right)`
     // ---------------------------------//
 
-    const blockStyle = {
+    const radDisplay = {
         // transform: 'scale(0.50)',
-        fontSize:'10px',
+        fontSize:'20px',
+        position:'absolute',
+        bottom:'7px',
+        left:'0px'
+    }
 
+    const degDisplay = {
+        fontSize:'18px',
+        position:'absolute',
+        right:'0px',
+        top:'20px'
     }
 
     return (
-        <RadianContainer>
-            {/* <InlineMath math={cosFormat} /> */}
+        <RadianContainer style={style}>
+            <div style={degDisplay}>
+                <InlineMath math={degreeVal()} />
+                <i> deg</i>
+            </div>
             {/* <BlockMath math={cosFormat} /> */}
             {/* <BlockMath math={sinFormat} /> */}
             {/* <BlockMath math={sinFormat+cosFormat} /> */}
             {/* <BlockMath math={bynom} /> */}
-            <div style={blockStyle}><BlockMath math={pair} /></div>
+            <div style={radDisplay}><BlockMath math={rad} /></div>
         </RadianContainer>
     )
 }
 
 export default RationalRads
+
+// const randoundingFuncton = (frac) => {
+//     console.log('from rounding function',frac)
+// }

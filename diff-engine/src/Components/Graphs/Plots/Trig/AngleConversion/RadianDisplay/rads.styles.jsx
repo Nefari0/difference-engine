@@ -5,5 +5,6 @@ export const RadianContainer = styled.div`
     width:150px;
     height:100px;
     // background-color:blue;
+    // border: solid;
     // color:white;
 `
