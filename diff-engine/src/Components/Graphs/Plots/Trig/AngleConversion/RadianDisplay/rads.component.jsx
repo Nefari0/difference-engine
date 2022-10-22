@@ -35,9 +35,9 @@ const RationalRads = (props) => {
 
     // const angle = radians 
     const angle = radianVal()
-    const decimal = angle/Math.PI
+    const decimal = angle/Math.PI // Working model
     const toNumerator = Math.round((decimal*100)) // Working model    
-
+   
     const fraction = reduce(toNumerator,100)
     const rad = `\\frac{${fraction[0]}\\pi }{${fraction[1]}}` // Rendered radians
 
@@ -79,10 +79,12 @@ const RationalRads = (props) => {
 
     return (
         <RadianContainer style={style}>
+
             <div style={degDisplay}>
                 <InlineMath math={degreeVal()} />
                 <i> deg</i>
             </div>
+            
             {/* <BlockMath math={cosFormat} /> */}
             {/* <BlockMath math={sinFormat} /> */}
             {/* <BlockMath math={sinFormat+cosFormat} /> */}
