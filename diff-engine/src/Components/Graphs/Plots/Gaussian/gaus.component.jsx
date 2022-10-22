@@ -5,11 +5,12 @@ import { MathComponent } from "mathjax-react";
 import { backButton } from "../../SVG";
 
 const eButton = {
-    right:'0px'
+    right:'10px',
+    top:'5px'
 }
 const back = {
-    right:'0px',
-    bottom:'0px'
+    right:'10px',
+    bottom:'-15px'
 }
 
 // const input = {left}
