@@ -3,22 +3,21 @@ import { useEffect,useState } from "react";
 import { KeyBox,LargeButton,ParamInput,Param,BaseButton  } from "../../../KeyPad/keypad.styles";
 import { backButton } from "../../../SVG";
 
-// import {parser} from "mathjs";
-// var par = parser()
-
 const backB = {
-    right:'0px'
+    position:'absolute',
+    right:'15px',
+    top:'20px'
 }
 
 const degB = {
     position:'absolute',
     right:'15px',
-    top:'120px'
+    top:'100px'
 }
 const radB = {
     position:'absolute',
     right:'15px',
-    top:'200px'
+    top:'180px'
 }
 
 const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setState}) => {
@@ -70,12 +69,12 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             />
             </Param>}
 
-            <LargeButton
+            <BaseButton
                 style={backB}
                 onClick={(e) => close(e)}
             >
                 {backButton()}
-            </LargeButton>
+            </BaseButton>
 
             <BaseButton
                 onClick={(e) => execute(e,'showDegrees',true)}
