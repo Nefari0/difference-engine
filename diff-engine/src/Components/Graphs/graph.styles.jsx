@@ -21,11 +21,12 @@ position:absolute;
         left:-36%;
         top:-28%;
     }
+
 `
 
 export const Table = styled.div`
     position: absolute;
-    opacity:.5;
+    opacity:.8;
     height: 500px;
     width: 500px;
     background-color: rgb(240, 240, 240);
@@ -38,6 +39,11 @@ export const Table = styled.div`
     z-index: 0;
     overflow:hidden;
     left:5px;
+
+    @media (max-height:400px) {
+        transform: scale(0.60);
+        top:120px;
+    }
 `
 
 export const Row = styled.section`
