@@ -39,8 +39,12 @@ export const BaseButton = styled.button`
     position:relative;
     width:75px;
     height:75px;
-    border-radius:50%;
-    background-color:rgb(340, 340, 340);
+    border-radius:10px;
+    box-shadow: -1px -1px 5px 5px #ccc;
+
+    &:hover {
+        box-shadow: inset 0 0 5px #555;
+    }
 `
 
 export const LargeButton = styled(BaseButton)`
