@@ -9,6 +9,11 @@ export const CircleOverlay = styled.div`
     left:-202px;
     top:-216px;
     transition: all 1000ms;
+
+    i {
+        position:absolute;
+        font-size:12px;
+    }
 `
 
 export const Crosshair = styled.span`

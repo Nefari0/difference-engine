@@ -29,7 +29,7 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             ...state,
             polars:true,
             displayInput:false,
-            mathFunc:`radians / degrees`,
+            mathFunc:`angles`,
             polarCoords:[],
             cartCoords:[],
         })
