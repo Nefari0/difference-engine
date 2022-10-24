@@ -1,5 +1,4 @@
-import { KeyBox,BaseButton,LargeButton } from "./keypad.styles";
-import { MathComponent } from "mathjax-react";
+import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
 
 const KeyPad = (props) => {
 
@@ -9,7 +8,6 @@ const KeyPad = (props) => {
         polarVector,
         formatFunction,
         state,
-        changeView
     } = props
 
     const { mathFunc } = state 
@@ -28,6 +26,13 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton style={{position:'absolute',right:'100px'}} onClick={(e) => execute(e,'currentView','unit_circle')}>Angle</BaseButton>
+
+            <CloseHelp
+                onClick={(e) => execute(e,'help',!state.help)}
+                style={{right:'10px',top:'85px'}}
+            >
+                <strong>?</strong>
+            </CloseHelp>
 
             <LargeButton
                 style={{left:'0px'}}

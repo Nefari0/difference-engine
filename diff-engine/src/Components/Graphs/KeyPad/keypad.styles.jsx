@@ -40,10 +40,14 @@ export const BaseButton = styled.button`
     width:75px;
     height:75px;
     border-radius:10px;
-    box-shadow: -1px -1px 5px 5px #ccc;
+    // box-shadow: -1px -1px 5px 5px #ccc;
+    background-color:#fff;
+    font-weight:600;
+    box-shadow: inset 0 0 5px #555;
 
     &:hover {
-        box-shadow: inset 0 0 5px #555;
+        // box-shadow: inset 0 0 5px #555;
+        box-shadow: -1px -1px 5px 5px #ccc;
     }
 `
 
@@ -51,4 +55,14 @@ export const LargeButton = styled(BaseButton)`
     width:100px;
     height:100px;
     position:absolute;
+`
+
+export const CloseHelp = styled(BaseButton)`
+    position:absolute;
+
+    strong {
+        font-size:30px;
+        font-weight:200;
+        opacity:.8;
+    }
 `
