@@ -9,12 +9,13 @@ import {
 } from "./graph.styles";
 
 import { DisplayScreen } from "./KeyPad/keypad.styles";
-
+import Document from "./Informaton/Help/operators.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
 import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
 import CircleGraph from "./Plots/Trig/overlay.component";
 import Gaussian from "./Plots/Gaussian/gaus.component";
 import NumberLine from "./NumberLines/nums.component";
+import Alert from "./Informaton/Alert/alert.component";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -67,7 +68,11 @@ export default function Graph() {
     degrees:45, // Converting between degrees and radians
     radians:.79, // Converting between degrees and radians
 
-    displayInput:true // Toggles main input on/off 
+    displayInput:true, // Toggles main input on/off 
+
+    // --- Help / Information display --- //
+    help:false,
+    alert:null,
   });
   const {
     matrix,
@@ -77,6 +82,8 @@ export default function Graph() {
     mathFunc,
     currentView,
     displayInput,
+    help,
+    alert,
   } = state;
 
   useEffect(() => {boardFactory()},[]);
@@ -91,10 +98,17 @@ export default function Graph() {
         par.set('x',i)
         par.set('y',i)
         par.set('u',i)
+        par.set('X',i)
+        par.set('Y',i)
+        par.set('U',i)
         func.push(par.evaluate(mathFunc))
       });
 
-    } catch (err) {linearVector('cos(3 * x) + sin(2 * x)')}
+    } catch (err) {
+      const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring. Hint: You may be using an invalid variable"
+      setState({...state,alert:errorMessage})
+      return
+    }
 
     
     await func.forEach((el, x) => {
@@ -109,7 +123,6 @@ export default function Graph() {
 
   // ---- Linear ---- //
   const linearVector = async (mathFunc) => {
-    // console.log('hit linear vector')
     var func = []
     var coords =[]
 
@@ -120,10 +133,17 @@ export default function Graph() {
         par.set('x',i)
         par.set('y',i)
         par.set('u',i)
+        par.set('X',i)
+        par.set('Y',i)
+        par.set('U',i)
         func.push(par.evaluate(mathFunc))
       });
 
-    } catch (err) {linearVector('cos(3 * x) + sin(2 * x)')}
+    } catch (err) {
+      const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring. Hint: You may be using an invalid variable"
+      setState({...state,alert:errorMessage})
+      return
+    }
     
     await func.forEach((el,x) => {
       x = x / 100
@@ -193,13 +213,23 @@ export default function Graph() {
   return (
     <Enclosure>
 
+      {help && <Document
+        state={state}
+        setState={setState}
+      />}
+
+      {alert && <Alert
+        state={state}
+        execute={execute}
+      />}
+
       <Table className="Table">
         <Row>
           
           <Origin polars={polars}>
 
             {vectorMap(returnPlots())}
-            {currentView === 'unit_circle' ?
+            {currentView === 'unit_circle' &&
             <UnitCirclDisplay
               vectorMap={vectorMap}
               formatFunction={formatFunction}
@@ -207,20 +237,27 @@ export default function Graph() {
               polarVector={polarVector}
               execute={execute}
               state={state}
-            />
-            :null}
+            />}
 
             {polars && <CircleGraph />}
 
           </Origin>
           
+          {/* CURRENT MATH FORMULA */}
           <MathFormula>
             <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
           </MathFormula>
           
+          {/* GRID CELLS */}
           {!polars && mappedTiles}
-          <NumberLine parameters={hNumParams} />
-          <NumberLine parameters={vNumParams} />
+
+          {/* NUMBER LINES */}
+          {!polars &&
+            <>
+              <NumberLine parameters={hNumParams} />
+              <NumberLine parameters={vNumParams} />
+            </>
+          }
           
         </Row>
       </Table>
@@ -238,18 +275,19 @@ export default function Graph() {
         polarVector={polarVector}
         execute={execute}
         state={state}
+        setState={setState}
       />}
 
-      {currentView === 'gaus' ? <Gaussian
+      {currentView === 'gaus' && <Gaussian
         state={state}
         setState={setState}
         formatFunction={formatFunction}
         linearVector={linearVector}
         execute={execute}
         inputHandler={inputHandler}
-      />:null}
+      />}
 
-      {currentView === 'unit_circle' ? 
+      {currentView === 'unit_circle' && 
       <UnitCircle
         state={state}
         setState={setState}
@@ -258,8 +296,7 @@ export default function Graph() {
         polarVector={polarVector}
         execute={execute}
         inputHandler={inputHandler}
-      />
-      :null}
+      />}
 
     </Enclosure>
   );
