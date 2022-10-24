@@ -20,8 +20,22 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
     const [h,setH] = useState(.999)
 
     useEffect(() => {
-        setState({...state,mathFunc:`exp(-4*log(2)*x^2/h^2)`})
+        setState({
+            ...state,
+            mathFunc:`exp(-4*log(2)*x^2/h^2)`,
+            displayInput:false
+        })
     },[])
+
+    const goHome = (e) => {
+        e.preventDefault()
+        setState({
+            ...state,
+            mathFunc:'x^2',
+            displayInput:true,
+            currentView:null
+        })
+    }
 
     return (
         <KeyBox>
@@ -44,7 +58,7 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
 
             <LargeButton
                 style={back}
-                onClick={(e) => execute(e,'currentView',null)}
+                onClick={(e) => goHome(e)}
             >
                 {backButton()}
             </LargeButton>
