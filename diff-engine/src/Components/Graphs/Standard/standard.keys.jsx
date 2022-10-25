@@ -1,5 +1,5 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles";
-import { backButton } from "../SVG";
+import { backButton,ExecuteButton } from "../SVG";
 import { Param,ParamInput } from "../KeyPad/keypad.styles";
 import { useEffect } from "react";
 
@@ -12,7 +12,7 @@ const StandardKeys = (props) => {
     useEffect(() => {
         setState({
             ...state,
-            mathFunc:`0`,
+            mathFunc:``,
             polars:false
         })
     },[])
@@ -42,8 +42,16 @@ const StandardKeys = (props) => {
                 style={{left:'10px'}}
                 onClick={(e) => execution(e)}
             >
-                execute
+                {ExecuteButton()}
             </LargeButton>
+
+            <LargeButton
+                style={{left:'120px'}}
+                onClick={(e) => setState({...state,mathFunc:'',calculation:'0'})}
+            >
+                <i style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>C</i>
+            </LargeButton>
+
         </KeyBox>
     )
 }
