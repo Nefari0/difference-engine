@@ -25,7 +25,19 @@ const KeyPad = (props) => {
                 Gaussian
             </BaseButton>
 
-            <BaseButton style={{position:'absolute',right:'100px'}} onClick={(e) => execute(e,'currentView','unit_circle')}>Angle</BaseButton>
+            <BaseButton
+                style={{position:'absolute',right:'100px'}}
+                onClick={(e) => execute(e,'currentView','unit_circle')}
+            >
+                Angle
+            </BaseButton>
+
+            <BaseButton
+                style={{right:'190px'}}
+                onClick={(e) => execute(e,'currentView','standard')}
+            >
+                Standard
+            </BaseButton>
 
             <CloseHelp
                 onClick={(e) => execute(e,'help',!state.help)}

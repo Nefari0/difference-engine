@@ -16,6 +16,8 @@ import CircleGraph from "./Plots/Trig/overlay.component";
 import Gaussian from "./Plots/Gaussian/gaus.component";
 import NumberLine from "./NumberLines/nums.component";
 import Alert from "./Informaton/Alert/alert.component";
+import StandardKeys from "./Standard/standard.keys";
+import StandarMathDisplay from "./Standard/standard.display";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -33,6 +35,8 @@ import KeyPad from "./KeyPad/keypad.component";
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState } from "react";
+
+const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
 
 // Vectors
@@ -73,6 +77,10 @@ export default function Graph() {
     // --- Help / Information display --- //
     help:false,
     alert:null,
+
+    // --- For using standard calculator --- //
+    calculation:0,
+    history:[],
   });
   const {
     matrix,
@@ -84,6 +92,8 @@ export default function Graph() {
     displayInput,
     help,
     alert,
+    // calculation,
+    history,
   } = state;
 
   useEffect(() => {boardFactory()},[]);
@@ -105,8 +115,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring. Hint: You may be using an invalid variable"
-      setState({...state,alert:errorMessage})
+      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
       return
     }
 
@@ -140,8 +149,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring. Hint: You may be using an invalid variable"
-      setState({...state,alert:errorMessage})
+      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
       return
     }
     
@@ -156,6 +164,24 @@ export default function Graph() {
       polars:false
     })
     return
+  }
+
+  const calculate = (e,mathFunc) => {
+    e.preventDefault()
+    try {
+      const result = par.evaluate(mathFunc)
+      history.push([mathFunc,result])
+      setState({
+        ...state,
+        calculation:result.toString(),
+      })
+      return
+    } catch (err) {
+      setState({...state,alert:errorMessage+' NOTE: Variables are not allowed during standard calculations'})
+      console.log(err)
+      return
+    }
+
   }
 
   const boardFactory = () => {
@@ -244,9 +270,12 @@ export default function Graph() {
           </Origin>
           
           {/* CURRENT MATH FORMULA */}
-          <MathFormula>
-            <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
-          </MathFormula>
+            <MathFormula>
+                <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
+            </MathFormula>
+
+          {/* DISPLAY STANDARD CALCULATOR RESULTS */}
+          {currentView === 'standard' && <StandarMathDisplay state={state} execute={execute}/>}
           
           {/* GRID CELLS */}
           {!polars && mappedTiles}
@@ -276,6 +305,13 @@ export default function Graph() {
         execute={execute}
         state={state}
         setState={setState}
+      />}
+
+      {currentView === 'standard' && <StandardKeys
+        state={state}
+        setState={setState}
+        execute={execute}
+        calculate={calculate}
       />}
 
       {currentView === 'gaus' && <Gaussian

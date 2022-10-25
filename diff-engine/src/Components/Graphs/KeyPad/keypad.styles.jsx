@@ -6,6 +6,8 @@ export const KeyBox = styled.div`
     width: 500px;
     bottom:-512px;
 
+    button {position:absolute;}
+
     i {
         font-size:50px;
     }

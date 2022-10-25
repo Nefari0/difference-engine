@@ -1,23 +1,26 @@
 import { MathComponent } from "mathjax-react";
 import { useEffect,useState } from "react";
-import { KeyBox,LargeButton,ParamInput,Param,BaseButton  } from "../../../KeyPad/keypad.styles";
+import { KeyBox,LargeButton,ParamInput,Param,BaseButton,CloseHelp  } from "../../../KeyPad/keypad.styles";
 import { backButton } from "../../../SVG";
 
 const backB = {
-    position:'absolute',
     right:'15px',
-    top:'20px'
+    top:'180px'
 }
 
 const degB = {
-    position:'absolute',
+
     right:'15px',
     top:'100px'
 }
 const radB = {
-    position:'absolute',
     right:'15px',
-    top:'180px'
+    top:'20px'
+}
+
+const infoB = {
+    top:'180px',
+    right:'95px'
 }
 
 const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setState}) => {
@@ -89,6 +92,13 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             >
                 radians
             </BaseButton>
+            
+            <CloseHelp
+                onClick={(e) => execute(e,'help',!state.help)}
+                style={infoB}
+            >
+                <strong>?</strong>
+            </CloseHelp>
 
         </KeyBox>
     )
