@@ -8,6 +8,10 @@ export const Standard = styled.div`
     height:10%;
     background-color:#fff;
     z-index:1;
+
+    button {
+        position:absolute;
+    }
 `
 
 export const History = styled(Standard)`
