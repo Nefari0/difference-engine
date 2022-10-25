@@ -9,7 +9,6 @@ const backB = {
 }
 
 const degB = {
-
     right:'15px',
     top:'100px'
 }
@@ -20,6 +19,11 @@ const radB = {
 
 const infoB = {
     top:'180px',
+    right:'95px'
+}
+
+const toggleUnitCircle = {
+    top:'100px',
     right:'95px'
 }
 
@@ -99,6 +103,13 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             >
                 <strong>?</strong>
             </CloseHelp>
+
+            <BaseButton
+                onClick={(e) => execute(e,'showUnitCircleAngles',!state.showUnitCircleAngles)}
+                style={toggleUnitCircle}
+            >
+                angles
+            </BaseButton>
 
         </KeyBox>
     )

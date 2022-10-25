@@ -68,6 +68,7 @@ export default function Graph() {
     polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)',
     unitCircle:null, // Display Unit Circle ?
+    showUnitCircleAngles:false,
 
     // --- Radian / Degree conversion --- //
     showDegrees:true,
@@ -99,6 +100,7 @@ export default function Graph() {
     alert,
     // calculation,
     history,
+    showUnitCircleAngles,
   } = state;
 
   useEffect(() => {boardFactory()},[]);
@@ -263,7 +265,7 @@ export default function Graph() {
           <Origin polars={polars}>
 
             {vectorMap(returnPlots())}
-            {currentView === 'unit_circle' &&
+            {currentView === 'unit_circle' && !showUnitCircleAngles &&
             <UnitCirclDisplay
               vectorMap={vectorMap}
               formatFunction={formatFunction}
@@ -273,13 +275,13 @@ export default function Graph() {
               state={state}
             />}
 
-            {polars && <CircleGraph />}
+            {polars && <CircleGraph showUnitCircleAngles={showUnitCircleAngles}/>}
 
           </Origin>
           
           {/* CURRENT MATH FORMULA */}
             <MathFormula>
-                <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />
+                {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />}
             </MathFormula>
 
           {/* DISPLAY STANDARD CALCULATOR RESULTS */}
