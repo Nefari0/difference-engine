@@ -12,7 +12,8 @@ const StandardKeys = (props) => {
     useEffect(() => {
         setState({
             ...state,
-            mathFunc:`0`
+            mathFunc:`0`,
+            polars:false
         })
     },[])
 

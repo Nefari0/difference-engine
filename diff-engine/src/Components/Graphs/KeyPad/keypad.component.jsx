@@ -1,4 +1,11 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
+import { CalculatorIcon } from "../SVG";
+
+// --- kaytex --- //
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
+{/* <InlineMath math={frac} /> */}
+const frac = `\\frac{${'string1'}\\pi }{${'string2'}}` 
 
 const KeyPad = (props) => {
 
@@ -29,14 +36,23 @@ const KeyPad = (props) => {
                 style={{position:'absolute',right:'100px'}}
                 onClick={(e) => execute(e,'currentView','unit_circle')}
             >
-                Angle
+                <InlineMath math={`\\phase{-78^\\circ}`} />
+            </BaseButton>
+
+            {/* FRACTIONS */}
+            <BaseButton
+                style={{position:'absolute',right:'100px',top:'85px',fontSize:'30px'}}
+                onClick={(e) => execute(e,'currentView','fracs')}
+            >
+                
+                <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
             </BaseButton>
 
             <BaseButton
                 style={{right:'190px'}}
                 onClick={(e) => execute(e,'currentView','standard')}
             >
-                Standard
+                {CalculatorIcon()}
             </BaseButton>
 
             <CloseHelp

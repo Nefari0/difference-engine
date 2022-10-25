@@ -18,6 +18,8 @@ import NumberLine from "./NumberLines/nums.component";
 import Alert from "./Informaton/Alert/alert.component";
 import StandardKeys from "./Standard/standard.keys";
 import StandarMathDisplay from "./Standard/standard.display";
+import FractionCalc from "./Fractions/frac.display";
+import FractionKeys from "./Fractions/frac.keys";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -81,6 +83,9 @@ export default function Graph() {
     // --- For using standard calculator --- //
     calculation:0,
     history:[],
+
+    // -- Fractions --- //
+    
   });
   const {
     matrix,
@@ -232,6 +237,7 @@ export default function Graph() {
   }
 
   const execute = async (e,prop,val) => {
+    console.log('hit execute')
     e.preventDefault()
     await setState({...state,[prop]:val})
   }
@@ -275,7 +281,18 @@ export default function Graph() {
             </MathFormula>
 
           {/* DISPLAY STANDARD CALCULATOR RESULTS */}
-          {currentView === 'standard' && <StandarMathDisplay state={state} execute={execute}/>}
+          {currentView === 'standard' && <StandarMathDisplay
+            state={state}
+            setState={setState}
+            execute={execute}
+          />}
+
+          {/* DISPLAY FRACTION CALCULATOR */}
+          {currentView === 'fracs' && <FractionCalc
+            state={state}
+            // input={mathFunc}
+            input={mathFunc}
+          />}
           
           {/* GRID CELLS */}
           {!polars && mappedTiles}
@@ -313,6 +330,13 @@ export default function Graph() {
         execute={execute}
         calculate={calculate}
       />}
+
+      {currentView === 'fracs' && <FractionKeys
+        state={state}
+        setState={setState}
+        inputHandler={inputHandler}
+        execute={execute}
+        />}
 
       {currentView === 'gaus' && <Gaussian
         state={state}

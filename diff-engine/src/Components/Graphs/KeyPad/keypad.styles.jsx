@@ -44,6 +44,7 @@ export const BaseButton = styled.button`
     border-radius:10px;
     // box-shadow: -1px -1px 5px 5px #ccc;
     background-color:#fff;
+    color:555;
     font-weight:600;
     box-shadow: inset 0 0 5px #555;
 
