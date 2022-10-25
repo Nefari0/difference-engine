@@ -26,14 +26,14 @@ const StandardKeys = (props) => {
 
             <BaseButton
                 onClick={(e) => execute(e,'currentView',null)}
-                style={{right:'10px',bottom:'10px'}}
+                style={{right:'10px',top:'85px'}}
             >
                 {backButton()}
             </BaseButton>
 
             <CloseHelp
                 onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px',bottom:'100px'}}
+                style={{right:'10px'}}
             >
                 <strong>?</strong>
             </CloseHelp>
