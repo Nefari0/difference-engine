@@ -60,6 +60,10 @@ export const LargeButton = styled(BaseButton)`
     position:absolute;
 `
 
+export const TinyButton = styled(BaseButton)`
+    height:40px;
+`
+
 export const CloseHelp = styled(BaseButton)`
     position:absolute;
 
