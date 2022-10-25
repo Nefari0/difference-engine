@@ -172,9 +172,12 @@ export default function Graph() {
   }
 
   const calculate = (e,mathFunc) => {
+    const smallestVal = () => {return ( mathFunc.split('').length < 1 ? '0' : mathFunc)}
+    // const smallestVal = mathFunc.split('').length < 1
+    console.log('hit calculate',smallestVal)
     e.preventDefault()
     try {
-      const result = par.evaluate(mathFunc)
+      const result = par.evaluate(smallestVal())
       history.push([mathFunc,result])
       setState({
         ...state,
@@ -237,7 +240,6 @@ export default function Graph() {
   }
 
   const execute = async (e,prop,val) => {
-    console.log('hit execute')
     e.preventDefault()
     await setState({...state,[prop]:val})
   }
