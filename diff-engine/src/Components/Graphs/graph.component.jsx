@@ -232,7 +232,7 @@ export default function Graph() {
   const inputHandler = (e) => {
     e.preventDefault()
     const {name,value} = e.target
-    setState({...state,[name]:value})
+    setState({...state,[name]:value.toLowerCase()})
   }
 
   const formatFunction = (string) => {
