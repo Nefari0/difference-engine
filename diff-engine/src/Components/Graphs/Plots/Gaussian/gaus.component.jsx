@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import { KeyBox,BaseButton,LargeButton,Param,ParamInput } from "../../KeyPad/keypad.styles";
 // import { ParamInput } from "../../../graph.styles";
 import { MathComponent } from "mathjax-react";
-import { backButton } from "../../SVG";
+import { backButton,ExecuteButton } from "../../SVG";
 
 const eButton = {
     right:'10px',
@@ -53,7 +53,7 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
                 style={eButton}
                 onClick={() => linearVector(`exp(-4*log(2)*x^2/${h}^2)`)}
             >
-                Execute
+                {ExecuteButton()}
             </LargeButton>
 
             <LargeButton
