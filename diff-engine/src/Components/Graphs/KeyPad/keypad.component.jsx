@@ -17,26 +17,23 @@ const KeyPad = (props) => {
         state,
     } = props
 
-    const { mathFunc } = state 
+    const { mathFunc,degrees } = state 
 
     return (
         <KeyBox>
-
-            {/* <BaseButton onClick={(e) => execute(e,'mathFunc','x^2')}><MathComponent tex={String.raw`${formatFunction('x^2')}`} /></BaseButton> */}
-            {/* <BaseButton onClick={(e) => execute(e,'mathFunc','x^3')}><MathComponent tex={String.raw`${formatFunction('x^3')}`} /></BaseButton> */}
 
             <BaseButton
                 style={{position:'absolute',right:'10px'}} 
                 onClick={(e) => execute(e,'currentView','gaus')}
             >
-                Gaussian
+                <div style={{fontSize:'30px',opacity:'.7'}}><InlineMath math={`\\mu`} /></div>
             </BaseButton>
 
             <BaseButton
                 style={{position:'absolute',right:'100px'}}
                 onClick={(e) => execute(e,'currentView','unit_circle')}
             >
-                <InlineMath math={`\\phase{-78^\\circ}`} />
+                <InlineMath math={`\\phase{${degrees}^\\circ}`} />
             </BaseButton>
 
             {/* FRACTIONS */}
