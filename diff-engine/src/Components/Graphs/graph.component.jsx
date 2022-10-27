@@ -175,8 +175,6 @@ export default function Graph() {
 
   const calculate = (e,mathFunc) => {
     const smallestVal = () => {return ( mathFunc.split('').length < 1 ? '0' : mathFunc)}
-    // const smallestVal = mathFunc.split('').length < 1
-    console.log('hit calculate',smallestVal)
     e.preventDefault()
     try {
       const result = par.evaluate(smallestVal())
