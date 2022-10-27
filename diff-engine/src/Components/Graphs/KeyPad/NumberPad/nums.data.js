@@ -76,4 +76,9 @@ export const numdata = [
         val:'',
         svg:ExecuteButton()
     },
+
+    {
+        style:{left:'0px',top:'245px'},
+        val:'.'
+    },
 ]
