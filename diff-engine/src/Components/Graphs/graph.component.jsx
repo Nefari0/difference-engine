@@ -333,6 +333,7 @@ export default function Graph() {
         setState={setState}
         execute={execute}
         calculate={calculate}
+        inputHandler={inputHandler}
       />}
 
       {currentView === 'fracs' && <FractionKeys

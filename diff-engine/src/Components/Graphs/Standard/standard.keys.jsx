@@ -2,6 +2,11 @@ import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles
 import { backButton,ExecuteButton } from "../SVG";
 import { Param,ParamInput } from "../KeyPad/keypad.styles";
 import { useEffect } from "react";
+import { NumberPad } from "../KeyPad/NumberPad/nums.component";
+
+const numpad = {
+    left:'100px'
+}
 
 const StandardKeys = (props) => {
 
@@ -13,7 +18,7 @@ const StandardKeys = (props) => {
         setState({
             ...state,
             mathFunc:``,
-            polars:false
+            polars:false,
         })
     },[])
 
@@ -24,33 +29,40 @@ const StandardKeys = (props) => {
     return (
         <KeyBox>
 
+            <NumberPad
+                styles={numpad}
+                state={state}
+                setState={setState}
+            />
+
             <BaseButton
                 onClick={(e) => execute(e,'currentView',null)}
-                style={{right:'10px',top:'85px'}}
+                style={{right:'0px',top:'85px'}}
             >
                 {backButton()}
             </BaseButton>
 
             <CloseHelp
                 onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px'}}
+                style={{right:'0px'}}
             >
                 <strong>?</strong>
             </CloseHelp>
 
-            <LargeButton
-                style={{left:'10px'}}
+            <BaseButton
+                style={{left:'0px'}}
                 onClick={(e) => execution(e)}
             >
                 {ExecuteButton()}
-            </LargeButton>
+            </BaseButton>
 
-            <LargeButton
-                style={{left:'120px'}}
+            {/* --- CLEAR BUTTON --- */}
+            <BaseButton
+                style={{left:'0px',top:'85px'}}
                 onClick={(e) => setState({...state,mathFunc:'',calculation:'0'})}
             >
                 <i style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>C</i>
-            </LargeButton>
+            </BaseButton>
 
         </KeyBox>
     )

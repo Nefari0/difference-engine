@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Enclosure = styled.main`
-position:absolute;
-    height:785px;
+    position:absolute;
+    height:900px;
     width:495px;
     padding:10px;
     border-radius:10px;
