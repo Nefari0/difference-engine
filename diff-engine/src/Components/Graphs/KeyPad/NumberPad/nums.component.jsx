@@ -8,20 +8,23 @@ export const NumberPad = ({styles,state,setState}) => {
 
     const setItems = (e,val) => {
 
+        const newCharacter = () => {            
+            const mathArr = mathFunc.split('')
+            const previous = mathArr.splice(0,mathArr.length-1,1).join('')
+            return (val.split('').length === 0 ? previous : mathFunc+val)
+        }
+
         e.preventDefault()
+
         setState({
             ...state,
-            mathFunc:mathFunc+val
+            mathFunc:newCharacter()
         })
     }
 
     const mappedKeys = numdata.map(el => {
+
         const display = (el.svg ? (el.svg) : (el.val))
-        const backSpace = () => {
-            const mathArr = mathFunc.split('')
-            const mathLength = mathArr.length
-            return (el.val.split('').length === 0 ? console.log(mathArr) : el.val)
-        }
 
         return (
             <BaseButton
