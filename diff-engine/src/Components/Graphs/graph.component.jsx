@@ -186,7 +186,6 @@ export default function Graph() {
       return
     } catch (err) {
       setState({...state,alert:errorMessage+' NOTE: Variables are not allowed during standard calculations'})
-      console.log(err)
       return
     }
 
@@ -242,6 +241,13 @@ export default function Graph() {
   const execute = async (e,prop,val) => {
     e.preventDefault()
     await setState({...state,[prop]:val})
+  }
+
+  if(state.calculation === "Infinity") {
+    setState({...state,
+      alert:'Its against the law to devide by 0',
+      calculation:0
+    })
   }
 
   return (
