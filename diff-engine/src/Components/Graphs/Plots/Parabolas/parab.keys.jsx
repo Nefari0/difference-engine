@@ -11,33 +11,21 @@ const ParabKeys = (props) => {
     const {
         state,
         setState,
-        execute,
         linearVector,
-        mathFunc,
-        inputHandler,
-        cartCoords,
-        // h,k
-        // parabHandler
     } = props
 
     const [localState,setLocalState] = useState({
         a:'1',
         h:'0',
         k:'0',
-        n:'10'
     })
-    const {a,h,k,n} = localState
-
-    // const y = `x^2`
+    const {a,h,k} = localState
 
     useEffect(() => {
-        // linearVector(y)
         setState({
             ...state,
             mathFunc:`y = a*(x-h)^2 + k`,
             displayInput:false,
-            // k:'1',
-            // h:'1',
         })
     },[])
 
@@ -69,14 +57,6 @@ const ParabKeys = (props) => {
         })
     }
 
-    const executionHandler = async (e) => {
-        // console.log('execution')
-        e.preventDefault()
-        linearVector(y,otherPlots)
-        // await setState({...state,h:h,k:k})
-
-    }
-
     const localInput = (e) => {
         e.preventDefault()
         const {name,value} = e.target
@@ -94,13 +74,6 @@ const ParabKeys = (props) => {
                     name="a"
                 />
             </Param>
-
-            {/* <Param style={{top:'60px'}}>
-                <i>p</i>
-                <ParamInput
-
-                />
-            </Param> */}
 
             <Param style={{top:'60px'}}>
                 <i>h</i>
@@ -122,17 +95,8 @@ const ParabKeys = (props) => {
                 />
             </Param>
 
-            {/* <Param style={{top:'240px'}}>
-                <i>n</i>
-                <ParamInput
-
-                />
-            </Param> */}
-
-            {/* <h1>{h}</h1> */}
-
             <LargeButton
-                onClick={(e) => {executionHandler(e)}}
+                onClick={() => {linearVector(y,otherPlots)}}
             >
                 {ExecuteButton()}
             </LargeButton>

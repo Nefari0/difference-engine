@@ -11,23 +11,10 @@ const ParabolaDisplay = (props) => {
         otherPlots
     } = props
 
-    // const focus = {
-    //     position:'absolute',
-    //     left:`${cartCoords[0][0]}px`,
-    //     bottom:`${cartCoords[0][1]}px`,
-    //     backgroundColor:'green',
-    //     height:'10px',
-    //     width:'10px',
-    // }
-
-    // console.log('cart coords',cartCoords[0])
-
     const vertex = {
         position:'absolute',
         left:`${xAspect*h}px`,
         bottom:`${yAspect*k}px`,
-        // left:`${cartCoords[0][0]}px`,
-        // bottom:`${cartCoords[0][1]}px`,
         height:'10px',
         width:'10px',
         backgroundColor:'blue',
@@ -35,7 +22,6 @@ const ParabolaDisplay = (props) => {
     }
     
     const otherPlotsMap = otherPlots.map((el,i) => {
-        // console.log(el[3],'here is el [3]')
         const parameters = {
             left:`${xAspect * el[0]}px`,
             bottom:`${yAspect * el[1]}px`,
@@ -79,8 +65,6 @@ const ParabolaDisplay = (props) => {
                 </ul>
             </ParabLegend>
             {otherPlotsMap}
-            {/* <span style={focus}></span> */}
-            {/* <span style={vertex}></span> */}
         </ParabOrigin>
     )
 }
