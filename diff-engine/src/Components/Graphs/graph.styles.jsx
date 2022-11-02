@@ -59,7 +59,6 @@ export const Row = styled.section`
 export const Origin = styled.span`
     height:1px;
     width:1px;
-    background-color:green;
     position: absolute;
     left: ${({polars}) => (!polars ? `125px` : `250px`)};
     transition: all 1000ms;
