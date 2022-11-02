@@ -30,7 +30,7 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{position:'absolute',right:'100px'}}
+                style={{position:'absolute',right:'100px',fontSize:'20px'}}
                 onClick={(e) => execute(e,'currentView','unit_circle')}
             >
                 <InlineMath math={`\\phase{${degrees}^\\circ}`} />
@@ -41,7 +41,6 @@ const KeyPad = (props) => {
                 style={{position:'absolute',right:'100px',top:'85px',fontSize:'30px'}}
                 onClick={(e) => execute(e,'currentView','fracs')}
             >
-                
                 <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
             </BaseButton>
 
@@ -50,6 +49,13 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'currentView','standard')}
             >
                 {CalculatorIcon()}
+            </BaseButton>
+
+            <BaseButton
+                style={{right:'190px',top:'85px',fontSize:'30px'}}
+                onClick={(e) => execute(e,'currentView','parabolas')}
+            >
+                <InlineMath math={`\\left(x^{\\smash{2}}\\right)`} />
             </BaseButton>
 
             <CloseHelp
