@@ -3,31 +3,22 @@ import { ParabOrigin,ParabLegend } from "./parab.styles"
 const ParabolaDisplay = (props) => {
 
     const {
-        cartCoords,
-        h,
-        k,
         xAspect,
         yAspect,
         otherPlots
     } = props
-
-    const vertex = {
-        position:'absolute',
-        left:`${xAspect*h}px`,
-        bottom:`${yAspect*k}px`,
-        height:'10px',
-        width:'10px',
-        backgroundColor:'blue',
-        borderRadius:'50%',
-    }
     
     const otherPlotsMap = otherPlots.map((el,i) => {
         const parameters = {
             left:`${xAspect * el[0]}px`,
             bottom:`${yAspect * el[1]}px`,
+
             backgroundColor:`${el[2] ? el[2] : 'red'}`,
+
             width:`${el[3] ? el[3]:'10'}px`,
+
             height:`${el[4] ? el[4]:'10'}px`,
+
             borderRadius:`${el[5] ? el[5] : '50'}%`,
             
             position:'absolute',
