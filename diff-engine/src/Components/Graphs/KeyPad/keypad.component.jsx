@@ -1,4 +1,5 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
+import { MathComponent } from "mathjax-react";
 import { CalculatorIcon } from "../SVG";
 
 // --- kaytex --- //
@@ -52,10 +53,11 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'190px',top:'85px',fontSize:'30px'}}
+                style={{right:'190px',top:'85px',fontSize:'10px'}}
                 onClick={(e) => execute(e,'currentView','parabolas')}
             >
-                <InlineMath math={`\\left(x^{\\smash{2}}\\right)`} />
+                {/* <InlineMath math={`\\left(x^{\\smash{2}}\\right)`} /> */}
+                <MathComponent tex={String.raw`${`ax^2+bx+c`}`} />
             </BaseButton>
 
             <CloseHelp
