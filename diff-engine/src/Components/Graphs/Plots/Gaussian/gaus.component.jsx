@@ -22,7 +22,7 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
     useEffect(() => {
         setState({
             ...state,
-            mathFunc:`exp(-4*log(2)*x^2/h^2)`,
+            mathFunc:`y = exp(-4*log(2)*x^2/h^2)`,
             displayInput:false
         })
     },[])
