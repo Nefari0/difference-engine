@@ -20,6 +20,8 @@ import StandardKeys from "./Standard/standard.keys";
 import StandarMathDisplay from "./Standard/standard.display";
 import FractionCalc from "./Fractions/frac.display";
 import FractionKeys from "./Fractions/frac.keys";
+import ParabKeys from "./Plots/Parabolas/parab.keys";
+import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -61,6 +63,10 @@ var iteration = 0
 export default function Graph() {
 
   const [state, setState] = useState({
+    xAspect:50,yAspect:50, // Grid scale
+
+    otherPlots:[], // Second, optional parameter for linear and polar vectors
+    
     currentView:null,
     matrix: [],
     polarCoords: [],
@@ -85,10 +91,15 @@ export default function Graph() {
     calculation:0,
     history:[],
 
-    // -- Fractions --- //
+    // --- Parabolas --- //
+    // h:'0',k:'0',
     
+
+    // otherItems:null,
+  
   });
   const {
+    xAspect,yAspect, // Grid acale
     matrix,
     polars,
     cartCoords,
@@ -101,6 +112,9 @@ export default function Graph() {
     // calculation,
     history,
     showUnitCircleAngles,
+    // h,k, // -- parabola
+
+    otherPlots
   } = state;
 
   useEffect(() => {boardFactory()},[]);
@@ -138,7 +152,7 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async (mathFunc) => {
+  const linearVector = async (mathFunc,otherPlots) => {
     var func = []
     var coords =[]
 
@@ -168,9 +182,10 @@ export default function Graph() {
     await setState({
       ...state,
       cartCoords:coords,
-      polars:false
+      polars:false,
+      otherPlots:(otherPlots ? otherPlots:[]),
     })
-    return
+    return coords
   }
 
   const calculate = (e,mathFunc) => {
@@ -210,8 +225,8 @@ export default function Graph() {
   const vectorMap = (coordArray) => {
     const mappedItems = coordArray.map((el,i) => {
       var locations = {
-        bottom: `${50*el[1]}px`,
-        left: `${50*el[0]}px`,
+        bottom: `${yAspect*el[1]}px`,
+        left: `${xAspect*el[0]}px`,
         borderRadius: "50%",
         backgroundColor: `red`,
         position: "absolute",
@@ -266,9 +281,21 @@ export default function Graph() {
       <Table className="Table">
         <Row>
           
-          <Origin polars={polars}>
+          <Origin
+            xAspect={xAspect}
+            yAspect={yAspect}
+            polars={polars}
+          >
 
             {vectorMap(returnPlots())}
+
+            {currentView === 'parabolas' && <ParabolaDisplay
+              otherPlots={otherPlots}
+              xAspect={xAspect}
+              yAspect={yAspect}
+              cartCoords={cartCoords}
+            />}
+            
             {currentView === 'unit_circle' && !showUnitCircleAngles &&
             <UnitCirclDisplay
               vectorMap={vectorMap}
@@ -298,7 +325,6 @@ export default function Graph() {
           {/* DISPLAY FRACTION CALCULATOR */}
           {currentView === 'fracs' && <FractionCalc
             state={state}
-            // input={mathFunc}
             input={mathFunc}
           />}
           
@@ -355,6 +381,16 @@ export default function Graph() {
         execute={execute}
         inputHandler={inputHandler}
       />}
+
+      {currentView === "parabolas" &&
+      <ParabKeys
+        state={state}
+        setState={setState}
+        execute={execute}
+        linearVector={linearVector}
+        inputHandler={inputHandler}
+      />
+      }
 
       {currentView === 'unit_circle' && 
       <UnitCircle
