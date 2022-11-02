@@ -22,6 +22,7 @@ app.use(
     
 app.use( express.static( __dirname + '/../build'));
 app.get('*', (req,res) => {
+    // app.use(enforce.HTTPS({ trustProtoHeader: true }));
     res.send(path.join(__dirname, '../build/index.html'))
 })
 
