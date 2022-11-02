@@ -49,7 +49,8 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             displayInput:true,
             currentView:null,
             polars:false,
-            mathFunc:'cos(3 * x) + sin(2 * x)',
+            mathFunc:'cos(3 * x) + sin(2 * x)',    
+            showUnitCircleAngles:false
         })
     }
 
