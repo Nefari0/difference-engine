@@ -7,6 +7,8 @@ export const FracDisplay = styled.section`
     width:40%;
     height:40%;
     background-color:#fff;
+    border: solid 1px;
+    border-radius:5px;
     z-index:1;
 
     p {
