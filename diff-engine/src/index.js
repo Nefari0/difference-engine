@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Offline from './Components/Offline';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,9 +10,11 @@ const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRout
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Offline>
+      <Router>
+        <App />
+      </Router>
+    </Offline>
   </React.StrictMode>
 );
 reportWebVitals();
