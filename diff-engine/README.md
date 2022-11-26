@@ -1,5 +1,48 @@
-Transforming functions between cartesian and polars.
+# The Difference Engine
 
-npm i react-katex
+https://math.madmodels3d.com/
 
-npm i mathjax-react
+A simple calculator for graphing and standard arithmetic operations. This app uses mathjs to execute calculations on typed input (strings). It also uses mathjax and katex to render human-readable equations and formulas in the browser. This is a progressive web app that can be downloaded onto any device for offline use.
+
+The title (Difference engine) is inspired by the mechanical calculator designed in the 1820s and created by Charles Babbage (https://en.wikipedia.org/wiki/Difference_engine).
+
+# Features
+
+### Algebra
+
+* Graphing (Cartesian and Polar coordinates)
+* Quadratic equations
+* Gaussian function
+
+### Trigonometry
+* Converting between radians and degrees
+* Unit circle
+* Trig functions
+
+### Arithmetic
+
+* Standard calculator
+* Converting decimals to fractions
+
+# Plans
+
+* Integral and differential calculus
+* Linear algebra
+
+# Technology
+
+* mathjs
+* mathjax
+* katex
+* webrix
+
+# Installation and usage
+
+# `npm i`
+
+Installs the modules.
+
+# `npm start` 
+
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
