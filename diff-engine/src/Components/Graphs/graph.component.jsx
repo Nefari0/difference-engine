@@ -3,7 +3,6 @@ import {
   Row,
   GridCell,
   Origin,
-  BaseButton,
   MathFormula,
   Enclosure,
 } from "./graph.styles";
@@ -22,6 +21,7 @@ import FractionCalc from "./Fractions/frac.display";
 import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
+import { BaseButton } from "./KeyPad/keypad.styles";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -265,6 +265,11 @@ export default function Graph() {
     })
   }
 
+  const copy = () => {
+    navigator.clipboard.writeText(JSON.stringify(cartCoords))
+    setState({...state,alert:"X and Y coordinates copied to clipboard"})
+}
+
   return (
     <Enclosure>
 
@@ -314,6 +319,15 @@ export default function Graph() {
             <MathFormula>
                 {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />}
             </MathFormula>
+
+          {!currentView && 
+            <BaseButton 
+              style={{position:'absolute',width:'150px',height:'50px',left:'0',zIndex:'1',opacity:'.6'}}
+              onClick={() => copy()}
+            >
+              copy coordinates
+            </BaseButton>
+          }
 
           {/* DISPLAY STANDARD CALCULATOR RESULTS */}
           {currentView === 'standard' && <StandarMathDisplay
