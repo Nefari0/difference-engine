@@ -5,6 +5,7 @@ import { backButton } from "../../../SVG";
 
 const backB = {
     right:'15px',
+
     top:'180px'
 }
 
@@ -24,6 +25,11 @@ const infoB = {
 
 const toggleUnitCircle = {
     top:'100px',
+    right:'95px'
+}
+
+const copyButton = {
+    top:'20px',
     right:'95px'
 }
 
@@ -51,6 +57,16 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             polars:false,
             mathFunc:'cos(3 * x) + sin(2 * x)',    
             showUnitCircleAngles:false
+        })
+    }
+
+    // -- Copy the converted value to clip board -- //
+    const copyVal = () => {
+        const value = showDegrees ? (degrees*(Math.PI/180)):(radians*(180/Math.PI))
+        navigator.clipboard.writeText(JSON.stringify(value))
+        setState({
+            ...state,
+            alert:` ${value} ${!showDegrees ? "degrees":'radians'} copied to clipboard`
         })
     }
 
@@ -110,6 +126,13 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
                 style={toggleUnitCircle}
             >
                 angles
+            </BaseButton>
+            
+            <BaseButton
+                style={copyButton}
+                onClick={() => copyVal()}
+            >
+                {!showDegrees ? 'copy degrees':'copy radians'}
             </BaseButton>
 
         </KeyBox>
