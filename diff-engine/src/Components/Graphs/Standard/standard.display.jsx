@@ -10,9 +10,17 @@ const clearHistButton = {
     zIndex:'1'
 }
 
-const StandarMathDisplay = ({state,execute}) => {
+const StandarMathDisplay = ({state,execute,setState}) => {
 
     const { calculation,history,mathFunc } = state
+
+    const copy = () => {
+        navigator.clipboard.writeText(calculation)
+        setState({
+            ...state,
+            alert:`${calculation} copied to clipboard`
+        })
+    }
 
     const mappedHistory = history.map((el,i) => {
         return <HistoryItem key={i} onClick={(e) => execute(e,'mathFunc',el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
@@ -34,8 +42,8 @@ const StandarMathDisplay = ({state,execute}) => {
                 {calculation && <MathComponent tex={String.raw`${calculation}`} />}
 
                 <TinyButton
-                    // onClick={copy}
-                    onClick={() => {navigator.clipboard.writeText(calculation)}}
+
+                    onClick={() => copy()}
                     style={{right:'6px',top:'7px'}}
                 >
                     copy
