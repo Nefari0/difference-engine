@@ -266,7 +266,7 @@ export default function Graph() {
   }
 
   const copy = () => {
-    navigator.clipboard.writeText(JSON.stringify(cartCoords))
+    navigator.clipboard.writeText(JSON.stringify(returnPlots()))
     setState({...state,alert:"X and Y coordinates copied to clipboard"})
 }
 
@@ -317,12 +317,12 @@ export default function Graph() {
           
           {/* CURRENT MATH FORMULA */}
             <MathFormula>
-                {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, '')}`} />}
+                {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
             </MathFormula>
 
           {!currentView && 
             <BaseButton 
-              style={{position:'absolute',width:'150px',height:'50px',left:'0',zIndex:'1',opacity:'.6'}}
+              style={{position:'absolute',width:'150px',height:'50px',left:'0',top:'0px',zIndex:'1',opacity:'.6'}}
               onClick={() => copy()}
             >
               copy coordinates
