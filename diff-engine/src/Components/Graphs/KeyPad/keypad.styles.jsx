@@ -47,6 +47,7 @@ export const BaseButton = styled.button`
     color:555;
     font-weight:600;
     box-shadow: inset 0 0 5px #555;
+    overflow:hidden;
 
     &:hover {
         // box-shadow: inset 0 0 5px #555;
