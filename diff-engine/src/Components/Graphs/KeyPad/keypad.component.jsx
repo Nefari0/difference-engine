@@ -1,12 +1,12 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
 import { MathComponent } from "mathjax-react";
-import { CalculatorIcon } from "../SVG";
+import { CalculatorIcon,CogWheel } from "../SVG";
 
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 {/* <InlineMath math={frac} /> */}
-const frac = `\\frac{${'string1'}\\pi }{${'string2'}}` 
+// const frac = `\\frac{${'string1'}\\pi }{${'string2'}}` 
 
 const KeyPad = (props) => {
 
@@ -14,7 +14,6 @@ const KeyPad = (props) => {
         execute,
         linearVector,
         polarVector,
-        formatFunction,
         state,
     } = props
 
@@ -62,10 +61,17 @@ const KeyPad = (props) => {
 
             <CloseHelp
                 onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px',top:'85px'}}
+                style={{right:'10px',top:'170px'}}
             >
                 <strong>?</strong>
             </CloseHelp>
+
+            <BaseButton
+                style={{right:'10px',top:'85px'}}
+                onClick={(e) => execute(e,'currentView','gear_calculator')}
+            >
+                {CogWheel()}
+            </BaseButton>
 
             <LargeButton
                 style={{left:'0px'}}

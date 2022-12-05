@@ -22,6 +22,7 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
+import CogKeys from "./GearCalculators/involute.keys";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
@@ -415,6 +416,14 @@ export default function Graph() {
         polarVector={polarVector}
         execute={execute}
         inputHandler={inputHandler}
+      />}
+
+      {currentView === 'gear_calculator' &&
+        <CogKeys
+        execute={execute}
+        inputHandler={inputHandler}
+        state={state}
+        setState={setState}
       />}
 
     </Enclosure>
