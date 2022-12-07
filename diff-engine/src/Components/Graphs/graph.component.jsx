@@ -23,6 +23,7 @@ import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
 import CogKeys from "./GearCalculators/involute.keys";
+// import { InvoluteCalcDisplay } from "./GearCalculators/involute.display";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 

@@ -1,6 +1,9 @@
-import { KeyBox,BaseButton,LargeButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
+import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../SVG";
 import { useEffect } from "react";
+import 'katex/dist/katex.min.css';
+import { InlineMath } from 'react-katex';
+import { TinyButton } from "../KeyPad/keypad.styles";
 
 const CogKeys = (props) => {
 
@@ -27,6 +30,11 @@ const CogKeys = (props) => {
             
         })
     }
+
+    const toothThickness = 360 / mathFunc
+
+    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
+    const copyThicknessMessage = `${toothThickness} saved to clipbaord`
 
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
@@ -69,11 +77,11 @@ const CogKeys = (props) => {
     '\n    edges1.append( [i, i+1] )' +
     '\ncreateMeshFromData( "Profile", [0, 0, 0], coords, edges1, [] )'
 
-    const copyVal = () => {
-        navigator.clipboard.writeText(gearScript)
+    const copyVal = (val,message) => {
+        navigator.clipboard.writeText(val)
         setState({
             ...state,
-            alert:`A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
+            alert:message
         })
     }
 
@@ -81,9 +89,9 @@ const CogKeys = (props) => {
         <KeyBox>
             <h1>Involute Gear Calculator</h1>
             <Param>
-                <i>Number of gear teeth:</i>
+                <i style={{fontSize:'40px'}}>Number of gear teeth:</i>
                 <ParamInput
-                    type='text'
+                    type='number'
                     onChange={(e) => inputHandler(e)}
                     value={mathFunc}
                     name="mathFunc"
@@ -91,7 +99,7 @@ const CogKeys = (props) => {
             </Param>
 
             <BaseButton 
-                onClick={copyVal}
+                onClick={() => copyVal(gearScript,copyScriptMessage)}
                 style={{right:'95px',top:'170px'}}
             >
                 {ExecuteButton()}
@@ -110,6 +118,23 @@ const CogKeys = (props) => {
             >
                 <strong>?</strong>
             </CloseHelp>
+
+                <h2
+                    style={{
+                        position:'absolute',
+                        left:'0px',
+                        top:'150px'
+                    }}
+                >
+                    Tooth thickness:<InlineMath math={`${toothThickness}^\\circ`} />
+                </h2>
+
+                <TinyButton
+                    style={{top:'210px',left:'0px'}}
+                    onClick={() => copyVal(toothThickness,copyThicknessMessage)}
+                >
+                    copy thickness
+                </TinyButton>
 
         </KeyBox>
     )
