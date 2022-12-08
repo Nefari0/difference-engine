@@ -31,10 +31,10 @@ const CogKeys = (props) => {
         })
     }
 
-    const toothThickness = 360 / mathFunc
+    const pitch = 360 / mathFunc
 
     const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
-    const copyThicknessMessage = `${toothThickness} saved to clipbaord`
+    const copyPitch = `${pitch} saved to clipbaord`
 
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
@@ -133,14 +133,14 @@ const CogKeys = (props) => {
                         top:'150px'
                     }}
                 >
-                    Tooth thickness:<InlineMath math={`${toothThickness}^\\circ`} />
+                    Pitch: <InlineMath math={`${pitch}^\\circ`} />
                 </h2>
 
                 <TinyButton
                     style={{top:'210px',left:'0px'}}
-                    onClick={() => copyVal(toothThickness,copyThicknessMessage)}
+                    onClick={() => copyVal(pitch,copyPitch)}
                 >
-                    copy thickness
+                    copy pitch
                 </TinyButton>
 
         </KeyBox>
