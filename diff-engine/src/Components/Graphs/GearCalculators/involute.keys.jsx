@@ -5,18 +5,25 @@ import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 import { TinyButton } from "../KeyPad/keypad.styles";
 
+// import {
+//     parser,
+// } from "mathjs";
+// var par = parser()
+
 const CogKeys = (props) => {
 
     const {state,setState,inputHandler,execute} = props
 
-    const { mathFunc } = state
+    const { mathFunc,refRadius } = state
 
     useEffect(() => {
+        // gears()
         setState({
             ...state,
-            mathFunc:`20`,
+            mathFunc:`40`,
             displayInput:false,
-            polars:false
+            polars:false,
+            polars:true
         })
     },[])
 
@@ -27,9 +34,37 @@ const CogKeys = (props) => {
             mathFunc:'x^2',
             displayInput:true,
             currentView:null,
-            
+            buildGears:null,
+            polars:false
         })
     }
+
+    const gears = () => {
+        const {uMax,refRadius} = state
+        var uStep = 100
+        var uMin = 0
+        var u = []
+        for (let i = 0; i < uStep; i++) {
+            u.push(uMin)
+            uMin += 2*Math.PI/uStep
+            console.log('iteration',uMax/uStep)
+        }
+    
+        var invCoords = []
+        for (let i = 0; i<uMax; i++) {
+          var x = mathFunc * (((Math.cos(u[i])) + u[i] * (Math.sin(u[i]))))
+          var y = mathFunc * (((Math.sin(u[i])) - u[i] * (Math.cos(u[i]))))
+        // var x = `100*cos(u) + u * sin(u)`
+        // var y =`100 * sin(u) - u * cos(u)`
+        // par.set('u',u[i])
+        // invCoords.push([par.evaluate(x),par.evaluate(y)])
+        invCoords.push([x-mathFunc,y])
+        }
+        setState({
+          ...state,
+          involute:invCoords
+        })
+      }
 
     const pitch = 360 / mathFunc
 
@@ -98,7 +133,7 @@ const CogKeys = (props) => {
             <Param>
                 <i style={{fontSize:'40px'}}>Number of gear teeth:</i>
                 <ParamInput
-                    type='number'
+                    type='text'
                     onChange={(e) => inputHandler(e)}
                     value={mathFunc}
                     name="mathFunc"
@@ -108,6 +143,13 @@ const CogKeys = (props) => {
             <BaseButton 
                 onClick={() => copyVal(gearScript,copyScriptMessage)}
                 style={{right:'95px',top:'170px'}}
+            >
+                {ExecuteButton()}
+            </BaseButton>
+            
+            <BaseButton 
+                onClick={() => gears()}
+                style={{right:'95px',top:'255px'}}
             >
                 {ExecuteButton()}
             </BaseButton>
