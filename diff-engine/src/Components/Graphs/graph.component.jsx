@@ -100,7 +100,7 @@ export default function Graph() {
     history:[],
 
     // --- Involute gear calculator --- //
-    uMax:100,
+    uMax:10,
     refRadius:5,
     involute:[],
 

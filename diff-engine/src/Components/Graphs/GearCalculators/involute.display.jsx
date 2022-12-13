@@ -1,7 +1,8 @@
 import { 
     CogOrigin,
     CogContainer,
-    ReferenceCircle
+    ReferenceCircle,
+    TipCircle
 } from "./involute.styles"
 
 
@@ -11,7 +12,9 @@ const CogDisplay = ({state}) => {
 
     const mappedGears = involute.map((el,i) => {
           var locations = {
-            top: `${-el[1]}px`,
+            // top: `${-el[1]}px`,
+            // right: `${-el[0]}px`,
+            top: `${-10-el[1]}px`,
             right: `${-el[0]}px`,
             backgroundColor: `red`,
             position: "absolute",
@@ -24,11 +27,13 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
-            <ReferenceCircle mathFunc={mathFunc}>
-                <CogOrigin mathFunc={mathFunc}>
-                        {mappedGears}
-                </CogOrigin>
-            </ReferenceCircle>
+            <TipCircle mathFunc={mathFunc}>
+                <ReferenceCircle mathFunc={mathFunc}>
+                    <CogOrigin mathFunc={mathFunc}>
+                            {mappedGears}
+                    </CogOrigin>
+                </ReferenceCircle>
+            </TipCircle>
         </CogContainer>
     )
 }

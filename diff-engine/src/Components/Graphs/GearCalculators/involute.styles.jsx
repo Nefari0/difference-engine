@@ -36,9 +36,17 @@ export const ReferenceCircle = styled.div`
     height: ${({mathFunc}) => mathFunc*2}px;
     border: solid;
     border-radius:50%;
-
     margin:auto;
+`
 
+export const TipCircle = styled.div`
+    // position:relative;
+    position:absolute;
+    width: ${({mathFunc}) => 20+(mathFunc*2)}px;
+    height: ${({mathFunc}) => 2+(mathFunc*2)}px;
+    border: solid;
+    border-radius:50%;
+    margin:auto;
 `
 
 export const CogOrigin = styled.div`
@@ -48,5 +56,6 @@ export const CogOrigin = styled.div`
     border-radius:50%;
     right:0px;
     top:50%;
+    // top:30%;
     position:absolute;
 `

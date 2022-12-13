@@ -14,7 +14,7 @@ const CogKeys = (props) => {
 
     const {state,setState,inputHandler,execute} = props
 
-    const { mathFunc,refRadius } = state
+    const { mathFunc,refRadius,uMax } = state
 
     useEffect(() => {
         // gears()
@@ -77,7 +77,7 @@ const CogKeys = (props) => {
     '\nimport numpy as np' +
     '\n' +
     `\nz = ${mathFunc} # Number of teeth` +
-    '\nu = np.linspace(0,1,20) # matrix' +
+    `\nu = np.linspace(0,${uMax},20) # matrix` +
     '\nthickness = math.pi/2' +
     '\nref_radius = z/2' +
     '\nbase_radius = ref_radius*.9396950000000001' +
@@ -129,14 +129,24 @@ const CogKeys = (props) => {
 
     return (
         <KeyBox>
-            <h1>Involute Gear Calculator</h1>
-            <Param>
+            {/* <h1>Involute Gear Calculator</h1> */}
+            <Param style={{top:'20px'}}>
                 <i style={{fontSize:'40px'}}>Number of gear teeth:</i>
                 <ParamInput
                     type='text'
                     onChange={(e) => inputHandler(e)}
                     value={mathFunc}
                     name="mathFunc"
+                />
+            </Param>
+
+            <Param style={{top:'90px'}}>
+                <i style={{fontSize:'40px'}}>Gear tooth depth:</i>
+                <ParamInput
+                    type='text'
+                    onChange={(e) => inputHandler(e)}
+                    value={uMax}
+                    name="uMax"
                 />
             </Param>
 
