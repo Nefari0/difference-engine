@@ -22,7 +22,9 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
+
 import CogKeys from "./GearCalculators/involute.keys";
+import CogDisplay from "./GearCalculators/involute.display";
 // import { InvoluteCalcDisplay } from "./GearCalculators/involute.display";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
@@ -51,7 +53,11 @@ const min = -250
 
 // Linear vector generator
 var xVector = []
-for (let i = min; i < max; i++) {xVector.push(i)}
+var yVector = []
+for (let i = min; i < max; i++) {
+  xVector.push(i)
+  yVector.push(i)
+}
 
 // Circular vector generator
 const circleVector = []
@@ -93,6 +99,11 @@ export default function Graph() {
     calculation:0,
     history:[],
 
+    // --- Involute gear calculator --- //
+    uMax:100,
+    refRadius:5,
+    involute:[],
+
     // --- Parabolas --- //
     // h:'0',k:'0',
     
@@ -116,10 +127,16 @@ export default function Graph() {
     showUnitCircleAngles,
     // h,k, // -- parabola
 
-    otherPlots
+    otherPlots,
+    uMax,
+    refRadius,
+    involute
   } = state;
 
-  useEffect(() => {boardFactory()},[]);
+  useEffect(() => {
+    boardFactory()
+    // gears()
+  },[]);
   
   const polarVector = async (mathFunc) => {
     var func = [];
@@ -295,6 +312,12 @@ export default function Graph() {
           >
 
             {vectorMap(returnPlots())}
+
+            {currentView === 'gear_calculator' &&
+              <CogDisplay
+                state={state}
+              />
+            }
 
             {currentView === 'parabolas' && <ParabolaDisplay
               otherPlots={otherPlots}
