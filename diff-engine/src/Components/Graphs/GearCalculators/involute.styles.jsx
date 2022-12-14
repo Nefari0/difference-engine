@@ -34,25 +34,28 @@ export const ReferenceCircle = styled.div`
     position:relative;
     width: ${({mathFunc}) => mathFunc*2}px;
     height: ${({mathFunc}) => mathFunc*2}px;
-    border: solid;
+    // border: solid;
+    border: solid .5px;
     border-radius:50%;
     margin:auto;
+    top:1px;
 `
 
 export const TipCircle = styled.div`
     // position:relative;
     position:absolute;
-    width: ${({mathFunc}) => 20+(mathFunc*2)}px;
-    height: ${({mathFunc}) => 2+(mathFunc*2)}px;
-    border: solid;
+    width: ${({mathFunc}) => 4+(mathFunc*2)}px;
+    height: ${({mathFunc}) => 4+(mathFunc*2)}px;
+    border: solid .5px;
     border-radius:50%;
     margin:auto;
+    // transform: scale(3.60);
 `
 
 export const CogOrigin = styled.div`
     height:5px;
     width:5px;
-    background-color:blue;
+    // background-color:blue;
     border-radius:50%;
     right:0px;
     top:50%;
