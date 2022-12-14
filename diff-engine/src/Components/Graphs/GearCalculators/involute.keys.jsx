@@ -46,7 +46,8 @@ const CogKeys = (props) => {
         var u = []
         for (let i = 0; i < uStep; i++) {
             u.push(uMin)
-            uMin += 2*Math.PI/uStep
+            // uMin += 2*Math.PI/uStep
+            uMin += 1/uStep
             console.log('iteration',uMax/uStep)
         }
     
@@ -77,7 +78,7 @@ const CogKeys = (props) => {
     '\nimport numpy as np' +
     '\n' +
     `\nz = ${mathFunc} # Number of teeth` +
-    `\nu = np.linspace(0,${uMax},20) # matrix` +
+    `\nu = np.linspace(0,${'.'+uMax},20) # matrix` +
     '\nthickness = math.pi/2' +
     '\nref_radius = z/2' +
     '\nbase_radius = ref_radius*.9396950000000001' +
