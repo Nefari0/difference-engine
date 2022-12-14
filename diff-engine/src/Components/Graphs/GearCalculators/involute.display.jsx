@@ -19,8 +19,9 @@ const CogDisplay = ({state}) => {
             backgroundColor: `red`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "2px",
-            height: "2px"
+            width: ".5px",
+            height: ".5px",
+            borderRadius:'50%'
           };
           return <p style={locations} key={i}></p>;
       })
