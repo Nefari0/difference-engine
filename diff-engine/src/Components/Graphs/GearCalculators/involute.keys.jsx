@@ -22,7 +22,7 @@ const CogKeys = (props) => {
             ...state,
             mathFunc:`40`,
             displayInput:false,
-            polars:false,
+            // polars:false,
             polars:true
         })
     },[])
@@ -141,7 +141,7 @@ const CogKeys = (props) => {
                 />
             </Param>
 
-            <Param style={{top:'90px'}}>
+            {/* <Param style={{top:'90px'}}>
                 <i style={{fontSize:'40px'}}>Gear tooth depth:</i>
                 <ParamInput
                     type='text'
@@ -149,7 +149,7 @@ const CogKeys = (props) => {
                     value={uMax}
                     name="uMax"
                 />
-            </Param>
+            </Param> */}
 
             <BaseButton 
                 onClick={() => copyVal(gearScript,copyScriptMessage)}
@@ -158,12 +158,12 @@ const CogKeys = (props) => {
                 {ExecuteButton()}
             </BaseButton>
             
-            <BaseButton 
+            {/* <BaseButton 
                 onClick={() => gears()}
                 style={{right:'95px',top:'255px'}}
             >
                 {ExecuteButton()}
-            </BaseButton>
+            </BaseButton> */}
 
             <BaseButton 
                 onClick={goHome}
@@ -195,6 +195,21 @@ const CogKeys = (props) => {
                 >
                     copy pitch
                 </TinyButton>
+
+                <a
+                    style={{
+                        position:'absolute',
+                        left:'0px',
+                        fontSize:'20px',
+                        fontWeight:'200',
+                        // color:'blue',
+                        bottom:'-150px'
+                    }}
+                    href='https://jupyter.madmodels3d.com/blog'
+                    target="_blank"
+                >
+                    How to build your gear
+                </a>
 
         </KeyBox>
     )
