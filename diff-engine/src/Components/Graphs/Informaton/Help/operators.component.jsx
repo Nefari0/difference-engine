@@ -4,7 +4,9 @@ import { BaseButton } from "../../KeyPad/keypad.styles";
 import { OperatorTable } from "./operators.styles";
 import Trig from "./trig.items";
 import Vars from "./vars.items";
+import Resource from "./resource.items";
 import ArithmeticTable from "./arithmetic.items";
+import { book } from "../../SVG";
 
 const  Document = ({setState,state}) => {
 
@@ -18,6 +20,7 @@ const  Document = ({setState,state}) => {
             <ArithmeticTable />
             {view === 'trig' && <Trig />}
             {view === 'vars' && <Vars />}
+            {view === 'texts' && <Resource />}
 
 
             {/* --- BUTTONS --- */}
@@ -30,9 +33,16 @@ const  Document = ({setState,state}) => {
 
             <BaseButton
             onClick={() => setView('vars')}
-                style={{bottom:'10px',left:'100px'}}
+                style={{bottom:'10px',left:'90px'}}
             >
                 Variables
+            </BaseButton>
+
+            <BaseButton
+            onClick={() => setView('texts')}
+                style={{bottom:'10px',left:'170px'}}
+            >
+                {book()}
             </BaseButton>
 
             <BaseButton
