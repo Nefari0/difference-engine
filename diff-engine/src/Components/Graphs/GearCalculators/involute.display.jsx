@@ -14,8 +14,8 @@ const CogDisplay = ({state}) => {
           var locations = {
             // top: `${-el[1]}px`,
             // right: `${-el[0]}px`,
-            top: `${-10-el[1]}px`,
-            right: `${-el[0]}px`,
+            top: `${(-10-el[1])}px`,
+            right: `${6*(-el[0])}px`,
             backgroundColor: `red`,
             position: "absolute",
             transition: "all 1000ms",
@@ -28,6 +28,7 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
+            <h1 style={{fontSize:'50px',backgroundColor:'white'}}>Involute gear calculator</h1>
             <TipCircle mathFunc={mathFunc}>
                 <ReferenceCircle mathFunc={mathFunc}>
                     <CogOrigin mathFunc={mathFunc}>
