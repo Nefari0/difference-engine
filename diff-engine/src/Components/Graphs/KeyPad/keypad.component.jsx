@@ -22,11 +22,14 @@ const KeyPad = (props) => {
     return (
         <KeyBox>
 
+            {/* <Hover /> */}
+
             <BaseButton
                 style={{position:'absolute',right:'10px'}} 
                 onClick={(e) => execute(e,'currentView','gaus')}
             >
                 <div style={{fontSize:'30px',opacity:'.7'}}><InlineMath math={`\\mu`} /></div>
+                <p>Guasian</p>
             </BaseButton>
 
             <BaseButton
@@ -34,6 +37,7 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'currentView','unit_circle')}
             >
                 <InlineMath math={`\\phase{${degrees}^\\circ}`} />
+                <p>Unit circle <br/> and trig functions</p>
             </BaseButton>
 
             {/* FRACTIONS */}
@@ -42,6 +46,7 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'currentView','fracs')}
             >
                 <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
+                <p>Decimal to fraction</p>
             </BaseButton>
 
             <BaseButton
@@ -49,6 +54,7 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'currentView','standard')}
             >
                 {CalculatorIcon()}
+                <p>Standard calculator</p>
             </BaseButton>
 
             <BaseButton
@@ -57,6 +63,7 @@ const KeyPad = (props) => {
             >
                 {/* <InlineMath math={`\\left(x^{\\smash{2}}\\right)`} /> */}
                 <MathComponent tex={String.raw`${`ax^2+bx+c`}`} />
+                <p>Quadratics</p>
             </BaseButton>
 
             <CloseHelp
@@ -64,6 +71,7 @@ const KeyPad = (props) => {
                 style={{right:'10px',top:'170px'}}
             >
                 <strong>?</strong>
+                <p>Information</p>
             </CloseHelp>
 
             <BaseButton
@@ -71,6 +79,7 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'currentView','gear_calculator')}
             >
                 {CogWheel()}
+                <p>Gear calculator</p>
             </BaseButton>
 
             <LargeButton
@@ -78,6 +87,7 @@ const KeyPad = (props) => {
                 onClick={() => linearVector(mathFunc)}
             >
                 Cartesian
+                <p>Execute cartesian coordinates</p>
             </LargeButton>
 
             <LargeButton
@@ -85,6 +95,7 @@ const KeyPad = (props) => {
                 onClick={() => polarVector(mathFunc)}
             >
                 Polar
+                <p>Execute polar coordinates</p>
             </LargeButton>
 
         </KeyBox>
