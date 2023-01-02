@@ -37,6 +37,18 @@ export const DisplayScreen = styled(BaseInput )`
     left:-6px;
 `
 
+export const Hovering = styled.p`
+    // display:none;
+    // z-index:100000;
+    // position:absolute;
+    // width:200px;
+    // height:100px;
+    // background-color:blue;
+    // border-radius:10px;
+
+    // &:hover {display:none;}
+`
+
 export const BaseButton = styled.button`
     position:relative;
     width:75px;
@@ -49,7 +61,28 @@ export const BaseButton = styled.button`
     box-shadow: inset 0 0 5px #555;
     overflow:hidden;
 
+    p {
+        display:none;
+        position:absolute;
+        color:#555;
+        font-weight:200;
+    }
+
     &:hover {
+        overflow:visible;
+        z-index:100000;
+        p { 
+            box-shadow: -1px -1px 5px 5px #ccc;
+            // z-index:1000;
+            position:absolute;
+            width:200px;
+            min-height:50px;
+            background-color:#fff;
+            border-radius:10px;
+            display:block;
+            opacity:1;
+            font-size:20px;
+        }
         // box-shadow: inset 0 0 5px #555;
         box-shadow: -1px -1px 5px 5px #ccc;
     }
