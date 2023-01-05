@@ -70,6 +70,8 @@ var iteration = 0
 
 export default function Graph() {
 
+  const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
+
   const [state, setState] = useState({
     xAspect:50,yAspect:50, // Grid scale
 
@@ -100,7 +102,7 @@ export default function Graph() {
     history:[],
 
     // --- Involute gear calculator --- //
-    uMax:10,
+    uMax:50,
     refRadius:5,
     involute:[],
 
@@ -135,8 +137,21 @@ export default function Graph() {
 
   useEffect(() => {
     boardFactory()
-    // gears()
-  },[]);
+
+      try {
+
+        if (location[1].length > 0) {
+          setState({
+            ...state,
+            currentView:location[1]
+          })
+        }
+
+        } catch (err) {
+          return err
+        }
+      // gears()
+    },[]);
   
   const polarVector = async (mathFunc) => {
     var func = [];
