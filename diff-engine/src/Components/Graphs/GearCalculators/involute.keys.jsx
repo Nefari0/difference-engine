@@ -205,7 +205,7 @@ const CogKeys = (props) => {
                         // color:'blue',
                         bottom:'-150px'
                     }}
-                    href='https://jupyter.madmodels3d.com/blog'
+                    href='https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator'
                     target="_blank"
                 >
                     How to build your gear
