@@ -36,7 +36,7 @@ const KeyPad = (props) => {
                 style={{position:'absolute',right:'100px',fontSize:'20px'}}
                 onClick={(e) => execute(e,'currentView','unit_circle')}
             >
-                <InlineMath math={`\\phase{${degrees.substring(0,3)}^\\circ}`} />
+                <InlineMath math={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`} />
                 <p>Unit circle and trig functions</p>
             </BaseButton>
 
