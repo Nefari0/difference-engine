@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import Offline from './Components/Offline';
 import './index.css';
 import App from './App';
+import { ViewProvider } from './Components/Context/view.context';
 // import reportWebVitals from './reportWebVitals';
 import { register as registerServiceWorker } from './serviceWorkerRegistration';
 // import { HashRouter, BrowserRouter } from 'react-router-dom';
@@ -11,11 +12,13 @@ import { register as registerServiceWorker } from './serviceWorkerRegistration';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Offline>
-      {/* <Router> */}
-        <App />
-      {/* </Router> */}
-    </Offline>
+    <ViewProvider>
+      <Offline>
+        {/* <Router> */}
+          <App />
+        {/* </Router> */}
+      </Offline>
+    </ViewProvider>
   </React.StrictMode>
 );
 // reportWebVitals();
