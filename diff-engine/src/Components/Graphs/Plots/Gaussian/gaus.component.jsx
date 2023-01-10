@@ -1,8 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { KeyBox,BaseButton,LargeButton,Param,ParamInput } from "../../KeyPad/keypad.styles";
 // import { ParamInput } from "../../../graph.styles";
 import { MathComponent } from "mathjax-react";
 import { backButton,ExecuteButton } from "../../SVG";
+import { ViewContext } from "../../../Context/view.context";
 
 const eButton = {
     right:'10px',
@@ -18,6 +19,8 @@ const back = {
 const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setState}) => {
 
     const [h,setH] = useState(.999)
+
+    const {setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -35,6 +38,7 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
             displayInput:true,
             currentView:null
         })
+        setCurrentView(null)
     }
 
     return (

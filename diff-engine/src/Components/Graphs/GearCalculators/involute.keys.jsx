@@ -1,6 +1,7 @@
 import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../SVG";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
+import { ViewContext } from "../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 import { TinyButton } from "../KeyPad/keypad.styles";
@@ -15,6 +16,8 @@ const CogKeys = (props) => {
     const {state,setState,inputHandler,execute} = props
 
     const { mathFunc,refRadius,uMax } = state
+
+    const {setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         // gears()
@@ -37,6 +40,7 @@ const CogKeys = (props) => {
             buildGears:null,
             polars:false
         })
+        setCurrentView(null)
     }
 
     const gears = () => {

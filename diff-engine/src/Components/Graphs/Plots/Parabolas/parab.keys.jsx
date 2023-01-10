@@ -1,6 +1,7 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { KeyBox,Param,ParamInput,BaseButton,LargeButton } from "../../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../../SVG";
+import { ViewContext } from "../../../Context/view.context";
 
 const backB = {
     right:'0px'
@@ -20,6 +21,8 @@ const ParabKeys = (props) => {
         k:'0',
     })
     const {a,h,k} = localState
+
+    const {setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -55,6 +58,7 @@ const ParabKeys = (props) => {
             displayInput:true,
             currentView:null
         })
+        setCurrentView(null)
     }
 
     const localInput = (e) => {

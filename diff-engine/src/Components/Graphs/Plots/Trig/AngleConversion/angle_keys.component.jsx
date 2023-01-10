@@ -1,7 +1,8 @@
 import { MathComponent } from "mathjax-react";
-import { useEffect,useState } from "react";
+import { useEffect,useContext } from "react";
 import { KeyBox,LargeButton,ParamInput,Param,BaseButton,CloseHelp  } from "../../../KeyPad/keypad.styles";
 import { backButton } from "../../../SVG";
+import { ViewContext } from "../../../../Context/view.context";
 
 const backB = {
     right:'15px',
@@ -37,6 +38,8 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
 
     const { degrees,showDegrees,radians,displayDegrees } = state
 
+    const {setCurrentView} = useContext(ViewContext)
+
     useEffect(() => {
         setState({
             ...state,
@@ -58,6 +61,7 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             mathFunc:'cos(3 * x) + sin(2 * x)',    
             showUnitCircleAngles:false
         })
+        setCurrentView(null)
     }
 
     // -- Copy the converted value to clip board -- //
