@@ -42,7 +42,8 @@ import {
 import KeyPad from "./KeyPad/keypad.component";
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { ViewContext } from "../Context/view.context";
 
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
@@ -70,6 +71,9 @@ var iteration = 0
 
 export default function Graph() {
 
+  const { setCurrentView,currentView } = useContext(ViewContext)
+  // console.log(setCurrentView)
+
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
 
   const [state, setState] = useState({
@@ -77,7 +81,7 @@ export default function Graph() {
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
-    currentView:null,
+    // currentView:null,
     matrix: [],
     polarCoords: [],
     cartCoords:[],
@@ -120,7 +124,7 @@ export default function Graph() {
     cartCoords,
     polarCoords,
     mathFunc,
-    currentView,
+    // currentView,
     displayInput,
     help,
     alert,
