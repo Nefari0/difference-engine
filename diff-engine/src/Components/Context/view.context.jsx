@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react'
 
 export const ViewContext = createContext({
     currentView:null,
-    setCurrentView:() => null   
+    setCurrentView:() => null
 })
 
 export const ViewProvider = ({ children }) => {
