@@ -41,6 +41,7 @@ const CogKeys = (props) => {
             polars:false
         })
         setCurrentView(null)
+        window.location.pathname = '/'
     }
 
     const gears = () => {
