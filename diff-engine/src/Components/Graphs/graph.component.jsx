@@ -72,7 +72,6 @@ var iteration = 0
 export default function Graph() {
 
   const { setCurrentView,currentView } = useContext(ViewContext)
-  // console.log(setCurrentView)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
 
@@ -145,10 +144,7 @@ export default function Graph() {
       try {
 
         if (location[1].length > 0) {
-          setState({
-            ...state,
-            currentView:location[1]
-          })
+          setCurrentView(location[1])
         }
 
         } catch (err) {
