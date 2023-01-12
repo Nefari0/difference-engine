@@ -304,6 +304,21 @@ export default function Graph() {
     setState({...state,alert:"X and Y coordinates copied to clipboard"})
 }
 
+  const close = (e) => {
+    console.log('hit close in graph component')
+    e.preventDefault()
+    setState({
+        ...state,
+        displayInput:true,
+        currentView:null,
+        polars:false,
+        mathFunc:'cos(3 * x) + sin(2 * x)',    
+        showUnitCircleAngles:false
+    })
+    setCurrentView(null)
+    window.location.pathname = '/'
+  }
+
   return (
     <Enclosure>
 
@@ -418,6 +433,7 @@ export default function Graph() {
         execute={execute}
         calculate={calculate}
         inputHandler={inputHandler}
+        close={close}
       />}
 
       {currentView === 'fracs' && <FractionKeys
@@ -425,6 +441,7 @@ export default function Graph() {
         setState={setState}
         inputHandler={inputHandler}
         execute={execute}
+        close={close}
         />}
 
       {currentView === 'gaus' && <Gaussian
@@ -434,6 +451,7 @@ export default function Graph() {
         linearVector={linearVector}
         execute={execute}
         inputHandler={inputHandler}
+        close={close}
       />}
 
       {currentView === "parabolas" &&
@@ -443,6 +461,7 @@ export default function Graph() {
         execute={execute}
         linearVector={linearVector}
         inputHandler={inputHandler}
+        close={close}
       />
       }
 
@@ -455,6 +474,7 @@ export default function Graph() {
         polarVector={polarVector}
         execute={execute}
         inputHandler={inputHandler}
+        close={close}
       />}
 
       {currentView === 'gear_calculator' &&
@@ -463,6 +483,7 @@ export default function Graph() {
         inputHandler={inputHandler}
         state={state}
         setState={setState}
+        close={close}
       />}
 
     </Enclosure>
