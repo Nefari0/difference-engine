@@ -315,7 +315,9 @@ export default function Graph() {
         showUnitCircleAngles:false
     })
     setCurrentView(null)
-    window.location.pathname = '/'
+    if (window.location.pathname.length > 1){
+      window.location.pathname = '/'
+    }
   }
 
   return (
