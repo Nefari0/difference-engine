@@ -305,7 +305,6 @@ export default function Graph() {
 }
 
   const close = (e) => {
-    console.log('hit close in graph component')
     e.preventDefault()
     setState({
         ...state,
