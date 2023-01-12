@@ -25,6 +25,8 @@ import { BaseButton } from "./KeyPad/keypad.styles";
 
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
+import UnitsKeys from "./UnitConverter/units.keys";
+import Units from "./UnitConverter/units.display";
 // import { InvoluteCalcDisplay } from "./GearCalculators/involute.display";
 // import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
 // import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
@@ -111,8 +113,10 @@ export default function Graph() {
 
     // --- Parabolas --- //
     // h:'0',k:'0',
-    
 
+    // --- Unit converter --- //
+    units:'inches',
+    
     // otherItems:null,
   
   });
@@ -397,6 +401,12 @@ export default function Graph() {
             state={state}
             input={mathFunc}
           />}
+
+          {/* DISPLAY UNIT CONVERTER */}
+          {currentView === 'unit_converter' && <Units
+            state={state}
+            setState={setState}
+          />}
           
           {/* GRID CELLS */}
           {!polars && mappedTiles}
@@ -486,6 +496,16 @@ export default function Graph() {
         setState={setState}
         close={close}
       />}
+
+      {currentView === 'unit_converter' &&
+        <UnitsKeys
+          inputHandler={inputHandler}
+          state={state}
+          setState={setState}
+          close={close}
+          execute={execute}
+          calculate={calculate}
+        />}
 
     </Enclosure>
   );
