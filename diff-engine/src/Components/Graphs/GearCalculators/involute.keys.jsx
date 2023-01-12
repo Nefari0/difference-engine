@@ -6,14 +6,14 @@ import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 import { TinyButton } from "../KeyPad/keypad.styles";
 
-// import {
-//     parser,
-// } from "mathjs";
-// var par = parser()
-
 const CogKeys = (props) => {
 
-    const {state,setState,inputHandler,execute} = props
+    const {state,
+        setState,
+        inputHandler,
+        execute,
+        close
+    } = props
 
     const { mathFunc,refRadius,uMax } = state
 
@@ -29,20 +29,6 @@ const CogKeys = (props) => {
             polars:true
         })
     },[])
-
-    const goHome = (e) => {
-        e.preventDefault()
-        setState({
-            ...state,
-            mathFunc:'x^2',
-            displayInput:true,
-            currentView:null,
-            buildGears:null,
-            polars:false
-        })
-        setCurrentView(null)
-        window.location.pathname = '/'
-    }
 
     const gears = () => {
         const {uMax,refRadius} = state
@@ -171,7 +157,7 @@ const CogKeys = (props) => {
             </BaseButton> */}
 
             <BaseButton 
-                onClick={goHome}
+                onClick={(e) => close(e)}
                 style={{right:'10px',top:'170px'}}
             >
                 {backButton()}

@@ -1,7 +1,6 @@
 import { useState,useEffect,useContext } from "react";
 import { KeyBox,Param,ParamInput,BaseButton,LargeButton } from "../../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../../SVG";
-import { ViewContext } from "../../../Context/view.context";
 
 const backB = {
     right:'0px'
@@ -13,6 +12,7 @@ const ParabKeys = (props) => {
         state,
         setState,
         linearVector,
+        close
     } = props
 
     const [localState,setLocalState] = useState({
@@ -21,8 +21,6 @@ const ParabKeys = (props) => {
         k:'0',
     })
     const {a,h,k} = localState
-
-    const {setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -49,17 +47,6 @@ const ParabKeys = (props) => {
     const otherPlots = [focus,vertex,directrix]
 
     const y = `(${a}*(x-${h})^2 + ${k})`
-
-    const goHome = (e) => {
-        e.preventDefault()
-        setState({
-            ...state,
-            mathFunc:'x^2',
-            displayInput:true,
-            currentView:null
-        })
-        setCurrentView(null)
-    }
 
     const localInput = (e) => {
         e.preventDefault()
@@ -106,7 +93,7 @@ const ParabKeys = (props) => {
             </LargeButton>
 
             <BaseButton
-                onClick={(e) => goHome(e)}
+                onClick={(e) => close(e)}
                 style={backB}
             >
                 {backButton()}

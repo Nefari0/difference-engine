@@ -1,6 +1,5 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../SVG";
-import { Param,ParamInput } from "../KeyPad/keypad.styles";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
 import { ViewContext } from "../../Context/view.context";
@@ -11,7 +10,12 @@ const numpad = {
 
 const StandardKeys = (props) => {
 
-    const {state,setState,execute,calculate} = props
+    const {state,
+        setState,
+        execute,
+        calculate,
+        close
+    } = props
 
     const { mathFunc } = state
 
@@ -39,8 +43,7 @@ const StandardKeys = (props) => {
             />
 
             <BaseButton
-                // onClick={(e) => execute(e,'currentView',null)}
-                onClick={() => setCurrentView(null)}
+                onClick={(e) => close(e)}
                 style={{right:'0px',top:'85px'}}
             >
                 {backButton()}

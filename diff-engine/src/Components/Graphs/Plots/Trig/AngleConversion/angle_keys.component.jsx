@@ -34,8 +34,17 @@ const copyButton = {
     right:'95px'
 }
 
-const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setState}) => {
+const UnitCircle = (props) => {
 
+    const {
+        polarVector,
+        linearVector,
+        execute,
+        inputHandler,
+        state,
+        setState,
+        close
+    } = props
     const { degrees,showDegrees,radians,displayDegrees } = state
 
     const {setCurrentView} = useContext(ViewContext)
@@ -50,19 +59,6 @@ const UnitCircle = ({polarVector,linearVector,execute,inputHandler,state,setStat
             cartCoords:[],
         })
     },[])
-
-    const close = (e) => {
-        e.preventDefault()
-        setState({
-            ...state,
-            displayInput:true,
-            currentView:null,
-            polars:false,
-            mathFunc:'cos(3 * x) + sin(2 * x)',    
-            showUnitCircleAngles:false
-        })
-        setCurrentView(null)
-    }
 
     // -- Copy the converted value to clip board -- //
     const copyVal = () => {

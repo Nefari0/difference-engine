@@ -14,10 +14,17 @@ const back = {
     bottom:'-15px'
 }
 
-// const input = {left}
+const Gaussian = (props) => {
 
-const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setState}) => {
-
+    const {
+        inputHandler,
+        execute,
+        formatFunction,
+        state,
+        linearVector,
+        setState,
+        close
+    } = props
     const [h,setH] = useState(.999)
 
     const {setCurrentView} = useContext(ViewContext)
@@ -29,17 +36,6 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
             displayInput:false
         })
     },[])
-
-    const goHome = (e) => {
-        e.preventDefault()
-        setState({
-            ...state,
-            mathFunc:'x^2',
-            displayInput:true,
-            currentView:null
-        })
-        setCurrentView(null)
-    }
 
     return (
         <KeyBox>
@@ -62,7 +58,7 @@ const Gaussian = ({inputHandler,execute,formatFunction,state,linearVector,setSta
 
             <LargeButton
                 style={back}
-                onClick={(e) => goHome(e)}
+                onClick={(e) => close(e)}
             >
                 {backButton()}
             </LargeButton>
