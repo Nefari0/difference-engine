@@ -7,11 +7,15 @@ const errorMessage = 'Only numbers can be entered into this input field. Note: A
 
 const FractionKeys = (props) => {
 
-    const {state,setState,inputHandler,execute} = props
+    const {
+        state,
+        setState,
+        inputHandler,
+        execute,
+        close
+    } = props
 
     const { mathFunc } = state
-
-    const {setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -36,17 +40,6 @@ const FractionKeys = (props) => {
         } else {inputHandler(e)}
     }
 
-    const goHome = (e) => {
-        e.preventDefault()
-        setState({
-            ...state,
-            mathFunc:'x^2',
-            displayInput:true,
-            // currentView:null,  
-        })
-        setCurrentView(null)
-    }
-
     return (
         <KeyBox>
             <Param>
@@ -65,7 +58,7 @@ const FractionKeys = (props) => {
             </CloseHelp>
 
             <BaseButton 
-                onClick={goHome}
+                onClick={(e) => close(e)}
                 style={{right:'10px'}}
             >
                 {backButton()}
