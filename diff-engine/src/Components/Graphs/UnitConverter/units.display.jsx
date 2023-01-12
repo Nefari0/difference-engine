@@ -49,10 +49,10 @@ const Units = ({state,setState}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {units != 'mm' && <tr onClick={() => copy(mm)}><td>{mm}</td><td>mm</td></tr>}
-                    {units != 'cm' && <tr onClick={() => copy(cm)}><td>{cm}</td><td>cm</td></tr>}
-                    {units != 'in' && <tr onClick={() => copy(inches)}><td>{inches}</td><td>in</td></tr>}
-                    {units != 'ft' && <tr onClick={() => copy(ft)}><td>{ft}</td><td>ft</td></tr>}
+                    {units !== 'mm' && <tr onClick={() => copy(mm)}><td>{mm}</td><td>mm</td></tr>}
+                    {units !== 'cm' && <tr onClick={() => copy(cm)}><td>{cm}</td><td>cm</td></tr>}
+                    {units !== 'in' && <tr onClick={() => copy(inches)}><td>{inches}</td><td>in</td></tr>}
+                    {units !== 'ft' && <tr onClick={() => copy(ft)}><td>{ft}</td><td>ft</td></tr>}
                 </tbody>
             </UnitsDisplay>
         </UnitsDisplayContainer>

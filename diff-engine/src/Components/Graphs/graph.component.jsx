@@ -115,7 +115,7 @@ export default function Graph() {
     // h:'0',k:'0',
 
     // --- Unit converter --- //
-    units:'inches',
+    units:'in',
     
     // otherItems:null,
   
