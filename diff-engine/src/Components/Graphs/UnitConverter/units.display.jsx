@@ -19,11 +19,11 @@ const Units = ({state,setState}) => {
 
     // --- This function converts all incoming input values into inches, which are then converted into all other values 
     const returnInches = () => {
-        if (units === 'inches') {
+        if (units === 'in') {
             return (mathFunc)
-        } else if (units === 'millimeters') {
+        } else if (units === 'mm') {
             return ((mathFunc/millimeter) * inch)
-        } else if (units === 'feet') {
+        } else if (units === 'ft') {
             return (mathFunc >= 1 ? (mathFunc*12) : (mathFunc/foot*inch))
         } else if (units === 'cm') {
             return ((mathFunc/centimeters) * inch)
@@ -34,6 +34,8 @@ const Units = ({state,setState}) => {
     const mm = parseFloat(returnInches()/inch*millimeter).toFixed(10)
     const inches = parseFloat(returnInches()).toFixed(10)
     const ft = parseFloat(returnInches()/inch * foot).toFixed(10)
+
+    console.log(inches)
 
     return(
         <UnitsDisplayContainer>
