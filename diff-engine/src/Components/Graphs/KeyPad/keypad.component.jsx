@@ -1,8 +1,8 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
 import { MathComponent } from "mathjax-react";
-import { CalculatorIcon,CogWheel } from "../SVG";
+import { CalculatorIcon,CogWheel,beaker } from "../SVG";
 import { useContext } from "react";
-import { ViewContext,ViewProvider } from "../../Context/view.context";
+import { ViewContext } from "../../Context/view.context";
 
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
@@ -89,6 +89,14 @@ const KeyPad = (props) => {
                 <strong>?</strong>
                 <p>Information</p>
             </CloseHelp>
+
+            <BaseButton
+                onClick={() => setCurrentView('unit_converter')}
+                style={{right:'100px',top:'170px'}}
+            >
+                <strong>{beaker()}</strong>
+                <p>Unit Converter</p>
+            </BaseButton>
 
             <BaseButton
                 style={{right:'10px',top:'85px'}}
