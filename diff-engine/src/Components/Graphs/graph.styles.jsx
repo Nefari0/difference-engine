@@ -1,6 +1,21 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import { TinyButton } from "./KeyPad/keypad.styles";
+
+const smallEnclosure = css`
+    transform: scale(0.50);
+    left:-36%;
+    top:-28%;
+`
+
+const mediumEnclosure = css`
+    transform: scale(0.70);
+    left:-24%;
+    top:-21%;
+`
 
 export const Enclosure = styled.main`
+    ${({viewSize}) => viewSize === 'medium' && mediumEnclosure}
+    ${({viewSize}) => viewSize === 'small' && smallEnclosure}
     position:absolute;
     height:900px;
     width:495px;
@@ -10,18 +25,23 @@ export const Enclosure = styled.main`
     display:flex;
     flex-direction:column;
 
-    @media (max-width:620px) {
-        transform: scale(0.70);
-        left:-24%;
-        top:-21%;
-    }
+    @media (max-width:620px) {${mediumEnclosure}}
 
-    @media (max-width:400px) {
-        transform: scale(0.50);
-        left:-36%;
-        top:-28%;
-    }
+    @media (max-width:400px) {${smallEnclosure}}
+`
 
+export const ZoomInButton = styled(TinyButton)`
+    right:20px;
+    width:30px;
+    height:30px;
+    top:-40px;
+    opacity:.4;
+    zIndex:2;
+
+    @media (max-width:620px) {display:none;}
+`
+export const ZoomOutButton = styled(ZoomInButton)`
+    right:60px;
 `
 
 export const Table = styled.div`
