@@ -7,7 +7,7 @@ export const UnitsDisplayContainer = styled.section`
     left:0px;
     width:500px;
     background-color:#fff;
-    z-index:1000000000000000000000000;
+    z-index:1;
     border-radius:10px;
     
     h1 {

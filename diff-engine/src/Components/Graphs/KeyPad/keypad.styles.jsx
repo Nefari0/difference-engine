@@ -80,6 +80,7 @@ export const LargeButton = styled(BaseButton)`
 `
 
 export const TinyButton = styled(BaseButton)`
+    position:absolute;
     height:40px;
 `
 
