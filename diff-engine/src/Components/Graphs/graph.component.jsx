@@ -7,6 +7,8 @@ import {
   Enclosure,
 } from "./graph.styles";
 
+import { ZoomInButton,ZoomOutButton } from "./graph.styles";
+
 import { DisplayScreen } from "./KeyPad/keypad.styles";
 import Document from "./Informaton/Help/operators.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
@@ -22,6 +24,7 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
+import { zoomIn,zoomOut } from "./SVG";
 
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
@@ -118,6 +121,9 @@ export default function Graph() {
     units:'in',
     
     // otherItems:null,
+
+    // --- Zoom in/out --- //
+    viewSize:null
   
   });
   const {
@@ -139,7 +145,8 @@ export default function Graph() {
     otherPlots,
     uMax,
     refRadius,
-    involute
+    involute,
+    viewSize, // --- Zoom in / out
   } = state;
 
   useEffect(() => {
@@ -324,8 +331,38 @@ export default function Graph() {
     }
   }
 
+  const changeSize = (e,size) => {
+    switch (size) {
+      case 'out':
+        if (viewSize === null) {
+          execute(e,'viewSize','medium')
+        } else {execute(e,'viewSize','small')}
+        break;
+
+      case 'in':
+        if (viewSize === 'small') {
+          execute(e,'viewSize','medium')
+        } else {execute(e,'viewSize',null)}
+        break;
+
+        default:return
+    }
+  }
+
   return (
-    <Enclosure>
+    <Enclosure viewSize={viewSize}>
+
+      <ZoomInButton
+        onClick={(e) => changeSize(e,'in')}
+        >
+          {zoomIn()}
+      </ZoomInButton>
+
+      <ZoomOutButton
+        onClick={(e) => changeSize(e,'out')}
+      >
+        {zoomOut()}
+      </ZoomOutButton>
 
       {help && <Document
         state={state}
