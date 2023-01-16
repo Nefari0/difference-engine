@@ -1,8 +1,16 @@
+import { useEffect } from "react"
+
 const LengthDisplay = (props) => {
 
-    const { state,copy } = props
-
+    const { state,copy,isNumber,setState } = props
     const { units,mathFunc } = state
+
+    useEffect(() => {
+        setState({
+            ...state,
+            units:'in'
+        })
+    },[])
 
     const millimeter = .1
     const centimeters = .01
@@ -21,8 +29,6 @@ const LengthDisplay = (props) => {
             return ((mathFunc/centimeters) * inch)
         }
     }
-
-    const isNumber = (param) => {return (param != 'NaN' ? param : 'input a number')}
 
     const cm = parseFloat(returnInches()/inch* centimeters).toFixed(10)
     const mm = parseFloat(returnInches()/inch*millimeter).toFixed(10)

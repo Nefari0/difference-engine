@@ -1,5 +1,5 @@
 import { BaseButton } from "../../KeyPad/keypad.styles";
-import { backButton } from "../../SVG";
+// import { backButton } from "../../SVG";
 
 const LengthKeys = (props) => {
 
@@ -11,28 +11,28 @@ const LengthKeys = (props) => {
                 style={{right:'80px'}}
                 onClick={(e) => execute(e,'units','mm')}
             >
-                <h1>mm</h1>
+                <strong>mm</strong>
             </BaseButton>
 
             <BaseButton
                 style={{right:'80px',top:'90px'}}
                 onClick={(e) => execute(e,'units','in')}
             >
-                <h1>in</h1>
+                <strong>in</strong>
             </BaseButton>
 
             <BaseButton
                 style={{right:'80px',top:'180px'}}
                 onClick={(e) => execute(e,'units','ft')}
             >
-                <h1>ft</h1>
+                <strong>ft</strong>
             </BaseButton>
 
             <BaseButton
                 style={{right:'80px',top:'270px'}}
                 onClick={(e) => execute(e,'units','cm')}
             >
-                <h1>cm</h1>
+                <strong>cm</strong>
             </BaseButton>
         </>
     )
