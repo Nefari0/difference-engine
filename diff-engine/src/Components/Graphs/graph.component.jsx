@@ -119,6 +119,7 @@ export default function Graph() {
 
     // --- Unit converter --- //
     units:'in',
+    unitType:'Length',
     
     // otherItems:null,
 
