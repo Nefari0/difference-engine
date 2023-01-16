@@ -28,7 +28,14 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
-            <h1 style={{fontSize:'50px',backgroundColor:'white'}}>Involute gear calculator</h1>
+            <h1 style={{fontSize:'30px',backgroundColor:'white'}}>Involute gear calculator</h1>
+            <a
+                href="https://www.blender.org/"
+                target="_blank"
+                style={{position:'absolute',top:'250px',fontSize:'30px',zIndex:'2'}}
+            >
+                For use in Blender 2.8 + 
+            </a>
             <TipCircle mathFunc={mathFunc}>
                 <ReferenceCircle mathFunc={mathFunc}>
                     <CogOrigin mathFunc={mathFunc}>
