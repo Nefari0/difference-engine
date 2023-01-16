@@ -2,6 +2,7 @@ import { backButton } from "../SVG";
 import { useEffect } from "react";
 import { numdata } from "../KeyPad/NumberPad/nums.data";
 import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
+import LengthKeys from "./Length/length.keys";
 
 const UnitsKeys = (props) => {
 
@@ -12,14 +13,14 @@ const UnitsKeys = (props) => {
         setState,
     } = props
 
-    const {mathFunc} = state
+    const {mathFunc,unitType} = state
 
     useEffect(() => {
         setState({
             ...state,
             mathFunc:`1`,
             displayInput:false,
-            polars:false
+            polars:false,
         })
     },[])
 
@@ -65,33 +66,42 @@ const UnitsKeys = (props) => {
             
             {mappedNumberKeys}
 
+            {unitType === 'Length' && <LengthKeys execute={execute}/>}
+
             <BaseButton
-                style={{right:'80px'}}
-                onClick={(e) => execute(e,'units','mm')}
+                style={{right:'170px'}}
+                onClick={(e) => execute(e,'unitType','Mass')}
             >
-                <h1>mm</h1>
+                <strong>Mass</strong>
             </BaseButton>
 
             <BaseButton
+                style={{right:'170px',top:'85px'}}
+                onClick={(e) => execute(e,'unitType','Length')}
+            >
+                <strong>Length</strong>
+            </BaseButton>
+
+            {/* <BaseButton
                 style={{right:'80px',top:'90px'}}
                 onClick={(e) => execute(e,'units','in')}
             >
                 <h1>in</h1>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            {/* <BaseButton
                 style={{right:'80px',top:'180px'}}
                 onClick={(e) => execute(e,'units','ft')}
             >
                 <h1>ft</h1>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            {/* <BaseButton
                 style={{right:'80px',top:'270px'}}
                 onClick={(e) => execute(e,'units','cm')}
             >
                 <h1>cm</h1>
-            </BaseButton>
+            </BaseButton> */}
 
             <BaseButton
                 style={{right:'0px'}}
