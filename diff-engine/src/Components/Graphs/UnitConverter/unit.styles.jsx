@@ -18,6 +18,7 @@ export const UnitsDisplayContainer = styled.section`
 
     h4 {
         max-width:70%;
+        font-size:20px;
         margin:auto;
         overflow:hidden;
     }
