@@ -123,7 +123,8 @@ export default function Graph() {
     // otherItems:null,
 
     // --- Zoom in/out --- //
-    viewSize:null
+    // viewSize:null,
+    viewScale:1
   
   });
   const {
@@ -146,7 +147,9 @@ export default function Graph() {
     uMax,
     refRadius,
     involute,
-    viewSize, // --- Zoom in / out
+
+    // --- Zoom in / out
+    viewScale,
   } = state;
 
   useEffect(() => {
@@ -332,34 +335,28 @@ export default function Graph() {
   }
 
   const changeSize = (e,size) => {
-    switch (size) {
-      case 'out':
-        if (viewSize === null) {
-          execute(e,'viewSize','medium')
-        } else {execute(e,'viewSize','small')}
-        break;
-
-      case 'in':
-        if (viewSize === 'small') {
-          execute(e,'viewSize','medium')
-        } else {execute(e,'viewSize',null)}
-        break;
-
-        default:return
+    var newVal = viewScale + size
+    
+    if (size - .1 === 0 && viewScale <= .9) {
+      execute(e,'viewScale',newVal)
+    } else if (size -.1 === -.2 && viewScale >=.8) {
+      execute(e,'viewScale',newVal)
     }
   }
 
   return (
-    <Enclosure viewSize={viewSize}>
+    <Enclosure
+      viewScale={viewScale}
+    >
 
       <ZoomInButton
-        onClick={(e) => changeSize(e,'in')}
+        onClick={(e) => changeSize(e,.10)}
         >
           {zoomIn()}
       </ZoomInButton>
 
       <ZoomOutButton
-        onClick={(e) => changeSize(e,'out')}
+        onClick={(e) => changeSize(e,-.10)}
       >
         {zoomOut()}
       </ZoomOutButton>

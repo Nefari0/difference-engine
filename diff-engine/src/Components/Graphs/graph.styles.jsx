@@ -14,8 +14,6 @@ const mediumEnclosure = css`
 `
 
 export const Enclosure = styled.main`
-    ${({viewSize}) => viewSize === 'medium' && mediumEnclosure}
-    ${({viewSize}) => viewSize === 'small' && smallEnclosure}
     position:absolute;
     height:900px;
     width:495px;
@@ -24,10 +22,9 @@ export const Enclosure = styled.main`
     box-shadow: 0px 5px 20px -7px #000000;
     display:flex;
     flex-direction:column;
-
     @media (max-width:620px) {${mediumEnclosure}}
-
     @media (max-width:400px) {${smallEnclosure}}
+    transform: scale(${({viewScale}) => viewScale});
 `
 
 export const ZoomInButton = styled(TinyButton)`
