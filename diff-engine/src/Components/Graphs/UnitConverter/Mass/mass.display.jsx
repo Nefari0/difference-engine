@@ -12,7 +12,6 @@ const MassDisplay = (props) => {
         })
     },[])
 
-    const fragment = 10 // -- Scales unit
     const ounce = 1
     const gram = 28.34952
     const pound = .0625
