@@ -1,22 +1,18 @@
 import { backButton } from "../SVG";
 import { useEffect } from "react";
-import { 
-    Param,
-    ParamInput,
-    BaseButton, 
-    KeyBox
-} from "../KeyPad/keypad.styles";
+import { numdata } from "../KeyPad/NumberPad/nums.data";
+import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
 
 const UnitsKeys = (props) => {
 
-    const {inputHandler,
+    const {
         state,
         close,
         execute,
         setState,
     } = props
 
-    const {mathFunc,units} = state
+    const {mathFunc} = state
 
     useEffect(() => {
         setState({
@@ -27,24 +23,47 @@ const UnitsKeys = (props) => {
         })
     },[])
 
-    const input = (e) => {
+    const setItems = (e,val) => {
+
+        const mathArr = mathFunc.split('')
+        const findDecimalPoint = mathArr.filter(el => {return (el === '.')}) // -- Can't add more than one decimal point
+
+        const newCharacter = () => {            
+            const previous = mathArr.splice(0,mathArr.length-1,1).join('')
+
+            return (val.split('').length === 0 ? previous : mathFunc+val)
+        }
+
         e.preventDefault()
-        inputHandler(e)
+
+        if (val != findDecimalPoint[0]) {
+            setState({
+                ...state,
+                mathFunc:newCharacter()
+            })
+        }
+        
     }
 
+    const mappedNumberKeys = numdata.map((el,i) => {
 
+        const display = (el.svg ? (el.svg) : (el.val))
+        return (
+            !el.operator && 
+            <BaseButton
+                key={i}
+                style={el.style}
+                onClick={(e) => setItems(e,el.val)}
+            >
+                <strong>{display}</strong>
+            </BaseButton>
+        )
+    })
 
     return (
         <KeyBox>
-            <Param>
-                <i>{units}</i>
-                <ParamInput
-                    type="number"
-                    onChange={(e) => input(e)}
-                    value={mathFunc}
-                    name="mathFunc"
-                />
-            </Param>
+            
+            {mappedNumberKeys}
 
             <BaseButton
                 style={{right:'80px'}}
