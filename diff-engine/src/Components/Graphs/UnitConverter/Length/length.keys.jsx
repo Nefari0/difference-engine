@@ -15,21 +15,21 @@ const LengthKeys = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:'90px'}}
+                style={{right:'80px',top:`${85}px`}}
                 onClick={(e) => execute(e,'units','in')}
             >
                 <strong>in</strong>
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:'180px'}}
+                style={{right:'80px',top:`${85 * 2}px`}}
                 onClick={(e) => execute(e,'units','ft')}
             >
                 <strong>ft</strong>
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:'270px'}}
+                style={{right:'80px',top:`${85 * 3}px`}}
                 onClick={(e) => execute(e,'units','cm')}
             >
                 <strong>cm</strong>
