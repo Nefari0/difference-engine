@@ -3,82 +3,98 @@ import { ExecuteButton } from "../../SVG";
 export const numdata = [
     {
         style:{left:'80px',top:'245px'},
-        val:'0'
+        val:'0',
+        operator:false
     },
 
     {
         style:{left:'0px',top:'165px'},
-        val:'1'
+        val:'1',
+        operator:false,
     },
 
     {
         style:{left:'80px',top:'165px'},
-        val:'2'
+        val:'2',
+        operator:false
     },
 
     {
         style:{left:'160px',top:'165px'},
-        val:'3'
+        val:'3',
+        operator:false,
     },
 
     {
         style:{left:'0px',top:'85px'},
-        val:'4'
+        val:'4',
+        operator:false,
     },
 
     {
         style:{left:'80px',top:'85px'},
-        val:'5'
+        val:'5',
+        operator:false,
     },
 
     {
         style:{left:'160px',top:'85px'},
-        val:'6'
+        val:'6',
+        operator:false,
     },
 
     {
         style:{left:'0px'},
-        val:'7'
+        val:'7',
+        operator:false,
     },
 
     {
         style:{left:'80px'},
-        val:'8'
+        val:'8',
+        operator:false,
     },
 
     {
         style:{left:'160px'},
-        val:'9'
+        val:'9',
+        operator:false,
     },
 
     {
         style:{left:'240px'},
-        val:'+'
+        val:'+',
+        operator:true,
     },
 
     {
         style:{left:'240px',top:'85px'},
-        val:'-'
+        val:'-',
+        operator:true,
     },
 
     {
         style:{left:'240px',top:'165px'},
-        val:'*'
+        val:'*',
+        operator:true,
     },
 
     {
         style:{left:'240px',top:'245px'},
-        val:'/'
+        val:'/',
+        operator:true,
     },
 
     {
         style:{left:'160px',top:'245px',transform:'rotate(180deg)'},
         val:'',
-        svg:ExecuteButton()
+        svg:ExecuteButton(),
+        operator:false,
     },
 
     {
         style:{left:'0px',top:'245px'},
-        val:'.'
+        val:'.',
+        operator:false,
     },
 ]
