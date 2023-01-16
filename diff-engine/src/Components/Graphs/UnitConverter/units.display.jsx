@@ -1,5 +1,6 @@
 import { UnitsDisplay,UnitsDisplayContainer } from "./unit.styles";
 import LengthDisplay from "./Length/lengths.display";
+import MassDisplay from "./Mass/mass.display";
 
 const Units = ({state,setState}) => {
 
@@ -28,8 +29,17 @@ const Units = ({state,setState}) => {
                 </thead>
                 
                     {unitType === 'Length' && <LengthDisplay
+                        isNumber={isNumber}
                         copy={copy}
                         state={state}
+                        setState={setState}
+                    />}
+
+                    {unitType === 'Mass' && <MassDisplay
+                        isNumber={isNumber}
+                        copy={copy}
+                        state={state}
+                        setState={setState}
                     />}
 
             </UnitsDisplay>
