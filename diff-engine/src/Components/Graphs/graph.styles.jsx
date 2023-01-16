@@ -25,6 +25,12 @@ export const Enclosure = styled.main`
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
     transform: scale(${({viewScale}) => viewScale});
+
+    h1 {
+        font-family: 'Silkscreen', cursive;
+        font-weight:400;
+        font-size:30px;
+    }
 `
 
 export const ZoomInButton = styled(TinyButton)`
