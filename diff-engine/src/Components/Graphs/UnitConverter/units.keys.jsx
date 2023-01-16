@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { numdata } from "../KeyPad/NumberPad/nums.data";
 import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
 import LengthKeys from "./Length/length.keys";
+import MassKeys from "./Mass/mass.keys";
 
 const UnitsKeys = (props) => {
 
@@ -67,6 +68,7 @@ const UnitsKeys = (props) => {
             {mappedNumberKeys}
 
             {unitType === 'Length' && <LengthKeys execute={execute}/>}
+            {unitType === 'Mass' && <MassKeys execute={execute}/>}
 
             <BaseButton
                 style={{right:'170px'}}
