@@ -4,7 +4,7 @@ export const FracDisplay = styled.section`
     position:absolute;
     font-size:20px;
     bottom:40px;
-    width:40%;
+    width:80%;
     height:40%;
     background-color:#fff;
     border: solid 1px;
