@@ -41,8 +41,6 @@ export const NumberPad = ({styles,state,setState}) => {
 
         <NumPad style={styles}>
             {mappedKeys}
-
-            
         </NumPad>
     )
 }
