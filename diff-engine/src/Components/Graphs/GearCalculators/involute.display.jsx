@@ -36,6 +36,15 @@ const CogDisplay = ({state}) => {
             >
                 For use in Blender 2.8 + 
             </a>
+
+            <a
+                href="https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator"
+                target="_blank"
+                style={{position:'absolute',top:'350px',fontSize:'20px',zIndex:'2'}}
+            >
+                (how to build your gear)
+            </a>
+
             <TipCircle mathFunc={mathFunc}>
                 <ReferenceCircle mathFunc={mathFunc}>
                     <CogOrigin mathFunc={mathFunc}>
