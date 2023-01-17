@@ -1,12 +1,36 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const keyMapOverlay = css`
+button {
+        transition: all 500ms;
+        overflow:visible;
+
+        p {
+            background-color:#fff;
+            transition: all 500ms;
+            color:#555;
+            display:inline;
+            z-index:1;
+            transform: scale(1.7);
+            left:80px;
+            box-shadow: -1px -1px 5px 5px #ccc;
+        }
+        pointer-events: none;
+        transform: scale(.6)
+    }
+`
 
 export const KeyBox = styled.div`
+    ${({displayKeymap}) => displayKeymap && keyMapOverlay}
     position: relative;
     height: 200px;
     width: 500px;
     bottom:-512px;
-
-    button {position:absolute;}
+    
+    button {
+        transition: all 1000ms;
+        position:absolute;
+    }
 
     i {
         font-size:50px;
@@ -49,18 +73,22 @@ export const BaseButton = styled.button`
     overflow:hidden;
 
     p {
-        display:none;
         position:absolute;
         color:#555;
         font-weight:200;
+        transition: all 500ms;
+        transform: scale(0);
     }
 
     &:hover {
         overflow:visible;
         z-index:100000;
         box-shadow: -1px -1px 5px 5px #ccc;
+        
         p { 
             box-shadow: -1px -1px 5px 5px #ccc;
+            transition: all 500ms;
+            transform: scale(1);
             position:absolute;
             width:200px;
             min-height:50px;

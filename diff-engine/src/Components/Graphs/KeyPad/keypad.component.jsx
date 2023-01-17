@@ -1,6 +1,6 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
 import { MathComponent } from "mathjax-react";
-import { CalculatorIcon,CogWheel,beaker } from "../SVG";
+import { book,CalculatorIcon,CogWheel,beaker } from "../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 
@@ -21,14 +21,15 @@ const KeyPad = (props) => {
         state,
     } = props
 
-    const { mathFunc,degrees } = state 
+    const { mathFunc,degrees,displayKeymap } = state 
 
     return (
-        <KeyBox>
+        <KeyBox displayKeymap={displayKeymap}>
 
             {/* <Hover /> */}
 
             <BaseButton
+                state={state}
                 style={{position:'absolute',right:'10px'}} 
                 onClick={() => setCurrentView('gaus')}
             >
@@ -37,7 +38,7 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{position:'absolute',right:'100px',fontSize:'20px'}}
+                style={{position:'absolute',right:'100px'}}
                 onClick={() => setCurrentView('unit_circle')}
             >
                 <InlineMath math={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`} />
@@ -46,10 +47,12 @@ const KeyPad = (props) => {
 
             {/* FRACTIONS */}
             <BaseButton
-                style={{position:'absolute',right:'100px',top:'85px',fontSize:'30px'}}
+                style={{position:'absolute',right:'100px',top:'85px'}}
                 onClick={(e) => setCurrentView('fracs')}
             >
-                <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
+                <div style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>
+                    <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
+                </div>
                 <p>Decimal to fraction</p>
             </BaseButton>
 
@@ -73,9 +76,16 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'help',!state.help)}
                 style={{right:'10px',top:'170px'}}
             >
-                <strong>?</strong>
-                <p>Information</p>
+                {book()}
+                <p>Documentation and resources</p>
             </CloseHelp>
+
+            <BaseButton
+                style={{right:'190px',top:'170px'}}
+                onClick={(e) => execute(e,'displayKeymap',!state.displayKeymap)}
+            >
+                <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
+            </BaseButton>
 
             <BaseButton
                 onClick={() => setCurrentView('unit_converter')}
