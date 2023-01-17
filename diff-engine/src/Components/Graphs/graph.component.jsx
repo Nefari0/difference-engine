@@ -8,7 +8,6 @@ import {
 } from "./graph.styles";
 
 import { ZoomInButton,ZoomOutButton } from "./graph.styles";
-
 import { DisplayScreen } from "./KeyPad/keypad.styles";
 import Document from "./Informaton/Help/operators.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
@@ -24,8 +23,8 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
-import { zoomIn,zoomOut } from "./SVG";
-
+import { zoomIn,zoomOut,book } from "./SVG";
+import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
@@ -104,6 +103,7 @@ export default function Graph() {
     // --- Help / Information display --- //
     help:false,
     alert:null,
+    displayKeymap:false,
 
     // --- For using standard calculator --- //
     calculation:0,
@@ -124,8 +124,7 @@ export default function Graph() {
     // otherItems:null,
 
     // --- Zoom in/out --- //
-    // viewSize:null,
-    viewScale:1
+    viewScale:1,
   
   });
   const {
@@ -148,6 +147,8 @@ export default function Graph() {
 
     // --- Zoom in / out
     viewScale,
+
+    displayKeymap
   } = state;
 
   useEffect(() => {
@@ -345,6 +346,7 @@ export default function Graph() {
   return (
     <Enclosure
       viewScale={viewScale}
+      displayKeymap={displayKeymap}
     >
 
       <ZoomInButton
@@ -371,7 +373,7 @@ export default function Graph() {
 
       <Table className="Table">
         <Row>
-          
+
           <Origin
             xAspect={xAspect}
             yAspect={yAspect}
@@ -454,6 +456,10 @@ export default function Graph() {
         </Row>
       </Table>
 
+      {/* KEY GUIDE */}
+      {displayKeymap && <DisplayKeyInfo execute={execute}/>}
+
+      {/* MAIN USER INPUT */}
       {displayInput && <DisplayScreen
         type='text'
         onChange={inputHandler}
