@@ -69,7 +69,7 @@ const CogKeys = (props) => {
     '\nimport numpy as np' +
     '\n' +
     `\nz = ${mathFunc} # Number of teeth` +
-    `\nu = np.linspace(0,${'.'+uMax},20) # matrix` +
+    `\nu = np.linspace(0,${uMax},20) # matrix` +
     '\nthickness = math.pi/2' +
     '\nref_radius = z/2' +
     '\nbase_radius = ref_radius*.9396950000000001' +

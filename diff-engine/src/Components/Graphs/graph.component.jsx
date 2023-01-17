@@ -110,7 +110,7 @@ export default function Graph() {
     history:[],
 
     // --- Involute gear calculator --- //
-    uMax:50,
+    uMax:1,
     refRadius:5,
     involute:[],
 
@@ -145,9 +145,6 @@ export default function Graph() {
     // h,k, // -- parabola
 
     otherPlots,
-    uMax,
-    refRadius,
-    involute,
 
     // --- Zoom in / out
     viewScale,
