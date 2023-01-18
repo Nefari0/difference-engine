@@ -9,6 +9,7 @@ export const Standard = styled.div`
     background-color:#fff;
     z-index:1;
     border: solid 1px;
+    border-radius:5px;
 
     button {
         position:absolute;
