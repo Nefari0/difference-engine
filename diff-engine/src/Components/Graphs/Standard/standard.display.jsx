@@ -1,18 +1,17 @@
 import { Standard,History,HistoryItem } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
 import { TinyButton } from "../KeyPad/keypad.styles"
-import { useState } from "react"
 
 const clearHistButton = {
     position:'absolute',
-    left:'250px',
+    right:'0px',
     top:'10px',
     zIndex:'1'
 }
 
 const StandarMathDisplay = ({state,execute,setState}) => {
 
-    const { calculation,history,mathFunc } = state
+    const { calculation,history } = state
 
     const copy = () => {
         navigator.clipboard.writeText(calculation)
@@ -28,21 +27,21 @@ const StandarMathDisplay = ({state,execute,setState}) => {
 
     return(
         <>
+            <History>
+                <TinyButton
+                    onClick={(e) => execute(e,'history',[])}
+                    style={clearHistButton}
+                >
+                    Clear history
+                </TinyButton>
+                {mappedHistory}
+            </History>
 
-            <TinyButton
-                onClick={(e) => execute(e,'history',[])}
-                style={clearHistButton}
-            >
-                Clear history
-            </TinyButton>
-
-            <History>{mappedHistory}</History>
             <Standard>
 
                 {calculation && <MathComponent tex={String.raw`${calculation}`} />}
 
                 <TinyButton
-
                     onClick={() => copy()}
                     style={{right:'6px',top:'7px'}}
                 >

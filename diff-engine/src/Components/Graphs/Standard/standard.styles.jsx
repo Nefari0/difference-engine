@@ -8,6 +8,7 @@ export const Standard = styled.div`
     height:10%;
     background-color:#fff;
     z-index:1;
+    border: solid 1px;
 
     button {
         position:absolute;
@@ -15,7 +16,7 @@ export const Standard = styled.div`
 `
 
 export const History = styled(Standard)`
-    width:40%;
+    width:90%;
     height:75%;
     top:10px;
     left:30px;
