@@ -7,7 +7,7 @@ import {
   Enclosure,
 } from "./graph.styles";
 
-import { ZoomInButton,ZoomOutButton } from "./graph.styles";
+import ViewSettings from "./ViewSettings/view-settings.component";
 import { DisplayScreen } from "./KeyPad/keypad.styles";
 import Document from "./Informaton/Help/operators.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
@@ -23,15 +23,11 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import { BaseButton } from "./KeyPad/keypad.styles";
-import { zoomIn,zoomOut,book } from "./SVG";
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
-// import { InvoluteCalcDisplay } from "./GearCalculators/involute.display";
-// import UnitCircleDisplay from "./KeyPad/Plots/Trig/unitCircleDisplay.component";
-// import { Theta, ThetaOrigin } from "./KeyPad/Plots/Trig/display.styles";
 
 import {
   evaluate,
@@ -48,6 +44,7 @@ import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext } from "react";
 import { ViewContext } from "../Context/view.context";
+import { checkDeviceSize,changeSize,screenSizeExtraction } from "./viewLogic";
 
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
@@ -260,7 +257,11 @@ export default function Graph() {
     for (let i = 0; i < numOfTiles; i++) {
       matrix.push(M);
     } // columns
-    setState({ ...state, matrix: matrix });
+    setState({
+      ...state,
+      viewScale:checkDeviceSize(),
+      matrix: matrix
+    });
   };
   
   const mappedTiles = matrix.map((row, id1) => {
@@ -333,14 +334,9 @@ export default function Graph() {
     }
   }
 
-  const changeSize = (e,size) => {
-    var newVal = viewScale + size
-    
-    if (size - .1 === 0 && viewScale <= .9) {
-      execute(e,'viewScale',newVal)
-    } else if (size -.1 === -.2 && viewScale >=.8) {
-      execute(e,'viewScale',newVal)
-    }
+  const resetSize = (e) => {
+    execute(e,'viewScale',screenSizeExtraction())
+    localStorage.setItem('screenWidth',null)
   }
 
   return (
@@ -349,17 +345,12 @@ export default function Graph() {
       displayKeymap={displayKeymap}
     >
 
-      <ZoomInButton
-        onClick={(e) => changeSize(e,.10)}
-        >
-          {zoomIn()}
-      </ZoomInButton>
-
-      <ZoomOutButton
-        onClick={(e) => changeSize(e,-.10)}
-      >
-        {zoomOut()}
-      </ZoomOutButton>
+      {/* <ViewSettings
+        changeSize={changeSize}
+        resetSize={resetSize}
+        state={state}
+        execute={execute}
+      /> */}
 
       {help && <Document
         state={state}
