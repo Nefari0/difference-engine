@@ -2,16 +2,22 @@ import styled, {css} from "styled-components";
 import { TinyButton } from "./KeyPad/keypad.styles";
 
 const smallEnclosure = css`
-    transform: scale(0.50);
+    transform: scale(${({viewScale}) => viewScale});
     left:-36%;
-    top:-28%;
+    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
 `
 
 const mediumEnclosure = css`
-    transform: scale(0.70);
+    // transform: scale(0.70);
+    // left:-24%;
+    // top:-21%;
+    transform: scale(${({viewScale}) => viewScale});
     left:-24%;
-    top:-21%;
-`
+    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+    
+    `
+    // transform: scale(${({viewScale}) => viewScale >= .9 ? '0.7' : viewScale});
+    // top:-${({viewScale}) => viewScale >= .9 ? '21%;' : (((10-parseInt(viewScale*10))*50).toString())}px;
 
 export const Enclosure = styled.main`
     position:absolute;
@@ -25,26 +31,38 @@ export const Enclosure = styled.main`
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
     transform: scale(${({viewScale}) => viewScale});
-
+    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+    
     h1 {
         font-family: 'Silkscreen', cursive;
         font-weight:400;
         font-size:30px;
     }
-`
+    `
 
 export const ZoomInButton = styled(TinyButton)`
     right:20px;
     width:30px;
     height:30px;
-    top:-40px;
+    // top:-40px;
     opacity:.4;
     zIndex:2;
 
-    @media (max-width:620px) {display:none;}
+    // @media (max-width:620px) {display:none;}
 `
 export const ZoomOutButton = styled(ZoomInButton)`
     right:60px;
+`
+
+export const ResetViewButton = styled(ZoomOutButton)`right:105px`
+
+export const ViewSettingsPanel = styled.div`
+    position:absolute;
+    top:-40px;
+    width:150px;
+    right:0px;
+    height:30px;
+    // background-color:blue;
 `
 
 export const Table = styled.div`
