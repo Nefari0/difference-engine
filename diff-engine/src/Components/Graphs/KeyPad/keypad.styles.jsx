@@ -13,7 +13,11 @@ button {
             z-index:1;
             transform: scale(1.7);
             left:80px;
-            box-shadow: -1px -1px 5px 5px #ccc;
+            padding:4px;
+            font-weight:600;
+            box-shadow: 0px 5px 20px -7px #000000;
+            border-radius:2px;
+            border: solid .5px;
         }
         pointer-events: none;
         transform: scale(.6)
