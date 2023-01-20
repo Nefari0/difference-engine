@@ -72,7 +72,11 @@ var iteration = 0
 
 export default function Graph() {
 
-  const { setCurrentView,currentView } = useContext(ViewContext)
+  const {
+    setCurrentView,
+    currentView,
+    displayKeymap,
+  } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
 
@@ -100,7 +104,6 @@ export default function Graph() {
     // --- Help / Information display --- //
     help:false,
     alert:null,
-    displayKeymap:false,
 
     // --- For using standard calculator --- //
     calculation:0,
@@ -144,8 +147,6 @@ export default function Graph() {
 
     // --- Zoom in / out
     viewScale,
-
-    displayKeymap
   } = state;
 
   useEffect(() => {
