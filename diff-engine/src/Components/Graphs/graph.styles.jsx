@@ -2,22 +2,22 @@ import styled, {css} from "styled-components";
 import { TinyButton } from "./KeyPad/keypad.styles";
 
 const smallEnclosure = css`
-    transform: scale(${({viewScale}) => viewScale});
+    transform: scale(.5);
+    top:-35%;
     left:-36%;
-    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
 `
+// top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+// transform: scale(${({viewScale}) => viewScale});
 
 const mediumEnclosure = css`
-    // transform: scale(0.70);
-    // left:-24%;
-    // top:-21%;
-    transform: scale(${({viewScale}) => viewScale});
+    transform: scale(0.70);
     left:-24%;
-    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
-    
-    `
-    // transform: scale(${({viewScale}) => viewScale >= .9 ? '0.7' : viewScale});
-    // top:-${({viewScale}) => viewScale >= .9 ? '21%;' : (((10-parseInt(viewScale*10))*50).toString())}px;
+    top:-21%;    
+`
+    // transform: scale(${({viewScale}) => viewScale});
+    // left:-24%;
+    // top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+
 
 export const Enclosure = styled.main`
     position:absolute;
@@ -30,8 +30,9 @@ export const Enclosure = styled.main`
     flex-direction:column;
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
-    transform: scale(${({viewScale}) => viewScale});
-    top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+    transform: scale(1)
+    // transform: scale(${({viewScale}) => viewScale});
+    // top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
     
     h1 {
         font-family: 'Silkscreen', cursive;

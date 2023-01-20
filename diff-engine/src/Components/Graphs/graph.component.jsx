@@ -259,7 +259,7 @@ export default function Graph() {
     } // columns
     setState({
       ...state,
-      viewScale:checkDeviceSize(),
+      // viewScale:checkDeviceSize(),
       matrix: matrix
     });
   };
