@@ -12,7 +12,11 @@ import { InlineMath } from 'react-katex';
 
 const KeyPad = (props) => {
 
-    const {setCurrentView} = useContext(ViewContext)
+    const {
+        setCurrentView,
+        setDisplayKeymap,
+        displayKeymap
+    } = useContext(ViewContext)
 
     const {
         execute,
@@ -21,7 +25,7 @@ const KeyPad = (props) => {
         state,
     } = props
 
-    const { mathFunc,degrees,displayKeymap } = state 
+    const { mathFunc,degrees } = state 
 
     return (
         <KeyBox displayKeymap={displayKeymap}>
@@ -82,7 +86,7 @@ const KeyPad = (props) => {
 
             <BaseButton
                 style={{right:'190px',top:'170px'}}
-                onClick={(e) => execute(e,'displayKeymap',!state.displayKeymap)}
+                onClick={(e) => setDisplayKeymap(true)}
             >
                 <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
             </BaseButton>
