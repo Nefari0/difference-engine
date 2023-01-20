@@ -11,6 +11,7 @@ const MassKeys = (props) => {
                 onClick={(e) => execute(e,'units','gm')}
             >
                 <strong>gm</strong>
+                <p>Gram</p>
             </BaseButton>
 
             <BaseButton
@@ -18,6 +19,7 @@ const MassKeys = (props) => {
                 onClick={(e) => execute(e,'units','oz')}
             >
                 <strong>oz</strong>
+                <p>Ounce</p>
             </BaseButton>
 
             <BaseButton
@@ -25,6 +27,7 @@ const MassKeys = (props) => {
                 onClick={(e) => execute(e,'units','lb')}
             >
                 <strong>lb</strong>
+                <p>Pound</p>
             </BaseButton>
 
             <BaseButton
@@ -32,6 +35,7 @@ const MassKeys = (props) => {
                 onClick={(e) => execute(e,'units','ct')}
             >
                 <strong>ct</strong>
+                <p>Carat</p>
             </BaseButton>
         </>
     )
