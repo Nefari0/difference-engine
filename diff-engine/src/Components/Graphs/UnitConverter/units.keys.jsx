@@ -1,9 +1,10 @@
 import { backButton } from "../SVG";
-import { useEffect } from "react";
+import { useEffect,useContext } from "react";
 import { numdata } from "../KeyPad/NumberPad/nums.data";
 import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
+import { ViewContext } from "../../Context/view.context";
 
 const UnitsKeys = (props) => {
 
@@ -15,6 +16,11 @@ const UnitsKeys = (props) => {
     } = props
 
     const {mathFunc,unitType} = state
+
+    const {
+        setDisplayKeymap,
+        displayKeymap
+    } = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -58,12 +64,13 @@ const UnitsKeys = (props) => {
                 onClick={(e) => setItems(e,el.val)}
             >
                 <strong>{display}</strong>
+                <p>{el.val}</p>
             </BaseButton>
         )
     })
 
     return (
-        <KeyBox>
+        <KeyBox displayKeymap={displayKeymap}>
             
             {mappedNumberKeys}
 
@@ -110,6 +117,13 @@ const UnitsKeys = (props) => {
                 onClick={(e) => close(e)}
             >
                 {backButton()}
+            </BaseButton>
+
+            <BaseButton
+                style={{right:'0px',top:'85px'}}
+                onClick={(e) => setDisplayKeymap(true)}
+            >
+                <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
             </BaseButton>
 
         </KeyBox>
