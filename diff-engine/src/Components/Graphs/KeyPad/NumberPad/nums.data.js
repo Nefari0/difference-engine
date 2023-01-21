@@ -1,4 +1,4 @@
-import { ExecuteButton } from "../../SVG";
+import { ExecuteButton,BackSpace } from "../../SVG";
 
 export const numdata = [
     {
@@ -86,9 +86,9 @@ export const numdata = [
     },
 
     {
-        style:{left:'160px',top:'245px',transform:'rotate(180deg)'},
+        style:{left:'160px',top:'245px'},
         val:'',
-        svg:ExecuteButton(),
+        svg:BackSpace(),
         operator:false,
     },
 
