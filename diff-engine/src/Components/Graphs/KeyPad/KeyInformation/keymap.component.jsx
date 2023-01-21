@@ -5,7 +5,6 @@ import { ViewContext } from "../../../Context/view.context";
 const DisplayKeyInfo = ({execute}) => {
 
     const {
-        displayKeymap,
         setDisplayKeymap
     } = useContext(ViewContext)
 
