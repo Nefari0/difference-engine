@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const keyMapOverlay = css`
-button {
+    button {
         transition: all 500ms;
         overflow:visible;
 
