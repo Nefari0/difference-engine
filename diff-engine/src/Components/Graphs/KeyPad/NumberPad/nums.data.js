@@ -62,30 +62,6 @@ export const numdata = [
     },
 
     {
-        style:{left:'240px'},
-        val:'+',
-        operator:true,
-    },
-
-    {
-        style:{left:'240px',top:'80px'},
-        val:'-',
-        operator:true,
-    },
-
-    {
-        style:{left:'240px',top:'160px'},
-        val:'*',
-        operator:true,
-    },
-
-    {
-        style:{left:'240px',top:'240px'},
-        val:'/',
-        operator:true,
-    },
-
-    {
         style:{left:'160px',top:'240px'},
         val:'',
         svg:BackSpace(),
