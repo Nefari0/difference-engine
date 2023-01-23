@@ -318,8 +318,13 @@ export default function Graph() {
   }
 
   const copy = () => {
-    navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-    setState({...state,alert:"X and Y coordinates copied to clipboard"})
+    // console.log(returnPlots()[0])
+    if (returnPlots()[0]) {
+      navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+      setState({...state,alert:"X and Y coordinates copied to clipboard"})
+    } else {
+      setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+    }
 }
 
   const close = (e) => {
