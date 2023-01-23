@@ -9,7 +9,7 @@ import {
 
 import ViewSettings from "./ViewSettings/view-settings.component";
 import { DisplayScreen } from "./KeyPad/keypad.styles";
-import Document from "./Informaton/Help/operators.component";
+import Document from "./Informaton/Help/info.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
 import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
 import CircleGraph from "./Plots/Trig/overlay.component";

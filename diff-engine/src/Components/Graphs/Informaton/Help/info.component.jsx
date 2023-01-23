@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { DocumentContainer } from "./operators.styles";
+import { DocumentContainer } from "./info.styles";
 import { BaseButton } from "../../KeyPad/keypad.styles";
-import { OperatorTable } from "./operators.styles";
+import { OperatorTable } from "./info.styles";
 import Trig from "./trig.items";
 import Vars from "./vars.items";
 import Resource from "./resource.items";

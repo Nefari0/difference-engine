@@ -1,4 +1,4 @@
-import { OperatorTable } from "./operators.styles"
+import { OperatorTable } from "./info.styles"
 
 const Vars = () => {
     return (
