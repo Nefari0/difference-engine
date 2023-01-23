@@ -5,6 +5,7 @@ import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
 import { ViewContext } from "../../Context/view.context";
+import { NumberPad } from "../KeyPad/NumberPad/nums.component";
 
 const vp = 80 // -- Vertical Position
 
@@ -27,7 +28,7 @@ const UnitsKeys = (props) => {
     useEffect(() => {
         setState({
             ...state,
-            mathFunc:`1`,
+            mathFunc:``,
             displayInput:false,
             polars:false,
         })
@@ -74,7 +75,10 @@ const UnitsKeys = (props) => {
     return (
         <KeyBox displayKeymap={displayKeymap}>
             
-            {mappedNumberKeys}
+            <NumberPad
+                state={state}
+                setState={setState}
+            />
 
             {unitType === 'Length' && <LengthKeys execute={execute}/>}
             {unitType === 'Mass' && <MassKeys execute={execute}/>}

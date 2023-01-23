@@ -2,6 +2,7 @@ import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles
 import { backButton,ExecuteButton } from "../SVG";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
+import { Operators } from "../KeyPad/NumberPad/operators.components";
 import { ViewContext } from "../../Context/view.context";
 
 const numpad = {
@@ -38,6 +39,11 @@ const StandardKeys = (props) => {
 
             <NumberPad
                 styles={numpad}
+                state={state}
+                setState={setState}
+            />
+
+            <Operators
                 state={state}
                 setState={setState}
             />
