@@ -6,24 +6,28 @@ const keyMapOverlay = css`
         overflow:visible;
 
         p {
+            // position:absolute;
             background-color:#fff;
             transition: all 500ms;
             color:#555;
             display:inline;
-            z-index:1;
             transform: scale(1.7);
-            left:80px;
+            left:20px;
+            top:70px;
             padding:4px;
             font-weight:600;
             box-shadow: 0px 5px 20px -7px #000000;
             border-radius:2px;
             border: solid .5px;
+            border-radius: 0px 20px 20px;
         }
+
         pointer-events: none;
         transform: scale(.6)
     }
 `
 
+// --- For displaying information about keys --- //
 export const KeyBox = styled.div`
     ${({displayKeymap}) => displayKeymap && keyMapOverlay}
     position: relative;
@@ -66,7 +70,7 @@ export const DisplayScreen = styled(BaseInput )`
 `
 
 export const BaseButton = styled.button`
-    position:relative;
+    position:absolute;
     width:75px;
     height:75px;
     border-radius:10px;
@@ -75,6 +79,7 @@ export const BaseButton = styled.button`
     font-weight:600;
     box-shadow: inset 0 0 5px #555;
     overflow:hidden;
+    z-index:0;
 
     p {
         position:absolute;
@@ -82,37 +87,22 @@ export const BaseButton = styled.button`
         font-weight:200;
         transition: all 500ms;
         transform: scale(0);
+        z-index:1;
     }
 
     &:hover {
         overflow:visible;
-        z-index:100000;
+        z-index:1;
         box-shadow: -1px -1px 5px 5px #ccc;
-        
-        p { 
-            box-shadow: -1px -1px 5px 5px #ccc;
-            transition: all 500ms;
-            transform: scale(1);
-            position:absolute;
-            width:200px;
-            min-height:50px;
-            background-color:#fff;
-            border-radius:10px;
-            display:block;
-            opacity:1;
-            font-size:20px;
-        }
     }
 `
 
 export const LargeButton = styled(BaseButton)`
     width:100px;
     height:100px;
-    position:absolute;
 `
 
 export const TinyButton = styled(BaseButton)`
-    position:absolute;
     height:40px;
 `
 

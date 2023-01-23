@@ -10,6 +10,8 @@ import { InlineMath } from 'react-katex';
 {/* <InlineMath math={frac} /> */}
 // const frac = `\\frac{${'string1'}\\pi }{${'string2'}}` 
 
+const vp = 80 // -- Vertical Position
+
 const KeyPad = (props) => {
 
     const {
@@ -34,7 +36,7 @@ const KeyPad = (props) => {
 
             <BaseButton
                 state={state}
-                style={{position:'absolute',right:'10px'}} 
+                style={{position:'absolute',right:`${10}px`}}
                 onClick={() => setCurrentView('gaus')}
             >
                 <div style={{fontSize:'30px',opacity:'.7'}}><InlineMath math={`\\mu`} /></div>
@@ -42,16 +44,25 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{position:'absolute',right:'100px'}}
+                style={{position:'absolute',right:`${90}px`,zIndex:'2'}}
                 onClick={() => setCurrentView('unit_circle')}
             >
                 <InlineMath math={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`} />
                 <p>Unit circle and trig functions</p>
             </BaseButton>
 
+            {/*  STANDARD CALCULATOR */}
+            <BaseButton
+                style={{right:`${170}px`,zIndex:'1'}}
+                onClick={(e) => setCurrentView('standard')}
+            >
+                {CalculatorIcon()}
+                <p>Standard calculator</p>
+            </BaseButton>
+
             {/* FRACTIONS */}
             <BaseButton
-                style={{position:'absolute',right:'100px',top:'85px'}}
+                style={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('fracs')}
             >
                 <div style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>
@@ -61,31 +72,31 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'190px'}}
-                onClick={(e) => setCurrentView('standard')}
-            >
-                {CalculatorIcon()}
-                <p>Standard calculator</p>
-            </BaseButton>
-
-            <BaseButton
-                style={{right:'190px',top:'85px',fontSize:'10px'}}
+                style={{right:'170px',top:`${vp}px`,fontSize:'10px'}}
                 onClick={() => setCurrentView('parabolas')}
             >
                 <MathComponent tex={String.raw`${`ax^2+bx+c`}`} />
                 <p>Quadratics</p>
             </BaseButton>
 
-            <CloseHelp
+            <BaseButton
+                style={{right:'10px',top:`${vp}px`,zIndex:'1'}}
+                onClick={() => setCurrentView('gear_calculator')}
+            >
+                {CogWheel()}
+                <p>Gear calculator</p>
+            </BaseButton>
+
+            <BaseButton
                 onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px',top:'170px'}}
+                style={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
             >
                 {book()}
                 <p>Documentation and resources</p>
-            </CloseHelp>
+            </BaseButton>
 
             <BaseButton
-                style={{right:'190px',top:'170px'}}
+                style={{right:'170px',top:`${vp*2}px`}}
                 onClick={(e) => setDisplayKeymap(true)}
             >
                 <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
@@ -93,18 +104,10 @@ const KeyPad = (props) => {
 
             <BaseButton
                 onClick={() => setCurrentView('unit_converter')}
-                style={{right:'100px',top:'170px'}}
+                style={{right:'90px',top:'160px'}}
             >
-                <strong>{beaker()}</strong>
+                <div>{beaker()}</div>
                 <p>Unit Converter</p>
-            </BaseButton>
-
-            <BaseButton
-                style={{right:'10px',top:'85px'}}
-                onClick={() => setCurrentView('gear_calculator')}
-            >
-                {CogWheel()}
-                <p>Gear calculator</p>
             </BaseButton>
 
             <LargeButton
@@ -116,7 +119,7 @@ const KeyPad = (props) => {
             </LargeButton>
 
             <LargeButton
-                style={{left:'120px'}}
+                style={{left:'105px',zIndex:'0'}}
                 onClick={() => polarVector(mathFunc)}
             >
                 Polar
