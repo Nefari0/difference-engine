@@ -6,6 +6,8 @@ import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
 import { ViewContext } from "../../Context/view.context";
 
+const vp = 80 // -- Vertical Position
+
 const UnitsKeys = (props) => {
 
     const {
@@ -85,7 +87,7 @@ const UnitsKeys = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'170px',top:'85px'}}
+                style={{right:'170px',top:`${vp}px`}}
                 onClick={(e) => execute(e,'unitType','Length')}
             >
                 <strong>Length</strong>
@@ -113,14 +115,14 @@ const UnitsKeys = (props) => {
             </BaseButton> */}
 
             <BaseButton
-                style={{right:'0px'}}
+                style={{right:'0px',zIndex:'0'}}
                 onClick={(e) => close(e)}
             >
                 {backButton()}
             </BaseButton>
 
             <BaseButton
-                style={{right:'0px',top:'85px'}}
+                style={{right:'0px',top:`${vp}px`,zIndex:'0'}}
                 onClick={(e) => setDisplayKeymap(true)}
             >
                 <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>

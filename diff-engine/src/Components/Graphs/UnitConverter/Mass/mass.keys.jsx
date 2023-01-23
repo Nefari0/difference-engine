@@ -1,5 +1,7 @@
 import { BaseButton } from "../../KeyPad/keypad.styles";
 
+const vp = 80 // -- Vertical Position
+
 const MassKeys = (props) => {
     
     const { execute } = props
@@ -7,7 +9,7 @@ const MassKeys = (props) => {
     return (
         <>
             <BaseButton
-                style={{right:'80px'}}
+                style={{right:'80px',zIndex:'1'}}
                 onClick={(e) => execute(e,'units','gm')}
             >
                 <strong>gm</strong>
@@ -15,7 +17,7 @@ const MassKeys = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:'85px'}}
+                style={{right:'80px',top:`${vp}px`,zIndex:'1'}}
                 onClick={(e) => execute(e,'units','oz')}
             >
                 <strong>oz</strong>
@@ -23,7 +25,7 @@ const MassKeys = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:`${85*2}px`}}
+                style={{right:'80px',top:`${vp*2}px`}}
                 onClick={(e) => execute(e,'units','lb')}
             >
                 <strong>lb</strong>
@@ -31,7 +33,7 @@ const MassKeys = (props) => {
             </BaseButton>
 
             <BaseButton
-                style={{right:'80px',top:`${85*3}px`}}
+                style={{right:'80px',top:`${vp*3}px`}}
                 onClick={(e) => execute(e,'units','ct')}
             >
                 <strong>ct</strong>
