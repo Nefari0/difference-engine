@@ -17,7 +17,8 @@ const KeyPad = (props) => {
     const {
         setCurrentView,
         setDisplayKeymap,
-        displayKeymap
+        displayKeymap,
+        setInformation
     } = useContext(ViewContext)
 
     const {
@@ -88,7 +89,7 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
-                onClick={(e) => execute(e,'help',!state.help)}
+                onClick={(e) => setInformation('trig')}
                 style={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
             >
                 {Book()}

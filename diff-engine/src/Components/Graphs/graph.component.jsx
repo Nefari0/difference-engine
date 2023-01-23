@@ -75,7 +75,10 @@ export default function Graph() {
   const {
     setCurrentView,
     currentView,
+
     displayKeymap,
+
+    information,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -353,7 +356,7 @@ export default function Graph() {
         execute={execute}
       /> */}
 
-      {help && <Document
+      {information && <Document
         state={state}
         setState={setState}
       />}

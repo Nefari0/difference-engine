@@ -20,7 +20,7 @@ const StandardKeys = (props) => {
 
     const { mathFunc } = state
 
-    const {setCurrentView} = useContext(ViewContext)
+    const {setInformation} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -55,12 +55,12 @@ const StandardKeys = (props) => {
                 {backButton()}
             </BaseButton>
 
-            <CloseHelp
-                onClick={(e) => execute(e,'help',!state.help)}
+            <BaseButton
+                onClick={(e) => setInformation('arith')}
                 style={{right:'0px'}}
             >
                 {Book()}
-            </CloseHelp>
+            </BaseButton>
 
             <BaseButton
                 style={{left:'0px'}}

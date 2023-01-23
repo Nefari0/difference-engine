@@ -47,7 +47,7 @@ const UnitCircle = (props) => {
     } = props
     const { degrees,showDegrees,radians,displayDegrees } = state
 
-    const {setCurrentView} = useContext(ViewContext)
+    const {setInformation} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -115,7 +115,7 @@ const UnitCircle = (props) => {
             </BaseButton>
             
             <CloseHelp
-                onClick={(e) => execute(e,'help',!state.help)}
+                onClick={(e) => setInformation('trig')}
                 style={infoB}
             >
                 {Book()}
