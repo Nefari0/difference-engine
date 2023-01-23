@@ -119,7 +119,7 @@ const KeyPad = (props) => {
             </LargeButton>
 
             <LargeButton
-                style={{left:'105px',zIndex:'0'}}
+                style={{top:'105px',left:'0px',zIndex:'0'}}
                 onClick={() => polarVector(mathFunc)}
             >
                 Polar
