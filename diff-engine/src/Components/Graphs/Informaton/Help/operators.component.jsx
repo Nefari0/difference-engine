@@ -8,16 +8,16 @@ import Resource from "./resource.items";
 import ArithmeticTable from "./arithmetic.items";
 import { Book } from "../../SVG";
 
-const  Document = ({setState,state}) => {
+const  Document = ({setState,state,selection}) => {
 
-    const [view,setView] = useState('vars')
+    const [view,setView] = useState('arith')
 
     return (
         <DocumentContainer>
             <h1>Information</h1>
 
             {/* --- DISPLAY --- */}
-            <ArithmeticTable />
+            {view === 'arith' && <ArithmeticTable />}
             {view === 'trig' && <Trig />}
             {view === 'vars' && <Vars />}
             {view === 'texts' && <Resource />}
@@ -35,12 +35,19 @@ const  Document = ({setState,state}) => {
             onClick={() => setView('vars')}
                 style={{bottom:'10px',left:'90px'}}
             >
-                Variables
+                Vars
+            </BaseButton>
+
+            <BaseButton
+            onClick={() => setView('arith')}
+                style={{bottom:'10px',left:'170px'}}
+            >
+                Arith
             </BaseButton>
 
             <BaseButton
             onClick={() => setView('texts')}
-                style={{bottom:'10px',left:'170px'}}
+                style={{bottom:'10px',left:'255px'}}
             >
                 {Book()}
             </BaseButton>
