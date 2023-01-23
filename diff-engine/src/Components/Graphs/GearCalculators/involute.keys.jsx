@@ -163,13 +163,6 @@ const CogKeys = (props) => {
                 {backButton()}
             </BaseButton>
 
-            <CloseHelp
-                onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px',top:'255px'}}
-            >
-                <strong>?</strong>
-            </CloseHelp>
-
                 <h2
                     style={{
                         position:'absolute',

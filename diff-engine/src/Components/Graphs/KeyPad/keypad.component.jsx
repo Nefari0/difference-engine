@@ -1,6 +1,6 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
 import { MathComponent } from "mathjax-react";
-import { book,CalculatorIcon,CogWheel,beaker } from "../SVG";
+import { Book,CalculatorIcon,CogWheel,beaker } from "../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 
@@ -91,7 +91,7 @@ const KeyPad = (props) => {
                 onClick={(e) => execute(e,'help',!state.help)}
                 style={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
             >
-                {book()}
+                {Book()}
                 <p>Documentation and resources</p>
             </BaseButton>
 

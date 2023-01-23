@@ -50,12 +50,6 @@ const FractionKeys = (props) => {
                     name="mathFunc"
                 />
             </Param>
-            <CloseHelp
-                onClick={(e) => execute(e,'help',!state.help)}
-                style={{right:'10px',top:'85px'}}
-            >
-                <strong>?</strong>
-            </CloseHelp>
 
             <BaseButton 
                 onClick={(e) => close(e)}

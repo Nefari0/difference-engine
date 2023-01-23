@@ -6,7 +6,7 @@ import Trig from "./trig.items";
 import Vars from "./vars.items";
 import Resource from "./resource.items";
 import ArithmeticTable from "./arithmetic.items";
-import { book } from "../../SVG";
+import { Book } from "../../SVG";
 
 const  Document = ({setState,state}) => {
 
@@ -42,7 +42,7 @@ const  Document = ({setState,state}) => {
             onClick={() => setView('texts')}
                 style={{bottom:'10px',left:'170px'}}
             >
-                {book()}
+                {Book()}
             </BaseButton>
 
             <BaseButton

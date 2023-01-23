@@ -1,7 +1,7 @@
 import { MathComponent } from "mathjax-react";
 import { useEffect,useContext } from "react";
 import { KeyBox,LargeButton,ParamInput,Param,BaseButton,CloseHelp  } from "../../../KeyPad/keypad.styles";
-import { backButton } from "../../../SVG";
+import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 
 const backB = {
@@ -118,7 +118,7 @@ const UnitCircle = (props) => {
                 onClick={(e) => execute(e,'help',!state.help)}
                 style={infoB}
             >
-                <strong>?</strong>
+                {Book()}
             </CloseHelp>
 
             <BaseButton

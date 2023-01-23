@@ -1,5 +1,5 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles";
-import { backButton,ExecuteButton } from "../SVG";
+import { backButton,ExecuteButton,Book } from "../SVG";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
 import { Operators } from "../KeyPad/NumberPad/operators.components";
@@ -59,7 +59,7 @@ const StandardKeys = (props) => {
                 onClick={(e) => execute(e,'help',!state.help)}
                 style={{right:'0px'}}
             >
-                <strong>?</strong>
+                {Book()}
             </CloseHelp>
 
             <BaseButton
