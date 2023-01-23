@@ -15,3 +15,12 @@ export const NumPad = styled.section`
         }
     }
 `
+
+export const OperatorPad = styled(NumPad)`
+    width:78.75px;
+    right:85px;
+
+    button {
+        right:0px;
+    }
+`
