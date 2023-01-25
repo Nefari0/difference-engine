@@ -416,7 +416,7 @@ export default function Graph() {
 
           {!currentView && 
             <BaseButton 
-              style={{position:'absolute',width:'150px',height:'50px',left:'0',top:'0px',zIndex:'1',opacity:'.6'}}
+              style={{position:'absolute',width:'150px',height:'50px',left:'10px',top:'5px',zIndex:'1',opacity:'.8',backgroundColor:'#fff'}}
               onClick={() => copy()}
             >
               copy coordinates
