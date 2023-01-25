@@ -28,6 +28,7 @@ export const Enclosure = styled.main`
     box-shadow: 0px 5px 20px -7px #000000;
     display:flex;
     flex-direction:column;
+    background-color:#FFF5FF;
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
     transform: scale(1)
@@ -46,7 +47,9 @@ export const Table = styled.div`
     opacity:.8;
     height: 500px;
     width: 500px;
-    background-color: rgb(240, 240, 240);
+    // background-color: rgb(240, 240, 240);
+    // background-color: #252525;
+    // color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;

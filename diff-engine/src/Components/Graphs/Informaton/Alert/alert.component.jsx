@@ -1,5 +1,5 @@
 import { AlertContainer } from "./alert.styles";
-import { CloseHelp } from "../../KeyPad/keypad.styles";
+import { BaseButton } from "../../KeyPad/keypad.styles";
 
 const close = {
     position:'absolute',
@@ -15,12 +15,12 @@ const Alert = ({state,execute}) => {
         <AlertContainer>
             <p>{alert}</p>
 
-            <CloseHelp
+            <BaseButton
                 onClick={(e) => execute(e,'alert',null)}
                 style={close}
             >
                 close
-            </CloseHelp>
+            </BaseButton>
 
         </AlertContainer>
         )
