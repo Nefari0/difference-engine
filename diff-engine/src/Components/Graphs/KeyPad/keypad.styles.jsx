@@ -36,8 +36,7 @@ export const KeyBox = styled.div`
     bottom:-512px;
     
     button {
-        transition: all 1000ms;
-        position:absolute;
+        transition: all 500ms;
     }
 
     i {
@@ -51,7 +50,6 @@ export const Param = styled.div`
 `
 
 export const BaseInput = styled.input`
-    background-color: rgb(240, 240, 240);
     position:relative;
     border:none;
     font-size:40px;
@@ -74,44 +72,56 @@ export const BaseButton = styled.button`
     width:75px;
     height:75px;
     border-radius:10px;
-    background-color:#fff;
-    color:555;
-    font-weight:600;
-    box-shadow: inset 0 0 5px #555;
     overflow:hidden;
     z-index:0;
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+    color: #333;
+    background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
+    text-shadow: 0 1px rgba(255,255,255,.4);
 
     p {
         position:absolute;
-        color:#555;
         font-weight:200;
         transition: all 500ms;
         transform: scale(0);
         z-index:1;
     }
+    
+    strong {
+        opacity:1;
+        font-weight:800;
+    }
 
     &:hover {
         overflow:visible;
         z-index:1;
-        box-shadow: -1px -1px 5px 5px #ccc;
+        box-shadow: inset 0 0 5px #555;
     }
+`
+
+export const EqualButton = styled(BaseButton)`
+    background-color: #2e86c0;
+    border-color: #337cac;
+    width:100px;
+
+    strong {
+        font-size:40px;
+        color: #fff;
+    }
+`
+
+export const AllClearButton = styled(EqualButton)`
+    background-color: #f0595f;
+    border-color: #b0353a;
+    color: #fff;
 `
 
 export const LargeButton = styled(BaseButton)`
     width:100px;
-    height:100px;
 `
 
 export const TinyButton = styled(BaseButton)`
     height:40px;
-`
-
-export const CloseHelp = styled(BaseButton)`
-    position:absolute;
-
-    strong {
-        font-size:30px;
-        font-weight:200;
-        opacity:.8;
-    }
 `
