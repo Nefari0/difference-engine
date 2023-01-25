@@ -22,7 +22,7 @@ export const Numbers = styled.ul`
         
         strong {
             position:absolute;
-            background-color: rgb(240, 240, 240);
+            background-color:#FFF5FF;
             padding:2px;
             right:${({parameters}) => parameters.strongR}px;
             bottom:${({parameters}) => parameters.strongB}px;
