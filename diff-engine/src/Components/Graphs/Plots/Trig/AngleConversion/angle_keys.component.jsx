@@ -1,6 +1,6 @@
 import { MathComponent } from "mathjax-react";
 import { useEffect,useContext } from "react";
-import { KeyBox,LargeButton,ParamInput,Param,BaseButton,CloseHelp  } from "../../../KeyPad/keypad.styles";
+import { KeyBox,ParamInput,Param,BaseButton } from "../../../KeyPad/keypad.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 
@@ -114,12 +114,12 @@ const UnitCircle = (props) => {
                 radians
             </BaseButton>
             
-            <CloseHelp
+            <BaseButton
                 onClick={(e) => setInformation('trig')}
                 style={infoB}
             >
                 {Book()}
-            </CloseHelp>
+            </BaseButton>
 
             <BaseButton
                 onClick={(e) => execute(e,'showUnitCircleAngles',!state.showUnitCircleAngles)}
