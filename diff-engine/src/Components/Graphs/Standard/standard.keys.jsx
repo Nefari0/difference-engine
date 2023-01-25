@@ -1,4 +1,4 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp } from "../KeyPad/keypad.styles";
+import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton,Book } from "../SVG";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
@@ -50,7 +50,7 @@ const StandardKeys = (props) => {
 
             <BaseButton
                 onClick={(e) => close(e)}
-                style={{right:'0px',top:'85px'}}
+                style={{opacity:'1',right:'0px',top:'85px'}}
             >
                 {backButton()}
             </BaseButton>
@@ -62,20 +62,20 @@ const StandardKeys = (props) => {
                 {Book()}
             </BaseButton>
 
-            <BaseButton
-                style={{left:'0px'}}
+            <EqualButton
+                style={{left:'-5px'}}
                 onClick={(e) => execution(e)}
             >
-                {ExecuteButton()}
-            </BaseButton>
+                <strong>=</strong>
+            </EqualButton>
 
             {/* --- CLEAR BUTTON --- */}
-            <BaseButton
-                style={{left:'0px',top:'85px'}}
+            <AllClearButton
+                style={{left:'-5px',top:'80px'}}
                 onClick={(e) => setState({...state,mathFunc:'',calculation:'0'})}
             >
-                <i style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>C</i>
-            </BaseButton>
+                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
+            </AllClearButton>
 
         </KeyBox>
     )
