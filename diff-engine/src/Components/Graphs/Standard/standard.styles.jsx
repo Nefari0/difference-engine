@@ -10,10 +10,6 @@ export const Standard = styled.div`
     z-index:1;
     border: solid 1px;
     border-radius:5px;
-
-    button {
-        position:absolute;
-    }
 `
 
 export const History = styled(Standard)`
