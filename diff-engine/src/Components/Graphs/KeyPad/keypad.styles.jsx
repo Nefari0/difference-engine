@@ -1,4 +1,7 @@
 import styled, { css } from "styled-components";
+import { backgroundColors } from "../global.styles";
+
+const { paper,light } = backgroundColors
 
 const keyMapOverlay = css`
     button {
@@ -50,6 +53,7 @@ export const Param = styled.div`
 `
 
 export const BaseInput = styled.input`
+    background-color:${paper};
     position:relative;
     border:none;
     font-size:40px;
@@ -75,7 +79,7 @@ export const BaseButton = styled.button`
     overflow:hidden;
     z-index:0;
     border: 1px solid #c4c4c4;
-    background-color: transparent;
+    background-color:#DADDE2;
     color: #333;
     background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);

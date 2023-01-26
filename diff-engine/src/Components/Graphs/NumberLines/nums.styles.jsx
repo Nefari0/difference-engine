@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { backgroundColors } from "../global.styles";
+
+const { light,dark,paper } = backgroundColors
 
 export const Numbers = styled.ul`
     position:absolute;
-    // bottom:0px;
-    // left:0px;
-    // background-color:red;
     width:500px;
     margin:0px;
     padding:0px;
@@ -22,7 +22,10 @@ export const Numbers = styled.ul`
         
         strong {
             position:absolute;
-            background-color:#FFF5FF;
+            // background-color:#FFF5FF;
+            // background-color: #252525;
+            background-color:${({darkmode}) => darkmode ? dark : paper};
+            color:${({darkmode}) => !darkmode ? '#555' : '#fff'};
             padding:2px;
             right:${({parameters}) => parameters.strongR}px;
             bottom:${({parameters}) => parameters.strongB}px;

@@ -1,6 +1,6 @@
 import { Numbers } from "./nums.styles"
 
-const NumberLine = ({parameters}) => {
+const NumberLine = ({parameters,darkmode}) => {
 
     const nums = [-4,-3,-2,-1,0,1,2,3,4]
 
@@ -15,7 +15,10 @@ const NumberLine = ({parameters}) => {
     })
 
     return (
-        <Numbers parameters={parameters}>
+        <Numbers
+            parameters={parameters}
+            darkmode={darkmode}
+        >
             {mappedNumber}
         </Numbers>
     )

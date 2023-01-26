@@ -9,7 +9,5 @@ const tier6 = '#43655A'
 export const backgroundColors = {
     paper:'rgb(240, 240, 240)',
     light:tier1,
-    // light:'#DADDE2',
-    // dark:'#252525'
     dark:'#43655A',
 }

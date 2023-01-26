@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 
 export const ViewContext = createContext({
     currentView:null, // --- Currently selected view
@@ -8,7 +8,10 @@ export const ViewContext = createContext({
     setDisplayKeymap:() => {},
 
     information:null, // --- Display documentation. Except string to indicate info type.
-    setInformation:() => {}
+    setInformation:() => {},
+
+    darkmode:true, // --- Set dark and light mode.
+    setDarkMode:() => {},
 })
 
 export const ViewProvider = ({ children }) => {
@@ -16,6 +19,7 @@ export const ViewProvider = ({ children }) => {
     const [currentView,setCurrentView] = useState(null)
     const [displayKeymap,setDisplayKeymap] = useState(false)
     const [information,setInformation] = useState(null)
+    const [darkmode,setDarkMode] = useState(false)
     
     const value = {
         currentView,
@@ -25,7 +29,10 @@ export const ViewProvider = ({ children }) => {
         setDisplayKeymap,
 
         information,
-        setInformation
+        setInformation,
+
+        darkmode,
+        setDarkMode
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

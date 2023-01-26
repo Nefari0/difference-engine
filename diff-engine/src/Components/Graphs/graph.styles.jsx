@@ -1,5 +1,8 @@
 import styled, {css} from "styled-components";
 import { TinyButton } from "./KeyPad/keypad.styles";
+import { backgroundColors } from "./global.styles";
+
+const { dark,light,paper } = backgroundColors
 
 const smallEnclosure = css`
     transform: scale(.5);
@@ -28,7 +31,9 @@ export const Enclosure = styled.main`
     box-shadow: 0px 5px 20px -7px #000000;
     display:flex;
     flex-direction:column;
-    background-color:#FFF5FF;
+    // background-color:#FFF5FF;
+    background-color:#B1BDC5;
+    // background-color:${({darkmode}) => darkmode ? '#B1BDC5' : '#FFF5FF'};
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
     transform: scale(1)
@@ -49,6 +54,8 @@ export const Table = styled.div`
     width: 500px;
     // background-color: rgb(240, 240, 240);
     // background-color: #252525;
+    background-color:${({darkmode}) => darkmode ? dark : paper};
+    // background-color:${light};
     // color: #fff;
     display: flex;
     flex-direction: column;
@@ -91,6 +98,8 @@ export const GridCell = styled.span`
     position: relative;
     margin: 0px;
     border: 1px solid rgba(0, 0, 0, 0.5);
+    // border:1px solid #fff;
+    border:1px solid ${({darkmode}) => !darkmode ? dark : light};
 `
 
 export const MathFormula = styled.div`
@@ -98,4 +107,6 @@ export const MathFormula = styled.div`
     top:0px;
     right:40px;
     font-size:20px;
+    font-weight:800;
+    color:${({darkmode}) => darkmode ? '#fff' : '#555'};
 `

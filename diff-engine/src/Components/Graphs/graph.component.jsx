@@ -22,12 +22,15 @@ import FractionCalc from "./Fractions/frac.display";
 import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
-import { BaseButton } from "./KeyPad/keypad.styles";
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
+
+// Input
+import { BaseButton, TinyButton } from "./KeyPad/keypad.styles";
+import { CopyIcon } from "./SVG";
 
 import {
   evaluate,
@@ -79,6 +82,9 @@ export default function Graph() {
     displayKeymap,
 
     information,
+
+    darkmode,
+    setDarkMode
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -270,7 +276,7 @@ export default function Graph() {
   
   const mappedTiles = matrix.map((row, id1) => {
     return row.map((col, id2) => {
-      return <GridCell key={id2}></GridCell>;
+      return <GridCell key={id2} darkmode={darkmode}></GridCell>;
     });
   });
 
@@ -352,6 +358,7 @@ export default function Graph() {
     <Enclosure
       viewScale={viewScale}
       displayKeymap={displayKeymap}
+      darkmode={darkmode}
     >
 
       {/* <ViewSettings
@@ -371,7 +378,10 @@ export default function Graph() {
         execute={execute}
       />}
 
-      <Table className="Table">
+      <Table
+        className="Table"
+        darkmode={darkmode}
+      >
         <Row>
 
           <Origin
@@ -410,16 +420,19 @@ export default function Graph() {
           </Origin>
           
           {/* CURRENT MATH FORMULA */}
-            <MathFormula>
+            <MathFormula darkmode={darkmode} >
                 {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
             </MathFormula>
 
           {!currentView && 
             <BaseButton 
-              style={{position:'absolute',width:'150px',height:'50px',left:'10px',top:'5px',zIndex:'1',opacity:'.8',backgroundColor:'#fff'}}
+              style={{width:'75px',height:'75px',left:'10px',top:'5px',zIndex:'1',opacity:'.6 '}}
               onClick={() => copy()}
             >
-              copy coordinates
+                {CopyIcon()}
+              <div>
+              </div>
+                {/* copy coordinates */}
             </BaseButton>
           }
 
@@ -447,10 +460,10 @@ export default function Graph() {
 
           {/* NUMBER LINES */}
           {!polars &&
-            <>
-              <NumberLine parameters={hNumParams} />
-              <NumberLine parameters={vNumParams} />
-            </>
+            <div>
+              <NumberLine parameters={hNumParams} darkmode={darkmode} />
+              <NumberLine parameters={vNumParams} darkmode={darkmode} />
+            </div>
           }
           
         </Row>
@@ -544,6 +557,13 @@ export default function Graph() {
           execute={execute}
           calculate={calculate}
         />}
+
+        {/* <TinyButton
+          style={{bottom:'0px'}}
+          onClick={(e) => setDarkMode(!darkmode)}
+        >
+          darkmode
+        </TinyButton> */}
 
     </Enclosure>
   );
