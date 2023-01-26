@@ -31,6 +31,11 @@ export const CogContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	align-content: stretch;
+
+    h1 {
+        font-family: 'Silkscreen', cursive;
+        font-weight:400;
+    }
 `
 
 export const ReferenceCircle = styled.div`
