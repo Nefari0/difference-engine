@@ -15,7 +15,7 @@ const vp = 80 // -- Vertical Position
 const LGbtnLabel = {
     fontSize:'18px',
     letterSpacing:'2px',
-    fontWeight:'600'
+    fontWeight:'600',
 }
 
 const KeyPad = (props) => {
@@ -126,7 +126,7 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <LargeButton
-                style={{left:'0px',width:'125px'}}
+                style={{left:'0px',width:'125px',zIndex:'1'}}
                 onClick={() => linearVector(mathFunc)}
             >
                 <i style={LGbtnLabel}>cartesian</i>
