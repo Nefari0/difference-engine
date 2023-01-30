@@ -133,7 +133,7 @@ export default function Graph() {
     // otherItems:null,
 
     // --- Zoom in/out --- //
-    viewScale:1,
+    viewScale:.5,
   
   });
   const {
@@ -156,6 +156,7 @@ export default function Graph() {
 
     // --- Zoom in / out
     viewScale,
+    
   } = state;
 
   useEffect(() => {
@@ -269,7 +270,7 @@ export default function Graph() {
     } // columns
     setState({
       ...state,
-      // viewScale:checkDeviceSize(),
+      viewScale:checkDeviceSize(),
       matrix: matrix
     });
   };
@@ -361,12 +362,12 @@ export default function Graph() {
       darkmode={darkmode}
     >
 
-      {/* <ViewSettings
+      <ViewSettings
         changeSize={changeSize}
         resetSize={resetSize}
         state={state}
         execute={execute}
-      /> */}
+      />
 
       {information && <Document
         state={state}
