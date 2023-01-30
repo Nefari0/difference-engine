@@ -50,7 +50,7 @@ const StandardKeys = (props) => {
 
             <BaseButton
                 onClick={(e) => close(e)}
-                style={{opacity:'1',right:'0px',top:'85px'}}
+                style={{opacity:'1',right:'0px',top:'80px'}}
             >
                 {backButton()}
             </BaseButton>
