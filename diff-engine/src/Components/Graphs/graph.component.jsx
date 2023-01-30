@@ -156,7 +156,7 @@ export default function Graph() {
 
     // --- Zoom in / out
     viewScale,
-    
+
   } = state;
 
   useEffect(() => {
@@ -270,7 +270,7 @@ export default function Graph() {
     } // columns
     setState({
       ...state,
-      viewScale:checkDeviceSize(),
+      viewScale:screenSizeExtraction(),
       matrix: matrix
     });
   };

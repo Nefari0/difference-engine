@@ -6,19 +6,23 @@ const {
   enclosurePadding,
   // maxWidth,
   // widthPercent
+  setState,
+  state
 } = widthParameters
 const windowSize = window.innerWidth
 
 // --- For saving selected screen size preferences on device, though this might not be implemtented.
-export const checkDeviceSize = () => {
+export const checkDeviceSize = ({state,setState}) => {
     const size = localStorage.getItem('screenWidth')
     screenSizeExtraction(windowSize)
-    try {if (size === 'null' || size === undefined) {
-        return (screenSizeExtraction())
-      } else {
-        return (parseFloat(size))
-      }
-      } catch (err) {console.log('here the error',err)}
+    // try {if (size === 'null' || size === undefined) {
+    //     return (screenSizeExtraction())
+    //   } else {
+    //     return (parseFloat(size))
+    //   }
+    //   } catch (err) {console.log('here the error',err)}
+    const initVal = screenSizeExtraction(windowSize)
+    return (setState({...state,viewScale:initVal}))
 }
 
 export const screenSizeExtraction = () => {
