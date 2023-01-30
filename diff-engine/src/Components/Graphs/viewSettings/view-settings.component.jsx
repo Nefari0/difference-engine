@@ -15,14 +15,14 @@ const ViewSettings = (props) => {
 
         <ZoomInButton
           viewScale={viewScale}
-          onClick={(e) => changeSize(e,.10,state,execute)}
+          onClick={(e) => changeSize(e,.01,state,execute)}
           >
             {zoomIn()}
         </ZoomInButton>
 
         <ZoomOutButton
           viewScale={viewScale}
-          onClick={(e) => changeSize(e,-.10,state,execute)}
+          onClick={(e) => changeSize(e,-.01,state,execute)}
         >
           {zoomOut()}
         </ZoomOutButton>
