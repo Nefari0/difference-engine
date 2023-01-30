@@ -11,3 +11,18 @@ export const backgroundColors = {
     light:tier1,
     dark:'#43655A',
 }
+
+// --- Global app size parameters --- //
+const enclosureHeight = 900
+const enclosureWidth = 495
+const enclosurePadding = 10
+
+// const widthPercent = (enclosureWidth+(enclosurePadding*2))/100
+
+export const widthParameters = {
+    enclosureHeight:enclosureHeight,
+    enclosureWidth:enclosureWidth,
+    enclosurePadding:enclosurePadding,
+    // widthPercent:widthPercent,
+}
+// -------------------- // 
