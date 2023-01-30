@@ -1,44 +1,61 @@
 import styled, {css} from "styled-components";
 import { TinyButton } from "./KeyPad/keypad.styles";
-import { backgroundColors } from "./global.styles";
+import { backgroundColors,widthParameters } from "./global.styles";
 
 const { dark,light,paper } = backgroundColors
+const {
+    enclosurePadding,
+    enclosureHeight,
+    enclosureWidth,
+    maxWidth,
+    widthPercent
+} = widthParameters
+
+// --- App dimension parameters --- //
+// enclosureHeight = 900
+// enclosureWidth = 495
+// enclosurePadding = 10
+// widthPercent = (enclosureWidth+(enclosurePadding*2))/100
+// maxWidth = window.innerWidth+enclosurePadding/widthPercent
+
+// original scale sizes: .5, .7, 1
+
+
+
+const transformation = css`
+    transform: scale(${({viewScale}) => viewScale});
+`
 
 const smallEnclosure = css`
-    transform: scale(.5);
-    top:-35%;
     left:-36%;
+    ${transformation}
 `
-// top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
-// transform: scale(${({viewScale}) => viewScale});
 
 const mediumEnclosure = css`
-    transform: scale(0.70);
+    ${transformation}
     left:-24%;
-    top:-21%;    
 `
-    // transform: scale(${({viewScale}) => viewScale});
-    // left:-24%;
-    // top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
+
+const largeEnclosure = css`
+    ${transformation}
+`
 
 
 export const Enclosure = styled.main`
     position:absolute;
-    height:900px;
-    width:495px;
-    padding:10px;
+    height:${enclosureHeight}px;
+    width:${enclosureWidth}px;
+    padding:${enclosurePadding}px;
     border-radius:10px;
     box-shadow: 0px 5px 20px -7px #000000;
     display:flex;
     flex-direction:column;
-    // background-color:#FFF5FF;
     background-color:#B1BDC5;
-    // background-color:${({darkmode}) => darkmode ? '#B1BDC5' : '#FFF5FF'};
+    top:${({viewScale}) => (parseInt(100*viewScale) !== 50 ? (-1*100%parseInt(viewScale*100)*9)/2 : (-220))}px;
+
+    @media (min-width:621px) {${largeEnclosure}}
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
-    transform: scale(1)
-    // transform: scale(${({viewScale}) => viewScale});
-    // top:-${({viewScale}) => (((10-parseInt(viewScale*10))*50).toString())}px;
     
     h1 {
         font-family: 'Silkscreen', cursive;
