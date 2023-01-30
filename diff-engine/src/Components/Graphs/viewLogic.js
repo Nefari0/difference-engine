@@ -1,5 +1,15 @@
+import { widthParameters } from "./global.styles"
+
+const {
+  // enclosureHeight,
+  enclosureWidth,
+  enclosurePadding,
+  // maxWidth,
+  // widthPercent
+} = widthParameters
 const windowSize = window.innerWidth
 
+// --- For saving selected screen size preferences on device, though this might not be implemtented.
 export const checkDeviceSize = () => {
     const size = localStorage.getItem('screenWidth')
     screenSizeExtraction(windowSize)
@@ -13,7 +23,7 @@ export const checkDeviceSize = () => {
 
 export const screenSizeExtraction = () => {
     if (windowSize > 620) {
-        return (parseFloat(1))
+        return (parseFloat(1.0))
     } else if (windowSize < 620 && windowSize > 400) {
         return (parseFloat(.7))
     } else if (windowSize <= 400) {
@@ -24,16 +34,25 @@ export const screenSizeExtraction = () => {
 
 export const changeSize = (e,size,state,execute) => {
 
-    // const viewScale = parseFloat(state.viewScale.toString().substring(0,3))
-    const addition = state.viewScale+size
-    const viewScale = parseFloat('.'+addition.toString().split('.')[1])
-    const newSizeStr = size.toString().split('.')[1]
+    const { viewScale } = state
 
+    const maxWidth = (enclosureWidth+(enclosurePadding*2))*viewScale // Generated width
+    
     var newVal = () => {
+
       return (
-        execute(e,'viewScale',viewScale),
-        localStorage.setItem('screenWidth',viewScale)
+        execute(e,'viewScale',viewScale+size)
+        // localStorage.setItem('screenWidth',viewScale)
       )
     }
-    return (size-.1 === 0 && viewScale <= .7 || size-.1 === -.2 && viewScale >=.3 ? newVal() : null)
+    
+    // return (viewScale >= .1 && viewScale <= 1.0 ? newVal() : null)
+    // --- Add width:
+    if (size-.01 === 0 && windowSize > maxWidth && viewScale < 1) {
+      newVal()
+      // --- Subtract width
+    } else if (size-.01 === -.02 && viewScale > .51) {
+      newVal()
+    }
+    // return (size-.01 === 0 && viewScale < 1 || size-.01 === -.02 && viewScale >.51 ? newVal() : null)
 }
