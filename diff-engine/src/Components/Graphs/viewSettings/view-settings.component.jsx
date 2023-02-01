@@ -1,7 +1,30 @@
-import { ZoomInButton,ZoomOutButton,ViewSettingsPanel,ResetViewButton,ArrowButton,Zoom } from "./view-settings.styles";
-import { zoomIn,zoomOut,RefreshButton,backButton,upArrow,downArrow } from "../SVG";
 import { useState } from "react";
-import { checkDeviceSizem,screenSizeExtraction,changeSize,resetSize,verticalTransform } from "./viewLogic";
+
+import {
+  ZoomInButton,
+  ZoomOutButton,
+  ViewSettingsPanel,
+  ResetViewButton,
+  ArrowButton,
+  Zoom
+} from "./view-settings.styles";
+
+import {
+  zoomIn,
+  zoomOut,
+  RefreshButton,
+  backButton,
+  upArrow,
+  downArrow
+} from "../SVG";
+
+import {
+  checkDeviceSizem,
+  screenSizeExtraction,
+  changeSize,
+  resetSize,
+  verticalTranslation 
+} from "./viewLogic";
 
 const ViewSettings = (props) => {
 
