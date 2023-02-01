@@ -41,7 +41,7 @@ export const changeSize = (e,size,state,execute) => {
 
     const { viewScale } = state
 
-    const maxWidth = (enclosureWidth+(enclosurePadding*2))*viewScale // Generated width
+    const maxWidth = (enclosureWidth+(enclosurePadding*4))*viewScale // Generated width
     
     var newVal = () => {
 
@@ -62,7 +62,7 @@ export const changeSize = (e,size,state,execute) => {
     // return (size-.01 === 0 && viewScale < 1 || size-.01 === -.02 && viewScale >.51 ? newVal() : null)
 }
 
-export const verticalTransform = (e,size,state,execute) => {
+export const verticalTranslation = (e,size,state,execute) => {
 
   const { verticalAdjustment } = state
 
