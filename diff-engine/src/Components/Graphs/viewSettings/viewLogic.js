@@ -1,4 +1,4 @@
-import { widthParameters } from "./global.styles"
+import { widthParameters } from "../global.styles"
 
 const {
   // enclosureHeight,

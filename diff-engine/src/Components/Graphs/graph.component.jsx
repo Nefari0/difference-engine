@@ -47,7 +47,7 @@ import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext } from "react";
 import { ViewContext } from "../Context/view.context";
-import { checkDeviceSize } from "./viewLogic";
+import { checkDeviceSize } from "./ViewSettings/viewLogic";
 
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
