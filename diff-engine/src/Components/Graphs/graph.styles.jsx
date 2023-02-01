@@ -51,7 +51,15 @@ export const Enclosure = styled.main`
     display:flex;
     flex-direction:column;
     background-color:#B1BDC5;
-    top:${({viewScale}) => (parseInt(100*viewScale) !== 50 ? (-1*100%parseInt(viewScale*100)*9)/2 : (-220))}px;
+
+    // top:${({viewScale}) => (parseInt(100*viewScale) !== 50 ? (-1*100%parseInt(viewScale*100)*9)/2 : (-220))}px;
+
+    // TESTING
+    top:${({viewScale,verticalAdjustment}) => (parseInt(100*viewScale) !== 50 ? ((-1*100%parseInt(viewScale*100)*9)/2)+verticalAdjustment : (-220))}px;
+    // position:fixed;
+    // top:0px;
+    // right:0px;
+    // top:-100px;
 
     @media (min-width:621px) {${largeEnclosure}}
     @media (max-width:620px) {${mediumEnclosure}}

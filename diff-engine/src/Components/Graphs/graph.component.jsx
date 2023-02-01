@@ -47,7 +47,7 @@ import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext } from "react";
 import { ViewContext } from "../Context/view.context";
-import { checkDeviceSize,changeSize,screenSizeExtraction } from "./viewLogic";
+import { checkDeviceSize } from "./viewLogic";
 
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
@@ -134,6 +134,7 @@ export default function Graph() {
 
     // --- Zoom in/out --- //
     viewScale:.5,
+    verticalAdjustment:0,
   
   });
   const {
@@ -156,6 +157,7 @@ export default function Graph() {
 
     // --- Zoom in / out
     viewScale,
+    verticalAdjustment,
 
   } = state;
 
@@ -270,7 +272,7 @@ export default function Graph() {
     } // columns
     setState({
       ...state,
-      viewScale:screenSizeExtraction(),
+      viewScale:checkDeviceSize(state,setState),
       matrix: matrix
     });
   };
@@ -350,21 +352,26 @@ export default function Graph() {
     }
   }
 
-  const resetSize = (e) => {
-    execute(e,'viewScale',screenSizeExtraction())
-    localStorage.setItem('screenWidth',null)
-  }
+  // const resetSize = (e) => {
+  //   execute(e,'viewScale',screenSizeExtraction())
+  //   localStorage.setItem('screenWidth',null)
+  // }
+
+  // const theWindow = (e,location,value) => {
+
+  // }
 
   return (
     <Enclosure
       viewScale={viewScale}
       displayKeymap={displayKeymap}
       darkmode={darkmode}
+      verticalAdjustment={verticalAdjustment}
     >
 
       <ViewSettings
-        changeSize={changeSize}
-        resetSize={resetSize}
+        // changeSize={changeSize}
+        // resetSize={resetSize}
         state={state}
         execute={execute}
       />
