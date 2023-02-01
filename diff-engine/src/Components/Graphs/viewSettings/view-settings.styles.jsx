@@ -20,15 +20,21 @@ export const ZoomOutButton = styled(Zoom)`
     right:60px;
 `
 
+export const ArrowButton = styled(Zoom)`
+right:105px;
+`
+
 export const ResetViewButton = styled(ZoomOutButton)`
-    right:105px;
+    right:100px;
     width:100px;
 `
 
 export const ViewSettingsPanel = styled.div`
     position:absolute;
     top:-40px;
-    width:150px;
+    // width:150px;
+    width:100%;
     right:0px;
     height:30px;
+    background-color:#fff;
 `

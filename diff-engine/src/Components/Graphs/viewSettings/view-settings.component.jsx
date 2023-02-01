@@ -1,10 +1,11 @@
-import { ZoomInButton,ZoomOutButton,ViewSettingsPanel,ResetViewButton } from "./view-settings.styles";
-import { zoomIn,zoomOut,RefreshButton,backButton } from "../SVG";
+import { ZoomInButton,ZoomOutButton,ViewSettingsPanel,ResetViewButton,ArrowButton,Zoom } from "./view-settings.styles";
+import { zoomIn,zoomOut,RefreshButton,backButton,upArrow,downArrow } from "../SVG";
 import { useState } from "react";
+import { checkDeviceSizem,screenSizeExtraction,changeSize,resetSize,verticalTransform } from "../viewLogic";
 
 const ViewSettings = (props) => {
 
-    const { changeSize,resetSize,state,execute } = props
+    const { state,execute } = props
 
     const { viewScale } = state
 
@@ -28,10 +29,25 @@ const ViewSettings = (props) => {
         </ZoomOutButton>
 
         <ResetViewButton
-          onClick={(e) => resetSize(e)}
+          onClick={(e) => resetSize(e,execute)}
         >
           reset
         </ResetViewButton>
+
+        {/* --- VERTICAL ADJUSTMENTS --- */}
+        {/* <Zoom
+          style={{right:'105px'}}
+          onClick={(e) => verticalTransform(e,5,state,execute)}
+        >
+          {upArrow()}
+        </Zoom>
+
+        <Zoom style={{right:'145px'}}>
+          {downArrow()}
+        </Zoom> */}
+
+
+
       </ViewSettingsPanel>
     )
 }
