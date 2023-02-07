@@ -12,6 +12,9 @@ export const ViewContext = createContext({
 
     darkmode:true, // --- Set dark and light mode.
     setDarkMode:() => {},
+
+    about:false,
+    setAbout:() => null,
 })
 
 export const ViewProvider = ({ children }) => {
@@ -20,6 +23,7 @@ export const ViewProvider = ({ children }) => {
     const [displayKeymap,setDisplayKeymap] = useState(false)
     const [information,setInformation] = useState(null)
     const [darkmode,setDarkMode] = useState(false)
+    const [about,setAbout] = useState(false)
     
     const value = {
         currentView,
@@ -32,7 +36,10 @@ export const ViewProvider = ({ children }) => {
         setInformation,
 
         darkmode,
-        setDarkMode
+        setDarkMode,
+
+        about,
+        setAbout,
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

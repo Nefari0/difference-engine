@@ -27,6 +27,7 @@ import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
+import AboutPage from "./Informaton/About/about.component";
 
 // Input
 import { BaseButton, TinyButton } from "./KeyPad/keypad.styles";
@@ -76,15 +77,15 @@ var iteration = 0
 export default function Graph() {
 
   const {
-    setCurrentView,
-    currentView,
+    setCurrentView,currentView,
 
     displayKeymap,
 
     information,
 
-    darkmode,
-    setDarkMode
+    darkmode,setDarkMode,
+
+    about,setAbout,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -369,6 +370,8 @@ export default function Graph() {
       verticalAdjustment={verticalAdjustment}
     >
 
+      {about && <AboutPage/>}
+
       <ViewSettings
         // changeSize={changeSize}
         // resetSize={resetSize}
@@ -390,6 +393,7 @@ export default function Graph() {
         className="Table"
         darkmode={darkmode}
       >
+
         <Row>
 
           <Origin

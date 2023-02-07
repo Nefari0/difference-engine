@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { ViewContext } from "../../Context/view.context";
 
 import {
   ZoomInButton,
@@ -6,7 +7,8 @@ import {
   ViewSettingsPanel,
   ResetViewButton,
   ArrowButton,
-  Zoom
+  Zoom,
+  AboutButton
 } from "./view-settings.styles";
 
 import {
@@ -33,6 +35,11 @@ const ViewSettings = (props) => {
     const { viewScale } = state
 
     const [openSettings,setOpenSettings] = useState(false)
+
+    const {
+      about,
+      setAbout
+    } = useContext(ViewContext)
 
     return (
         <ViewSettingsPanel>
@@ -68,6 +75,13 @@ const ViewSettings = (props) => {
         <Zoom style={{right:'145px'}}>
           {downArrow()}
         </Zoom> */}
+
+        {/* --- OPEN ABOUT PAGE --- */}
+        <AboutButton
+          onClick={() => setAbout(!about)}
+        >
+          about
+        </AboutButton>
 
 
 
