@@ -1,7 +1,6 @@
 import { backButton } from "../SVG";
 import { useEffect,useContext } from "react";
-import { numdata } from "../KeyPad/NumberPad/nums.data";
-import { BaseButton,KeyBox,TinyButton } from "../KeyPad/keypad.styles";
+import { BaseButton,KeyBox,TinyButton,LargeButton,AllClearButton } from "../KeyPad/keypad.styles";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
 import { ViewContext } from "../../Context/view.context";
@@ -18,7 +17,7 @@ const UnitsKeys = (props) => {
         setState,
     } = props
 
-    const {mathFunc,unitType} = state
+    const {unitType} = state
 
     const {
         setDisplayKeymap,
@@ -34,68 +33,30 @@ const UnitsKeys = (props) => {
         })
     },[])
 
-    const setItems = (e,val) => {
-
-        const mathArr = mathFunc.split('')
-        const findDecimalPoint = mathArr.filter(el => {return (el === '.')}) // -- Can't add more than one decimal point
-
-        const newCharacter = () => {            
-            const previous = mathArr.splice(0,mathArr.length-1,1).join('')
-
-            return (val.split('').length === 0 ? previous : mathFunc+val)
-        }
-
-        e.preventDefault()
-
-        if (val != findDecimalPoint[0]) {
-            setState({
-                ...state,
-                mathFunc:newCharacter()
-            })
-        }
-        
-    }
-
-    const pasteFromClipboard = () => {
-        // console.log('paste from clipboard',navigator.clipboard)
+    const pasteFromClipboard = (e) => {
         
         navigator.clipboard.readText()
-        
         .then(text => {
                 // --- verify that copied items are integers or floats in string format --- //
-                // console.log('it is a string',text)
                 try {
                     if (typeof(text) === 'string') {
-                        setState({
-                            ...state,
-                            mathFunc:text
-                        })
-                    }
+                        
+                            if (text.split('').length <= 30) {
+                                setState({
+                                    ...state,
+                                    mathFunc:text
+                                })
+                            
+                        } else {execute(e,'alert','The value you entered is too long. Enter a value that is less than 30 charecters long')}
+                    } else {execute(e,'alert','Invalid input type for this calculation')}
                 } catch (error) {
                     console.log(error)
                 }
-                // console.log('Pasted content: ', text);
             })
             .catch(err => {
-                console.error('Failed to read clipboard contents: ', err);
+                execute(e,'alert','Failed to read clipboard contents: '+ err);
             });
     }
-
-    const mappedNumberKeys = numdata.map((el,i) => {
-
-        const display = (el.svg ? (el.svg) : (el.val))
-        return (
-            !el.operator && 
-            <BaseButton
-                key={i}
-                style={el.style}
-                onClick={(e) => setItems(e,el.val)}
-            >
-                <strong>{display}</strong>
-                <p>{el.val}</p>
-            </BaseButton>
-        )
-    })
 
     return (
         <KeyBox displayKeymap={displayKeymap}>
@@ -157,12 +118,19 @@ const UnitsKeys = (props) => {
                 <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
             </BaseButton>
 
-            <TinyButton
-                style={{left:'0px',bottom:`-190px`,zIndex:'0'}}
-                onClick={(e) => pasteFromClipboard()}
+            <BaseButton
+                style={{left:'160px',bottom:`-195px`,zIndex:'0'}}
+                onClick={(e) => pasteFromClipboard(e)}
             >
                 <strong>paste</strong>
-            </TinyButton>
+            </BaseButton>
+
+            <AllClearButton
+                style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
+                onClick={(e) => execute(e,'mathFunc','')}
+            >
+                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
+            </AllClearButton>
 
         </KeyBox>
     )
