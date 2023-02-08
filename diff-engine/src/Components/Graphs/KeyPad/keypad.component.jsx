@@ -3,6 +3,7 @@ import { MathComponent } from "mathjax-react";
 import { Book,CalculatorIcon,CogWheel,beaker } from "../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
+import Button from "./Button";
 
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
@@ -24,7 +25,9 @@ const KeyPad = (props) => {
         setCurrentView,
         setDisplayKeymap,
         displayKeymap,
-        setInformation
+        setInformation,
+
+        darkmode,
     } = useContext(ViewContext)
 
     const {
@@ -37,7 +40,10 @@ const KeyPad = (props) => {
     const { mathFunc,degrees } = state 
 
     return (
-        <KeyBox displayKeymap={displayKeymap}>
+        <KeyBox
+            displayKeymap={displayKeymap}
+            darkmode={darkmode}
+        >
 
             {/* <Hover /> */}
 
@@ -45,6 +51,7 @@ const KeyPad = (props) => {
                 state={state}
                 style={{position:'absolute',right:`${10}px`}}
                 onClick={() => setCurrentView('gaus')}
+                darkmode={darkmode}
             >
                 <div style={{fontSize:'32px'}}>
                     <InlineMath math={`\\mu`} />
@@ -55,6 +62,7 @@ const KeyPad = (props) => {
             <BaseButton
                 style={{position:'absolute',right:`${90}px`,zIndex:'2'}}
                 onClick={() => setCurrentView('unit_circle')}
+                darkmode={darkmode}
             >
                 <div style={{fontSize:'22px'}}>
                     <InlineMath math={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`} />
@@ -66,6 +74,7 @@ const KeyPad = (props) => {
             <BaseButton
                 style={{right:`${170}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('standard')}
+                darkmode={darkmode}
             >
                 {CalculatorIcon()}
                 <p>Standard calculator</p>
@@ -75,6 +84,7 @@ const KeyPad = (props) => {
             <BaseButton
                 style={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('fracs')}
+                darkmode={darkmode}
             >
                 <div style={{fontWeight:'600',fontSize:'42px'}}>
                     <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
@@ -85,6 +95,7 @@ const KeyPad = (props) => {
             <BaseButton
                 style={{right:'170px',top:`${vp}px`,fontSize:'10px'}}
                 onClick={() => setCurrentView('parabolas')}
+                darkmode={darkmode}
             >
                 <div style={{fontWeight:'600',fontSize:'32px'}}>
                     <InlineMath math={`\ax^2`} />
@@ -95,6 +106,7 @@ const KeyPad = (props) => {
             <BaseButton
                 style={{right:'10px',top:`${vp}px`,zIndex:'1'}}
                 onClick={() => setCurrentView('gear_calculator')}
+                darkmode={darkmode}
             >
                 {CogWheel()}
                 <p>Gear calculator</p>
@@ -103,6 +115,7 @@ const KeyPad = (props) => {
             <BaseButton
                 onClick={(e) => setInformation('trig')}
                 style={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
+                darkmode={darkmode}
             >
                 {Book()}
                 <p>Documentation and resources</p>
@@ -110,7 +123,8 @@ const KeyPad = (props) => {
 
             <BaseButton
                 style={{right:'170px',top:`${vp*2}px`}}
-                onClick={(e) => setDisplayKeymap(true)}
+                onClick={() => setDisplayKeymap(true)}
+                darkmode={darkmode}
             >
                 <strong style={{fontWeight:'600',fontSize:'32px'}}>
                     ?
@@ -118,6 +132,7 @@ const KeyPad = (props) => {
             </BaseButton>
 
             <BaseButton
+            darkmode={darkmode}
                 onClick={() => setCurrentView('unit_converter')}
                 style={{right:'90px',top:'160px'}}
             >
@@ -128,18 +143,44 @@ const KeyPad = (props) => {
             <LargeButton
                 style={{left:'0px',width:'125px',zIndex:'1'}}
                 onClick={() => linearVector(mathFunc)}
+                darkmode={darkmode}
             >
                 <i style={LGbtnLabel}>cartesian</i>
                 <p>Execute cartesian coordinates</p>
             </LargeButton>
 
             <LargeButton
+                darkmode={darkmode}
                 style={{top:'80px',left:'0px',zIndex:'0',width:'125px'}}
                 onClick={() => polarVector(mathFunc)}
             >
                 <i style={LGbtnLabel}>polar</i>
                 <p>Execute polar coordinates</p>
             </LargeButton>
+
+            {/* <Button
+                styles={{bottom:'-140px',left:'200px'}}
+                buttonClass={'large'}
+                buttonType={'image'}
+                text={`\\frac{${'a'} }{${'b'}}`}
+                p={'This is the text box that should be displayed'}
+            />
+
+            <Button
+                styles={{bottom:'-140px',right:'0px'}}
+                buttonType={'textage'}
+                text={`\\frac{${'a'} }{${'b'}}`}
+                p={'This is the text box that should be displayed'}
+            />
+
+            <Button
+                onClick={(e) => execute(e,'mathFunc','3')}
+                styles={{bottom:'-140px',right:'80px'}}
+                buttonClass={'tiny'}
+                buttonType={'textage'}
+                text={'3'}
+                p={'This is the text box that should be displayed'}
+            /> */}
 
         </KeyBox>
     )

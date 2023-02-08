@@ -1,7 +1,19 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../global.styles";
 
-const { paper,light } = backgroundColors
+// const { paper,light } = backgroundColors
+
+const {
+    paper,
+
+    light,
+    midLight,
+    darkLight,
+
+    lightDark,
+    midDark,
+    dark
+} = backgroundColors
 
 const keyMapOverlay = css`
     button {
@@ -30,7 +42,6 @@ const keyMapOverlay = css`
     }
 `
 
-// --- For displaying information about keys --- //
 export const KeyBox = styled.div`
     ${({displayKeymap}) => displayKeymap && keyMapOverlay}
     position: relative;
@@ -53,7 +64,8 @@ export const Param = styled.div`
 `
 
 export const BaseInput = styled.input`
-    background-color:${paper};
+    background-color:${({darkmode}) => darkmode ? lightDark : paper};
+    color:${({darkmode}) => darkmode ? '#fff' : '#555'};
     position:relative;
     border:none;
     font-size:40px;
@@ -79,8 +91,12 @@ export const BaseButton = styled.button`
     overflow:hidden;
     z-index:0;
     border: 1px solid #c4c4c4;
-    background-color:#DADDE2;
-    color: #333;
+    // background-color:#DADDE2;
+    // color: #333;
+    
+    background-color:${({darkmode}) => darkmode ? lightDark : midLight};
+    color:${({darkmode}) => darkmode ? '#fff' : '#333'};
+
     background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
     text-shadow: 0 1px rgba(255,255,255,.4);
@@ -98,11 +114,19 @@ export const BaseButton = styled.button`
         font-weight:800;
     }
 
+    // i {font-size:1px;}
+
     &:hover {
         overflow:visible;
         z-index:1;
         box-shadow: inset 0 0 5px #555;
     }
+`
+
+export const Buttoni = styled.i`
+    font-size:1px;
+    letter-spacing:2px;
+    font-weight:600;
 `
 
 export const EqualButton = styled(BaseButton)`

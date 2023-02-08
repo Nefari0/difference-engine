@@ -1,3 +1,5 @@
+import { ViewContext } from "../../../Context/view.context";
+import { useContext } from "react";
 import { BaseButton, } from "../keypad.styles";
 import { OperatorPad } from "./nums.styles";
 import { numdata } from "./nums.data";
@@ -6,6 +8,8 @@ import { opsdata } from "./operators.data";
 export const Operators = ({styles,state,setState}) => {
 
     const {mathFunc} = state
+
+    const {darkmode} = useContext(ViewContext)
 
     const setItems = (e,val) => {
 
@@ -46,6 +50,7 @@ export const Operators = ({styles,state,setState}) => {
                 key={el.val}
                 onClick={(e) => setItems(e,el.val)}
                 style={el.style}
+                darkmode={darkmode}
             >
                 <strong>{display}</strong>
             </BaseButton>

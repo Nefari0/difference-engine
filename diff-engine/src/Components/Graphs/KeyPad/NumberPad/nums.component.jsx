@@ -1,3 +1,5 @@
+import { ViewContext } from "../../../Context/view.context";
+import { useContext } from "react";
 import { BaseButton, } from "../keypad.styles";
 import { NumPad } from "./nums.styles";
 import { numdata } from "./nums.data";
@@ -5,6 +7,8 @@ import { numdata } from "./nums.data";
 export const NumberPad = ({styles,state,setState}) => {
 
     const {mathFunc} = state
+
+    const {darkmode} = useContext(ViewContext)
 
     const setItems = (e,val) => {
 
@@ -31,6 +35,7 @@ export const NumberPad = ({styles,state,setState}) => {
                 key={el.val}
                 onClick={(e) => setItems(e,el.val)}
                 style={el.style}
+                darkmode={darkmode}
             >
                 <strong>{display}</strong>
             </BaseButton>
@@ -39,7 +44,10 @@ export const NumberPad = ({styles,state,setState}) => {
 
     return (
 
-        <NumPad style={styles}>
+        <NumPad
+            // darkmode={darkmode}
+            style={styles}
+        >
             {mappedKeys}
         </NumPad>
     )
