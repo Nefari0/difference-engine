@@ -28,9 +28,10 @@ import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
 import AboutPage from "./Informaton/About/about.component";
+import Button from "./KeyPad/Button";
 
 // Input
-import { BaseButton, TinyButton } from "./KeyPad/keypad.styles";
+import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
 import { CopyIcon } from "./SVG";
 
 import {
@@ -375,6 +376,7 @@ export default function Graph() {
       <ViewSettings
         // changeSize={changeSize}
         // resetSize={resetSize}
+        darkmode={darkmode}
         state={state}
         execute={execute}
       />
@@ -442,8 +444,6 @@ export default function Graph() {
               onClick={() => copy()}
             >
                 {CopyIcon()}
-              <div>
-              </div>
                 {/* copy coordinates */}
             </BaseButton>
           }
@@ -486,6 +486,7 @@ export default function Graph() {
 
       {/* MAIN USER INPUT */}
       {displayInput && <DisplayScreen
+        darkmode={darkmode}
         type='text'
         onChange={inputHandler}
         value={mathFunc}
@@ -569,6 +570,8 @@ export default function Graph() {
           execute={execute}
           calculate={calculate}
         />}
+
+        {/* <Button text={'text'} buttonType={'large'} /> */}
 
         {/* <TinyButton
           style={{bottom:'0px'}}

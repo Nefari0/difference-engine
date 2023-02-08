@@ -1,8 +1,19 @@
 import styled, {css} from "styled-components";
-import { TinyButton } from "./KeyPad/keypad.styles";
 import { backgroundColors,widthParameters } from "./global.styles";
 
-const { dark,light,paper } = backgroundColors
+// const { dark,light,paper } = backgroundColors
+const {
+    paper,
+
+    light,
+    midLight,
+    darkLight,
+
+    lightDark,
+    midDark,
+    dark
+} = backgroundColors
+
 const {
     enclosurePadding,
     enclosureHeight,
@@ -38,7 +49,6 @@ const largeEnclosure = css`
     ${transformation}
 `
 
-
 export const Enclosure = styled.main`
     position:absolute;
     height:${enclosureHeight}px;
@@ -48,7 +58,8 @@ export const Enclosure = styled.main`
     box-shadow: 0px 5px 20px -7px #000000;
     display:flex;
     flex-direction:column;
-    background-color:#B1BDC5;
+    // background-color:#B1BDC5;
+    background-color:${({darkmode}) => darkmode ? midDark : darkLight};
 
     // top:${({viewScale}) => (parseInt(100*viewScale) !== 50 ? (-1*100%parseInt(viewScale*100)*9)/2 : (-220))}px;
 
