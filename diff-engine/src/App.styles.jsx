@@ -3,7 +3,12 @@ import styled from "styled-components";
 
 const {
     light,
-    dark
+    // midLight,
+    // darkLight,
+
+    lightDark,
+    // midDark,
+    // dark
 } = backgroundColors
 
 export const Header = styled.header`
@@ -61,7 +66,7 @@ export const AppContainer = styled.main`
     min-height:100vh;
     display:flex;
     flex-direction:column;
-    background-color:${({darkmode}) => darkmode ? dark : light};
+    background-color:${({darkmode}) => darkmode ? lightDark : light};
 `
 
 export const Adapter = styled.section`

@@ -5,8 +5,6 @@ export const Zoom = styled(TinyButton)`
     right:20px;
     width:30px;
     height:30px;
-    // top:-40px;
-    opacity:.4;
     zIndex:2;
 
     // @media (max-width:620px) {display:none;}
@@ -46,5 +44,4 @@ export const ViewSettingsPanel = styled.div`
     width:100%;
     right:0px;
     height:30px;
-    background-color:#fff;
 `

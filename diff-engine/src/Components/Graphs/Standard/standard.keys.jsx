@@ -20,7 +20,10 @@ const StandardKeys = (props) => {
 
     const { mathFunc } = state
 
-    const {setInformation} = useContext(ViewContext)
+    const {
+        setInformation,
+        darkmode
+    } = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -51,6 +54,7 @@ const StandardKeys = (props) => {
             <BaseButton
                 onClick={(e) => close(e)}
                 style={{opacity:'1',right:'0px',top:'80px'}}
+                darkmode={darkmode}
             >
                 {backButton()}
             </BaseButton>
@@ -58,6 +62,7 @@ const StandardKeys = (props) => {
             <BaseButton
                 onClick={(e) => setInformation('arith')}
                 style={{right:'0px'}}
+                darkmode={darkmode}
             >
                 {Book()}
             </BaseButton>
