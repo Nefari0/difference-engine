@@ -7,11 +7,15 @@ import { useContext } from 'react';
 
 function App() {
 
-  const { setCurrentView } = useContext(ViewContext)
+  const { 
+    setCurrentView,
+
+    darkmode,setDarkMode
+  } = useContext(ViewContext)
 
   return (
-    <AppContainer>
-      <Header>
+    <AppContainer darkmode={darkmode}>
+      <Header darkmode={darkmode}>
         <Nav />
         <h1 onClick={() => setCurrentView(null)}>The Difference Engine</h1>
         {/* <ImageContainer><img src={pic} /></ImageContainer> */}

@@ -1,6 +1,13 @@
+import { backgroundColors } from "./Components/Graphs/global.styles";
 import styled from "styled-components";
 
+const {
+    light,
+    dark
+} = backgroundColors
+
 export const Header = styled.header`
+    background-color:${light};
     width:100vw;
     height:80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
@@ -54,6 +61,7 @@ export const AppContainer = styled.main`
     min-height:100vh;
     display:flex;
     flex-direction:column;
+    background-color:${({darkmode}) => darkmode ? dark : light};
 `
 
 export const Adapter = styled.section`

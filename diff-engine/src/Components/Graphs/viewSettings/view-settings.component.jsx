@@ -8,7 +8,8 @@ import {
   ResetViewButton,
   ArrowButton,
   Zoom,
-  AboutButton
+  AboutButton,
+  DarkmodeButton
 } from "./view-settings.styles";
 
 import {
@@ -37,8 +38,9 @@ const ViewSettings = (props) => {
     const [openSettings,setOpenSettings] = useState(false)
 
     const {
-      about,
-      setAbout
+      about,setAbout,
+
+      darkmode,setDarkMode
     } = useContext(ViewContext)
 
     return (
@@ -63,6 +65,12 @@ const ViewSettings = (props) => {
         >
           reset
         </ResetViewButton>
+
+        <DarkmodeButton
+          onClick={() => setDarkMode(!darkmode)}
+        >
+          {!darkmode ? 'dark mode' : 'light mode'}
+        </DarkmodeButton>
 
         {/* --- VERTICAL ADJUSTMENTS --- */}
         {/* <Zoom

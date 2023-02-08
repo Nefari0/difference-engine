@@ -21,7 +21,7 @@ export const ZoomOutButton = styled(Zoom)`
 `
 
 export const ArrowButton = styled(Zoom)`
-right:105px;
+    right:105px;
 `
 
 export const ResetViewButton = styled(ZoomOutButton)`
@@ -31,6 +31,11 @@ export const ResetViewButton = styled(ZoomOutButton)`
 
 export const AboutButton = styled(Zoom)`
     left:0%;
+    width:100px;
+`
+
+export const DarkmodeButton = styled(Zoom)`
+    right:205px;
     width:100px;
 `
 
