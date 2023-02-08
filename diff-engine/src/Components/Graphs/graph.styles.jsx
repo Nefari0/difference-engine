@@ -20,8 +20,6 @@ const {
 
 // original scale sizes: .5, .7, 1
 
-
-
 const transformation = css`
     transform: scale(${({viewScale}) => viewScale});
 `
