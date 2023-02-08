@@ -1,7 +1,7 @@
 import { backButton } from "../SVG";
 import { useEffect,useContext } from "react";
 import { numdata } from "../KeyPad/NumberPad/nums.data";
-import { BaseButton,KeyBox } from "../KeyPad/keypad.styles";
+import { BaseButton,KeyBox,TinyButton } from "../KeyPad/keypad.styles";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
 import { ViewContext } from "../../Context/view.context";
@@ -54,6 +54,31 @@ const UnitsKeys = (props) => {
             })
         }
         
+    }
+
+    const pasteFromClipboard = () => {
+        // console.log('paste from clipboard',navigator.clipboard)
+        
+        navigator.clipboard.readText()
+        
+        .then(text => {
+                // --- verify that copied items are integers or floats in string format --- //
+                // console.log('it is a string',text)
+                try {
+                    if (typeof(text) === 'string') {
+                        setState({
+                            ...state,
+                            mathFunc:text
+                        })
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+                // console.log('Pasted content: ', text);
+            })
+            .catch(err => {
+                console.error('Failed to read clipboard contents: ', err);
+            });
     }
 
     const mappedNumberKeys = numdata.map((el,i) => {
@@ -131,6 +156,13 @@ const UnitsKeys = (props) => {
             >
                 <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
             </BaseButton>
+
+            <TinyButton
+                style={{left:'0px',bottom:`-190px`,zIndex:'0'}}
+                onClick={(e) => pasteFromClipboard()}
+            >
+                <strong>paste</strong>
+            </TinyButton>
 
         </KeyBox>
     )
