@@ -3,6 +3,7 @@ import { useEffect,useContext } from "react";
 import { KeyBox,ParamInput,Param,BaseButton } from "../../../KeyPad/keypad.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
+import Button from "../../../KeyPad/Button";
 
 const backB = {
     right:'15px',
@@ -93,47 +94,41 @@ const UnitCircle = (props) => {
             />
             </Param>}
 
-            <BaseButton
-                style={backB}
+            <Button
+                styles={backB}
                 onClick={(e) => close(e)}
-            >
-                {backButton()}
-            </BaseButton>
+                text={backButton()}
+            />
 
-            <BaseButton
+            <Button
                 onClick={(e) => execute(e,'showDegrees',true)}
                 style={degB}
-            >
-                degrees
-            </BaseButton>
+                text={'deg'}
+            />
 
-            <BaseButton
+            <Button
                 onClick={(e) => execute(e,'showDegrees',false)}
                 style={radB}
-            >
-                radians
-            </BaseButton>
+                text={'rad'}
+            />
             
-            <BaseButton
+            <Button
                 onClick={(e) => setInformation('trig')}
                 style={infoB}
-            >
-                {Book()}
-            </BaseButton>
+                text={Book()}
+            />
 
-            <BaseButton
+            <Button
                 onClick={(e) => execute(e,'showUnitCircleAngles',!state.showUnitCircleAngles)}
                 style={toggleUnitCircle}
-            >
-                angles
-            </BaseButton>
+                text={'unit circle'}
+            />
             
-            <BaseButton
+            <Button
                 style={copyButton}
                 onClick={() => copyVal()}
-            >
-                {!showDegrees ? 'copy degrees':'copy radians'}
-            </BaseButton>
+                text={!showDegrees ? 'copy degrees':'copy radians'}
+            />
 
         </KeyBox>
     )
