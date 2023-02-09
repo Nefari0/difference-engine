@@ -1,7 +1,11 @@
+import { useContext } from "react"
+import { ViewContext } from "../../../../Context/view.context"
+
 import { AngleLine } from "./unitcircle.styles"
 import { ThetaOrigin } from "../AngleConversion/display.styles"
 import { Degrees,Radiis,SinCosCoords } from "./unitcircle.styles"
 import { MathComponent } from "mathjax-react"
+
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -20,6 +24,8 @@ const Rotations = ({items}) => {
         transform: `rotate(${-parseInt(degrees)}deg)`
     }
 
+    const { darkmode } = useContext(ViewContext)
+
     // for testing 
     const piFormat = `\\frac{\\pi}{2}`
     const cosFormat = `\\frac{\\sqrt{3}}{2}`
@@ -34,10 +40,20 @@ const Rotations = ({items}) => {
 
     return (
             <ThetaOrigin style={tOrigin}>
-                <AngleLine>
+                <AngleLine darkmode={darkmode} >
                     {/* <Degrees degrees={degrees}>{degrees}deg</Degrees> */}
-                    <Degrees degrees={degrees}><InlineMath math={degs} /></Degrees>
-                    <Radiis degrees={degrees}>
+
+                    <Degrees
+                        darkmode={darkmode}
+                        degrees={degrees}
+                    >
+                        <InlineMath math={degs} />
+                    </Degrees>
+
+                    <Radiis
+                        degrees={degrees}
+                        darkmode={darkmode}
+                    >
                         <InlineMath math={rads} />
                     </Radiis>
                     <SinCosCoords degrees={degrees}>

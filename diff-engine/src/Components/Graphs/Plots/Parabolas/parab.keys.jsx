@@ -2,11 +2,15 @@ import { useState,useEffect,useContext } from "react";
 import { KeyBox,Param,ParamInput,BaseButton,LargeButton } from "../../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../../SVG";
 
+import { ViewContext } from "../../../Context/view.context";
+
 const backB = {
     right:'0px'
 }
 
 const ParabKeys = (props) => {
+
+    const { darkmode } = useContext(ViewContext)
 
     const {
         state,
@@ -55,9 +59,9 @@ const ParabKeys = (props) => {
     }
 
     return (
-        <KeyBox>
+        <KeyBox style={{color:`${darkmode ? '#fff':'black'}`}}>
             <Param>
-                <i>a</i>
+                <i style={{marginRight:'6px'}}>a</i>
                 <ParamInput
                     type="text"
                     onChange={localInput}
@@ -67,7 +71,7 @@ const ParabKeys = (props) => {
             </Param>
 
             <Param style={{top:'60px'}}>
-                <i>h</i>
+                <i style={{marginRight:'6px'}}>h</i>
                 <ParamInput
                     type="text"
                     onChange={localInput}
@@ -77,7 +81,7 @@ const ParabKeys = (props) => {
             </Param>
 
             <Param style={{top:'120px'}}>
-                <i>k</i>
+                <i style={{marginRight:'6px'}}>k</i>
                 <ParamInput
                     type="text"
                     onChange={localInput}

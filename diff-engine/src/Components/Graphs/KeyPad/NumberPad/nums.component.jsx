@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { BaseButton, } from "../keypad.styles";
 import { NumPad } from "./nums.styles";
 import { numdata } from "./nums.data";
+import Button from "../Button";
 
 export const NumberPad = ({styles,state,setState}) => {
 
@@ -31,14 +32,20 @@ export const NumberPad = ({styles,state,setState}) => {
         const display = (el.svg ? (el.svg) : (el.val))
 
         return (
-            <BaseButton
+            <Button
                 key={el.val}
                 onClick={(e) => setItems(e,el.val)}
-                style={el.style}
-                darkmode={darkmode}
-            >
-                <strong>{display}</strong>
-            </BaseButton>
+                styles={el.style}
+                text={display}
+            />
+            // <BaseButton
+            //     key={el.val}
+            //     onClick={(e) => setItems(e,el.val)}
+            //     style={el.style}
+            //     darkmode={darkmode}
+            // >
+            //     <strong>{display}</strong>
+            // </BaseButton>
         )
     })
 

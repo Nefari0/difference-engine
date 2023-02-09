@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { ViewContext } from "../../../../Context/view.context"
 import { TheCircle, Theta, ThetaOrigin } from "./display.styles"
 import { TrigFunctions } from "./TrigFunctions/functions.component"
 import RationalRads from "./RadianDisplay/rads.component"
@@ -10,6 +12,7 @@ const UnitCircleDisplay = (props) => {
 
     const { state,vectorMap } = props
     const { degrees,showDegrees,radians,polarVector,arc } = state
+    const { darkmode } = useContext(ViewContext)
 
     const returnDegrees = () => { // Display angle line in degrees or radians
         return (showDegrees ? degrees : radians * (180/Math.PI))
@@ -48,14 +51,20 @@ const UnitCircleDisplay = (props) => {
     }
 
     return (
-        <ThetaOrigin style={tOrigin}>
+        <ThetaOrigin
+            style={tOrigin}
+        >
             <TrigFunctions
+                darkmode={darkmode}
                 showDegrees={showDegrees}
                 radians={radians}
                 degrees={degrees}
             />
 
-            <TheCircle theta={returnDegrees()}>
+            <TheCircle
+                theta={returnDegrees()}
+                darkmode={darkmode}
+            >
             <RationalRads
                 style={rads_degs}
                 degreeVal={degreeVal}
@@ -64,7 +73,10 @@ const UnitCircleDisplay = (props) => {
                 degrees={degrees}
                 showDegrees={showDegrees}
             />
-                <Theta style={{left:'200px',top:'196px'}}>
+                <Theta
+                    darkmode={darkmode}
+                    style={{left:'200px',top:'196px'}}
+                >
 
                     {/* <ValueDisplay style={deg}>
                         <MathComponent tex={String.raw`${degreeVal()}`} />

@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ViewContext } from "../../Context/view.context";
+
 import { UnitsDisplay,UnitsDisplayContainer } from "./unit.styles";
 import LengthDisplay from "./Length/lengths.display";
 import MassDisplay from "./Mass/mass.display";
@@ -5,6 +8,8 @@ import MassDisplay from "./Mass/mass.display";
 const Units = ({state,setState}) => {
 
     const { mathFunc,units,unitType } = state
+
+    const { darkmode } = useContext(ViewContext)
 
     const copy = (value) => {
         if (isNumber(value) != 'input a number') {navigator.clipboard.writeText(value)
@@ -17,10 +22,14 @@ const Units = ({state,setState}) => {
     const isNumber = (param) => {return (param != 'NaN' ? param : 'input a number')}
 
     return(
-        <UnitsDisplayContainer>
+        <UnitsDisplayContainer
+            darkmode={darkmode}
+        >
             <h1>Unit Converter:{unitType}</h1>
             <h4>input value:{mathFunc} {units}</h4>
-            <UnitsDisplay>
+            <UnitsDisplay
+                darkmode={darkmode}
+            >
                 <thead>
                     <tr>
                         <th>value</th>

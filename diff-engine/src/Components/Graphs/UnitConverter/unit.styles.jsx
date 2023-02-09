@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+import { backgroundColors } from "../global.styles";
+
+const { dark,light,paper } = backgroundColors
+
 export const UnitsDisplayContainer = styled.section`
     position:absolute;
     min-height:400px;
     bottom:10px;
     left:0px;
     width:500px;
-    background-color:#fff;
+    // background-color:#fff;
+    background-color:${({darkmode}) => darkmode ? dark:'#fff'};
+    color:${({darkmode}) => !darkmode ? '#555':'#fff'};
     z-index:1;
     border-radius:10px;
     
@@ -41,7 +47,9 @@ export const UnitsDisplay = styled.table`
     }
 
     th, td {
-        border:1px solid black;
+        // border:1px solid black;
+        border:1px solid ${({darkmode}) => darkmode ? 'white' : 'black'};
+        
     }
 
     td:first-of-type {

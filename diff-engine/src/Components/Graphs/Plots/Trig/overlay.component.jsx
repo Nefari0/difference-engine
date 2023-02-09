@@ -1,3 +1,6 @@
+import { useContext } from "react"
+import { ViewContext } from "../../../Context/view.context"
+
 import { CircleOverlay, Crosshair } from "./overlay.styles"
 import Rotations from "./UnitCircle/unitcircle.component"
 import {angleData} from './angle.data'
@@ -11,6 +14,8 @@ const tOrigin = {
 
 const CircleGraph = ({showUnitCircleAngles}) => {
 
+    const { darkmode } = useContext(ViewContext)
+
     const mappedAngles = angleData.map(el => {
         return <Rotations key={el.degrees} items={el} />
     })
@@ -21,7 +26,9 @@ const CircleGraph = ({showUnitCircleAngles}) => {
     const bottom = {bottom:'-35px',left:'190px'}
 
     return (
-        <CircleOverlay>
+        <CircleOverlay
+            darkmode={darkmode}
+        >
             {/* VERTICAL */}
             <i style={top}>(0,1)</i>
             <Crosshair rotation={0}></Crosshair>

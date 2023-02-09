@@ -1,4 +1,17 @@
 import styled from "styled-components";
+import { backgroundColors } from "../global.styles";
+
+const {
+    paper,
+
+    light,
+    midLight,
+    darkLight,
+
+    lightDark,
+    midDark,
+    dark
+} = backgroundColors
 
 export const Standard = styled.div`
     position:absolute;
@@ -6,7 +19,8 @@ export const Standard = styled.div`
     bottom:40px;
     width:90%;
     height:10%;
-    background-color:#fff;
+    background-color:${({darkmode}) =>darkmode ? dark : paper};
+    color:${({darkmode}) => darkmode ? '#fff' : '#333'};
     z-index:1;
     border: solid 1px;
     border-radius:5px;

@@ -1,10 +1,24 @@
 import styled, { css } from "styled-components";
+import { backgroundColors } from "../../../global.styles";
+
+const {
+    paper,
+
+    light,
+    midLight,
+    darkLight,
+
+    lightDark,
+    midDark,
+    dark
+} = backgroundColors
 
 export const TheCircle = styled.div`
     position:absolute;
     width:400px;
     height:400px;
-    border: solid 1px #555;
+    // border: solid 1px #555;
+    border:solid 1px ${({darkmode}) => darkmode ? '#fff' : '#333'};
     border-radius:50%;
     left:-202px;
     top:-226px;
@@ -26,7 +40,8 @@ export const Theta = styled.span`
     top:200px;
     width:200px;
     height:4px;
-    background-color:black;
+    // background-color:black;
+    background-color: ${({darkmode}) => darkmode ? darkLight : 'black'}
 `
 
 // export const ValueDisplay = styled.div`
@@ -85,6 +100,7 @@ export const CosPointer = styled.span`
 
 export const SinPointer = styled.span`
     position:absolute;
+    // color:blue;
     height:2px;
     width:${({radians}) => Math.abs(200*Math.cos(radians))}px;
     z-index:1000;

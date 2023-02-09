@@ -27,7 +27,7 @@ const Gaussian = (props) => {
     } = props
     const [h,setH] = useState(.999)
 
-    const {setCurrentView} = useContext(ViewContext)
+    const {darkmode} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -38,7 +38,7 @@ const Gaussian = (props) => {
     },[])
 
     return (
-        <KeyBox>
+        <KeyBox style={{color:`${darkmode ? '#fff':'black'}`}}>
             <Param>
                 <i>h = </i>
                 <ParamInput

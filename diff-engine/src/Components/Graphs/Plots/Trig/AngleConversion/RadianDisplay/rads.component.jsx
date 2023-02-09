@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ViewContext } from "../../../../../Context/view.context";
+
 import { MathComponent,Node } from "mathjax-react"
 import { RadianContainer } from "./rads.styles";
 import {
@@ -14,6 +17,7 @@ const RationalRads = (props) => {
 
     const { degrees,radians,showDegrees,radianVal,degreeVal,style } = props
     const pi = Math.PI
+    const { darkmode } = useContext(ViewContext)
 
     // --- THESE ARE VALUES FROM UNIT CIRCLE FOR TESTING --- //
     // const angle = 3*(Math.PI/4).toFixed(2) // Should equal 2.36...
@@ -78,7 +82,10 @@ const RationalRads = (props) => {
     }
 
     return (
-        <RadianContainer style={style}>
+        <RadianContainer
+            style={style}
+            darkmode={darkmode}
+        >
 
             <div style={degDisplay}>
                 <InlineMath math={degreeVal()} />

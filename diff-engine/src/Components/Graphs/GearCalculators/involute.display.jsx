@@ -1,3 +1,8 @@
+import { useContext } from "react"
+import { ViewContext } from "../../Context/view.context"
+import { backgroundColors } from "../global.styles"
+
+
 import { 
     CogOrigin,
     CogContainer,
@@ -5,10 +10,13 @@ import {
     TipCircle
 } from "./involute.styles"
 
+const { paper,dark } = backgroundColors
 
 const CogDisplay = ({state}) => {
 
     const { refRadius,involute,mathFunc } = state
+
+    const { darkmode } = useContext(ViewContext)
 
     const mappedGears = involute.map((el,i) => {
           var locations = {
@@ -28,7 +36,7 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
-            <h1 style={{fontSize:'30px',backgroundColor:'white'}}>Involute gear calculator</h1>
+            <h1 style={{fontSize:'30px',backgroundColor:`${darkmode?dark:paper}`,color:`${!darkmode?dark:paper}`}}>Involute gear calculator</h1>
             <a
                 href="https://www.blender.org/"
                 target="_blank"

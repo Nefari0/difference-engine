@@ -2,7 +2,7 @@ import { TrigFunctionDisplay } from "./function.styles";
 
 export const TrigFunctions = (props) => {
 
-    const { degrees,showDegrees,radians } = props
+    const { degrees,showDegrees,radians,darkmode } = props
 
     const getTan = () => {
         return (showDegrees ? `${Math.tan(degrees).toFixed(2)}` : `${Math.tan(radians).toFixed(2)}`)
@@ -13,7 +13,7 @@ export const TrigFunctions = (props) => {
     const getSin = () => {return ( showDegrees ? `${Math.sin(degrees).toFixed(2)}` : `${Math.sin(radians).toFixed(2)}`)}
 
     return (
-        <TrigFunctionDisplay>
+        <TrigFunctionDisplay darkmode={darkmode}>
             <li><i>sin {getSin()}</i></li>
             <li><i>cos {getCos()}</i></li>
             <li><i>tan {getTan()}</i></li>

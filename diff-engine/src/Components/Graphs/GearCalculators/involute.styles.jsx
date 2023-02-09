@@ -36,6 +36,8 @@ export const CogContainer = styled.div`
         font-family: 'Silkscreen', cursive;
         font-weight:400;
     }
+
+    a {color:blue;}
 `
 
 export const ReferenceCircle = styled.div`

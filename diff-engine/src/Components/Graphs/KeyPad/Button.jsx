@@ -43,7 +43,6 @@ const getButtonType = (buttonType = BUTTON_TYPE.textage) =>
     }[buttonType])
 
 const Button = ({ text, buttonType, buttonClass, styles, p, ...otherProps }) => {
-    console.log('here are the otherProps',otherProps)
     const CustomButton = getButtonClass(buttonClass);
     const ButtonType = getButtonType(buttonType)
     const { darkmode } = useContext(ViewContext)

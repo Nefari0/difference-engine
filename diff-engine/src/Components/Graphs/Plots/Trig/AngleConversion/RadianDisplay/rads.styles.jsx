@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { backgroundColors } from "../../../../global.styles";
+
+const {dark,paper} = backgroundColors
 
 export const RadianContainer = styled.div`
     position:absolute;
@@ -7,4 +10,6 @@ export const RadianContainer = styled.div`
     // background-color:blue;
     // border: solid;
     // color:white;
+    // background-color:${({darkmode}) => darkmode ? dark:paper};
+    color:${({darkmode}) => darkmode ? paper:'black'};
 `

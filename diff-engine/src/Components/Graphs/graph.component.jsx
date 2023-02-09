@@ -291,7 +291,7 @@ export default function Graph() {
         bottom: `${yAspect*el[1]}px`,
         left: `${xAspect*el[0]}px`,
         borderRadius: "50%",
-        backgroundColor: `red`,
+        backgroundColor: `${darkmode ? 'white' : 'red'}`,
         position: "absolute",
         transition: "all 1000ms",
         width: "2px",

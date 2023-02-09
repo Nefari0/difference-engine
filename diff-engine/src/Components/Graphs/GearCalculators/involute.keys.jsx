@@ -17,7 +17,7 @@ const CogKeys = (props) => {
 
     const { mathFunc,refRadius,uMax } = state
 
-    const {setCurrentView} = useContext(ViewContext)
+    const {darkmode} = useContext(ViewContext)
 
     useEffect(() => {
         // gears()
@@ -120,7 +120,7 @@ const CogKeys = (props) => {
     }
 
     return (
-        <KeyBox>
+        <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}}>
             {/* <h1>Involute Gear Calculator</h1> */}
             <Param style={{top:'20px'}}>
                 <i style={{fontSize:'40px'}}>Number of gear teeth:</i>
@@ -186,7 +186,7 @@ const CogKeys = (props) => {
                         left:'0px',
                         fontSize:'20px',
                         fontWeight:'200',
-                        // color:'blue',
+                        color:'blue',
                         bottom:'-120px'
                     }}
                     href='https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator'
@@ -201,7 +201,7 @@ const CogKeys = (props) => {
                         left:'0px',
                         fontSize:'20px',
                         fontWeight:'200',
-                        // color:'blue',
+                        color:'blue',
                         bottom:'-150px'
                     }}
                     href="https://www.blender.org/"
