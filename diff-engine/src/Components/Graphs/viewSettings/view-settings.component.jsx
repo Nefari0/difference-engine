@@ -63,7 +63,7 @@ const ViewSettings = (props) => {
         <ResetViewButton
           onClick={(e) => resetSize(e,execute)}
         >
-          reset
+          reset view
         </ResetViewButton>
 
         <DarkmodeButton
@@ -85,11 +85,11 @@ const ViewSettings = (props) => {
         </Zoom> */}
 
         {/* --- OPEN ABOUT PAGE --- */}
-        <AboutButton
+        {/* <AboutButton
           onClick={() => setAbout(!about)}
         >
           about
-        </AboutButton>
+        </AboutButton> */}
 
 
 

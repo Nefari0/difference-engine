@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const {
     light,
-    // midLight,
-    // darkLight,
+    midLight,
+    darkLight,
 
     lightDark,
     // midDark,
@@ -12,7 +12,7 @@ const {
 } = backgroundColors
 
 export const Header = styled.header`
-    background-color:${light};
+    background-color:${({darkmode}) => !darkmode ? light:darkLight};
     width:100vw;
     height:80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
