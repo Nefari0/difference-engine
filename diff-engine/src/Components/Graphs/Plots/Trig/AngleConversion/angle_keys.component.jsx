@@ -1,6 +1,5 @@
-import { MathComponent } from "mathjax-react";
 import { useEffect,useContext } from "react";
-import { KeyBox,ParamInput,Param,BaseButton } from "../../../KeyPad/keypad.styles";
+import { KeyBox,ParamInput,Param } from "../../../KeyPad/keypad.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
@@ -38,15 +37,13 @@ const copyButton = {
 const UnitCircle = (props) => {
 
     const {
-        polarVector,
-        linearVector,
         execute,
         inputHandler,
         state,
         setState,
         close
     } = props
-    const { degrees,showDegrees,radians,displayDegrees } = state
+    const { degrees,showDegrees,radians } = state
 
     const {setInformation} = useContext(ViewContext)
 
