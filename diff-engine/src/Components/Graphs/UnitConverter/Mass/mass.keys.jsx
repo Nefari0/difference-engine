@@ -1,4 +1,4 @@
-import { BaseButton } from "../../KeyPad/keypad.styles";
+import Button from "../../KeyPad/Button";
 
 const vp = 80 // -- Vertical Position
 
@@ -8,37 +8,34 @@ const MassKeys = (props) => {
 
     return (
         <>
-            <BaseButton
+            <Button
                 style={{right:'80px',zIndex:'1'}}
                 onClick={(e) => execute(e,'units','gm')}
-            >
-                <strong>gm</strong>
-                <p>Gram</p>
-            </BaseButton>
+                text={'gm'}
+                p={'Gram'}
+            />
 
-            <BaseButton
+            <Button
                 style={{right:'80px',top:`${vp}px`,zIndex:'1'}}
                 onClick={(e) => execute(e,'units','oz')}
-            >
-                <strong>oz</strong>
-                <p>Ounce</p>
-            </BaseButton>
+                text={'oz'}
+                p={'Ounce'}
+            />
 
-            <BaseButton
-                style={{right:'80px',top:`${vp*2}px`}}
+            <Button
+                styles={{right:'80px',top:`${vp*2}px`}}
                 onClick={(e) => execute(e,'units','lb')}
-            >
-                <strong>lb</strong>
-                <p>Pound</p>
-            </BaseButton>
+                text={'lb'}
+                p={'Pound'}
+            />
 
-            <BaseButton
+            <Button
                 style={{right:'80px',top:`${vp*3}px`}}
                 onClick={(e) => execute(e,'units','ct')}
-            >
-                <strong>ct</strong>
-                <p>Carat</p>
-            </BaseButton>
+                text={'ct'}
+                p={'Carat'}
+            />
+
         </>
     )
 }

@@ -36,11 +36,24 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
-            <h1 style={{fontSize:'30px',backgroundColor:`${darkmode?dark:paper}`,color:`${!darkmode?dark:paper}`}}>Involute gear calculator</h1>
+            <h1 
+                style={{
+                    fontSize:'30px',
+                    backgroundColor:`${darkmode?dark:paper}`,
+                    color:`${!darkmode?'black':'white'}`
+                    }}
+                >
+                    Involute gear calculator
+                </h1>
             <a
                 href="https://www.blender.org/"
                 target="_blank"
-                style={{position:'absolute',top:'250px',fontSize:'30px',zIndex:'2'}}
+                style={{
+                    position:'absolute',
+                    top:'250px',fontSize:
+                    '30px',zIndex:'2',
+                    textDecoration:'none'
+                }}
             >
                 For use in Blender 2.8 + 
             </a>
@@ -48,18 +61,26 @@ const CogDisplay = ({state}) => {
             <a
                 href="https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator"
                 target="_blank"
-                style={{position:'absolute',top:'350px',fontSize:'20px',zIndex:'2'}}
+                style={{
+                    position:'absolute',
+                    top:'350px',
+                    fontSize:'20px',
+                    zIndex:'2',
+                    textDecoration:'none'
+                }}
             >
                 (how to build your gear)
             </a>
 
-            <TipCircle mathFunc={mathFunc}>
+            {/* --- STILL UNDER DEVELOPEMENT --- */}
+            {/* <TipCircle mathFunc={mathFunc}>
                 <ReferenceCircle mathFunc={mathFunc}>
                     <CogOrigin mathFunc={mathFunc}>
                             {mappedGears}
                     </CogOrigin>
                 </ReferenceCircle>
-            </TipCircle>
+            </TipCircle> */}
+            {/* -------------------------------- */}
         </CogContainer>
     )
 }

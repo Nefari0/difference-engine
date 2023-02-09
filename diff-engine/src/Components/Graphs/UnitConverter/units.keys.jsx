@@ -1,6 +1,7 @@
 import { backButton } from "../SVG";
 import { useEffect,useContext } from "react";
-import { BaseButton,KeyBox,TinyButton,LargeButton,AllClearButton } from "../KeyPad/keypad.styles";
+import { BaseButton,KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
+import Button from "../KeyPad/Button";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
 import { ViewContext } from "../../Context/view.context";
@@ -69,61 +70,35 @@ const UnitsKeys = (props) => {
             {unitType === 'Length' && <LengthKeys execute={execute}/>}
             {unitType === 'Mass' && <MassKeys execute={execute}/>}
 
-            <BaseButton
+            <Button
                 style={{right:'170px'}}
                 onClick={(e) => execute(e,'unitType','Mass')}
-            >
-                <strong>Mass</strong>
-            </BaseButton>
+                text={'Mass'}
+            />
 
-            <BaseButton
+            <Button
                 style={{right:'170px',top:`${vp}px`}}
                 onClick={(e) => execute(e,'unitType','Length')}
-            >
-                <strong>Length</strong>
-            </BaseButton>
+                text={'Length'}
+            />
 
-            {/* <BaseButton
-                style={{right:'80px',top:'90px'}}
-                onClick={(e) => execute(e,'units','in')}
-            >
-                <h1>in</h1>
-            </BaseButton> */}
-
-            {/* <BaseButton
-                style={{right:'80px',top:'180px'}}
-                onClick={(e) => execute(e,'units','ft')}
-            >
-                <h1>ft</h1>
-            </BaseButton> */}
-
-            {/* <BaseButton
-                style={{right:'80px',top:'270px'}}
-                onClick={(e) => execute(e,'units','cm')}
-            >
-                <h1>cm</h1>
-            </BaseButton> */}
-
-            <BaseButton
+            <Button
                 style={{right:'0px',zIndex:'0'}}
                 onClick={(e) => close(e)}
-            >
-                {backButton()}
-            </BaseButton>
+                text={backButton()}
+            />
 
-            <BaseButton
-                style={{right:'0px',top:`${vp}px`,zIndex:'0'}}
+            <Button
+                styles={{right:'0px',top:`${vp}px`,zIndex:'0',fontSize:'32px'}}
                 onClick={(e) => setDisplayKeymap(true)}
-            >
-                <strong style={{fontWeight:'600',opacity:'.6',fontSize:'32px'}}>?</strong>
-            </BaseButton>
+                text={'?'}
+            />
 
-            <BaseButton
+            <Button
                 style={{left:'160px',bottom:`-195px`,zIndex:'0'}}
                 onClick={(e) => pasteFromClipboard(e)}
-            >
-                <strong>paste</strong>
-            </BaseButton>
+                text={'paste'}
+            />
 
             <AllClearButton
                 style={{left:'0px',bottom:`-195px`,zIndex:'0'}}

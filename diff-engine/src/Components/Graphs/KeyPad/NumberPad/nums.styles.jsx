@@ -11,7 +11,6 @@ export const NumPad = styled.section`
         strong {
             font-size:40px;
             font-weight:600;
-            color:#555;
         }
     }
 `

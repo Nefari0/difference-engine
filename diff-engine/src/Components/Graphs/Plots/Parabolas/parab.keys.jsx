@@ -1,11 +1,17 @@
 import { useState,useEffect,useContext } from "react";
-import { KeyBox,Param,ParamInput,BaseButton,LargeButton } from "../../KeyPad/keypad.styles";
+import { KeyBox,Param,ParamInput } from "../../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../../SVG";
+import Button from "../../KeyPad/Button";
 
 import { ViewContext } from "../../../Context/view.context";
 
+const eButton = {
+    right:'10px',
+    top:'5px',
+}
 const backB = {
-    right:'0px'
+    right:'10px',
+    top:'85px'
 }
 
 const ParabKeys = (props) => {
@@ -90,18 +96,18 @@ const ParabKeys = (props) => {
                 />
             </Param>
 
-            <LargeButton
+            <Button
                 onClick={() => {linearVector(y,otherPlots)}}
-            >
-                {ExecuteButton()}
-            </LargeButton>
+                styles={eButton}
+                text={ExecuteButton()}
+            />
 
-            <BaseButton
+            <Button
                 onClick={(e) => close(e)}
-                style={backB}
-            >
-                {backButton()}
-            </BaseButton>
+                styles={backB}
+                text={backButton()}
+            />
+
         </KeyBox>
     )
 }

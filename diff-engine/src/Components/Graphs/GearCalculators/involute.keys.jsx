@@ -1,5 +1,6 @@
 import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../SVG";
+import Button from "../KeyPad/Button";
 import { useEffect,useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import 'katex/dist/katex.min.css';
@@ -121,9 +122,8 @@ const CogKeys = (props) => {
 
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}}>
-            {/* <h1>Involute Gear Calculator</h1> */}
             <Param style={{top:'20px'}}>
-                <i style={{fontSize:'40px'}}>Number of gear teeth:</i>
+                <i style={{fontSize:'40px',marginRight:'6px'}}>Number of gear teeth:</i>
                 <ParamInput
                     type='text'
                     onChange={(e) => inputHandler(e)}
@@ -142,12 +142,11 @@ const CogKeys = (props) => {
                 />
             </Param> */}
 
-            <BaseButton 
+            <Button 
                 onClick={() => copyVal(gearScript,copyScriptMessage)}
-                style={{right:'95px',top:'170px'}}
-            >
-                {ExecuteButton()}
-            </BaseButton>
+                style={{right:'10px',top:'90px'}}
+                text={ExecuteButton()}
+            />
             
             {/* <BaseButton 
                 onClick={() => gears()}
@@ -156,12 +155,11 @@ const CogKeys = (props) => {
                 {ExecuteButton()}
             </BaseButton> */}
 
-            <BaseButton 
+            <Button 
                 onClick={(e) => close(e)}
-                style={{right:'10px',top:'170px'}}
-            >
-                {backButton()}
-            </BaseButton>
+                styles={{right:'10px',top:'170px'}}
+                text={backButton()}
+            />
 
                 <h2
                     style={{
@@ -173,21 +171,22 @@ const CogKeys = (props) => {
                     Pitch: <InlineMath math={`${pitch}^\\circ`} />
                 </h2>
 
-                <TinyButton
-                    style={{top:'210px',left:'0px'}}
+                <Button
+                    styles={{top:'210px',left:'0px',width:'120px'}}
                     onClick={() => copyVal(pitch,copyPitch)}
-                >
-                    copy pitch
-                </TinyButton>
+                    text={'copy pitch'}
+                    buttonClass={'tiny'}
+                />
 
                 <a
                     style={{
                         position:'absolute',
                         left:'0px',
-                        fontSize:'20px',
+                        fontSize:'30px',
                         fontWeight:'200',
                         color:'blue',
-                        bottom:'-120px'
+                        bottom:'-120px',
+                        textDecoration:'none'
                     }}
                     href='https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator'
                     target="_blank"
@@ -199,10 +198,11 @@ const CogKeys = (props) => {
                     style={{
                         position:'absolute',
                         left:'0px',
-                        fontSize:'20px',
+                        fontSize:'30px',
                         fontWeight:'200',
                         color:'blue',
-                        bottom:'-150px'
+                        bottom:'-160px',
+                        textDecoration:'none'
                     }}
                     href="https://www.blender.org/"
                     target="_blank"
