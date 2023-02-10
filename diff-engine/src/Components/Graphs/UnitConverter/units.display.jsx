@@ -4,6 +4,7 @@ import { ViewContext } from "../../Context/view.context";
 import { UnitsDisplay,UnitsDisplayContainer } from "./unit.styles";
 import LengthDisplay from "./Length/lengths.display";
 import MassDisplay from "./Mass/mass.display";
+import TemperatureDisplay from "./Temperature/temp.display";
 
 const Units = ({state,setState}) => {
 
@@ -45,6 +46,13 @@ const Units = ({state,setState}) => {
                     />}
 
                     {unitType === 'Mass' && <MassDisplay
+                        isNumber={isNumber}
+                        copy={copy}
+                        state={state}
+                        setState={setState}
+                    />}
+
+                    {unitType === 'Temperature' && <TemperatureDisplay
                         isNumber={isNumber}
                         copy={copy}
                         state={state}
