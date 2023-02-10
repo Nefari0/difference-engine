@@ -1,4 +1,5 @@
 import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/keypad.styles";
+import Button from "../KeyPad/Button";
 import { backButton,ExecuteButton,Book } from "../SVG";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
@@ -11,7 +12,8 @@ const numpad = {
 
 const StandardKeys = (props) => {
 
-    const {state,
+    const {
+        state,
         setState,
         execute,
         calculate,
@@ -36,6 +38,8 @@ const StandardKeys = (props) => {
     const execution = (e) => {
         calculate(e,mathFunc)
     }
+
+    const addCharacter = (val) => {setState({...state,mathFunc:mathFunc+val})}
 
     return (
         <KeyBox>
@@ -66,6 +70,17 @@ const StandardKeys = (props) => {
             >
                 {Book()}
             </BaseButton>
+
+            <Button
+                onClick={() => addCharacter(')')}
+                text={')'}
+                styles={{fontSize:'32px',right:'0px',top:'240px'}}
+            />
+            <Button
+                onClick={() => addCharacter('(')}
+                text={'('}
+                styles={{fontSize:'32px',right:'0px',top:'160px'}}
+            />
 
             <EqualButton
                 style={{left:'-5px'}}
