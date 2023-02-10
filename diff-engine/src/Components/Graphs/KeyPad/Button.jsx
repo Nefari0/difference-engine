@@ -1,7 +1,3 @@
-// import styled from "styled-components";
-// import { InlineMath } from "react-katex";
-// import styled from "styled-components";
-
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 
@@ -19,8 +15,6 @@ export const BUTTON_CLASSES = {
     tiny:'tiny',
     rare:'rare'
 }
-
-{/* <InlineMath math={`\\frac{${'a'} }{${'b'}}`} /> */}
 
 const getButtonClass = (buttonClass = BUTTON_CLASSES.base) =>
   ({
@@ -57,7 +51,7 @@ const Button = ({ text, buttonType, buttonClass, styles, p, ...otherProps }) => 
                 {text}
             </ButtonType>
 
-            <p>{p}</p>
+            {p && <p>{p}</p>}
 
         </CustomButton>
     )
