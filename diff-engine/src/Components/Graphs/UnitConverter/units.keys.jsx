@@ -1,11 +1,13 @@
-import { backButton } from "../SVG";
 import { useEffect,useContext } from "react";
-import { BaseButton,KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
+import { ViewContext } from "../../Context/view.context";
+import { backButton } from "../SVG";
+import { NumberPad } from "../KeyPad/NumberPad/nums.component";
+import { KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
 import Button from "../KeyPad/Button";
+
+import TemperatureKeys from "./Temperature/temp.keys";
 import LengthKeys from "./Length/length.keys";
 import MassKeys from "./Mass/mass.keys";
-import { ViewContext } from "../../Context/view.context";
-import { NumberPad } from "../KeyPad/NumberPad/nums.component";
 
 const vp = 80 // -- Vertical Position
 
@@ -18,7 +20,7 @@ const UnitsKeys = (props) => {
         setState,
     } = props
 
-    const {unitType} = state
+    const {unitType,mathFunc} = state
 
     const {
         setDisplayKeymap,
@@ -33,6 +35,13 @@ const UnitsKeys = (props) => {
             polars:false,
         })
     },[])
+
+    const changeSign = (e) => {
+        e.preventDefault()
+        const mathArr = mathFunc.split('')
+        mathArr[0] != '-' ? mathArr.splice(0,0,'-') : mathArr.splice(0,1,'')
+        execute(e,'mathFunc',mathArr.join(''))
+    }
 
     const pasteFromClipboard = (e) => {
         
@@ -69,6 +78,7 @@ const UnitsKeys = (props) => {
 
             {unitType === 'Length' && <LengthKeys execute={execute}/>}
             {unitType === 'Mass' && <MassKeys execute={execute}/>}
+            {unitType === "Temperature" && <TemperatureKeys execute={execute} />}
 
             <Button
                 style={{right:'170px'}}
@@ -80,6 +90,12 @@ const UnitsKeys = (props) => {
                 style={{right:'170px',top:`${vp}px`}}
                 onClick={(e) => execute(e,'unitType','Length')}
                 text={'Length'}
+            />
+
+            <Button
+                style={{right:'170px',top:`${vp*2}px`}}
+                onClick={(e) => execute(e,'unitType','Temperature')}
+                text={'Temp'}
             />
 
             <Button
@@ -95,9 +111,15 @@ const UnitsKeys = (props) => {
             />
 
             <Button
-                style={{left:'160px',bottom:`-195px`,zIndex:'0'}}
+                style={{right:'0px',bottom:`-195px`,zIndex:'0'}}
                 onClick={(e) => pasteFromClipboard(e)}
                 text={'paste'}
+            />
+
+            <Button
+                style={{right:'265px',bottom:`-195px`,zIndex:'0',fontSize:'32px'}}
+                onClick={(e) => changeSign(e)}
+                text={'-'}
             />
 
             <AllClearButton
