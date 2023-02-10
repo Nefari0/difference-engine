@@ -49,6 +49,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
                     text={'copy'}
                     buttonClass={'tiny'}
                     styles={{right:'6px',top:'7px'}}
+                    onClick={() => copy()}
                 />
 
             </Standard>
