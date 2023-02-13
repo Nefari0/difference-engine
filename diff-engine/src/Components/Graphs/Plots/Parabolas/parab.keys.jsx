@@ -1,7 +1,8 @@
 import { useState,useEffect,useContext } from "react";
-import { KeyBox,Param,ParamInput } from "../../KeyPad/keypad.styles";
+import { KeyBox } from "../../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../../SVG";
 import Button from "../../KeyPad/Button";
+import InputField from "../../KeyPad/InputField";
 
 import { ViewContext } from "../../../Context/view.context";
 
@@ -64,37 +65,24 @@ const ParabKeys = (props) => {
         setLocalState({...localState,[name]:value})
     }
 
+    const inputMap = Object.keys(localState).map((key,i) => {
+        return (
+            <InputField
+                styles={{top:`${(i < 1 ? i : i*60)}px`}}
+                key={i}
+                value={localState[key]}
+                onChange={localInput}
+                i={`${key} = `}
+                name={key}
+                inputClass={'small'}
+            />
+        )
+    })
+
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'black'}`}}>
-            <Param>
-                <i style={{marginRight:'6px'}}>a</i>
-                <ParamInput
-                    type="text"
-                    onChange={localInput}
-                    value={a}
-                    name="a"
-                />
-            </Param>
 
-            <Param style={{top:'60px'}}>
-                <i style={{marginRight:'6px'}}>h</i>
-                <ParamInput
-                    type="text"
-                    onChange={localInput}
-                    value={h}
-                    name="h"
-                />
-            </Param>
-
-            <Param style={{top:'120px'}}>
-                <i style={{marginRight:'6px'}}>k</i>
-                <ParamInput
-                    type="text"
-                    onChange={localInput}
-                    value={k}
-                    name="k"
-                />
-            </Param>
+            {inputMap}
 
             <Button
                 onClick={() => {linearVector(y,otherPlots)}}

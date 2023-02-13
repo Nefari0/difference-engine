@@ -1,11 +1,11 @@
 import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
 import { backButton,ExecuteButton } from "../SVG";
 import Button from "../KeyPad/Button";
+import InputField from "../KeyPad/InputField";
 import { useEffect,useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
-import { TinyButton } from "../KeyPad/keypad.styles";
 
 const CogKeys = (props) => {
 
@@ -26,7 +26,6 @@ const CogKeys = (props) => {
             ...state,
             mathFunc:`40`,
             displayInput:false,
-            // polars:false,
             polars:true
         })
     },[])
@@ -122,38 +121,21 @@ const CogKeys = (props) => {
 
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}}>
-            <Param style={{top:'20px'}}>
-                <i style={{fontSize:'40px',marginRight:'6px'}}>Number of gear teeth:</i>
-                <ParamInput
+
+                <InputField
                     type='text'
                     onChange={(e) => inputHandler(e)}
                     value={mathFunc}
                     name="mathFunc"
+                    inputClass={'small'}
+                    i={'Number of gear teeth:'}
                 />
-            </Param>
-
-            {/* <Param style={{top:'90px'}}>
-                <i style={{fontSize:'40px'}}>Gear tooth depth:</i>
-                <ParamInput
-                    type='text'
-                    onChange={(e) => inputHandler(e)}
-                    value={uMax}
-                    name="uMax"
-                />
-            </Param> */}
 
             <Button 
                 onClick={() => copyVal(gearScript,copyScriptMessage)}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
             />
-            
-            {/* <BaseButton 
-                onClick={() => gears()}
-                style={{right:'95px',top:'255px'}}
-            >
-                {ExecuteButton()}
-            </BaseButton> */}
 
             <Button 
                 onClick={(e) => close(e)}

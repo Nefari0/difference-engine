@@ -1,7 +1,8 @@
-import { KeyBox,BaseButton,LargeButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
+import { KeyBox  } from "../KeyPad/keypad.styles";
+import InputField from "../KeyPad/InputField";
+import Button from "../KeyPad/Button";
 import { backButton } from "../SVG";
-import { useState,useEffect, useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import {useEffect} from "react";
 
 const errorMessage = 'Only numbers can be entered into this input field. Note: A decimal point must be present as the first element'
 
@@ -42,21 +43,20 @@ const FractionKeys = (props) => {
 
     return (
         <KeyBox>
-            <Param>
-                <ParamInput
-                    type='text'
-                    onChange={(e) => input(e)}
-                    value={mathFunc}
-                    name="mathFunc"
-                />
-            </Param>
 
-            <BaseButton 
+            <InputField
+                inputClass={'small'}
+                type='text'
+                onChange={(e) => input(e)}
+                value={mathFunc}
+                name="mathFunc"
+            />
+
+            <Button 
                 onClick={(e) => close(e)}
-                style={{right:'10px'}}
-            >
-                {backButton()}
-            </BaseButton>
+                styles={{right:'10px'}}
+                text={backButton()}
+            />
 
         </KeyBox>
     )

@@ -1,8 +1,9 @@
 import { useEffect,useContext } from "react";
-import { KeyBox,ParamInput,Param } from "../../../KeyPad/keypad.styles";
+import { KeyBox } from "../../../KeyPad/keypad.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
+import InputField from "../../../KeyPad/InputField";
 
 const backB = {
     right:'15px',
@@ -71,25 +72,24 @@ const UnitCircle = (props) => {
     return (
         <KeyBox>
 
-            {!showDegrees ? <Param>
-            <i>radians </i>
-            <ParamInput
+            {!showDegrees ? 
+            <InputField
                 type='number'
                 onChange={(e) => inputHandler(e)}
                 value={radians}
                 name="radians"
+                inputClass={'small'}
+                i={'radians'}
             />
-            </Param>
             :
-            <Param>
-            <i>degrees </i>
-            <ParamInput
+            <InputField
                 type='number'
                 onChange={(e) => inputHandler(e)}
                 value={degrees}
                 name="degrees"
-            />
-            </Param>}
+                inputClass={'small'}
+                i={'degrees'}
+            />}
 
             <Button
                 styles={backB}

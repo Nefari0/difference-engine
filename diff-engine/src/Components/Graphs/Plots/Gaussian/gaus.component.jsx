@@ -5,6 +5,7 @@ import { MathComponent } from "mathjax-react";
 import { backButton,ExecuteButton } from "../../SVG";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../../KeyPad/Button";
+import InputField from "../../KeyPad/InputField";
 
 const eButton = {
     right:'10px',
@@ -40,29 +41,27 @@ const Gaussian = (props) => {
 
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'black'}`}}>
-            <Param>
-                <i>h = </i>
-                <ParamInput
-                    type='text'
-                    onChange={(e) => setH(e.target.value)}
-                    value={h}
-                    name="h"
-                />
-            </Param>
+
+            <InputField
+                type='text'
+                onChange={(e) => setH(e.target.value)}
+                value={h}
+                inputClass={'small'}
+                name={"h"}
+                i={'h = '}
+            />
 
             <Button
                 style={eButton}
                 onClick={() => linearVector(`exp(-4*log(2)*x^2/${h}^2)`)}
                 text={ExecuteButton()}
             />
-            {/* </LargeButton> */}
 
             <Button
                 style={back}
                 onClick={(e) => close(e)}
                 text={backButton()}
             />
-            {/* </LargeButton> */}
 
         </KeyBox>
     )

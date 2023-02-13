@@ -1,18 +1,16 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../global.styles";
 
-// const { paper,light } = backgroundColors
-
 const {
     paper,
 
-    light,
+    // light,
     midLight,
-    darkLight,
+    // darkLight,
 
     lightDark,
-    midDark,
-    dark
+    // midDark,
+    // dark
 } = backgroundColors
 
 const keyMapOverlay = css`
@@ -58,11 +56,18 @@ export const KeyBox = styled.div`
     }
 `
 
-export const Param = styled.div`
-    position:absolute;
-    left:0px;
+// --- THIS WLL REPLACE "Param" ABOVE --- //
+const smallInput = css`position:absolute;left:0px;`
+const largeInput = css`
+    bottom:-505px;
+    height:60px;
+    width:500px;
+    left:-6px;
 `
-
+export const InputWrapper = styled.div`
+    ${({inputClass}) => inputClass==='small' ? smallInput : largeInput}
+`
+    
 export const BaseInput = styled.input`
     background-color:${({darkmode}) => darkmode ? lightDark : paper};
     color:${({darkmode}) => darkmode ? '#fff' : '#555'};
