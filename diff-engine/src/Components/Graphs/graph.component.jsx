@@ -9,6 +9,7 @@ import {
 
 import ViewSettings from "./ViewSettings/view-settings.component";
 import { DisplayScreen } from "./KeyPad/keypad.styles";
+import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
 import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
@@ -485,13 +486,15 @@ export default function Graph() {
       {displayKeymap && <DisplayKeyInfo execute={execute}/>}
 
       {/* MAIN USER INPUT */}
-      {displayInput && <DisplayScreen
-        darkmode={darkmode}
-        type='text'
-        onChange={inputHandler}
-        value={mathFunc}
-        name="mathFunc"
+      {displayInput && <InputField
+          darkmode={darkmode}
+          type='text'
+          onChange={inputHandler}
+          value={mathFunc}
+          name="mathFunc"
+          inputClass={'large'}
       />}
+
 
       {!currentView && <KeyPad
         formatFunction={formatFunction}
@@ -570,15 +573,6 @@ export default function Graph() {
           execute={execute}
           calculate={calculate}
         />}
-
-        {/* <Button text={'text'} buttonType={'large'} /> */}
-
-        {/* <TinyButton
-          style={{bottom:'0px'}}
-          onClick={(e) => setDarkMode(!darkmode)}
-        >
-          darkmode
-        </TinyButton> */}
 
     </Enclosure>
   );
