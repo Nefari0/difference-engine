@@ -79,7 +79,7 @@ const UnitCircle = (props) => {
                 value={radians}
                 name="radians"
                 inputClass={'small'}
-                i={'radians'}
+                i={'rads = '}
             />
             :
             <InputField
@@ -88,7 +88,7 @@ const UnitCircle = (props) => {
                 value={degrees}
                 name="degrees"
                 inputClass={'small'}
-                i={'degrees'}
+                i={'degs = '}
             />}
 
             <Button
