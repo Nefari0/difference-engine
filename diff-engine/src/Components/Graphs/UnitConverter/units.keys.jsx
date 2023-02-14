@@ -81,19 +81,19 @@ const UnitsKeys = (props) => {
             {unitType === "Temperature" && <TemperatureKeys execute={execute} />}
 
             <Button
-                style={{right:'170px'}}
+                style={{right:'160px'}}
                 onClick={(e) => execute(e,'unitType','Mass')}
                 text={'Mass'}
             />
 
             <Button
-                style={{right:'170px',top:`${vp}px`}}
+                style={{right:'160px',top:`${vp}px`}}
                 onClick={(e) => execute(e,'unitType','Length')}
                 text={'Length'}
             />
 
             <Button
-                style={{right:'170px',top:`${vp*2}px`}}
+                style={{right:'160px',top:`${vp*2}px`}}
                 onClick={(e) => execute(e,'unitType','Temperature')}
                 text={'Temp'}
             />
@@ -111,9 +111,11 @@ const UnitsKeys = (props) => {
             />
 
             <Button
+                buttonClass={'tiny'}
                 style={{right:'0px',bottom:`-195px`,zIndex:'0'}}
                 onClick={(e) => pasteFromClipboard(e)}
                 text={'paste'}
+                p={'Paste text from clipboard'}
             />
 
             <Button
