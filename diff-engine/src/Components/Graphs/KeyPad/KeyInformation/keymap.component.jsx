@@ -5,11 +5,15 @@ import { ViewContext } from "../../../Context/view.context";
 const DisplayKeyInfo = ({execute}) => {
 
     const {
-        setDisplayKeymap
+        setDisplayKeymap,
+        displayKeymap
     } = useContext(ViewContext)
 
     return (
-        <KeymapContainer onClick={() => setDisplayKeymap(false)}/>
+        <KeymapContainer
+            onClick={() => setDisplayKeymap(false)}
+            displayKeymap={displayKeymap}
+        />
     )
 }
 

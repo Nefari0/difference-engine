@@ -47,7 +47,7 @@ const KeyPad = (props) => {
 
             {/* <Hover /> */}
 
-            <BaseButton
+            {/* <BaseButton
                 state={state}
                 style={{position:'absolute',right:`${10}px`}}
                 onClick={() => setCurrentView('gaus')}
@@ -57,9 +57,17 @@ const KeyPad = (props) => {
                     <InlineMath math={`\\mu`} />
                 </div>
                 <p>Guasian</p>
-            </BaseButton>
+            </BaseButton> */}
+            <Button
+                styles={{position:'absolute',right:`${10}px`}}
+                onClick={() => setCurrentView('gaus')}
+                darkmode={darkmode}
+                buttonType={'image'}
+                text={`\\mu`}
+                p={'Guasian'}
+            />
 
-            <BaseButton
+            {/* <BaseButton
                 style={{position:'absolute',right:`${90}px`,zIndex:'2'}}
                 onClick={() => setCurrentView('unit_circle')}
                 darkmode={darkmode}
@@ -68,20 +76,37 @@ const KeyPad = (props) => {
                     <InlineMath math={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`} />
                 </div>
                 <p>Unit circle and trig functions</p>
-            </BaseButton>
+            </BaseButton> */}
+
+            <Button
+               styles={{position:'absolute',right:`${90}px`,zIndex:'2',fontSize:'10px'}}
+               onClick={() => setCurrentView('unit_circle')}
+               darkmode={darkmode}
+               text={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`}
+               p={'Unit circle and trig functions'}
+               buttonType={'image'}
+            />
 
             {/*  STANDARD CALCULATOR */}
-            <BaseButton
+            {/* <BaseButton
                 style={{right:`${170}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('standard')}
                 darkmode={darkmode}
             >
                 {CalculatorIcon()}
                 <p>Standard calculator</p>
-            </BaseButton>
+            </BaseButton> */}
+
+            <Button
+                styles={{right:`${170}px`,zIndex:'1'}}
+                onClick={(e) => setCurrentView('standard')}
+                darkmode={darkmode}
+                text={CalculatorIcon()}
+                p={'Standard calculator'}
+            />
 
             {/* FRACTIONS */}
-            <BaseButton
+            {/* <BaseButton
                 style={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('fracs')}
                 darkmode={darkmode}
@@ -90,9 +115,17 @@ const KeyPad = (props) => {
                     <InlineMath math={`\\frac{${'a'} }{${'b'}}`} />
                 </div>
                 <p>Decimal to fraction</p>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            <Button
+                styles={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'1'}}
+                onClick={(e) => setCurrentView('fracs')}
+                darkmode={darkmode}
+                text={`\\frac{${'a'} }{${'b'}}`}
+                buttonType={'image'}
+            />
+
+            {/* <BaseButton
                 style={{right:'170px',top:`${vp}px`,fontSize:'10px'}}
                 onClick={() => setCurrentView('parabolas')}
                 darkmode={darkmode}
@@ -101,27 +134,51 @@ const KeyPad = (props) => {
                     <InlineMath math={`\ax^2`} />
                 </div>
                 <p>Quadratics</p>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            <Button
+                styles={{right:'170px',top:`${vp}px`,fontSize:'10px'}}
+                onClick={() => setCurrentView('parabolas')}
+                darkmode={darkmode}
+                text={`\ax^2`}
+                buttonType={'image'}
+            />
+
+            {/* <BaseButton
                 style={{right:'10px',top:`${vp}px`,zIndex:'1'}}
                 onClick={() => setCurrentView('gear_calculator')}
                 darkmode={darkmode}
             >
                 {CogWheel()}
                 <p>Gear calculator</p>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            <Button
+                styles={{right:'10px',top:`${vp}px`,zIndex:'1'}}
+                onClick={() => setCurrentView('gear_calculator')}
+                darkmode={darkmode}
+                text={CogWheel()}
+                p={'Gear Calculator'}
+            />
+
+            {/* <BaseButton
                 onClick={(e) => setInformation('trig')}
                 style={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
                 darkmode={darkmode}
             >
                 {Book()}
                 <p>Documentation and resources</p>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            <Button
+                onClick={(e) => setInformation('trig')}
+                styles={{right:'10px',top:`${vp*2}px`,zIndex:'0'}}
+                darkmode={darkmode}
+                text={Book()}
+                p={'Documentation and resources'}
+            />
+
+            {/* <BaseButton
                 style={{right:'170px',top:`${vp*2}px`}}
                 onClick={() => setDisplayKeymap(true)}
                 darkmode={darkmode}
@@ -129,16 +186,31 @@ const KeyPad = (props) => {
                 <strong style={{fontWeight:'600',fontSize:'32px'}}>
                     ?
                 </strong>
-            </BaseButton>
+            </BaseButton> */}
 
-            <BaseButton
+            <Button
+                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`}}
+                onClick={() => setDisplayKeymap(true)}
+                darkmode={darkmode}
+                text={'?'}
+            />
+
+            {/* <BaseButton
             darkmode={darkmode}
                 onClick={() => setCurrentView('unit_converter')}
                 style={{right:'90px',top:'160px'}}
             >
                 <div>{beaker()}</div>
                 <p>Unit Converter</p>
-            </BaseButton>
+            </BaseButton> */}
+            
+            <Button
+                darkmode={darkmode}
+                onClick={() => setCurrentView('unit_converter')}
+                style={{right:'90px',top:'160px'}}
+                text={beaker()}
+                p={'Unit Converter'}
+            />
 
             <LargeButton
                 style={{left:'0px',width:'125px',zIndex:'1'}}

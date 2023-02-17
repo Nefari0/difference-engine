@@ -39,11 +39,12 @@ const getButtonType = (buttonType = BUTTON_TYPE.textage) =>
 const Button = ({ text, buttonType, buttonClass, styles, p, ...otherProps }) => {
     const CustomButton = getButtonClass(buttonClass);
     const ButtonType = getButtonType(buttonType);
-    const { darkmode } = useContext(ViewContext);
+    const { darkmode,displayKeymap } = useContext(ViewContext);
     return (
         <CustomButton
             darkmode={darkmode}
             style={styles}
+            displayKeymap={displayKeymap}
             {...otherProps}
         >
 

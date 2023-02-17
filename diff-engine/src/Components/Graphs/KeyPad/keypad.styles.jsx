@@ -13,8 +13,8 @@ const {
     // dark
 } = backgroundColors
 
-const keyMapOverlay = css`
-    button {
+const ButtonOverlay = css`
+
         transition: all 500ms;
         overflow:visible;
 
@@ -37,11 +37,37 @@ const keyMapOverlay = css`
 
         pointer-events: none;
         transform: scale(.6)
-    }
-`
 
+`
+// const keyMapOverlay = css`
+//     // button {
+//     //     transition: all 500ms;
+//     //     overflow:visible;
+
+//     //     p {
+//     //         // position:absolute;
+//     //         background-color:#fff;
+//     //         transition: all 500ms;
+//     //         color:#555;
+//     //         display:inline;
+//     //         transform: scale(1.7);
+//     //         left:20px;
+//     //         top:70px;
+//     //         padding:4px;
+//     //         font-weight:600;
+//     //         box-shadow: 0px 5px 20px -7px #000000;
+//     //         border-radius:2px;
+//     //         border: solid .5px;
+//     //         border-radius: 0px 20px 20px;
+//     //     }
+
+//     //     pointer-events: none;
+//     //     transform: scale(.6)
+//     // }
+// `
+
+// ${({displayKeymap}) => displayKeymap && keyMapOverlay}
 export const KeyBox = styled.div`
-    ${({displayKeymap}) => displayKeymap && keyMapOverlay}
     position: relative;
     height: 200px;
     width: 500px;
@@ -117,11 +143,15 @@ export const BaseButton = styled.button`
         font-weight:800;
     }
 
+
+
     &:hover {
         overflow:visible;
         z-index:1;
         box-shadow: inset 0 0 5px #555;
     }
+
+    ${({displayKeymap}) => displayKeymap && ButtonOverlay}
 `
 
 export const Buttoni = styled.i`
