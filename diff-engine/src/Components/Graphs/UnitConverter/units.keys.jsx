@@ -43,30 +43,36 @@ const UnitsKeys = (props) => {
         execute(e,'mathFunc',mathArr.join(''))
     }
 
-    const pasteFromClipboard = (e) => {
+    // const pasteFromClipboard = (e) => {
+    //     e.preventDefault()
         
-        navigator.clipboard.readText()
-        .then(text => {
-                // --- verify that copied items are integers or floats in string format --- //
-                try {
-                    if (typeof(text) === 'string') {
-                        
-                            if (text.split('').length <= 30) {
-                                setState({
-                                    ...state,
-                                    mathFunc:text
-                                })
+    //     try {
+
+    //         navigator.clipboard.readText()
+    //         .then(text => {
+    //                 // --- verify that copied items are integers or floats in string format --- //
+    //                 try {
+    //                     if (typeof(text) === 'string') {
                             
-                        } else {execute(e,'alert','The value you entered is too long. Enter a value that is less than 30 charecters long')}
-                    } else {execute(e,'alert','Invalid input type for this calculation')}
-                } catch (error) {
-                    console.log(error)
-                }
-            })
-            .catch(err => {
-                execute(e,'alert','Failed to read clipboard contents: '+ err);
-            });
-    }
+    //                             if (text.split('').length <= 30) {
+    //                                 setState({
+    //                                     ...state,
+    //                                     mathFunc:text
+    //                                 })
+                                
+    //                         } else {execute(e,'alert','The value you entered is too long. Enter a value that is less than 30 charecters long')}
+    //                     } else {execute(e,'alert','Invalid input type for this calculation')}
+    //                 } catch (error) {
+    //                     console.log(error)
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 // console.log('err',err)
+    //                 execute(e,'alert','Failed to read clipboard contents: '+ err);
+    //             });
+    //     } catch (error) {execute(e,'alert',"Sorry, this function might not be compatible with the browser you're using",error)}
+
+    // }
 
     return (
         <KeyBox displayKeymap={displayKeymap}>
@@ -110,13 +116,13 @@ const UnitsKeys = (props) => {
                 text={'?'}
             />
 
-            <Button
+            {/* <Button
                 buttonClass={'tiny'}
                 style={{right:'0px',bottom:`-195px`,zIndex:'0'}}
                 onClick={(e) => pasteFromClipboard(e)}
                 text={'paste'}
                 p={'Paste text from clipboard'}
-            />
+            /> */}
 
             <Button
                 style={{right:'265px',bottom:`-195px`,zIndex:'0',fontSize:'32px'}}
