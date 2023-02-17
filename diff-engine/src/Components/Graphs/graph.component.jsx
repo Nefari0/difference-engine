@@ -466,6 +466,7 @@ export default function Graph() {
           {currentView === 'unit_converter' && <Units
             state={state}
             setState={setState}
+            execute={execute}
           />}
           
           {/* GRID CELLS */}
