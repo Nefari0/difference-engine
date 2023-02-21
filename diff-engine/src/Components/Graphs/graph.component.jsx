@@ -24,6 +24,7 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
+import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
@@ -81,7 +82,7 @@ export default function Graph() {
   const {
     setCurrentView,currentView,
 
-    displayKeymap,
+    displayKeymap,setDisplayKeymap,
 
     information,
 
@@ -485,6 +486,7 @@ export default function Graph() {
 
       {/* KEY GUIDE */}
       {<DisplayKeyInfo execute={execute}/>}
+      {displayKeymap && <EscapeSheild onClick={() => setDisplayKeymap(false)}/>}
 
       {/* MAIN USER INPUT */}
       {displayInput && <InputField
