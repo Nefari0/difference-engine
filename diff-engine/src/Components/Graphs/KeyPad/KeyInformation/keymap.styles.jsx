@@ -3,32 +3,26 @@ import { backgroundColors } from "../../global.styles";
 
 const {lightDark,dark } = backgroundColors
 
+const baseZIndex = 0
+
 const goDark = css`
-    opacity:.7;
+    opacity:.4;
     background-color:#000;
     transition: all 500ms;
-    z-index:1;
+    z-index:${baseZIndex+1};
+    width:500px;
+    height:100%;
 `
 
 export const KeymapContainer = styled.div`
     position:absolute;
     transition: all 500ms;
-    opacity:0;
+    opacity:1;
     box-shadow:10px 5px 60px 10px rgba(36, 36, 36, 1);
-    z-index:0;
-    // bottom:0px;
-    // bottom:50%;
-    width:500px;
-    // height:500px;
-    height:100%;
-    // background-color:#fff;
-    // background-color:${lightDark};
-
-    display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: baseline;
+    z-index:${baseZIndex};
+    // height:0px;
+    // width:0px;
+    border-radius:10px;
 
     h1 {
         position:absolute;
@@ -38,4 +32,14 @@ export const KeymapContainer = styled.div`
     }
 
     ${({displayKeymap}) => displayKeymap && goDark}
+`
+
+// --- User clicks this element to escape help info screen --- //
+export const EscapeSheild = styled.div`
+    // background-color:yellow;
+    z-index:${baseZIndex+3};
+    opacity:1;
+    width:500px;
+    height:100%;
+    position:absolute;
 `
