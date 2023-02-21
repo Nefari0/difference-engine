@@ -2,7 +2,7 @@ import { InlineMath } from "react-katex";
 
 const CustomMath = ({children}) => {
     return (
-        <div style={{fontWeight:'600',fontSize:'42px'}}>
+        <div style={{fontWeight:'600'}}>
             <InlineMath math={children} />
         </div>
     )
