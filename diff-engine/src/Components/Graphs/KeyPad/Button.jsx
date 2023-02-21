@@ -52,7 +52,7 @@ const Button = ({ text, buttonType, buttonClass, styles, p, ...otherProps }) => 
                 {text}
             </ButtonType>
 
-            {p && <p>{p}</p>}
+            {p && <p style={{fontSize:'12px',zIndex:'1000'}}>{p}</p>}
 
         </CustomButton>
     )
