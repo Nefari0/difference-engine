@@ -8,7 +8,7 @@ import {
 } from "./graph.styles";
 
 import ViewSettings from "./ViewSettings/view-settings.component";
-import { DisplayScreen } from "./KeyPad/keypad.styles";
+// import { DisplayScreen } from "./KeyPad/keypad.styles";
 import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
@@ -24,12 +24,13 @@ import FractionKeys from "./Fractions/frac.keys";
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
+import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
 import AboutPage from "./Informaton/About/about.component";
-import Button from "./KeyPad/Button";
+// import Button from "./KeyPad/Button";
 
 // Input
 import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
@@ -81,7 +82,7 @@ export default function Graph() {
   const {
     setCurrentView,currentView,
 
-    displayKeymap,
+    displayKeymap,setDisplayKeymap,
 
     information,
 
@@ -484,7 +485,8 @@ export default function Graph() {
       </Table>
 
       {/* KEY GUIDE */}
-      {displayKeymap && <DisplayKeyInfo execute={execute}/>}
+      {<DisplayKeyInfo execute={execute}/>}
+      {displayKeymap && <EscapeSheild onClick={() => setDisplayKeymap(false)}/>}
 
       {/* MAIN USER INPUT */}
       {displayInput && <InputField
