@@ -17,6 +17,7 @@ const ButtonOverlay = css`
 
         transition: all 500ms;
         overflow:visible;
+        z-index:1000;
 
         p {
             // position:absolute;
@@ -152,7 +153,7 @@ export const BaseButton = styled.button`
     }
 
     ${({displayKeymap}) => displayKeymap && ButtonOverlay}
-`
+    `
 
 export const Buttoni = styled.i`
     font-size:1px;
