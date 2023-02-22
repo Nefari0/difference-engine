@@ -2,7 +2,7 @@ import { useEffect,useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import { backButton } from "../SVG";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
-import { KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
+import { KeyBox,AllClearButton,InfoMessage } from "../KeyPad/keypad.styles";
 import Button from "../KeyPad/Button";
 
 import TemperatureKeys from "./Temperature/temp.keys";
@@ -75,8 +75,12 @@ const UnitsKeys = (props) => {
     // }
 
     return (
+        
         <KeyBox displayKeymap={displayKeymap}>
-            
+
+        {/* HINT BOX */}
+        {displayKeymap && <InfoMessage style={{zIndex:'10',top:'-160px',left:'150px'}}>Click item to copy it's value</InfoMessage>}
+
             <NumberPad
                 state={state}
                 setState={setState}
@@ -138,6 +142,7 @@ const UnitsKeys = (props) => {
             </AllClearButton>
 
         </KeyBox>
+        
     )
 }
 
