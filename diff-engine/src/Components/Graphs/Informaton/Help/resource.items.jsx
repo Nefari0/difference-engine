@@ -3,6 +3,7 @@ const Resource = () => {
         <section>
             <h4>Reference notebook</h4>
             <a 
+                style={{color:'blue'}}
                 href="https://jupyter.madmodels3d.com/math"
                 target="_blank"
             >

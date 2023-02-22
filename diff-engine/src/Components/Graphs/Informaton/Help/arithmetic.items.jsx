@@ -1,11 +1,11 @@
 import { OperatorTable } from "./info.styles";
 
-const ArithmeticTable = () => {
+const ArithmeticTable = ({darkmode}) => {
     return (
         <section>
             <h4>Arithmetic operators:</h4>
 
-            <OperatorTable>
+            <OperatorTable darkmode={darkmode}>
                 <thead>
                     <tr>
                         <th>Operator</th>
