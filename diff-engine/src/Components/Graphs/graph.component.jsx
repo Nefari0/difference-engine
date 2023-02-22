@@ -30,26 +30,24 @@ import CogDisplay from "./GearCalculators/involute.display";
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
 import AboutPage from "./Informaton/About/about.component";
-// import Button from "./KeyPad/Button";
-
-// Input
+import Notice from "./Informaton/Notice/notice.component";
 import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
 import { CopyIcon } from "./SVG";
 
 import {
-  evaluate,
+  // evaluate,
   parser,
-  parse,
-  derivative,
-  simplify,
-  exp,
-  log
+  // parse,
+  // derivative,
+  // simplify,
+  // exp,
+  // log
 } from "mathjs";
  
 import KeyPad from "./KeyPad/keypad.component";
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { ViewContext } from "../Context/view.context";
 import { checkDeviceSize } from "./ViewSettings/viewLogic";
 
@@ -117,6 +115,7 @@ export default function Graph() {
     // --- Help / Information display --- //
     help:false,
     alert:null,
+    noticeContent:null,
 
     // --- For using standard calculator --- //
     calculation:0,
@@ -150,8 +149,10 @@ export default function Graph() {
     mathFunc,
     // currentView,
     displayInput,
+
     help,
     alert,
+    noticeContent,
     // calculation,
     history,
     showUnitCircleAngles,
@@ -334,7 +335,7 @@ export default function Graph() {
     // console.log(returnPlots()[0])
     if (returnPlots()[0]) {
       navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-      setState({...state,alert:"X and Y coordinates copied to clipboard"})
+      setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
     } else {
       setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
     }
@@ -392,6 +393,11 @@ export default function Graph() {
         state={state}
         execute={execute}
       />}
+
+      <Notice
+        state={state}
+        setState={setState}
+      />
 
       <Table
         className="Table"
