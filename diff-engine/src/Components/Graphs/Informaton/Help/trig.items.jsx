@@ -1,9 +1,9 @@
 import { OperatorTable } from "./info.styles"
-const Trig = () => {
+const Trig = ({darkmode}) => {
     return (
         <section>
             <h4>Trig functions:</h4>
-            <OperatorTable>
+            <OperatorTable darkmode={darkmode}>
 
                 <thead>
                     <tr>

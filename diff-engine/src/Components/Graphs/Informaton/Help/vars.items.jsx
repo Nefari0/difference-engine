@@ -1,10 +1,10 @@
 import { OperatorTable } from "./info.styles"
 
-const Vars = () => {
+const Vars = ({darkmode}) => {
     return (
         <section>
             <h4>Default Variables:</h4>
-            <OperatorTable>
+            <OperatorTable darkmode={darkmode}>
 
                 <thead>
                     <tr>

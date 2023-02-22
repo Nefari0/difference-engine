@@ -13,61 +13,37 @@ const {
     // dark
 } = backgroundColors
 
+const messageBox = css`
+    position:absolute;
+    background-color:#fff;
+    transition: all 500ms;
+    color:#555;
+    display:inline;
+    transform: scale(1.7);
+    left:20px;
+    top:70px;
+    padding:4px;
+    font-weight:600;
+    box-shadow: 0px 5px 20px -7px #000000;
+    border-radius:2px;
+    border: solid .5px;
+    border-radius: 0px 20px 20px;
+`
+
+export const InfoMessage = styled.p`${messageBox}`
+
 const ButtonOverlay = css`
 
         transition: all 500ms;
         overflow:visible;
         z-index:1000;
 
-        p {
-            // position:absolute;
-            background-color:#fff;
-            transition: all 500ms;
-            color:#555;
-            display:inline;
-            transform: scale(1.7);
-            left:20px;
-            top:70px;
-            padding:4px;
-            font-weight:600;
-            box-shadow: 0px 5px 20px -7px #000000;
-            border-radius:2px;
-            border: solid .5px;
-            border-radius: 0px 20px 20px;
-        }
+        p {${messageBox}}
 
         pointer-events: none;
         transform: scale(.6)
 
 `
-// const keyMapOverlay = css`
-//     // button {
-//     //     transition: all 500ms;
-//     //     overflow:visible;
-
-//     //     p {
-//     //         // position:absolute;
-//     //         background-color:#fff;
-//     //         transition: all 500ms;
-//     //         color:#555;
-//     //         display:inline;
-//     //         transform: scale(1.7);
-//     //         left:20px;
-//     //         top:70px;
-//     //         padding:4px;
-//     //         font-weight:600;
-//     //         box-shadow: 0px 5px 20px -7px #000000;
-//     //         border-radius:2px;
-//     //         border: solid .5px;
-//     //         border-radius: 0px 20px 20px;
-//     //     }
-
-//     //     pointer-events: none;
-//     //     transform: scale(.6)
-//     // }
-// `
-
-// ${({displayKeymap}) => displayKeymap && keyMapOverlay}
 export const KeyBox = styled.div`
     position: relative;
     height: 200px;
