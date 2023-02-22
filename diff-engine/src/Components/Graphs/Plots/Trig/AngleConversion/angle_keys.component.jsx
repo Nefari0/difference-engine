@@ -7,7 +7,6 @@ import InputField from "../../../KeyPad/InputField";
 
 const backB = {
     right:'15px',
-
     top:'180px'
 }
 
@@ -65,7 +64,7 @@ const UnitCircle = (props) => {
         navigator.clipboard.writeText(JSON.stringify(value))
         setState({
             ...state,
-            alert:` ${value} ${!showDegrees ? "degrees":'radians'} copied to clipboard`
+            noticeContent:` ${value} ${!showDegrees ? "degrees":'radians'} copied to clipboard`
         })
     }
 

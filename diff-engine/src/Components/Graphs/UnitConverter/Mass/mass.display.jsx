@@ -36,10 +36,10 @@ const MassDisplay = (props) => {
 
     return (
         <tbody>
-            {units !== 'gm' && <tr onClick={() => copy(gm)}><td>{isNumber(gm)}</td><td>gm</td></tr>}
-            {units !== 'oz' && <tr onClick={() => copy(oz)}><td>{isNumber(oz)}</td><td>oz</td></tr>}
-            {units !== 'lb' && <tr onClick={() => copy(lb)}><td>{isNumber(lb)}</td><td>lb</td></tr>}
-            {units !== 'ct' && <tr onClick={() => copy(ct)}><td>{isNumber(ct)}</td><td>ct</td></tr>}
+            {units !== 'gm' && <tr onClick={() => copy(gm,'gm')}><td>{isNumber(gm)}</td><td>gm</td></tr>}
+            {units !== 'oz' && <tr onClick={() => copy(oz,'oz')}><td>{isNumber(oz)}</td><td>oz</td></tr>}
+            {units !== 'lb' && <tr onClick={() => copy(lb,'lb')}><td>{isNumber(lb)}</td><td>lb</td></tr>}
+            {units !== 'ct' && <tr onClick={() => copy(ct,'ct')}><td>{isNumber(ct)}</td><td>ct</td></tr>}
         </tbody>
     )
 }

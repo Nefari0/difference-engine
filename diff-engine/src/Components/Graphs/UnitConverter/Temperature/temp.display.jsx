@@ -29,8 +29,8 @@ const TemperatureDisplay = (props) => {
 
     return (
         <tbody>
-            {units !== 'celsius' && <tr onClick={() => copy(c)}><td>{isNumber(c)}</td><td>C</td></tr>}
-            {units !== 'fahrenheit' && <tr onClick={() => copy(f)}><td>{isNumber(f)}</td><td>F</td></tr>}
+            {units !== 'celsius' && <tr onClick={() => copy(c,'C')}><td>{isNumber(c)}</td><td>C</td></tr>}
+            {units !== 'fahrenheit' && <tr onClick={() => copy(f,'F')}><td>{isNumber(f)}</td><td>F</td></tr>}
         </tbody>
     )
 }
