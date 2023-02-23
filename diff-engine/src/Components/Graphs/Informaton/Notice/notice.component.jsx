@@ -1,11 +1,14 @@
 import { NoticeContainer } from './notice.styles'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useContext } from 'react'
+
+import { ViewContext } from '../../../Context/view.context'
 
 const Notice = (props) => {
 
     const { state,setState } = props
     const { noticeContent } = state
     const [ text, setText ] = useState('')
+    const {darkmode} = useContext(ViewContext)
 
     useEffect(() => {update()},[noticeContent])
 
@@ -20,7 +23,7 @@ const Notice = (props) => {
     }
 
     return (
-        <NoticeContainer noticeContent={noticeContent}>
+        <NoticeContainer noticeContent={noticeContent} darkmode={darkmode}>
             <strong>{text}</strong>
         </NoticeContainer>
     )
