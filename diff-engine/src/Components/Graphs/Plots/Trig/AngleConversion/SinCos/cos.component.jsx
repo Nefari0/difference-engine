@@ -1,6 +1,11 @@
+import { useContext } from "react"
 import { CosPart,ThetaOrigin,CosPointer,PointerOrigin } from "../display.styles"
 
+import { ViewContext } from "../../../../../Context/view.context"
+
 const Cos = ({radians}) => {
+
+    const { darkmode } = useContext(ViewContext)
 
     const rotation = {
         top:'-50px',
@@ -28,7 +33,7 @@ const Cos = ({radians}) => {
         <ThetaOrigin style={Math.cos(parseFloat(radians)) < 0 ? rotation : null}>
             <CosPart radians={radians}>
                 <PointerOrigin style={flipPointer()}>
-                    <CosPointer radians={radians} />
+                    <CosPointer radians={radians} darkmode={darkmode}/>
                 </PointerOrigin>
             </CosPart>
         </ThetaOrigin>

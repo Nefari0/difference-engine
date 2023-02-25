@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { ViewContext } from "../../../../Context/view.context"
-import { TheCircle, Theta, ThetaOrigin } from "./display.styles"
+import { OuterRotation, Theta, ThetaOrigin } from "./display.styles"
 import { TrigFunctions } from "./TrigFunctions/functions.component"
 import RationalRads from "./RadianDisplay/rads.component"
 import { MathComponent } from "mathjax-react"
@@ -61,9 +61,8 @@ const UnitCircleDisplay = (props) => {
                 degrees={degrees}
             />
 
-            <TheCircle
+            <OuterRotation
                 theta={returnDegrees()}
-                darkmode={darkmode}
             >
             <RationalRads
                 style={rads_degs}
@@ -92,9 +91,9 @@ const UnitCircleDisplay = (props) => {
                     <Tan/>
                 </Theta>
 
-            </TheCircle>
+            </OuterRotation>
             
-            <Sin radians={radianVal()}/>
+            <Sin radians={radianVal()} style={{zIndex:'1000000'}}/>
 
             <Cos radians={radianVal()} />
 

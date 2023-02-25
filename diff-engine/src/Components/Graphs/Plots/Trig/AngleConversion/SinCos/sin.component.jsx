@@ -1,7 +1,12 @@
+import { useContext } from "react"
 import { ThetaOrigin,SinPart,SinPointer } from "../display.styles"
+
+import { ViewContext } from "../../../../../Context/view.context"
 
 const Sin = ({radians}) => {
 
+    const { darkmode } = useContext(ViewContext)
+ 
     const rotation = {
         top:'-50px',
         left:'-5px',
@@ -34,7 +39,7 @@ const Sin = ({radians}) => {
         <ThetaOrigin style={Math.sin(parseFloat(radians)) < 0 ? rotation : null}>
             <SinPart radians={parseFloat(radians)}>
                 <ThetaOrigin style={flipPointer()}>
-                    <SinPointer radians={radians} />
+                    <SinPointer radians={radians} darkmode={darkmode}/>
                 </ThetaOrigin>
             </SinPart>
         </ThetaOrigin>

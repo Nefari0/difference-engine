@@ -13,13 +13,10 @@ const {
     dark
 } = backgroundColors
 
-export const TheCircle = styled.div`
+export const OuterRotation = styled.div`
     position:absolute;
     width:400px;
     height:400px;
-    // border: solid 1px #555;
-    border:solid 1px ${({darkmode}) => darkmode ? '#fff' : '#333'};
-    border-radius:50%;
     left:-202px;
     top:-226px;
     transform: rotate(${({theta}) => -theta}deg);
@@ -96,6 +93,7 @@ export const CosPointer = styled.span`
     border-left-style: dashed;
     border-left-width: 3px;
     transition: all 1000ms;
+    color:${({darkmode}) => darkmode ? '#fff' : '#555'};
 `
 
 export const SinPointer = styled.span`
@@ -108,6 +106,7 @@ export const SinPointer = styled.span`
     border-top-style: dashed;
     border-top-width: 3px;
     transition: all 1000ms;
+    color:${({darkmode}) => darkmode ? '#fff' : '#555'};
 `
 
 export const PointerOrigin = styled.span`
@@ -121,7 +120,7 @@ export const TanLine = styled.span`
     position:absolute;
     width:200px;
     height:1px;
-    // background-color:yellow;
+    color:${({darkmode}) => darkmode ? '#fff':'#555'};
     border-top-style: dashed;
     border-top-width: 3px;
     transition: all 1000ms;
