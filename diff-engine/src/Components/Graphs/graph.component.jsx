@@ -101,14 +101,14 @@ export default function Graph() {
     polarCoords: [],
     cartCoords:[],
     polars:false, // Display polars or cartesian
-    mathFunc:'cos(3 * x) + sin(2 * x)',
+    mathFunc:'cos(3 * x) + sin(2 * x)', // INPUT
     unitCircle:null, // Display Unit Circle ?
     showUnitCircleAngles:false,
 
     // --- Radian / Degree conversion --- //
     showDegrees:true,
-    degrees:45, // Converting between degrees and radians
-    radians:.79, // Converting between degrees and radians
+    degrees:45, // Converting between degrees and radians // INPUT
+    radians:.79, // Converting between degrees and radians // INPUT
 
     displayInput:true, // Toggles main input on/off 
 
@@ -149,7 +149,6 @@ export default function Graph() {
     mathFunc,
     // currentView,
     displayInput,
-
     help,
     alert,
     noticeContent,

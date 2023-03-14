@@ -59,7 +59,7 @@ const CogDisplay = ({state}) => {
             </a>
 
             <a
-                href="https://jupyter.madmodels3d.com/blog/3d%20Modeling%20&%20Printing/Involute%20Gear%20Calculator"
+                href="https://jupyter.madmodels3d.com/Involute%20Gear%20Calculator"
                 target="_blank"
                 style={{
                     position:'absolute',
