@@ -4,6 +4,7 @@ import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
+import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 
 const backB = {
     right:'15px',
@@ -71,6 +72,11 @@ const UnitCircle = (props) => {
 
     return (
         <KeyBox>
+
+            {/* <NumberPad
+                state={state}
+                setState={setState}
+            /> */}
 
             {!showDegrees ? 
             <InputField

@@ -1,20 +1,35 @@
-import { ViewContext } from "../../../Context/view.context";
-import { useContext } from "react";
-import { BaseButton, } from "../keypad.styles";
+// import { ViewContext } from "../../../Context/view.context";
+// import { useContext } from "react";
+// import { BaseButton, } from "../keypad.styles";
 import { NumPad } from "./nums.styles";
 import { numdata } from "./nums.data";
 import Button from "../Button";
 
-export const NumberPad = ({styles,state,setState}) => {
+const INPUT_TYPE = {
+    mathFunc:'mathfunc',
+    radians:'radians',
+    degrees:'degrees'
+}
 
-    const {mathFunc} = state
+// const stringProcessing = () => {
 
-    const {darkmode} = useContext(ViewContext)
+// }
+
+export const NumberPad = ({styles,state,setState,inputType}) => {
+
+    const {mathFunc,radians,degrees} = state
+
+    const getInputType = (buttonType = INPUT_TYPE.mathFunc) => ({
+        [INPUT_TYPE.mathFunc]:mathFunc,
+        [INPUT_TYPE.degrees]:degrees,
+        [INPUT_TYPE.radians]:radians
+    },[inputType])
 
     const setItems = (e,val) => {
 
-        const newCharacter = () => {            
-            const mathArr = mathFunc.split('')
+        const newCharacter = (inputField,val) => {
+            const stringval = inputField.toString()
+            const mathArr = stringval.split('')
             const previous = mathArr.splice(0,mathArr.length-1,1).join('')
             return (val.split('').length === 0 ? previous : mathFunc+val)
         }
