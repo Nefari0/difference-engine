@@ -21,7 +21,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
         navigator.clipboard.writeText(calculation)
         setState({
             ...state,
-            alert:`${calculation} copied to clipboard`
+            noticeContent:`${calculation} copied to clipboard`
         })
     }
 

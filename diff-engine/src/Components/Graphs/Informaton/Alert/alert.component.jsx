@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import { AlertContainer } from "./alert.styles";
 import { BaseButton } from "../../KeyPad/keypad.styles";
+
+import { ViewContext } from "../../../Context/view.context";
 
 const close = {
     position:'absolute',
@@ -11,8 +14,10 @@ const Alert = ({state,execute}) => {
 
     const { alert } = state
 
+    const { darkmode } = useContext(ViewContext)
+
     return (
-        <AlertContainer>
+        <AlertContainer darkmode={darkmode}>
             <p>{alert}</p>
 
             <BaseButton

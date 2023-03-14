@@ -13,21 +13,18 @@ const Units = ({state,setState,execute}) => {
 
     const { darkmode } = useContext(ViewContext)
 
-    const copy = (value) => {
-        if (isNumber(value) != 'input a number') {navigator.clipboard.writeText(value)
-        setState({
-            ...state,
-            alert:`${value} copied to clipboard`
-        })}
+    const copy = (value,unit) => {
+        if (isNumber(value) != 'input a number') {
+            navigator.clipboard.writeText(value)
+            setState({
+                ...state,
+                noticeContent:`${value} ${unit} copied to clipboard`
+            })
+        }
     }
-
-    // const testFunction = () => {
-        //     console.log('nav',navigator.clipboard)
-        // }
         
     const pasteFromClipboard = (e) => {
         e.preventDefault()
-        console.log('hit paste function')
         
         try {
 
@@ -50,7 +47,6 @@ const Units = ({state,setState,execute}) => {
                     }
                 })
                 .catch(err => {
-                    // console.log('err',err)
                     execute(e,'alert','Failed to read clipboard contents: '+ err);
                 });
         } catch (error) {execute(e,'alert',"Sorry, this function might not be compatible with the browser you're using",error)}

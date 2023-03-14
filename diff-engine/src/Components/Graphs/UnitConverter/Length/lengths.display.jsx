@@ -37,10 +37,10 @@ const LengthDisplay = (props) => {
 
     return (
         <tbody>
-            {units !== 'mm' && <tr onClick={() => copy(mm)}><td>{isNumber(mm)}</td><td>mm</td></tr>}    
-            {units !== 'cm' && <tr onClick={() => copy(cm)}><td>{isNumber(cm)}</td><td>cm</td></tr>}
-            {units !== 'in' && <tr onClick={() => copy(inches)}><td>{isNumber(inches)}</td><td>in</td></tr>}
-            {units !== 'ft' && <tr onClick={() => copy(ft)}><td>{isNumber(ft)}</td><td>ft</td></tr>}
+            {units !== 'mm' && <tr onClick={() => copy(mm,'mm')}><td>{isNumber(mm)}</td><td>mm</td></tr>}    
+            {units !== 'cm' && <tr onClick={() => copy(cm,'cm')}><td>{isNumber(cm)}</td><td>cm</td></tr>}
+            {units !== 'in' && <tr onClick={() => copy(inches,'in')}><td>{isNumber(inches)}</td><td>in</td></tr>}
+            {units !== 'ft' && <tr onClick={() => copy(ft,'ft')}><td>{isNumber(ft)}</td><td>ft</td></tr>}
         </tbody>
     )
 }

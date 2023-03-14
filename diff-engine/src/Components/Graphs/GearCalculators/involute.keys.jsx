@@ -111,11 +111,11 @@ const CogKeys = (props) => {
     '\n    edges1.append( [i, i+1] )' +
     '\ncreateMeshFromData( "Profile", [0, 0, 0], coords, edges1, [] )'
 
-    const copyVal = (val,message) => {
+    const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
         setState({
             ...state,
-            alert:message
+            [name]:message
         })
     }
 
@@ -132,7 +132,7 @@ const CogKeys = (props) => {
                 />
 
             <Button 
-                onClick={() => copyVal(gearScript,copyScriptMessage)}
+                onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
             />
@@ -155,7 +155,7 @@ const CogKeys = (props) => {
 
                 <Button
                     styles={{top:'210px',left:'0px',width:'120px'}}
-                    onClick={() => copyVal(pitch,copyPitch)}
+                    onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
                     text={'copy pitch'}
                     buttonClass={'tiny'}
                 />

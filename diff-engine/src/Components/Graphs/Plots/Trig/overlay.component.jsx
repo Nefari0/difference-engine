@@ -6,11 +6,10 @@ import Rotations from "./UnitCircle/unitcircle.component"
 import {angleData} from './angle.data'
 import { ThetaOrigin } from "./AngleConversion/display.styles"
 
-const tOrigin = {
-    // position:'',
-    top:'200px',
-    left:'200px'
-}
+// const tOrigin = {
+//     top:'200px',
+//     left:'200px'
+// }
 
 const CircleGraph = ({showUnitCircleAngles}) => {
 

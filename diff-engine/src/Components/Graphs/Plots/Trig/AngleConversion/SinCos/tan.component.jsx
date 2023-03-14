@@ -1,6 +1,11 @@
+import { useContext } from "react"
 import { TanLine } from "../display.styles"
 
+import { ViewContext } from "../../../../../Context/view.context"
+
 const Tan = () => {
+
+    const { darkmode } = useContext(ViewContext)
 
     const tanParams = {
         transform:`rotate(90deg)`,
@@ -15,12 +20,12 @@ const Tan = () => {
         top:'-2.5px',
         height:'10px',
         borderRadius:'50%',
-        backgroundColor:'black',
+        backgroundColor:`${darkmode ? '#fff':'#555'}`,
     }
 
     return (
         <div style={dot}>
-            <TanLine style={tanParams}></TanLine>
+            <TanLine style={tanParams} darkmode={darkmode}></TanLine>
         </div>
     )
 }
