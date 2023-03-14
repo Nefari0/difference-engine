@@ -11,10 +11,6 @@ const INPUT_TYPE = {
     degrees:'degrees'
 }
 
-// const stringProcessing = () => {
-
-// }
-
 export const NumberPad = ({styles,state,setState,inputType}) => {
 
     const {mathFunc,radians,degrees} = state
@@ -25,20 +21,19 @@ export const NumberPad = ({styles,state,setState,inputType}) => {
         [INPUT_TYPE.radians]:radians
     },[inputType])
 
+    const newCharacter = (inputField,val) => {
+        const stringval = inputField.toString()
+        const mathArr = stringval.split('')
+        const previous = mathArr.splice(0,mathArr.length-1,1).join('')
+        return (val.split('').length === 0 ? previous : mathFunc+val)
+    }
     const setItems = (e,val) => {
-
-        const newCharacter = (inputField,val) => {
-            const stringval = inputField.toString()
-            const mathArr = stringval.split('')
-            const previous = mathArr.splice(0,mathArr.length-1,1).join('')
-            return (val.split('').length === 0 ? previous : mathFunc+val)
-        }
 
         e.preventDefault()
 
         setState({
             ...state,
-            mathFunc:newCharacter()
+            mathFunc:newCharacter(mathFunc,val)
         })
     }
 
