@@ -1,3 +1,5 @@
+import styled, { css } from "styled-components"
+
 // color pallete:
 const tier1 = '#FFFFFF'
 const tier2 = '#DADDE2'
@@ -31,3 +33,11 @@ export const widthParameters = {
     // widthPercent:widthPercent,
 }
 // -------------------- // 
+
+export const basicDark = css`
+    background-color:${backgroundColors.midDark};
+    color:${backgroundColors.paper};
+`
+export const basicLight = css`
+    background-color:${backgroundColors.paper};
+`

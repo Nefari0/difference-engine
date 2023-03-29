@@ -9,7 +9,8 @@ import {
   ArrowButton,
   Zoom,
   AboutButton,
-  DarkmodeButton
+  DarkmodeButton,
+  ResetViewMessage
 } from "./view-settings.styles";
 
 import {
@@ -29,13 +30,22 @@ import {
   verticalTranslation 
 } from "./viewLogic";
 
+const resetViewMessageText = 'If this app does not fit on your display, please click the "reset view" button'
+
 const ViewSettings = (props) => {
 
     const { state,execute } = props
 
     const { viewScale } = state
 
-    const [openSettings,setOpenSettings] = useState(false)
+    // const [openSettings,setOpenSettings] = useState(false)
+    const [localState,setLocalState] = useState({
+      hovered:false
+    })
+
+    const {
+      hovered
+    } = localState
 
     const {
       about,setAbout,
@@ -46,12 +56,12 @@ const ViewSettings = (props) => {
     return (
         <ViewSettingsPanel>
 
-        <ZoomInButton
+        <Zoom
           viewScale={viewScale}
           onClick={(e) => changeSize(e,.01,state,execute)}
           >
             {zoomIn()}
-        </ZoomInButton>
+        </Zoom>
 
         <ZoomOutButton
           viewScale={viewScale}
@@ -85,13 +95,22 @@ const ViewSettings = (props) => {
         </Zoom> */}
 
         {/* --- OPEN ABOUT PAGE --- */}
-        {/* <AboutButton
+        <AboutButton
           onClick={() => setAbout(!about)}
         >
           about
-        </AboutButton> */}
+        </AboutButton>
 
-
+        <ResetViewMessage
+          darkmode={darkmode}
+          hovered={hovered}
+          onMouseEnter={() => setLocalState({...localState,hovered:true})}
+        >
+          <p>{resetViewMessageText}</p>
+        </ResetViewMessage>
+        {/* <ResetViewMessage2>reset</ResetViewMessage2> */}
+        {/* <button styly={{zIndex:'10000000'}}>button</button>
+        <p>reset</p> */}
 
       </ViewSettingsPanel>
     )
