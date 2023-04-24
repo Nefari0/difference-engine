@@ -67,6 +67,10 @@ export const AppContainer = styled.main`
     display:flex;
     flex-direction:column;
     background-color:${({darkmode}) => darkmode ? lightDark : light};
+
+    @media (max-height:1080px) {
+        height:1090px;
+    }
 `
 
 export const Adapter = styled.section`
