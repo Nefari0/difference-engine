@@ -154,8 +154,8 @@ export default function Graph() {
     verticalAdjustment:0,
 
     // --- Percentages --- //
-    baseNumber:100,
-    percent:50,
+    baseNumber:'100',
+    percent:'50',
   
   });
   const {

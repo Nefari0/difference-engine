@@ -1,7 +1,6 @@
 import { KeyBox,BaseButton } from "../KeyPad/keypad.styles";
 import Button from "../KeyPad/Button";
 import { backButton } from "../SVG";
-// import InputField from "../KeyPad/InputField";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
 import { useEffect,useState } from "react";
 
@@ -11,36 +10,9 @@ const PercentKeys = (props) => {
         close,
         setState,
         state,
-        // mathFunc,
-        // execute,
-        inputHandler
      } = props
 
-     const {
-        baseNumber,
-        percent
-     } = state
-
-    //  const inputValues = {baseNumber,percent}
-    //  const inputMap = Object.keys(inputValues)
-    //  .map((key,i) => {
-    //     return (
-    //     <InputField
-    //         styles={{top:`${(i < 1 ? i : i*60)}px`,fontSize:'6px'}}
-    //         key={i}
-    //         value={inputValues[key]}
-    //         onChange={inputHandler}
-    //         i={`${key} = `}
-    //         name={key}
-    //         inputClass={'small'}
-    //     />
-    //     )
-    //  })
-
-    //  const [localState,setLocalState] = useState({
-    //     base:'100',
-    //     percent:'50'
-    //  })
+     const [selection,setSelection] = useState('baseNumber')
 
      useEffect(() => {
         setState({
@@ -50,42 +22,31 @@ const PercentKeys = (props) => {
         })
      },[])
 
-    // const inputMap = Object.keys(state).map((key,i) => {
-    //     return (
-    //         <InputField
-    //         styles={{top:`${(i < 1 ? i : i*60)}px`,fontSize:'6px'}}
-    //         key={i}
-    //         value={state[key]}
-    //         onChange={inputHandler}
-    //         i={`${key} = `}
-    //         name={key}
-    //         inputClass={'small'}
-    //         />
-    //     )
-    // })
-
     return (
         <KeyBox>
-            <NumberPad state={state} setState={setState}/>
-            {/* {inputMap} */}
-            {/* <InputField
-                type='text'
-                onChange={(e) => inputHandler(e)}
-                value={baseNumber}
-                name="mathFunc"
-                inputClass={'small'}
-                i={'Base Number'}
-            /> */}
+            <NumberPad 
+                state={state} 
+                setState={setState}
+                inputField={selection}
+            />
 
-            {/* <InputField
-                style={{position:'absolute',top:'90px'}}
-                type='text'
-                onChange={(e) => inputHandler(e)}
-                value={percent}
-                name="mathFunc"
-                inputClass={'small'}
-                i={'Percentage'}
-            /> */}
+            <Button
+                style={{right:'90px'}}
+                text={"base number"}
+                onClick={(e) => setSelection("baseNumber")}
+            />
+
+            <Button
+                style={{right:'90px',top:'80px'}}
+                text={"percent"}
+                onClick={(e) => setSelection("percent")}
+            />
+
+            <Button
+                style={{right:'90px',top:'160px'}}
+                text={"math Func"}
+                onClick={(e) => setSelection("mathFunc")}
+            />
 
             <Button
                 style={{right:'10px'}}
