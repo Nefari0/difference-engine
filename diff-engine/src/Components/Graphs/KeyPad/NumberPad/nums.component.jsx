@@ -15,7 +15,6 @@ export const NumberPad = ({styles,state,setState,inputField}) => {
         const stringval = inputField.toString()
         const mathArr = stringval.split('')
         const previous = mathArr.splice(0,mathArr.length-1,1).join('')
-
         return (val.split('').length === 0 ? previous : state[input]+val)
     }
 
@@ -23,7 +22,7 @@ export const NumberPad = ({styles,state,setState,inputField}) => {
         e.preventDefault()
         setState({
             ...state,
-            [input]:newCharacter(input,val)
+            [input]:newCharacter(state[input],val)
         })
     }
 
