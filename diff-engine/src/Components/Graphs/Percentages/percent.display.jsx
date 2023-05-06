@@ -10,15 +10,18 @@ const PercentDisplay = ({state}) => {
     const percentValNum = parseFloat(percentValue)
     const totalValNum = parseFloat(totalValue)/100
 
-    const result = parseFloat(percentValNum*totalValNum).toFixed(4)
+    const valueOfPercentage = parseFloat(percentValNum*totalValNum).toFixed(4) // -- Find value of percentage
 
-    const isNumber = (param) => {return (param != 'NaN' ? param: 'input a number')} // Force a numerical value
+    const percentageOfValue = parseFloat(valueOfPercentage/totalValNum).toFixed(4) // -- Finding the percentage of given values
+
+    const isNumber = (param) => {return (param != 'NaN' ? param: 'input a number')} // -- Force a numerical value
 
     return(
         <PercentDisplayContainer darkmode={darkmode}>
             <h4>total value {totalValue}</h4>
             <h4>percentage {percentValue}%</h4>
-            <strong>{isNumber(result)}</strong>
+            <strong>{isNumber(valueOfPercentage)}</strong>
+            <strong>{isNumber(percentageOfValue)}%</strong>
         </PercentDisplayContainer>
     )
 }
