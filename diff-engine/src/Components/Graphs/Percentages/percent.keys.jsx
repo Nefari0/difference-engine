@@ -1,4 +1,4 @@
-import { KeyBox,BaseButton } from "../KeyPad/keypad.styles";
+import { KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
 import Button from "../KeyPad/Button";
 import { backButton } from "../SVG";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
@@ -12,15 +12,36 @@ const PercentKeys = (props) => {
         state,
      } = props
 
-     const [selection,setSelection] = useState('baseNumber')
+    const [selection,setSelection] = useState('totalValue')
 
-     useEffect(() => {
+    useEffect(() => {
         setState({
             ...state,
             displayInput:false,
-            mathFunc:'100'
+            mathFunc:'1',
+            totalValue:'100',
+            percentValue:'50'
         })
-     },[])
+    },[])
+
+    const allClear = () => {
+        setState({
+            ...state,
+            totalValue:'',
+            percentValue:''
+        })
+    }
+
+    const changeSign = (e) => {
+        e.preventDefault()
+        const mathArr = state[selection].split('')
+        mathArr[0] != '-' ? mathArr.splice(0,0,'-') : mathArr.splice(0,1,'')
+
+        setState({
+            ...state,
+            [selection]:mathArr.join('')
+        })
+    }
 
     return (
         <KeyBox>
@@ -32,20 +53,20 @@ const PercentKeys = (props) => {
 
             <Button
                 style={{right:'90px'}}
-                text={"base number"}
-                onClick={(e) => setSelection("baseNumber")}
+                text={"total value"}
+                onClick={(e) => setSelection("totalValue")}
             />
 
             <Button
                 style={{right:'90px',top:'80px'}}
-                text={"percent"}
-                onClick={(e) => setSelection("percent")}
+                text={"value"}
+                onClick={(e) => setSelection("percentValue")}
             />
 
             <Button
-                style={{right:'90px',top:'160px'}}
-                text={"math Func"}
-                onClick={(e) => setSelection("mathFunc")}
+                style={{right:'265px',bottom:`-195px`,zIndex:'0',fontSize:'32px'}}
+                onClick={(e) => changeSign(e)}
+                text={'-'}
             />
 
             <Button
@@ -53,6 +74,13 @@ const PercentKeys = (props) => {
                 text={backButton()}
                 onClick={(e) => close(e)}
             />
+
+            <AllClearButton
+                style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
+                onClick={() => allClear()}
+            >
+                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
+            </AllClearButton>
         </KeyBox>
     )
 }
