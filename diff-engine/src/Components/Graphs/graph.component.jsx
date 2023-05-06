@@ -42,6 +42,7 @@ import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
 
 import PercentKeys from "./Percentages/percent.keys";
+import PercentDisplay from "./Percentages/percent.display";
 
 import AboutPage from "./Informaton/About/about.component";
 
@@ -154,8 +155,8 @@ export default function Graph() {
     verticalAdjustment:0,
 
     // --- Percentages --- //
-    baseNumber:'100',
-    percent:'50',
+    totalValue:'100',
+    percentValue:'50',
   
   });
   const {
@@ -495,6 +496,11 @@ export default function Graph() {
             state={state}
             setState={setState}
             execute={execute}
+          />}
+
+          {currentView === 'percentages' && <PercentDisplay
+            state={state}
+            setState={setState}
           />}
           
           {/* GRID CELLS */}
