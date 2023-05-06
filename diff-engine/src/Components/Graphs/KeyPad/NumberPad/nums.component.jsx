@@ -5,14 +5,14 @@ import Button from "../Button";
 
 export const NumberPad = ({styles,state,setState,inputField}) => {
 
-    const [input,setInput] = useState('mathFunc')
+    const [input,setInput] = useState('mathFunc') // -- Selects text input body to be edited
 
     useEffect(() => {
         if (inputField) {setInput(inputField)}
     },[inputField])
 
-    const newCharacter = (inputField,val) => {
-        const stringval = inputField.toString()
+    const newCharacter = (val) => {
+        const stringval = state[input].toString()
         const mathArr = stringval.split('')
         const previous = mathArr.splice(0,mathArr.length-1,1).join('')
         return (val.split('').length === 0 ? previous : state[input]+val)
@@ -22,7 +22,7 @@ export const NumberPad = ({styles,state,setState,inputField}) => {
         e.preventDefault()
         setState({
             ...state,
-            [input]:newCharacter(state[input],val)
+            [input]:newCharacter(val)
         })
     }
 
