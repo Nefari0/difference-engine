@@ -155,8 +155,10 @@ export default function Graph() {
     verticalAdjustment:0,
 
     // --- Percentages --- //
-    totalValue:'100',
-    percentValue:'50',
+    findPercentValue:'percent',// --- Selected value to find (value of percent or percent of value)
+    totalValue:'',
+    partialValue:'',  // --- Value to find
+
   
   });
   const {
@@ -619,6 +621,7 @@ export default function Graph() {
           close={close}
           state={state}
           setState={setState}
+          execute={execute}
         />}
 
     </Enclosure>
