@@ -11,26 +11,41 @@ import ViewSettings from "./ViewSettings/view-settings.component";
 // import { DisplayScreen } from "./KeyPad/keypad.styles";
 import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
+
+
 import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
 import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
+
 import CircleGraph from "./Plots/Trig/overlay.component";
 import Gaussian from "./Plots/Gaussian/gaus.component";
 import NumberLine from "./NumberLines/nums.component";
+
 import Alert from "./Informaton/Alert/alert.component";
+import Notice from "./Informaton/Notice/notice.component";
+
 import StandardKeys from "./Standard/standard.keys";
 import StandarMathDisplay from "./Standard/standard.display";
+
 import FractionCalc from "./Fractions/frac.display";
 import FractionKeys from "./Fractions/frac.keys";
+
 import ParabKeys from "./Plots/Parabolas/parab.keys";
 import ParabolaDisplay from "./Plots/Parabolas/parab.display";
+
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
+
 import CogKeys from "./GearCalculators/involute.keys";
 import CogDisplay from "./GearCalculators/involute.display";
+
 import UnitsKeys from "./UnitConverter/units.keys";
 import Units from "./UnitConverter/units.display";
+
+import PercentKeys from "./Percentages/percent.keys";
+import PercentDisplay from "./Percentages/percent.display";
+
 import AboutPage from "./Informaton/About/about.component";
-import Notice from "./Informaton/Notice/notice.component";
+
 import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
 import { CopyIcon } from "./SVG";
 
@@ -138,6 +153,12 @@ export default function Graph() {
     // --- Zoom in/out --- //
     viewScale:.5,
     verticalAdjustment:0,
+
+    // --- Percentages --- //
+    findPercentValue:'percent',// --- Selected value to find (value of percent or percent of value)
+    totalValue:'',
+    partialValue:'',  // --- Value to find
+
   
   });
   const {
@@ -373,6 +394,10 @@ export default function Graph() {
       verticalAdjustment={verticalAdjustment}
     >
 
+      {/* ---------------------------------------- */}
+      {/* ---------------- DISPLAY --------------- */}
+      {/* ---------------------------------------- */}
+
       {about && <AboutPage/>}
 
       <ViewSettings
@@ -474,6 +499,11 @@ export default function Graph() {
             setState={setState}
             execute={execute}
           />}
+
+          {currentView === 'percentages' && <PercentDisplay
+            state={state}
+            setState={setState}
+          />}
           
           {/* GRID CELLS */}
           {!polars && mappedTiles}
@@ -488,6 +518,10 @@ export default function Graph() {
           
         </Row>
       </Table>
+
+      {/* ---------------------------------------- */}
+      {/* ------------------ KEYS ---------------- */}
+      {/* ---------------------------------------- */}
 
       {/* KEY GUIDE */}
       {<DisplayKeyInfo execute={execute}/>}
@@ -580,6 +614,14 @@ export default function Graph() {
           close={close}
           execute={execute}
           calculate={calculate}
+        />}
+
+      {currentView === 'percentages' &&
+        <PercentKeys 
+          close={close}
+          state={state}
+          setState={setState}
+          execute={execute}
         />}
 
     </Enclosure>

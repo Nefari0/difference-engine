@@ -53,7 +53,17 @@ const KeyPad = (props) => {
                buttonType={'image'}
             />
 
-            {/*  STANDARD CALCULATOR */}
+            {/*  PERCENTAGES */}
+            <Button
+                styles={{right:`${250}px`,zIndex:'1',zIndex:'2',fontSize:'24px'}}
+                onClick={(e) => setCurrentView('percentages')}
+                darkmode={darkmode}
+                text={`\\%`}
+                p={'Percenage Calculator'}
+                buttonType={'image'}
+            />
+
+            {/* STANDARD CALCULATOR */}
             <Button
                 styles={{right:`${170}px`,zIndex:'1'}}
                 onClick={(e) => setCurrentView('standard')}
