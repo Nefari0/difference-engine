@@ -1,4 +1,4 @@
-import { PercentDisplayContainer } from "./percent.styles";
+import { PercentDisplayContainer,PercentDisplayTable } from "./percent.styles";
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 
@@ -14,16 +14,40 @@ const PercentDisplay = ({state}) => {
 
     const percentageOfValue = parseFloat(percentValNum/totalValNum).toFixed(4) // -- Finding the percentage of given values
 
-    const isNumber = (param) => {return (param != 'NaN' ? param: 'input a number')} // -- Force a numerical value
+    const isNumber = (param) => {return (param != 'NaN' ? param: 'cannot compute values')} // -- Force a numerical value
+
+    const returnZeros = (param) => { // -- Return message if length < 1 || !'0'
+        return (
+            param.length < 1 && param != '0' ? 'input a non-zero value' : param
+            )
+    } 
 
     return(
         <PercentDisplayContainer darkmode={darkmode}>
-            <h4>total value {totalValue}</h4>
-            <h4>partial value {partialValue}</h4>
-            <strong>
-                {findPercentValue === 'percent' && isNumber(valueOfPercentage)}
-                {findPercentValue === 'value' && isNumber(percentageOfValue)}
-            </strong>
+            <h1>Percentages:{findPercentValue}</h1>
+
+            <PercentDisplayTable darkmode={darkmode}>
+                <thead>
+                    <tr><th id={'totalValue'}>total value</th><th>{returnZeros(totalValue)}</th></tr>
+                    <tr><td id={'partialValue'}>partial value</td><td>{returnZeros(partialValue)}</td></tr>
+                </thead>
+                <tbody>
+                    {findPercentValue === 'percent' &&
+                        <tr>
+                            <td>value of percentage:</td>
+                            <td> {isNumber(valueOfPercentage)}</td>
+                        </tr>
+                    }
+
+                    {findPercentValue === 'value' && 
+                        <tr>
+                            <td>percentage of value:</td>
+                            <td>{isNumber(percentageOfValue)}</td>
+                        </tr>
+                    }
+                </tbody>
+            </PercentDisplayTable>
+            
         </PercentDisplayContainer>
     )
 }

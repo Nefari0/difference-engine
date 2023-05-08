@@ -1,9 +1,10 @@
 import { useEffect,useState,useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { KeyBox,AllClearButton } from "../KeyPad/keypad.styles";
+import { KeyBox,AllClearButton,InfoMessage } from "../KeyPad/keypad.styles";
 import Button from "../KeyPad/Button";
 import { backButton } from "../SVG";
 import { NumberPad } from "../KeyPad/NumberPad/nums.component";
+import { GuideText } from "./percent.styles";
 
 const PercentKeys = (props) => {
 
@@ -16,6 +17,8 @@ const PercentKeys = (props) => {
 
     const {
         setDisplayKeymap,
+        displayKeymap,
+        darkmode
     } = useContext(ViewContext)
 
     const [textFieldSelection,setTextFieldSelection] = useState('totalValue')
@@ -49,15 +52,25 @@ const PercentKeys = (props) => {
     }
 
     return (
-        <KeyBox>
+        <KeyBox darkmode={darkmode}>
+
+            {displayKeymap &&
+            <InfoMessage style={{zIndex:'10',top:'-180px',left:'150px',width:'200px',fontSize:'12px'}}>
+                Total value and partial value must be non-zero numbers. You can edit these values by selecting the buttons below.
+            </InfoMessage>}
+
             <NumberPad 
                 state={state} 
                 setState={setState}
                 inputField={textFieldSelection}
             />
+            {/* EDIT VALUES */}
+            <GuideText>
+                Edit Values:
+            </GuideText>
 
             <Button
-                style={{right:'90px'}}
+                style={{right:'90px',top:'30px'}}
                 buttonClass={'large'}
                 text={"total value"}
                 p={'edit total value'}
@@ -65,15 +78,21 @@ const PercentKeys = (props) => {
             />
 
             <Button
-                style={{right:'90px',top:'80px'}}
+                style={{right:'90px',top:'110px'}}
                 buttonClass={'large'}
                 text={"partial value"}
                 p={'edit partial value'}
                 onClick={(e) => setTextFieldSelection("partialValue")}
             />
 
+            {/* SELECT TYPE OF COMPUTATION */}
+
+            <GuideText style={{top:'190px'}}>
+                Computation:
+            </GuideText>
+
             <Button
-                style={{right:'90px',top:'160px'}}
+                style={{right:'90px',top:'220px'}}
                 text={"percent"}
                 p={'select to find value of percentage'}
                 buttonClass={'large'}
@@ -81,7 +100,7 @@ const PercentKeys = (props) => {
             />
 
             <Button
-                style={{right:'90px',top:'240px',zIndex:'1'}}
+                style={{right:'90px',top:'300px',zIndex:'1'}}
                 text={"value"}
                 p={'select to find percentage of value'}
                 buttonClass={'large'}
@@ -102,13 +121,13 @@ const PercentKeys = (props) => {
             </AllClearButton>
 
             <Button
-                style={{right:'10px'}}
+                style={{right:'10px',top:'30px'}}
                 text={backButton()}
                 onClick={(e) => close(e)}
             />
 
             <Button
-                styles={{right:'10px',top:`${80}px`,zIndex:'0',fontSize:'32px'}}
+                styles={{right:'10px',top:`${110}px`,zIndex:'0',fontSize:'32px'}}
                 onClick={(e) => setDisplayKeymap(true)}
                 text={'?'}
             />
