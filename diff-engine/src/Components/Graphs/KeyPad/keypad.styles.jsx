@@ -57,10 +57,6 @@ export const KeyBox = styled.div`
     i {
         font-size:50px;
     }
-
-    strong {
-        color:${({darkmode}) => darkmode ? '#fff' : '#555'};
-    }
 `
 
 // --- THIS WLL REPLACE "Param" ABOVE --- //

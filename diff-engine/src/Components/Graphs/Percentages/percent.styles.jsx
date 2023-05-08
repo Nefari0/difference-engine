@@ -45,4 +45,5 @@ export const GuideText = styled.strong`
     position:absolute;
     right:90px;
     font-size:12px;
+    color:${({darkmode}) => darkmode ? '#fff' : '#555'}
 `

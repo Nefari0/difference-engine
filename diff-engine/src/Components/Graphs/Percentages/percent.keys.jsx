@@ -65,7 +65,9 @@ const PercentKeys = (props) => {
                 inputField={textFieldSelection}
             />
             {/* EDIT VALUES */}
-            <GuideText>
+            <GuideText
+                darkmode={darkmode}
+            >
                 Edit Values:
             </GuideText>
 
@@ -87,7 +89,10 @@ const PercentKeys = (props) => {
 
             {/* SELECT TYPE OF COMPUTATION */}
 
-            <GuideText style={{top:'190px'}}>
+            <GuideText 
+                darkmode={darkmode}
+                style={{top:'190px'}}
+            >
                 Computation:
             </GuideText>
 
