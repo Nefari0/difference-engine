@@ -303,12 +303,6 @@ export default function Graph() {
       matrix: matrix
     });
   };
-  
-  const mappedTiles = matrix.map((row, id1) => {
-    return row.map((col, id2) => {
-      return <GridCell key={id2} darkmode={darkmode}></GridCell>;
-    });
-  });
 
   const vectorMap = (coordArray) => {
     const mappedItems = coordArray.map((el,i) => {
@@ -361,7 +355,7 @@ export default function Graph() {
     } else {
       setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
     }
-}
+  }
 
   const close = (e) => {
     e.preventDefault()
@@ -379,15 +373,6 @@ export default function Graph() {
     }
   }
 
-  // const resetSize = (e) => {
-  //   execute(e,'viewScale',screenSizeExtraction())
-  //   localStorage.setItem('screenWidth',null)
-  // }
-
-  // const theWindow = (e,location,value) => {
-
-  // }
-
   return (
     <Enclosure
       viewScale={viewScale}
@@ -403,8 +388,6 @@ export default function Graph() {
       {about && <AboutPage/>}
 
       <ViewSettings
-        // changeSize={changeSize}
-        // resetSize={resetSize}
         darkmode={darkmode}
         state={state}
         execute={execute}
