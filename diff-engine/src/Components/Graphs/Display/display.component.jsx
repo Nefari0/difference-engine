@@ -2,19 +2,17 @@ import { useContext } from "react"
 import { ViewContext } from "../../Context/view.context"
 // import ViewSettings from "../ViewSettings/view-settings.component"
 import UnitCirclDisplay from "../Plots/Trig/AngleConversion/display.component"
-import CircleGraph from "../Plots/Trig/overlay.component"
 import StandarMathDisplay from "../Standard/standard.display"
 import FractionCalc from "../Fractions/frac.display"
-import ParabolaDisplay from "../Plots/Parabolas/parab.display"
-import CogDisplay from "../GearCalculators/involute.display"
 import Units from "../UnitConverter/units.display"
 import PercentDisplay from "../Percentages/percent.display"
-import { Table,Origin,Row,GridCell,MathFormula } from "./display.styles"
+import { Table,Row,GridCell,MathFormula } from "./display.styles"
 import NumberLine from "../NumberLines/nums.component"
 import { vNumParams,hNumParams } from "../NumberLines/numlineParams"
 import { BaseButton } from "../KeyPad/keypad.styles"
 import { CopyIcon } from "../SVG"
 import { MathComponent } from "mathjax-react"
+import GraphingModule from "./graphing.module"
 
 
 const DisplayModule = (props) => {
@@ -26,9 +24,6 @@ const DisplayModule = (props) => {
         returnPlots,
         execute,
         copy,
-        linearVector,
-        polarVector,
-        formatFunction,
     } = props
 
     const {
@@ -72,43 +67,11 @@ const DisplayModule = (props) => {
                 }
 
                 {/* GRAPH */}
-                <Origin
-                    xAspect={xAspect}
-                    yAspect={yAspect}
-                    polars={polars}
-                >
-                    {/* PLOTS */}
-                    {vectorMap(returnPlots())}
-
-                    {/* GEAR CALCULATOR */}
-                    {currentView === 'gear_calculator' &&
-                        <CogDisplay
-                            state={state}
-                        />
-                    }
-                    
-                    {/* PARABOLA */}
-                    {currentView === 'parabolas' && <ParabolaDisplay
-                        otherPlots={otherPlots}
-                        xAspect={xAspect}
-                        yAspect={yAspect}
-                        cartCoords={cartCoords}
-                    />}
-
-                    {/* TRIG */}
-                    {currentView === 'unit_circle' && !showUnitCircleAngles &&
-                        <UnitCirclDisplay
-                            vectorMap={vectorMap}
-                            formatFunction={formatFunction}
-                            linearVector={linearVector}
-                            polarVector={polarVector}
-                            execute={execute}
-                            state={state}
-                    />}
-
-                    {polars && <CircleGraph showUnitCircleAngles={showUnitCircleAngles}/>}
-
-                </Origin>
+                <GraphingModule
+                    vectorMap={vectorMap}
+                    returnPlots={returnPlots}
+                    state={state}
+                />
 
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
