@@ -6,16 +6,14 @@ import CircleGraph from "../Plots/Trig/overlay.component"
 import StandarMathDisplay from "../Standard/standard.display"
 import FractionCalc from "../Fractions/frac.display"
 import ParabolaDisplay from "../Plots/Parabolas/parab.display"
-// import DisplayKeyInfo from "../KeyPad/KeyInformation/keymap.component"
 import CogDisplay from "../GearCalculators/involute.display"
 import Units from "../UnitConverter/units.display"
 import PercentDisplay from "../Percentages/percent.display"
-import { Table,Origin,Row,GridCell } from "../graph.styles"
+import { Table,Origin,Row,GridCell,MathFormula } from "./display.styles"
 import NumberLine from "../NumberLines/nums.component"
 import { vNumParams,hNumParams } from "../NumberLines/numlineParams"
 import { BaseButton } from "../KeyPad/keypad.styles"
 import { CopyIcon } from "../SVG"
-import { MathFormula } from "../graph.styles"
 import { MathComponent } from "mathjax-react"
 
 
@@ -43,8 +41,6 @@ const GraphingModule = (props) => {
         matrix,
         otherPlots,
         cartCoords,
-        // linearVector,
-        // polarVector
     } = state
 
     const {
@@ -63,8 +59,10 @@ const GraphingModule = (props) => {
             darkmode={darkmode}   
         >
             <Row>
+
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}
+
                 {/* NUMBER LINES */}
                 {!polars &&
                     <div>
@@ -79,14 +77,17 @@ const GraphingModule = (props) => {
                     yAspect={yAspect}
                     polars={polars}
                 >
+                    {/* PLOTS */}
                     {vectorMap(returnPlots())}
 
+                    {/* GEAR CALCULATOR */}
                     {currentView === 'gear_calculator' &&
                         <CogDisplay
                             state={state}
                         />
                     }
-
+                    
+                    {/* PARABOLA */}
                     {currentView === 'parabolas' && <ParabolaDisplay
                         otherPlots={otherPlots}
                         xAspect={xAspect}
@@ -94,6 +95,7 @@ const GraphingModule = (props) => {
                         cartCoords={cartCoords}
                     />}
 
+                    {/* TRIG */}
                     {currentView === 'unit_circle' && !showUnitCircleAngles &&
                         <UnitCirclDisplay
                             vectorMap={vectorMap}
