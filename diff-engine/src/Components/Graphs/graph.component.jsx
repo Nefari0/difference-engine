@@ -49,7 +49,7 @@ import AboutPage from "./Informaton/About/about.component";
 // import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
 // import { CopyIcon } from "./SVG";
 
-import GraphingModule from "./Display/display.component";
+import DisplayModule from "./Display/display.component";
 
 import {
   // evaluate,
@@ -408,7 +408,7 @@ export default function Graph() {
         setState={setState}
       />
 
-      <GraphingModule
+      <DisplayModule
         state={state}
         setState={setState}
         vectorMap={vectorMap}

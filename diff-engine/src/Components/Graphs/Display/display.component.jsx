@@ -17,7 +17,7 @@ import { CopyIcon } from "../SVG"
 import { MathComponent } from "mathjax-react"
 
 
-const GraphingModule = (props) => {
+const DisplayModule = (props) => {
 
     const { 
         state,
@@ -157,4 +157,4 @@ const GraphingModule = (props) => {
     )
 }
 
-export default GraphingModule
+export default DisplayModule
