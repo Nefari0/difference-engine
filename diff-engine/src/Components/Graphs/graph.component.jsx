@@ -101,9 +101,9 @@ export default function Graph() {
 
     information,
 
-    darkmode,setDarkMode,
+    darkmode,
 
-    about,setAbout,
+    about,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -119,6 +119,8 @@ export default function Graph() {
     cartCoords:[],
     polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)', // INPUT
+    displayInput:true, // Toggles main input on/off 
+
     unitCircle:null, // Display Unit Circle ?
     showUnitCircleAngles:false,
 
@@ -127,7 +129,6 @@ export default function Graph() {
     degrees:45, // Converting between degrees and radians // INPUT
     radians:.79, // Converting between degrees and radians // INPUT
 
-    displayInput:true, // Toggles main input on/off 
 
     // --- Help / Information display --- //
     help:false,
@@ -408,6 +409,7 @@ export default function Graph() {
         setState={setState}
       />
 
+      {/* MATH DISPLAY - (all calculation results displayed here)*/}
       <DisplayModule
         state={state}
         setState={setState}
