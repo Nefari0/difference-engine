@@ -8,7 +8,7 @@ import FractionKeys from "../Calculators/Fractions/frac.keys";
 import ParabKeys from "../Plots/Parabolas/parab.keys";
 import DisplayKeyInfo from "./KeyInformation/keymap.component";
 import CogKeys from "../Calculators/GearCalculators/involute.keys";
-import UnitsKeys from "../UnitConverter/units.keys";
+import UnitsKeys from "../Calculators/UnitConverter/units.keys";
 import PercentKeys from "../Calculators/Percentages/percent.keys";
 import HomeKeys from './HomeKeys/homekeys.component'
 
