@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 
 import { UnitsDisplay,UnitsDisplayContainer } from "./unit.styles";
 import LengthDisplay from "./Length/lengths.display";
 import MassDisplay from "./Mass/mass.display";
 import TemperatureDisplay from "./Temperature/temp.display";
-import Button from "../KeyPad/Button";
+import Button from "../../KeyPad/Button";
 
 const Units = ({state,setState,execute}) => {
 

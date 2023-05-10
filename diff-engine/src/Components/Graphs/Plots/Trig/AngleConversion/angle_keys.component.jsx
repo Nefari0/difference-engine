@@ -1,10 +1,10 @@
 import { useEffect,useContext } from "react";
-import { KeyBox } from "../../../KeyPad/keypad.styles";
+import { KeyBox } from "../../../KeyPad/homekeys.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
-import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
+// import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 
 const backB = {
     right:'15px',

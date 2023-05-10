@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { backgroundColors } from "../global.styles";
 
-const { light,dark,paper } = backgroundColors
+const { dark,paper } = backgroundColors
 
 export const Numbers = styled.ul`
     position:absolute;

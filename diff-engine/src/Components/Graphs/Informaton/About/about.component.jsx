@@ -1,4 +1,4 @@
-import { BaseButton } from "../../KeyPad/keypad.styles";
+import { BaseButton } from "../../KeyPad/homekeys.styles";
 import Button from "../../KeyPad/Button";
 import { DocumentContainer } from "../Help/info.styles";
 import { AboutPageContainer } from "./about.styles";

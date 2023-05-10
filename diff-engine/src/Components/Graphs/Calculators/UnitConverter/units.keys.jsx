@@ -1,9 +1,9 @@
 import { useEffect,useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
-import { backButton } from "../SVG";
-import { NumberPad } from "../KeyPad/NumberPad/nums.component";
-import { KeyBox,AllClearButton,InfoMessage } from "../KeyPad/keypad.styles";
-import Button from "../KeyPad/Button";
+import { ViewContext } from "../../../Context/view.context";
+import { backButton } from "../../SVG";
+import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
+import { KeyBox,AllClearButton,InfoMessage } from "../../KeyPad/input.styles";
+import Button from "../../KeyPad/Button";
 
 import TemperatureKeys from "./Temperature/temp.keys";
 import LengthKeys from "./Length/length.keys";

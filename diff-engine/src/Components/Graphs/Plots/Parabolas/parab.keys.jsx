@@ -1,5 +1,5 @@
 import { useState,useEffect,useContext } from "react";
-import { KeyBox } from "../../KeyPad/keypad.styles";
+import { KeyBox } from "../../KeyPad/homekeys.styles";
 import { backButton,ExecuteButton } from "../../SVG";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
@@ -38,6 +38,7 @@ const ParabKeys = (props) => {
             ...state,
             mathFunc:`y = a*(x-h)^2 + k`,
             displayInput:false,
+            polars:false
         })
     },[])
 

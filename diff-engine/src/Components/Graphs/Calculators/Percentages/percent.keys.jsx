@@ -1,9 +1,9 @@
 import { useEffect,useState,useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
-import { KeyBox,AllClearButton,InfoMessage } from "../KeyPad/keypad.styles";
-import Button from "../KeyPad/Button";
-import { backButton } from "../SVG";
-import { NumberPad } from "../KeyPad/NumberPad/nums.component";
+import { ViewContext } from "../../../Context/view.context";
+import { KeyBox,AllClearButton,InfoMessage } from "../../KeyPad/input.styles";
+import Button from "../../KeyPad/Button";
+import { backButton } from "../../SVG";
+import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
 import { GuideText } from "./percent.styles";
 
 const PercentKeys = (props) => {
@@ -28,7 +28,8 @@ const PercentKeys = (props) => {
             ...state,
             displayInput:false,
             totalValue:'',
-            partialValue:''
+            partialValue:'',
+            polars:false,
         })
     },[])
 

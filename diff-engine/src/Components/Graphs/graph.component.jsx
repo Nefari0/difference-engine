@@ -1,53 +1,14 @@
-import {
-  Table,
-  Row,
-  GridCell,
-  Origin,
-  MathFormula,
-  Enclosure,
-} from "./graph.styles";
-
+import { Enclosure } from "./graph.styles";
 import ViewSettings from "./ViewSettings/view-settings.component";
-// import { DisplayScreen } from "./KeyPad/keypad.styles";
 import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
-
-
-import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
-import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
-
-import CircleGraph from "./Plots/Trig/overlay.component";
-import Gaussian from "./Plots/Gaussian/gaus.component";
-import NumberLine from "./NumberLines/nums.component";
-
 import Alert from "./Informaton/Alert/alert.component";
 import Notice from "./Informaton/Notice/notice.component";
-
-import StandardKeys from "./Standard/standard.keys";
-import StandarMathDisplay from "./Standard/standard.display";
-
-import FractionCalc from "./Fractions/frac.display";
-import FractionKeys from "./Fractions/frac.keys";
-
-import ParabKeys from "./Plots/Parabolas/parab.keys";
-import ParabolaDisplay from "./Plots/Parabolas/parab.display";
-
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
-
-import CogKeys from "./GearCalculators/involute.keys";
-import CogDisplay from "./GearCalculators/involute.display";
-
-import UnitsKeys from "./UnitConverter/units.keys";
-import Units from "./UnitConverter/units.display";
-
-import PercentKeys from "./Percentages/percent.keys";
-import PercentDisplay from "./Percentages/percent.display";
-
 import AboutPage from "./Informaton/About/about.component";
-
-import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
-import { CopyIcon } from "./SVG";
+import DisplayModule from "./Display/display.component";
+import KeyModule from "./KeyPad/keypad.component";
 
 import {
   // evaluate,
@@ -59,9 +20,6 @@ import {
   // log
 } from "mathjs";
  
-import KeyPad from "./KeyPad/keypad.component";
-import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
-import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext, useRef } from "react";
 import { ViewContext } from "../Context/view.context";
 import { checkDeviceSize } from "./ViewSettings/viewLogic";
@@ -99,9 +57,9 @@ export default function Graph() {
 
     information,
 
-    darkmode,setDarkMode,
+    darkmode,
 
-    about,setAbout,
+    about,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -111,12 +69,13 @@ export default function Graph() {
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
-    // currentView:null,
     matrix: [],
     polarCoords: [],
     cartCoords:[],
     polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)', // INPUT
+    displayInput:true, // Toggles main input on/off 
+
     unitCircle:null, // Display Unit Circle ?
     showUnitCircleAngles:false,
 
@@ -125,7 +84,6 @@ export default function Graph() {
     degrees:45, // Converting between degrees and radians // INPUT
     radians:.79, // Converting between degrees and radians // INPUT
 
-    displayInput:true, // Toggles main input on/off 
 
     // --- Help / Information display --- //
     help:false,
@@ -141,14 +99,9 @@ export default function Graph() {
     refRadius:5,
     involute:[],
 
-    // --- Parabolas --- //
-    // h:'0',k:'0',
-
     // --- Unit converter --- //
     units:'in',
     unitType:'Length',
-    
-    // otherItems:null,
 
     // --- Zoom in/out --- //
     viewScale:.5,
@@ -162,24 +115,11 @@ export default function Graph() {
   
   });
   const {
-    xAspect,yAspect, // Grid acale
-    matrix,
-    polars,
-    cartCoords,
-    polarCoords,
+    // xAspect,yAspect, // Grid acale
     mathFunc,
-    // currentView,
     displayInput,
-    help,
     alert,
-    noticeContent,
-    // calculation,
     history,
-    showUnitCircleAngles,
-    // h,k, // -- parabola
-
-    otherPlots,
-
     // --- Zoom in / out
     viewScale,
     verticalAdjustment,
@@ -301,33 +241,6 @@ export default function Graph() {
       matrix: matrix
     });
   };
-  
-  const mappedTiles = matrix.map((row, id1) => {
-    return row.map((col, id2) => {
-      return <GridCell key={id2} darkmode={darkmode}></GridCell>;
-    });
-  });
-
-  const vectorMap = (coordArray) => {
-    const mappedItems = coordArray.map((el,i) => {
-      var locations = {
-        bottom: `${yAspect*el[1]}px`,
-        left: `${xAspect*el[0]}px`,
-        borderRadius: "50%",
-        backgroundColor: `${darkmode ? 'white' : 'red'}`,
-        position: "absolute",
-        transition: "all 1000ms",
-        width: "2px",
-        height: "2px"
-      };
-      return <p style={locations} key={i}></p>;
-    })
-    return <div>{mappedItems}</div>
-  }
-  
-  const returnPlots = () => {
-    return (polars === true ? polarCoords : cartCoords)
-  }
 
   const inputHandler = (e) => {
     e.preventDefault()
@@ -351,16 +264,6 @@ export default function Graph() {
     })
   }
 
-  const copy = () => {
-    // console.log(returnPlots()[0])
-    if (returnPlots()[0]) {
-      navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-      setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-    } else {
-      setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
-    }
-}
-
   const close = (e) => {
     e.preventDefault()
     setState({
@@ -377,15 +280,6 @@ export default function Graph() {
     }
   }
 
-  // const resetSize = (e) => {
-  //   execute(e,'viewScale',screenSizeExtraction())
-  //   localStorage.setItem('screenWidth',null)
-  // }
-
-  // const theWindow = (e,location,value) => {
-
-  // }
-
   return (
     <Enclosure
       viewScale={viewScale}
@@ -401,8 +295,6 @@ export default function Graph() {
       {about && <AboutPage/>}
 
       <ViewSettings
-        // changeSize={changeSize}
-        // resetSize={resetSize}
         darkmode={darkmode}
         state={state}
         execute={execute}
@@ -423,101 +315,12 @@ export default function Graph() {
         setState={setState}
       />
 
-      <Table
-        className="Table"
-        darkmode={darkmode}
-      >
-
-        <Row>
-
-          <Origin
-            xAspect={xAspect}
-            yAspect={yAspect}
-            polars={polars}
-          >
-
-            {vectorMap(returnPlots())}
-
-            {currentView === 'gear_calculator' &&
-              <CogDisplay
-                state={state}
-              />
-            }
-
-            {currentView === 'parabolas' && <ParabolaDisplay
-              otherPlots={otherPlots}
-              xAspect={xAspect}
-              yAspect={yAspect}
-              cartCoords={cartCoords}
-            />}
-            
-            {currentView === 'unit_circle' && !showUnitCircleAngles &&
-            <UnitCirclDisplay
-              vectorMap={vectorMap}
-              formatFunction={formatFunction}
-              linearVector={linearVector}
-              polarVector={polarVector}
-              execute={execute}
-              state={state}
-            />}
-
-            {polars && <CircleGraph showUnitCircleAngles={showUnitCircleAngles}/>}
-
-          </Origin>
-          
-          {/* CURRENT MATH FORMULA */}
-            <MathFormula darkmode={darkmode} >
-                {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
-            </MathFormula>
-
-          {!currentView && 
-            <BaseButton 
-              style={{width:'75px',height:'75px',left:'10px',top:'5px',zIndex:'1',opacity:'.6 '}}
-              onClick={() => copy()}
-            >
-                {CopyIcon()}
-                {/* copy coordinates */}
-            </BaseButton>
-          }
-
-          {/* DISPLAY STANDARD CALCULATOR RESULTS */}
-          {currentView === 'standard' && <StandarMathDisplay
-            state={state}
-            setState={setState}
-            execute={execute}
-          />}
-
-          {/* DISPLAY FRACTION CALCULATOR */}
-          {currentView === 'fracs' && <FractionCalc
-            state={state}
-            input={mathFunc}
-          />}
-
-          {/* DISPLAY UNIT CONVERTER */}
-          {currentView === 'unit_converter' && <Units
-            state={state}
-            setState={setState}
-            execute={execute}
-          />}
-
-          {currentView === 'percentages' && <PercentDisplay
-            state={state}
-            setState={setState}
-          />}
-          
-          {/* GRID CELLS */}
-          {!polars && mappedTiles}
-
-          {/* NUMBER LINES */}
-          {!polars &&
-            <div>
-              <NumberLine parameters={hNumParams} darkmode={darkmode} />
-              <NumberLine parameters={vNumParams} darkmode={darkmode} />
-            </div>
-          }
-          
-        </Row>
-      </Table>
+      {/* MATH DISPLAY - (all calculation results displayed here)*/}
+      <DisplayModule
+        state={state}
+        setState={setState}
+        execute={execute}
+      />
 
       {/* ---------------------------------------- */}
       {/* ------------------ KEYS ---------------- */}
@@ -537,92 +340,17 @@ export default function Graph() {
           inputClass={'large'}
       />}
 
-
-      {!currentView && <KeyPad
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        polarVector={polarVector}
-        execute={execute}
-        state={state}
-        setState={setState}
-      />}
-
-      {currentView === 'standard' && <StandardKeys
-        state={state}
-        setState={setState}
-        execute={execute}
-        calculate={calculate}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === 'fracs' && <FractionKeys
-        state={state}
-        setState={setState}
-        inputHandler={inputHandler}
-        execute={execute}
-        close={close}
-        />}
-
-      {currentView === 'gaus' && <Gaussian
-        state={state}
-        setState={setState}
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        execute={execute}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === "parabolas" &&
-      <ParabKeys
-        state={state}
-        setState={setState}
-        execute={execute}
-        linearVector={linearVector}
-        inputHandler={inputHandler}
-        close={close}
-      />
-      }
-
-      {currentView === 'unit_circle' && 
-      <UnitCircle
-        state={state}
-        setState={setState}
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        polarVector={polarVector}
-        execute={execute}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === 'gear_calculator' &&
-        <CogKeys
-        execute={execute}
-        inputHandler={inputHandler}
-        state={state}
-        setState={setState}
-        close={close}
-      />}
-
-      {currentView === 'unit_converter' &&
-        <UnitsKeys
-          inputHandler={inputHandler}
+      <KeyModule
           state={state}
           setState={setState}
-          close={close}
           execute={execute}
           calculate={calculate}
-        />}
-
-      {currentView === 'percentages' &&
-        <PercentKeys 
+          inputHandler={inputHandler}
           close={close}
-          state={state}
-          setState={setState}
-          execute={execute}
-        />}
+          linearVector={linearVector}
+          polarVector={polarVector}
+          formatFunction={formatFunction}
+      />
 
     </Enclosure>
   );

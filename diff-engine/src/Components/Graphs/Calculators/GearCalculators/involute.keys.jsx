@@ -1,9 +1,9 @@
-import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/keypad.styles";
-import { backButton,ExecuteButton } from "../SVG";
-import Button from "../KeyPad/Button";
-import InputField from "../KeyPad/InputField";
+import { KeyBox } from "../../KeyPad/input.styles";
+import { backButton,ExecuteButton } from "../../SVG";
+import Button from "../../KeyPad/Button";
+import InputField from "../../KeyPad/InputField";
 import { useEffect,useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 
@@ -12,11 +12,10 @@ const CogKeys = (props) => {
     const {state,
         setState,
         inputHandler,
-        execute,
         close
     } = props
 
-    const { mathFunc,refRadius,uMax } = state
+    const { mathFunc,uMax } = state
 
     const {darkmode} = useContext(ViewContext)
 

@@ -28,10 +28,6 @@ export const Degrees = styled.i`
     top:-10px;
     position:absolute;
     transform: rotate(${({degrees}) => degrees}deg);
-    // background-color:${({darkmode}) => darkmode ? dark:paper};
-    // color:${({darkmode}) => darkmode ? paper:'black'};
-    // background-color: rgb(240, 240, 240);
-    // transform: rotate(50deg);
 `
 
 export const Radiis = styled.div`
@@ -41,10 +37,7 @@ export const Radiis = styled.div`
     padding:0px;
     left:160px;
     top:-15px;
-    // background-color:blue;
-    // background-color: rgb(240, 240, 240);
     background-color:${({darkmode}) => darkmode ? dark:paper};
-    // color:${({darkmode}) => darkmode ? paper:'black'};
     transform: rotate(${({degrees}) => degrees}deg);
 `
 

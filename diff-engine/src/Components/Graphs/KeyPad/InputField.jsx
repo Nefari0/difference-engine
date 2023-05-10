@@ -5,7 +5,7 @@ import {
     BaseInput,
     ParamInput,
     DisplayScreen
-} from "./keypad.styles";
+} from "./input.styles";
 
 const INPUT_CLASSES = {
     small:'small',

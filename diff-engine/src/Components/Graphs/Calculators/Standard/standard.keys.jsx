@@ -1,10 +1,10 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/keypad.styles";
-import Button from "../KeyPad/Button";
-import { backButton,ExecuteButton,Book } from "../SVG";
+import { KeyBox,BaseButton,EqualButton,AllClearButton } from "../../KeyPad/input.styles";
+import Button from "../../KeyPad/Button";
+import { backButton,Book } from "../../SVG";
 import { useEffect,useContext } from "react";
-import { NumberPad } from "../KeyPad/NumberPad/nums.component";
-import { Operators } from "../KeyPad/NumberPad/operators.components";
-import { ViewContext } from "../../Context/view.context";
+import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
+import { Operators } from "../../KeyPad/NumberPad/operators.components";
+import { ViewContext } from "../../../Context/view.context";
 
 const numpad = {
     left:'100px'
@@ -15,7 +15,6 @@ const StandardKeys = (props) => {
     const {
         state,
         setState,
-        execute,
         calculate,
         close
     } = props
@@ -53,6 +52,13 @@ const StandardKeys = (props) => {
             <Operators
                 state={state}
                 setState={setState}
+            />
+
+            <Button
+                style={{left:'20px',bottom:'-115px',fontSize:'40px'}}
+                buttonType={'image'}
+                text={'x^y'}
+                onClick={() => addCharacter('^')}
             />
 
             <BaseButton

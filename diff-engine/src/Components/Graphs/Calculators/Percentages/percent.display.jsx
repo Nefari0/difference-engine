@@ -1,6 +1,6 @@
 import { PercentDisplayContainer,PercentDisplayTable } from "./percent.styles";
 import { useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 
 const PercentDisplay = ({state}) => {
     
@@ -9,9 +9,7 @@ const PercentDisplay = ({state}) => {
 
     const percentValNum = parseFloat(partialValue)
     const totalValNum = parseFloat(totalValue)/100 // --- 1 percent value of total value
-
     const valueOfPercentage = parseFloat(percentValNum*totalValNum).toFixed(4) // -- Find value of percentage
-
     const percentageOfValue = parseFloat(percentValNum/totalValNum).toFixed(4) // -- Finding the percentage of given values
 
     const isNumber = (param) => {return (param != 'NaN' ? param: 'cannot compute values')} // -- Force a numerical value
