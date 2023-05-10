@@ -7,7 +7,7 @@ import {
     BaseButton,
     LargeButton,
     Buttoni,
-} from "./homekeys.styles";
+} from "./input.styles";
 
 export const BUTTON_CLASSES = {
     base:'base',

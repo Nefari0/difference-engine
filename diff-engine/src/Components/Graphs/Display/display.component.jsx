@@ -9,7 +9,7 @@ import NumberLine from "../NumberLines/nums.component"
 import { vNumParams,hNumParams } from "../NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
-import { BaseButton } from "../KeyPad/HomeKeys/homekeys.styles"
+import { BaseButton } from "../KeyPad/input.styles"
 import { CopyIcon } from "../SVG"
 
 

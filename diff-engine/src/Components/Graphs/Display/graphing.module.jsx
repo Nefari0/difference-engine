@@ -5,15 +5,12 @@ import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Plots/Trig/AngleConversion/display.component";
 import CircleGraph from "../Plots/Trig/overlay.component";
-import { BaseButton } from "../KeyPad/HomeKeys/homekeys.styles";
-import { CopyIcon } from "../SVG";
 
 
 const GraphingModule = (props) => {
 
     const { 
         state,
-        setState,
         returnPlots,
         vectorMap,
         execute

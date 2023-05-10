@@ -1,6 +1,6 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../../KeyPad/HomeKeys/homekeys.styles";
+import { KeyBox,BaseButton,EqualButton,AllClearButton } from "../../KeyPad/input.styles";
 import Button from "../../KeyPad/Button";
-import { backButton,ExecuteButton,Book } from "../../SVG";
+import { backButton,Book } from "../../SVG";
 import { useEffect,useContext } from "react";
 import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
 import { Operators } from "../../KeyPad/NumberPad/operators.components";
@@ -15,7 +15,6 @@ const StandardKeys = (props) => {
     const {
         state,
         setState,
-        execute,
         calculate,
         close
     } = props

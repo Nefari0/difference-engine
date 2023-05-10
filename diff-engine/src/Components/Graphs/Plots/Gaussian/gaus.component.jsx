@@ -1,6 +1,5 @@
 import { useState,useEffect,useContext } from "react";
 import { KeyBox,Param,ParamInput } from "../../KeyPad/homekeys.styles";
-// import { ParamInput } from "../../../graph.styles";
 import { MathComponent } from "mathjax-react";
 import { backButton,ExecuteButton } from "../../SVG";
 import { ViewContext } from "../../../Context/view.context";

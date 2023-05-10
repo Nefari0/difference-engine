@@ -1,4 +1,4 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./homekeys.styles";
+import { KeyBox } from "../input.styles";
 import { Book,CalculatorIcon,CogWheel,beaker } from "../../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
@@ -6,7 +6,6 @@ import Button from "../Button";
 
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
 
 const vp = 80 // -- Vertical Position
 

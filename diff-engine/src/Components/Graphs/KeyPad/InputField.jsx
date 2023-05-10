@@ -5,7 +5,7 @@ import {
     BaseInput,
     ParamInput,
     DisplayScreen
-} from "./homekeys.styles";
+} from "./input.styles";
 
 const INPUT_CLASSES = {
     small:'small',

@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
-// import InputField from "./InputField";
 import Gaussian from "../Plots/Gaussian/gaus.component";
 import UnitCircle from "../Plots/Trig/AngleConversion/angle_keys.component";
 import StandardKeys from "../Calculators/Standard/standard.keys";
 import FractionKeys from "../Calculators/Fractions/frac.keys";
 import ParabKeys from "../Plots/Parabolas/parab.keys";
-import DisplayKeyInfo from "./KeyInformation/keymap.component";
 import CogKeys from "../Calculators/GearCalculators/involute.keys";
 import UnitsKeys from "../Calculators/UnitConverter/units.keys";
 import PercentKeys from "../Calculators/Percentages/percent.keys";
@@ -23,7 +21,6 @@ const KeyModule = (props) => {
         linearVector,
         polarVector,
         formatFunction,
-        // mathFunc
     } = props
 
     const {
@@ -34,8 +31,6 @@ const KeyModule = (props) => {
 
     return (
         <div>
-
-            {/* {<DisplayKeyInfo execute={execute}/>} */}
 
             {!currentView && <HomeKeys
                 formatFunction={formatFunction}
