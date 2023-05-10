@@ -93,7 +93,7 @@ const DisplayModule = (props) => {
                 {/* GRAPHING */}
                 {!currentView && 
                     <BaseButton 
-                        style={{position:'absolute',width:'75px',height:'75px',left:'-110px',top:'-250px',zIndex:'1',opacity:'.6 '}}
+                        style={{position:'absolute',width:'75px',height:'75px',left:'10px',top:'10px',zIndex:'1',opacity:'.6 '}}
                         onClick={() => copy()}
                     >
                         {CopyIcon()}
