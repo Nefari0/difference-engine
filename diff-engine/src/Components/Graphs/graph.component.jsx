@@ -61,7 +61,7 @@ import {
   // log
 } from "mathjs";
  
-import KeyPad from "./KeyPad/keypad.component";
+import HomeKeys from "./KeyPad/HomeKeys/homekeys.component";
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
 import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext, useRef } from "react";
@@ -438,7 +438,7 @@ export default function Graph() {
       />}
 
 
-      {!currentView && <KeyPad
+      {!currentView && <HomeKeys
         formatFunction={formatFunction}
         linearVector={linearVector}
         polarVector={polarVector}

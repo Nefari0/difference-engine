@@ -1,6 +1,6 @@
 import { ViewContext } from "../../../Context/view.context";
 import { useContext } from "react";
-import { BaseButton, } from "../keypad.styles";
+import { BaseButton, } from "../homekeys.styles";
 import { OperatorPad } from "./nums.styles";
 import { numdata } from "./nums.data";
 import { opsdata } from "./operators.data";

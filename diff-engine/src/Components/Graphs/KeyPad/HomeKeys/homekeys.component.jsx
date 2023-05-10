@@ -1,8 +1,8 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
-import { Book,CalculatorIcon,CogWheel,beaker } from "../SVG";
+import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./homekeys.styles";
+import { Book,CalculatorIcon,CogWheel,beaker } from "../../SVG";
 import { useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
-import Button from "./Button";
+import { ViewContext } from "../../../Context/view.context";
+import Button from "../Button";
 
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';

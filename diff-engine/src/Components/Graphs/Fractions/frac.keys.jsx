@@ -1,4 +1,4 @@
-import { KeyBox  } from "../KeyPad/keypad.styles";
+import { KeyBox  } from "../KeyPad/homekeys.styles";
 import InputField from "../KeyPad/InputField";
 import Button from "../KeyPad/Button";
 import { backButton } from "../SVG";

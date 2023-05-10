@@ -1,4 +1,4 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/keypad.styles";
+import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/homekeys.styles";
 import Button from "../KeyPad/Button";
 import { backButton,ExecuteButton,Book } from "../SVG";
 import { useEffect,useContext } from "react";
