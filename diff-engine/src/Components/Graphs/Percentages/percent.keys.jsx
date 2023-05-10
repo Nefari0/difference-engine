@@ -28,7 +28,8 @@ const PercentKeys = (props) => {
             ...state,
             displayInput:false,
             totalValue:'',
-            partialValue:''
+            partialValue:'',
+            polars:false,
         })
     },[])
 

@@ -38,6 +38,7 @@ const ParabKeys = (props) => {
             ...state,
             mathFunc:`y = a*(x-h)^2 + k`,
             displayInput:false,
+            polars:false
         })
     },[])
 
