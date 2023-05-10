@@ -54,6 +54,13 @@ const StandardKeys = (props) => {
                 setState={setState}
             />
 
+            <Button
+                style={{left:'20px',bottom:'-115px',fontSize:'40px'}}
+                buttonType={'image'}
+                text={'x^y'}
+                onClick={() => addCharacter('^')}
+            />
+
             <BaseButton
                 onClick={(e) => close(e)}
                 style={{opacity:'1',right:'0px',top:'80px'}}

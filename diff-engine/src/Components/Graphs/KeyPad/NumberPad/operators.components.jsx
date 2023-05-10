@@ -42,7 +42,7 @@ export const Operators = ({styles,state,setState}) => {
 
     const mappedOperators = opsdata.map(el => {
 
-        const display = (el.svg ? (el.svg) : (el.val))
+        const display = (el.svg ? (el.svg) : (el.display))
 
         return (
             <Button
