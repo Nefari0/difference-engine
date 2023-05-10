@@ -1,9 +1,9 @@
-import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../KeyPad/homekeys.styles";
-import { backButton,ExecuteButton } from "../SVG";
-import Button from "../KeyPad/Button";
-import InputField from "../KeyPad/InputField";
+import { KeyBox,BaseButton,Param,ParamInput,CloseHelp } from "../../KeyPad/HomeKeys/homekeys.styles";
+import { backButton,ExecuteButton } from "../../SVG";
+import Button from "../../KeyPad/Button";
+import InputField from "../../KeyPad/InputField";
 import { useEffect,useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 

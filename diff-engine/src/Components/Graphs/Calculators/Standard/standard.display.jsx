@@ -1,8 +1,8 @@
-import { ViewContext } from "../../Context/view.context"
+import { ViewContext } from "../../../Context/view.context"
 import { useContext } from "react"
 import { Standard,History,HistoryItem } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
-import Button from "../KeyPad/Button"
+import Button from "../../KeyPad/Button"
 
 const clearHistButton = {
     position:'absolute',

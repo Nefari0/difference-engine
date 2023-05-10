@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { basicDark,basicLight,backgroundColors } from "../global.styles";
+import { basicDark,basicLight,backgroundColors } from "../../global.styles";
 
 export const PercentDisplayContainer = styled.section`
     width:100%;

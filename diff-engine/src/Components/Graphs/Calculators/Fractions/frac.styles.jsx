@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { backgroundColors } from "../global.styles";
+// import { backgroundColors } from "../global.styles";
+import { backgroundColors } from "../../global.styles";
 
 const { paper,dark } = backgroundColors
 

@@ -3,13 +3,13 @@ import { ViewContext } from "../../Context/view.context";
 // import InputField from "./InputField";
 import Gaussian from "../Plots/Gaussian/gaus.component";
 import UnitCircle from "../Plots/Trig/AngleConversion/angle_keys.component";
-import StandardKeys from "../Standard/standard.keys";
-import FractionKeys from "../Fractions/frac.keys";
+import StandardKeys from "../Calculators/Standard/standard.keys";
+import FractionKeys from "../Calculators/Fractions/frac.keys";
 import ParabKeys from "../Plots/Parabolas/parab.keys";
 import DisplayKeyInfo from "./KeyInformation/keymap.component";
-import CogKeys from "../GearCalculators/involute.keys";
+import CogKeys from "../Calculators/GearCalculators/involute.keys";
 import UnitsKeys from "../UnitConverter/units.keys";
-import PercentKeys from "../Percentages/percent.keys";
+import PercentKeys from "../Calculators/Percentages/percent.keys";
 import HomeKeys from './HomeKeys/homekeys.component'
 
 const KeyModule = (props) => {

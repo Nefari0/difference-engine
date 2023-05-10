@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { ViewContext } from "../../Context/view.context"
-import { backgroundColors } from "../global.styles"
+import { ViewContext } from "../../../Context/view.context"
+import { backgroundColors } from "../../global.styles"
 
 
 import { 

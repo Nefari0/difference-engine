@@ -1,10 +1,10 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../KeyPad/homekeys.styles";
-import Button from "../KeyPad/Button";
-import { backButton,ExecuteButton,Book } from "../SVG";
+import { KeyBox,BaseButton,LargeButton,CloseHelp,EqualButton,AllClearButton } from "../../KeyPad/HomeKeys/homekeys.styles";
+import Button from "../../KeyPad/Button";
+import { backButton,ExecuteButton,Book } from "../../SVG";
 import { useEffect,useContext } from "react";
-import { NumberPad } from "../KeyPad/NumberPad/nums.component";
-import { Operators } from "../KeyPad/NumberPad/operators.components";
-import { ViewContext } from "../../Context/view.context";
+import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
+import { Operators } from "../../KeyPad/NumberPad/operators.components";
+import { ViewContext } from "../../../Context/view.context";
 
 const numpad = {
     left:'100px'

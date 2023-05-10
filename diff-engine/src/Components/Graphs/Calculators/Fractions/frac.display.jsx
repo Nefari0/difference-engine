@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 
 import { FracDisplay } from "./frac.styles"
 

@@ -1,6 +1,6 @@
 import { PercentDisplayContainer,PercentDisplayTable } from "./percent.styles";
 import { useContext } from "react";
-import { ViewContext } from "../../Context/view.context";
+import { ViewContext } from "../../../Context/view.context";
 
 const PercentDisplay = ({state}) => {
     

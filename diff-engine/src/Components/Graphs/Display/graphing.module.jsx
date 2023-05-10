@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import { Origin } from "./display.styles";
-import CogDisplay from "../GearCalculators/involute.display";
+import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Plots/Trig/AngleConversion/display.component";
 import CircleGraph from "../Plots/Trig/overlay.component";
