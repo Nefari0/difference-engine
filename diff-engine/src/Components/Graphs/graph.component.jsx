@@ -1,55 +1,14 @@
-import {
-  Table,
-  Row,
-  GridCell,
-  Origin,
-  MathFormula,
-  Enclosure,
-} from "./graph.styles";
-
+import { Enclosure } from "./graph.styles";
 import ViewSettings from "./ViewSettings/view-settings.component";
-// import { DisplayScreen } from "./KeyPad/keypad.styles";
 import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
-
-
-import UnitCircle from "./Plots/Trig/AngleConversion/angle_keys.component";
-// import UnitCirclDisplay from "./Plots/Trig/AngleConversion/display.component";
-
-// import CircleGraph from "./Plots/Trig/overlay.component";
-import Gaussian from "./Plots/Gaussian/gaus.component";
-// import NumberLine from "./NumberLines/nums.component";
-
 import Alert from "./Informaton/Alert/alert.component";
 import Notice from "./Informaton/Notice/notice.component";
-
-import StandardKeys from "./Standard/standard.keys";
-// import StandarMathDisplay from "./Standard/standard.display";
-
-// import FractionCalc from "./Fractions/frac.display";
-import FractionKeys from "./Fractions/frac.keys";
-
-import ParabKeys from "./Plots/Parabolas/parab.keys";
-// import ParabolaDisplay from "./Plots/Parabolas/parab.display";
-
 import DisplayKeyInfo from "./KeyPad/KeyInformation/keymap.component";
 import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
-
-import CogKeys from "./GearCalculators/involute.keys";
-// import CogDisplay from "./GearCalculators/involute.display";
-
-import UnitsKeys from "./UnitConverter/units.keys";
-// import Units from "./UnitConverter/units.display";
-
-import PercentKeys from "./Percentages/percent.keys";
-// import PercentDisplay from "./Percentages/percent.display";
-
 import AboutPage from "./Informaton/About/about.component";
-
-// import { BaseButton, TinyButton, KeyBox } from "./KeyPad/keypad.styles";
-// import { CopyIcon } from "./SVG";
-
 import DisplayModule from "./Display/display.component";
+import KeyModule from "./KeyPad/keypad.component";
 
 import {
   // evaluate,
@@ -61,9 +20,6 @@ import {
   // log
 } from "mathjs";
  
-import HomeKeys from "./KeyPad/HomeKeys/homekeys.component";
-import { vNumParams,hNumParams } from "./NumberLines/numlineParams";
-import { MathComponent } from "mathjax-react";
 import { useEffect, useState, useContext, useRef } from "react";
 import { ViewContext } from "../Context/view.context";
 import { checkDeviceSize } from "./ViewSettings/viewLogic";
@@ -113,7 +69,6 @@ export default function Graph() {
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
-    // currentView:null,
     matrix: [],
     polarCoords: [],
     cartCoords:[],
@@ -144,14 +99,9 @@ export default function Graph() {
     refRadius:5,
     involute:[],
 
-    // --- Parabolas --- //
-    // h:'0',k:'0',
-
     // --- Unit converter --- //
     units:'in',
     unitType:'Length',
-    
-    // otherItems:null,
 
     // --- Zoom in/out --- //
     viewScale:.5,
@@ -165,24 +115,11 @@ export default function Graph() {
   
   });
   const {
-    xAspect,yAspect, // Grid acale
-    matrix,
-    polars,
-    cartCoords,
-    polarCoords,
+    // xAspect,yAspect, // Grid acale
     mathFunc,
-    // currentView,
     displayInput,
-    help,
     alert,
-    noticeContent,
-    // calculation,
     history,
-    showUnitCircleAngles,
-    // h,k, // -- parabola
-
-    otherPlots,
-
     // --- Zoom in / out
     viewScale,
     verticalAdjustment,
@@ -305,27 +242,6 @@ export default function Graph() {
     });
   };
 
-  const vectorMap = (coordArray) => {
-    const mappedItems = coordArray.map((el,i) => {
-      var locations = {
-        bottom: `${yAspect*el[1]}px`,
-        left: `${xAspect*el[0]}px`,
-        borderRadius: "50%",
-        backgroundColor: `${darkmode ? 'white' : 'red'}`,
-        position: "absolute",
-        transition: "all 1000ms",
-        width: "2px",
-        height: "2px"
-      };
-      return <p style={locations} key={i}></p>;
-    })
-    return <div>{mappedItems}</div>
-  }
-  
-  const returnPlots = () => {
-    return (polars === true ? polarCoords : cartCoords)
-  }
-
   const inputHandler = (e) => {
     e.preventDefault()
     const {name,value} = e.target
@@ -346,16 +262,6 @@ export default function Graph() {
       alert:'Its against the law to devide by 0',
       calculation:0
     })
-  }
-
-  const copy = () => {
-    // console.log(returnPlots()[0])
-    if (returnPlots()[0]) {
-      navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-      setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-    } else {
-      setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
-    }
   }
 
   const close = (e) => {
@@ -413,10 +319,7 @@ export default function Graph() {
       <DisplayModule
         state={state}
         setState={setState}
-        vectorMap={vectorMap}
-        returnPlots={returnPlots}
         execute={execute}
-        copy={copy}
       />
 
       {/* ---------------------------------------- */}
@@ -437,92 +340,17 @@ export default function Graph() {
           inputClass={'large'}
       />}
 
-
-      {!currentView && <HomeKeys
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        polarVector={polarVector}
-        execute={execute}
-        state={state}
-        setState={setState}
-      />}
-
-      {currentView === 'standard' && <StandardKeys
-        state={state}
-        setState={setState}
-        execute={execute}
-        calculate={calculate}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === 'fracs' && <FractionKeys
-        state={state}
-        setState={setState}
-        inputHandler={inputHandler}
-        execute={execute}
-        close={close}
-        />}
-
-      {currentView === 'gaus' && <Gaussian
-        state={state}
-        setState={setState}
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        execute={execute}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === "parabolas" &&
-      <ParabKeys
-        state={state}
-        setState={setState}
-        execute={execute}
-        linearVector={linearVector}
-        inputHandler={inputHandler}
-        close={close}
-      />
-      }
-
-      {currentView === 'unit_circle' && 
-      <UnitCircle
-        state={state}
-        setState={setState}
-        formatFunction={formatFunction}
-        linearVector={linearVector}
-        polarVector={polarVector}
-        execute={execute}
-        inputHandler={inputHandler}
-        close={close}
-      />}
-
-      {currentView === 'gear_calculator' &&
-        <CogKeys
-        execute={execute}
-        inputHandler={inputHandler}
-        state={state}
-        setState={setState}
-        close={close}
-      />}
-
-      {currentView === 'unit_converter' &&
-        <UnitsKeys
-          inputHandler={inputHandler}
+      <KeyModule
           state={state}
           setState={setState}
-          close={close}
           execute={execute}
           calculate={calculate}
-        />}
-
-      {currentView === 'percentages' &&
-        <PercentKeys 
+          inputHandler={inputHandler}
           close={close}
-          state={state}
-          setState={setState}
-          execute={execute}
-        />}
+          linearVector={linearVector}
+          polarVector={polarVector}
+          formatFunction={formatFunction}
+      />
 
     </Enclosure>
   );

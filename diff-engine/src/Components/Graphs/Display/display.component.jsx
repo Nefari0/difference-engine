@@ -1,7 +1,5 @@
 import { useContext } from "react"
 import { ViewContext } from "../../Context/view.context"
-// import ViewSettings from "../ViewSettings/view-settings.component"
-import UnitCirclDisplay from "../Plots/Trig/AngleConversion/display.component"
 import StandarMathDisplay from "../Standard/standard.display"
 import FractionCalc from "../Fractions/frac.display"
 import Units from "../UnitConverter/units.display"
@@ -9,8 +7,6 @@ import PercentDisplay from "../Percentages/percent.display"
 import { Table,Row,GridCell,MathFormula } from "./display.styles"
 import NumberLine from "../NumberLines/nums.component"
 import { vNumParams,hNumParams } from "../NumberLines/numlineParams"
-import { BaseButton } from "../KeyPad/homekeys.styles"
-import { CopyIcon } from "../SVG"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
 
@@ -20,22 +16,16 @@ const DisplayModule = (props) => {
     const { 
         state,
         setState,
-        vectorMap,
-        returnPlots,
         execute,
-        copy,
     } = props
 
     const {
-        // currentView,
         xAspect,
         yAspect,
         polars,
         showUnitCircleAngles,
         mathFunc,
         matrix,
-        otherPlots,
-        cartCoords,
     } = state
 
     const {
@@ -68,25 +58,14 @@ const DisplayModule = (props) => {
 
                 {/* GRAPH */}
                 <GraphingModule
-                    vectorMap={vectorMap}
-                    returnPlots={returnPlots}
                     state={state}
+                    setState={setState}
                 />
 
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
                     {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
                 </MathFormula>
-
-                {!currentView && 
-                    <BaseButton 
-                        style={{width:'75px',height:'75px',left:'10px',top:'5px',zIndex:'1',opacity:'.6 '}}
-                        onClick={() => copy()}
-                    >
-                        {CopyIcon()}
-                        {/* copy coordinates */}
-                    </BaseButton>
-                }
 
                 {/* PERCENT CALCULATOR */}
                 {currentView === 'percentages' && <PercentDisplay
