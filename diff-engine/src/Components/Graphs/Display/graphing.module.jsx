@@ -3,8 +3,8 @@ import { ViewContext } from "../../Context/view.context";
 import { Origin } from "./display.styles";
 import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
-import UnitCirclDisplay from "../Plots/Trig/AngleConversion/display.component";
-import CircleGraph from "../Plots/Trig/overlay.component";
+import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.component";
+import CircleGraph from "../Calculators/Trig/overlay.component";
 
 
 const GraphingModule = (props) => {
