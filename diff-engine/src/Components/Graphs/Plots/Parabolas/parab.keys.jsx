@@ -1,6 +1,6 @@
 import { useState,useEffect,useContext } from "react";
 import { KeyBox } from "../../KeyPad/homekeys.styles";
-import { backButton,ExecuteButton } from "../../SVG";
+import { uturnArrow,ExecuteButton } from "../../SVG";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
 
@@ -17,7 +17,7 @@ const backB = {
 
 const ParabKeys = (props) => {
 
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setCurrentView } = useContext(ViewContext)
 
     const {
         state,
@@ -40,6 +40,7 @@ const ParabKeys = (props) => {
             displayInput:false,
             polars:false
         })
+        linearVector(y,otherPlots)
     },[])
 
     const p = 1/(4*a)
@@ -92,9 +93,9 @@ const ParabKeys = (props) => {
             />
 
             <Button
-                onClick={(e) => close(e)}
+                onClick={(e) => setCurrentView('plots')}
                 styles={backB}
-                text={backButton()}
+                text={uturnArrow()}
             />
 
         </KeyBox>
