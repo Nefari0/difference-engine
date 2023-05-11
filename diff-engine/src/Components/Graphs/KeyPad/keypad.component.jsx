@@ -8,6 +8,7 @@ import ParabKeys from "../Plots/Parabolas/parab.keys";
 import CogKeys from "../Calculators/GearCalculators/involute.keys";
 import UnitsKeys from "../Calculators/UnitConverter/units.keys";
 import PercentKeys from "../Calculators/Percentages/percent.keys";
+import PlotKeys from "../Plots/plots.keys";
 import HomeKeys from './HomeKeys/homekeys.component'
 
 const KeyModule = (props) => {
@@ -32,7 +33,8 @@ const KeyModule = (props) => {
     return (
         <div>
 
-            {!currentView && <HomeKeys
+            {!currentView && 
+            <HomeKeys
                 formatFunction={formatFunction}
                 linearVector={linearVector}
                 polarVector={polarVector}
@@ -42,7 +44,8 @@ const KeyModule = (props) => {
             />}
 
 
-            {currentView === 'standard' && <StandardKeys
+            {currentView === 'standard' && 
+            <StandardKeys
                 state={state}
                 setState={setState}
                 execute={execute}
@@ -51,7 +54,8 @@ const KeyModule = (props) => {
                 close={close}
             />}
 
-            {currentView === 'fracs' && <FractionKeys
+            {currentView === 'fracs' && 
+            <FractionKeys
                 state={state}
                 setState={setState}
                 inputHandler={inputHandler}
@@ -59,7 +63,8 @@ const KeyModule = (props) => {
                 close={close}
             />}
 
-            {currentView === 'gaus' && <Gaussian
+            {currentView === 'gaus' &&
+            <Gaussian
                 state={state}
                 setState={setState}
                 formatFunction={formatFunction}
@@ -92,7 +97,7 @@ const KeyModule = (props) => {
             />}
 
             {currentView === 'gear_calculator' &&
-                <CogKeys
+            <CogKeys
                 execute={execute}
                 inputHandler={inputHandler}
                 state={state}
@@ -101,7 +106,7 @@ const KeyModule = (props) => {
             />}
 
             {currentView === 'unit_converter' &&
-                <UnitsKeys
+            <UnitsKeys
                 inputHandler={inputHandler}
                 state={state}
                 setState={setState}
@@ -111,12 +116,20 @@ const KeyModule = (props) => {
             />}
 
             {currentView === 'percentages' &&
-                <PercentKeys 
+            <PercentKeys 
                 close={close}
                 state={state}
                 setState={setState}
                 execute={execute}
             />}
+
+            {currentView === 'plots' &&
+            <PlotKeys
+                close={close}
+                state={state}
+                setState={setState}
+            />
+            }
         </div>
     )
 }

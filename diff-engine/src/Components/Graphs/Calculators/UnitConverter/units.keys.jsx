@@ -117,6 +117,7 @@ const UnitsKeys = (props) => {
             <Button
                 styles={{right:'0px',top:`${vp}px`,zIndex:'0',fontSize:'32px'}}
                 onClick={(e) => setDisplayKeymap(true)}
+                buttonType={'image'}
                 text={'?'}
             />
 

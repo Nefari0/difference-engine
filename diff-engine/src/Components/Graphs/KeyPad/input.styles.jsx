@@ -117,7 +117,7 @@ export const BaseButton = styled.button`
     
     strong {
         opacity:1;
-        font-weight:800;
+        font-weight:600;
     }
 
 

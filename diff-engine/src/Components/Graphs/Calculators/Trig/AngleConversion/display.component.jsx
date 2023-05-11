@@ -9,7 +9,7 @@ import Tan from "./SinCos/tan.component"
 
 const UnitCircleDisplay = (props) => {
 
-    const { state,vectorMap } = props
+    const { state,setState,vectorMap } = props
     const { degrees,showDegrees,radians,polarVector,arc } = state
     const { darkmode } = useContext(ViewContext)
 
@@ -18,11 +18,13 @@ const UnitCircleDisplay = (props) => {
     }
 
     const radianVal = () => { // Display radian value
-        return (showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : parseFloat(radians).toFixed(2))
+        const returnValue = (showDegrees ? (degrees*(Math.PI/180)).toFixed(2) : parseFloat(radians).toFixed(2))
+        return (returnValue === "NaN" ? "0" : returnValue)
     }
 
     const degreeVal = () => { // Display degree value
-        return (showDegrees ? parseFloat(degrees).toFixed(2) : (radians * (180/Math.PI)).toFixed(2))
+        const returnValue = (showDegrees ? parseFloat(degrees).toFixed(2) : (radians * (180/Math.PI)).toFixed(2))
+        return (returnValue === "NaN" ? "0" : returnValue)
     }
 
     // const deg = {
@@ -71,22 +73,11 @@ const UnitCircleDisplay = (props) => {
                 degrees={degrees}
                 showDegrees={showDegrees}
             />
+
                 <Theta
                     darkmode={darkmode}
                     style={{left:'200px',top:'196px'}}
                 >
-
-                    {/* <ValueDisplay style={deg}>
-                        <MathComponent tex={String.raw`${degreeVal()}`} />
-                        <i>deg</i>
-                    </ValueDisplay>
-
-
-                    <ValueDisplay style={rad}>
-                        <MathComponent tex={String.raw`${radianVal()}`} />
-                        <i>rad</i>
-                    </ValueDisplay> */}
-
                     <Tan/>
                 </Theta>
 

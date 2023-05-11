@@ -21,7 +21,15 @@ export const OuterRotation = styled.div`
     top:-226px;
     transform: rotate(${({theta}) => -theta}deg);
     transition: all 1000ms;
+`
 
+export const DegreeRadH1 = styled.h1`
+    width:320px;
+    text-align:left;
+    margin:0px;
+    margin-bottom:5px;
+    overflow:hidden;
+    color:${({darkmode}) => darkmode ? '#fff': '#555'};
 `
 
 export const ThetaOrigin = styled.div`

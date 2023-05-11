@@ -135,6 +135,7 @@ const PercentKeys = (props) => {
             <Button
                 styles={{right:'10px',top:`${110}px`,zIndex:'0',fontSize:'32px'}}
                 onClick={(e) => setDisplayKeymap(true)}
+                buttonType={'image'}
                 text={'?'}
             />
         </KeyBox>

@@ -1,10 +1,11 @@
 import { useEffect,useContext } from "react";
-import { KeyBox } from "../../../KeyPad/input.styles";
+import { KeyBox,AllClearButton } from "../../../KeyPad/input.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
-import InputField from "../../../KeyPad/InputField";
-// import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
+// import InputField from "../../../KeyPad/InputField";
+import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
+import { DegreeRadH1 } from "./display.styles";
 
 const backB = {
     right:'15px',
@@ -46,7 +47,7 @@ const UnitCircle = (props) => {
     } = props
     const { degrees,showDegrees,radians } = state
 
-    const {setInformation} = useContext(ViewContext)
+    const {setInformation,darkmode} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -72,29 +73,17 @@ const UnitCircle = (props) => {
     return (
         <KeyBox>
 
-            {/* <NumberPad
+            <DegreeRadH1
+                darkmode={darkmode}
+            >
+                {showDegrees ? "degrees":"radians"}: {(showDegrees ? degrees : radians).toString().substring(0,6)}
+            </DegreeRadH1>
+
+            <NumberPad
                 state={state}
                 setState={setState}
-            /> */}
-
-            {!showDegrees ? 
-            <InputField
-                type='number'
-                onChange={(e) => inputHandler(e)}
-                value={radians}
-                name="radians"
-                inputClass={'small'}
-                i={'rads = '}
+                inputField={!showDegrees ? "radians":"degrees"}
             />
-            :
-            <InputField
-                type='number'
-                onChange={(e) => inputHandler(e)}
-                value={degrees}
-                name="degrees"
-                inputClass={'small'}
-                i={'degs = '}
-            />}
 
             <Button
                 styles={backB}
@@ -131,6 +120,13 @@ const UnitCircle = (props) => {
                 onClick={() => copyVal()}
                 text={!showDegrees ? 'copy degrees':'copy radians'}
             />
+
+            <AllClearButton
+            style={{bottom:'-160px',right:'15px'}}
+                onClick={(e) => execute(e,(!showDegrees ? "radians":"degrees"),'')}
+            >
+                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
+            </AllClearButton>
 
         </KeyBox>
     )
