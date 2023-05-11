@@ -40,7 +40,7 @@ const KeyPad = (props) => {
                 darkmode={darkmode}
                 buttonType={'image'}
                 text={`f(x)`}
-                p={'Algebriac Functions'}
+                p={'Algebraic Functions'}
             />
 
             <Button
