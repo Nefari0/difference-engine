@@ -29,10 +29,7 @@ const GraphingModule = (props) => {
         // returnPlots
     } = state
 
-    const {
-        currentView,
-        darkmode
-    } = useContext(ViewContext)
+    const { currentView } = useContext(ViewContext)
 
     return (
         <Origin
