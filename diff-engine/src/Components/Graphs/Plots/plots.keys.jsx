@@ -38,6 +38,7 @@ const PlotKeys = (props) => {
 
             <Button
                 style={{right:'10px',top:'80px',zIndex:'0',fontSize:'32px'}}
+                buttonType={'image'}
                 text={'?'}
                 onClick={(e) => setDisplayKeymap(true)}
             />
