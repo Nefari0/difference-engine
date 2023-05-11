@@ -11,6 +11,7 @@ const GraphingModule = (props) => {
 
     const { 
         state,
+        setState,
         returnPlots,
         vectorMap,
         execute
@@ -64,6 +65,7 @@ const GraphingModule = (props) => {
                 vectorMap={vectorMap}
                 execute={execute}
                 state={state}
+                setState={setState}
             />}
 
             {polars && <CircleGraph showUnitCircleAngles={showUnitCircleAngles}/>}
