@@ -35,12 +35,12 @@ const KeyPad = (props) => {
         >
 
             <Button
-                styles={{position:'absolute',right:`${10}px`,fontSize:'32px'}}
-                onClick={() => setCurrentView('gaus')}
+                styles={{position:'absolute',right:`${10}px`,fontSize:'22px'}}
+                onClick={() => setCurrentView('plots')}
                 darkmode={darkmode}
                 buttonType={'image'}
-                text={`\\mu`}
-                p={'Guasian'}
+                text={`f(x)`}
+                p={'Algebriac Functions'}
             />
 
             <Button
@@ -54,7 +54,7 @@ const KeyPad = (props) => {
 
             {/*  PERCENTAGES */}
             <Button
-                styles={{right:`${250}px`,zIndex:'1',zIndex:'2',fontSize:'24px'}}
+                styles={{right:'170px',top:`${vp}px`,zIndex:'1',zIndex:'2',fontSize:'24px'}}
                 onClick={(e) => setCurrentView('percentages')}
                 darkmode={darkmode}
                 text={`\\%`}
@@ -81,14 +81,14 @@ const KeyPad = (props) => {
                 p={'Decimal to fraction'}
             />
 
-            <Button
+            {/* <Button
                 styles={{right:'170px',top:`${vp}px`,fontSize:'32px'}}
                 onClick={() => setCurrentView('parabolas')}
                 darkmode={darkmode}
                 text={`\ax^2`}
                 buttonType={'image'}
                 p={'Quadradics'}
-            />
+            /> */}
 
             <Button
                 styles={{right:'10px',top:`${vp}px`,zIndex:'1'}}
