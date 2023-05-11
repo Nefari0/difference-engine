@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Gaussian from "../Plots/Gaussian/gaus.component";
-import UnitCircle from "../Plots/Trig/AngleConversion/angle_keys.component";
+import UnitCircle from "../Calculators/Trig/AngleConversion/angle_keys.component";
 import StandardKeys from "../Calculators/Standard/standard.keys";
 import FractionKeys from "../Calculators/Fractions/frac.keys";
 import ParabKeys from "../Plots/Parabolas/parab.keys";
