@@ -1,5 +1,5 @@
 import { useEffect,useContext } from "react";
-import { KeyBox } from "../../../KeyPad/input.styles";
+import { KeyBox,AllClearButton } from "../../../KeyPad/input.styles";
 import { backButton,Book } from "../../../SVG";
 import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
@@ -120,6 +120,13 @@ const UnitCircle = (props) => {
                 onClick={() => copyVal()}
                 text={!showDegrees ? 'copy degrees':'copy radians'}
             />
+
+            <AllClearButton
+            style={{bottom:'-160px',right:'15px'}}
+                onClick={(e) => execute(e,(!showDegrees ? "radians":"degrees"),'')}
+            >
+                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
+            </AllClearButton>
 
         </KeyBox>
     )
