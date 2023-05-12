@@ -1,7 +1,6 @@
 import { useState,useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { DocumentContainer } from "./info.styles";
-import { BaseButton } from "../../KeyPad/input.styles";
 import Button from "../../KeyPad/Button";
 import { OperatorTable } from "./info.styles";
 import Trig from "./trig.items";
