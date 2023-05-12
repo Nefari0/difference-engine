@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { TinyButton } from "../KeyPad/homekeys.styles"
+import { TinyButton } from "../KeyPad/input.styles"
 import { backgroundColors } from "../global.styles"
 import { basicDark,basicLight } from "../global.styles"
 
