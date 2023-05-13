@@ -300,10 +300,7 @@ export default function Graph() {
         execute={execute}
       />
 
-      {information && <Document
-        state={state}
-        setState={setState}
-      />}
+      {information && <Document/>}
 
       {alert && <Alert
         state={state}

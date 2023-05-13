@@ -35,7 +35,7 @@ const FractionKeys = (props) => {
         const length = currentValueArr.length
         
         if (length === 0 || isNaN(valString)) {
-            execute(e,'alert',errorMessage)
+            execute(e,'noticeContent',errorMessage)
             return
             
         } else {inputHandler(e)}
@@ -46,7 +46,7 @@ const FractionKeys = (props) => {
 
             <InputField
                 inputClass={'small'}
-                type='text'
+                type='number'
                 onChange={(e) => input(e)}
                 value={mathFunc}
                 name="mathFunc"
