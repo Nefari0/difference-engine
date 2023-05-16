@@ -121,12 +121,12 @@ const UnitCircle = (props) => {
                 text={!showDegrees ? 'copy degrees':'copy radians'}
             />
 
-            <AllClearButton
-            style={{bottom:'-160px',right:'15px'}}
-                onClick={(e) => execute(e,(!showDegrees ? "radians":"degrees"),'')}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton>
+            <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
+                style={{bottom:'-160px',right:'15px'}}
+                onClick={(e) => execute(e,(!showDegrees ? "radians":"degrees"),'0')}
+            />
 
         </KeyBox>
     )

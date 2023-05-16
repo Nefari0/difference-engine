@@ -119,12 +119,12 @@ const PercentKeys = (props) => {
                 text={'-'}
             />
 
-            <AllClearButton
+            <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
                 style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
                 onClick={() => allClear()}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton>
+            />
 
             <Button
                 style={{right:'10px',top:'30px'}}

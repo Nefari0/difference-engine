@@ -134,12 +134,15 @@ const KeyPad = (props) => {
                 buttonClass={'large'}
             />
 
-            {/* <AllClearButton
+            {/* <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
+                styles={{color:'blue'}}
+                // buttonType={'i'}
+                p={'All Clear'}
                 onClick={(e) => execute(e,'mathFunc','')}
                 style={{left:'0px',bottom:'-115px'}}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton> */}
+            /> */}
 
         </KeyBox>
     )

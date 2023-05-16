@@ -146,12 +146,16 @@ export const EqualButton = styled(BaseButton)`
         font-size:40px;
         color: #fff;
     }
-`
-
-export const AllClearButton = styled(EqualButton)`
+    `
+    
+    export const AllClearButton = styled(EqualButton)`
     background-color: #f0595f;
     border-color: #b0353a;
     color: #fff;
+
+    strong {
+        font-weight:200;
+    }
 `
 
 export const LargeButton = styled(BaseButton)`

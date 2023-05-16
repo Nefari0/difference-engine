@@ -135,12 +135,12 @@ const UnitsKeys = (props) => {
                 text={'-'}
             />
 
-            <AllClearButton
+            <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
                 style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
                 onClick={(e) => execute(e,'mathFunc','')}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton>
+            />
 
         </KeyBox>
         

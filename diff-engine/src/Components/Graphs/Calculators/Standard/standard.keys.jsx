@@ -96,12 +96,13 @@ const StandardKeys = (props) => {
             </EqualButton>
 
             {/* --- CLEAR BUTTON --- */}
-            <AllClearButton
+            <Button
+                buttonClass={'all_clear'}
                 style={{left:'-5px',top:'80px'}}
-                onClick={(e) => setState({...state,mathFunc:'',calculation:'0'})}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton>
+                text={'AC'}
+                p={'All_Clear'}
+                onClick={() => setState({...state,mathFunc:'',calculation:'0'})}
+            />
 
         </KeyBox>
     )
