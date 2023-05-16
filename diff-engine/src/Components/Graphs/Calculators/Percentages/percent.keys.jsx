@@ -73,7 +73,7 @@ const PercentKeys = (props) => {
             </GuideText>
 
             <Button
-                style={{right:'90px',top:'30px'}}
+                style={{right:'90px',top:'30px',zIndex:'2'}}
                 buttonClass={'large'}
                 text={"total value"}
                 p={'edit total value'}
@@ -81,7 +81,7 @@ const PercentKeys = (props) => {
             />
 
             <Button
-                style={{right:'90px',top:'110px'}}
+                style={{right:'90px',top:'110px',zIndex:'1'}}
                 buttonClass={'large'}
                 text={"partial value"}
                 p={'edit partial value'}
@@ -119,12 +119,13 @@ const PercentKeys = (props) => {
                 text={'-'}
             />
 
-            <AllClearButton
-                style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
+            <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
+                p={'All clear'}
+                style={{left:'0px',bottom:`-195px`,zIndex:'1'}}
                 onClick={() => allClear()}
-            >
-                <strong style={{fontSize:'40px',fontWeight:'200',opacity:'.8'}}>AC</strong>
-            </AllClearButton>
+            />
 
             <Button
                 style={{right:'10px',top:'30px'}}

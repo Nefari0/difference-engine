@@ -92,6 +92,7 @@ export const DisplayScreen = styled(BaseInput )`
 `
 const LightsOff = css`background-color:${lightDark};color:#fff; `
 const lightsOn = css`background-color:${midLight};color:#333;`
+
 export const BaseButton = styled.button`
     position:absolute;
     width:75px;
@@ -146,12 +147,20 @@ export const EqualButton = styled(BaseButton)`
         font-size:40px;
         color: #fff;
     }
-`
-
-export const AllClearButton = styled(EqualButton)`
+    `
+    
+    export const AllClearButton = styled(EqualButton)`
     background-color: #f0595f;
     border-color: #b0353a;
     color: #fff;
+
+    strong {
+        font-weight:200;
+    }
+`
+
+export const CopyCoordinatesButton = styled(BaseButton)`
+    background-color:rgba(${({darkmode}) => !darkmode ? '177, 189, 197, .3' : '136, 159, 165, .3'});
 `
 
 export const LargeButton = styled(BaseButton)`

@@ -1,5 +1,5 @@
-import { KeyBox } from "../input.styles";
-import { Book,CalculatorIcon,CogWheel,beaker } from "../../SVG";
+import { KeyBox,AllClearButton } from "../input.styles";
+import { Book,CalculatorIcon,CogWheel,beaker,CopyIcon } from "../../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../Button";
@@ -12,7 +12,8 @@ const vp = 80 // -- Vertical Position
 const KeyPad = (props) => {
 
     const {
-        setCurrentView,
+        setCurrentView,currentView,
+
         setDisplayKeymap,
         displayKeymap,
         setInformation,
@@ -24,15 +25,43 @@ const KeyPad = (props) => {
         linearVector,
         polarVector,
         state,
+        returnPlots,
+        setState
     } = props
 
-    const { mathFunc,degrees } = state 
+    const { mathFunc,degrees } = state
+
+    const copy = () => {
+        if (returnPlots()[0]) {
+          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+        } else {
+          setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+        }
+    }
 
     return (
         <KeyBox
             displayKeymap={displayKeymap}
             darkmode={darkmode}
         >
+
+            {!currentView && 
+                <Button
+                    p={'copy coordinates'}
+                    styles={{
+                        position:'absolute',
+                        width:'75px',
+                        height:'75px',
+                        left:'10px',
+                        top:'-560px',
+                        zIndex:'100',
+                    }}
+                    buttonClass={'copy_coords'}
+                    onClick={() => copy()}
+                    text={CopyIcon()}
+                />
+            }
 
             <Button
                 styles={{position:'absolute',right:`${10}px`,fontSize:'22px'}}
@@ -64,7 +93,7 @@ const KeyPad = (props) => {
 
             {/* STANDARD CALCULATOR */}
             <Button
-                styles={{right:`${170}px`,zIndex:'1'}}
+                styles={{right:`${170}px`,zIndex:'2'}}
                 onClick={(e) => setCurrentView('standard')}
                 darkmode={darkmode}
                 text={CalculatorIcon()}
@@ -81,17 +110,8 @@ const KeyPad = (props) => {
                 p={'Decimal to fraction'}
             />
 
-            {/* <Button
-                styles={{right:'170px',top:`${vp}px`,fontSize:'32px'}}
-                onClick={() => setCurrentView('parabolas')}
-                darkmode={darkmode}
-                text={`\ax^2`}
-                buttonType={'image'}
-                p={'Quadradics'}
-            /> */}
-
             <Button
-                styles={{right:'10px',top:`${vp}px`,zIndex:'1'}}
+                styles={{right:'10px',top:`${vp}px`,zIndex:'2'}}
                 onClick={() => setCurrentView('gear_calculator')}
                 darkmode={darkmode}
                 text={CogWheel()}
@@ -100,14 +120,14 @@ const KeyPad = (props) => {
 
             <Button
                 onClick={(e) => setInformation('trig')}
-                styles={{right:'10px',top:`${vp*2}px`}}
+                styles={{right:'10px',top:`${vp*2}px`,zIndex:'1'}}
                 darkmode={darkmode}
                 text={Book()}
                 p={'Documentation and resources'}
             />
 
             <Button
-                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`}}
+                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`,zIndex:'1'}}
                 buttonType={'image'}
                 onClick={() => setDisplayKeymap(true)}
                 darkmode={darkmode}
@@ -132,8 +152,6 @@ const KeyPad = (props) => {
                 buttonClass={'large'}
             />
 
-
-
             <Button
                 darkmode={darkmode}
                 style={{top:'80px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
@@ -143,6 +161,16 @@ const KeyPad = (props) => {
                 buttonType={'textage'}
                 buttonClass={'large'}
             />
+
+            {/* <Button
+                buttonClass={'all_clear'}
+                text={'AC'}
+                styles={{color:'blue'}}
+                // buttonType={'i'}
+                p={'All Clear'}
+                onClick={(e) => execute(e,'mathFunc','')}
+                style={{left:'0px',bottom:'-115px'}}
+            /> */}
 
         </KeyBox>
     )

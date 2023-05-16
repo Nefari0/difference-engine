@@ -36,7 +36,7 @@ const Gaussian = (props) => {
             mathFunc:`y = exp(-4*log(2)*x^2/h^2)`,
             displayInput:false
         })
-        linearVector(`exp(-4*log(2)*x^2/${h}^2)`)
+        // linearVector(`exp(-4*log(2)*x^2/${h}^2)`)
     },[])
 
     return (

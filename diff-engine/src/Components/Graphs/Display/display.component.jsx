@@ -9,8 +9,6 @@ import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
-import { BaseButton } from "../KeyPad/input.styles"
-import { CopyIcon } from "../SVG"
 
 
 const DisplayModule = (props) => {
@@ -91,14 +89,14 @@ const DisplayModule = (props) => {
                 }
 
                 {/* GRAPHING */}
-                {!currentView && 
-                    <BaseButton 
-                        style={{position:'absolute',width:'75px',height:'75px',left:'10px',top:'10px',zIndex:'1',opacity:'.6 '}}
+                {/* {!currentView && 
+                    <Button 
+                        p={'copy coordinates'}
+                        style={{position:'absolute',width:'75px',height:'75px',left:'10px',top:'10px',zIndex:'100',opacity:'.6 '}}
                         onClick={() => copy()}
-                    >
-                        {CopyIcon()}
-                    </BaseButton>
-                }
+                        text={CopyIcon()}
+                    />
+                } */}
                 <GraphingModule
                     state={state}
                     setState={setState}
