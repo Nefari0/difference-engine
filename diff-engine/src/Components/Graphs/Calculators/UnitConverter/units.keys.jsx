@@ -138,7 +138,8 @@ const UnitsKeys = (props) => {
             <Button
                 buttonClass={'all_clear'}
                 text={'AC'}
-                style={{left:'0px',bottom:`-195px`,zIndex:'0'}}
+                style={{left:'0px',bottom:`-195px`,zIndex:'1'}}
+                p={'All clear'}
                 onClick={(e) => execute(e,'mathFunc','')}
             />
 
