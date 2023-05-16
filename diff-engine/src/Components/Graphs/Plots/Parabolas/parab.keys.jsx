@@ -40,7 +40,7 @@ const ParabKeys = (props) => {
             displayInput:false,
             polars:false
         })
-        linearVector(y,otherPlots)
+        // linearVector(y,otherPlots)
     },[])
 
     const p = 1/(4*a)
