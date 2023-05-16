@@ -1,5 +1,5 @@
 import { KeyBox,AllClearButton } from "../input.styles";
-import { Book,CalculatorIcon,CogWheel,beaker } from "../../SVG";
+import { Book,CalculatorIcon,CogWheel,beaker,CopyIcon } from "../../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../Button";
@@ -12,7 +12,8 @@ const vp = 80 // -- Vertical Position
 const KeyPad = (props) => {
 
     const {
-        setCurrentView,
+        setCurrentView,currentView,
+
         setDisplayKeymap,
         displayKeymap,
         setInformation,
@@ -24,16 +25,43 @@ const KeyPad = (props) => {
         linearVector,
         polarVector,
         state,
-        execute,
+        returnPlots,
+        setState
     } = props
 
-    const { mathFunc,degrees } = state 
+    const { mathFunc,degrees } = state
+
+    const copy = () => {
+        if (returnPlots()[0]) {
+          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+        } else {
+          setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+        }
+    }
 
     return (
         <KeyBox
             displayKeymap={displayKeymap}
             darkmode={darkmode}
         >
+
+            {!currentView && 
+                <Button
+                    p={'copy coordinates'}
+                    styles={{
+                        position:'absolute',
+                        width:'75px',
+                        height:'75px',
+                        left:'10px',
+                        top:'-560px',
+                        zIndex:'100',
+                    }}
+                    buttonClass={'copy_coords'}
+                    onClick={() => copy()}
+                    text={CopyIcon()}
+                />
+            }
 
             <Button
                 styles={{position:'absolute',right:`${10}px`,fontSize:'22px'}}
@@ -99,7 +127,7 @@ const KeyPad = (props) => {
             />
 
             <Button
-                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`}}
+                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`,zIndex:'1'}}
                 buttonType={'image'}
                 onClick={() => setDisplayKeymap(true)}
                 darkmode={darkmode}

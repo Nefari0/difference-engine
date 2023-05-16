@@ -123,6 +123,9 @@ export default function Graph() {
     // --- Zoom in / out
     viewScale,
     verticalAdjustment,
+    polarCoords,
+    cartCoords,
+    polars
 
   } = state;
 
@@ -280,6 +283,10 @@ export default function Graph() {
     }
   }
 
+  const returnPlots = () => {
+    return (polars === true ? polarCoords : cartCoords)
+  }
+
   return (
     <Enclosure
       viewScale={viewScale}
@@ -317,6 +324,7 @@ export default function Graph() {
         state={state}
         setState={setState}
         execute={execute}
+        returnPlots={returnPlots}
       />
 
       {/* ---------------------------------------- */}
@@ -347,6 +355,7 @@ export default function Graph() {
           linearVector={linearVector}
           polarVector={polarVector}
           formatFunction={formatFunction}
+          returnPlots={returnPlots}
       />
 
     </Enclosure>

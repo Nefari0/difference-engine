@@ -8,7 +8,8 @@ import {
     LargeButton,
     Buttoni,
     AllClearButton,
-    EqualButton
+    EqualButton,
+    CopyCoordinatesButton,
 } from "./input.styles";
 
 export const BUTTON_CLASSES = {
@@ -17,7 +18,8 @@ export const BUTTON_CLASSES = {
     tiny:'tiny',
     rare:'rare',
     equal:'equal',
-    all_clear:'all_clear'
+    all_clear:'all_clear',
+    copy_coords:'copy_coords'
 }
 
 const getButtonClass = (buttonClass = BUTTON_CLASSES.base) =>
@@ -26,7 +28,8 @@ const getButtonClass = (buttonClass = BUTTON_CLASSES.base) =>
     [BUTTON_CLASSES.base]: BaseButton,
     [BUTTON_CLASSES.large]: LargeButton,
     [BUTTON_CLASSES.all_clear]:AllClearButton,
-    [BUTTON_CLASSES.equal]:EqualButton
+    [BUTTON_CLASSES.equal]:EqualButton,
+    [BUTTON_CLASSES.copy_coords]:CopyCoordinatesButton,
   }[buttonClass]);
 
 export const BUTTON_TYPE = {
@@ -34,7 +37,8 @@ export const BUTTON_TYPE = {
     textage:'textage',
     i:'i',
     EqualButton:'EqaulButton',
-    AllClearButton:'AllClearButton'
+    AllClearButton:'AllClearButton',
+    CopyCoordinates:'CopyCoordinates'
 }
 
 const getButtonType = (buttonType = BUTTON_TYPE.textage) => 
