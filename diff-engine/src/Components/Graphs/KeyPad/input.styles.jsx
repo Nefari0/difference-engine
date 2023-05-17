@@ -57,6 +57,10 @@ export const KeyBox = styled.div`
     i {
         font-size:50px;
     }
+
+    a {
+        color: ${({darkmode}) => darkmode ? midLight : 'blue'};
+    }
 `
 
 // --- THIS WLL REPLACE "Param" ABOVE --- //

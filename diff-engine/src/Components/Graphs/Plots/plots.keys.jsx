@@ -28,6 +28,13 @@ const PlotKeys = (props) => {
                 p={'Quadradics'}
             />
 
+            {/* ELLIPSE - Currently not functional */}
+            {/* <Button
+                styles={{left:'0px',top:`${160}px`,fontSize:'32px'}}
+                text={'ellipse'}
+                onClick={() => setCurrentView('ellipse')}
+            /> */}
+
             <Button
                 style={{right:'10px',top:'0px'}}
                 // text={backButton()}

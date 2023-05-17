@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
+
 import Gaussian from "../Plots/Gaussian/gaus.component";
+import ParabKeys from "../Plots/Parabolas/parab.keys";
+// import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import UnitCircle from "../Calculators/Trig/AngleConversion/angle_keys.component";
 import StandardKeys from "../Calculators/Standard/standard.keys";
 import FractionKeys from "../Calculators/Fractions/frac.keys";
-import ParabKeys from "../Plots/Parabolas/parab.keys";
 import CogKeys from "../Calculators/GearCalculators/involute.keys";
 import UnitsKeys from "../Calculators/UnitConverter/units.keys";
 import PercentKeys from "../Calculators/Percentages/percent.keys";
@@ -81,6 +83,18 @@ const KeyModule = (props) => {
                 inputHandler={inputHandler}
                 close={close}
             />}
+
+            {/* ELLIPSE - currently non-functional */}
+            {/* {currentView === 'ellipse' &&
+                <Ellipse
+                    state={state}
+                    setState={setState}
+                    execute={execute}
+                    linearVector={linearVector}
+                    inputHandler={inputHandler}
+                    close={close}
+                />
+            } */}
 
             {currentView === 'unit_circle' && 
             <UnitCircle
