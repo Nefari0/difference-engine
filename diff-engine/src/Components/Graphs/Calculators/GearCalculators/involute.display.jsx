@@ -36,7 +36,7 @@ const CogDisplay = ({state}) => {
     
     return(
         <CogContainer>
-            <h1 
+                <h1 
                 style={{
                     fontSize:'30px',
                     backgroundColor:`${darkmode?dark:paper}`,
@@ -73,13 +73,13 @@ const CogDisplay = ({state}) => {
             </a>
 
             {/* --- STILL UNDER DEVELOPEMENT --- */}
-            {/* <TipCircle mathFunc={mathFunc}>
-                <ReferenceCircle mathFunc={mathFunc}>
-                    <CogOrigin mathFunc={mathFunc}>
+            {/* <CogOrigin mathFunc={mathFunc}>
                             {mappedGears}
-                    </CogOrigin>
-                </ReferenceCircle>
-            </TipCircle> */}
+                <TipCircle mathFunc={mathFunc}>
+                    <ReferenceCircle mathFunc={mathFunc}>
+                    </ReferenceCircle>
+                </TipCircle>
+            </CogOrigin> */}
             {/* -------------------------------- */}
         </CogContainer>
     )
