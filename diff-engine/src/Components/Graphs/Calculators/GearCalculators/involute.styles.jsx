@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { backgroundColors } from "../../global.styles";
+
+const { midLight } = backgroundColors
 
 const scale = 200
 
@@ -38,7 +41,9 @@ export const CogContainer = styled.div`
         font-weight:400;
     }
 
-    a {color:blue;}
+    a {
+        color: ${({darkmode}) => darkmode ? midLight : 'blue'};
+    }
 `
 
 export const ReferenceCircle = styled.div`
