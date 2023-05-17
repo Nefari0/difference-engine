@@ -23,7 +23,8 @@ const StandardKeys = (props) => {
 
     const {
         setInformation,
-        darkmode
+        darkmode,
+        setDisplayKeymap
     } = useContext(ViewContext)
 
     useEffect(() => {
@@ -55,27 +56,37 @@ const StandardKeys = (props) => {
             />
 
             <Button
-                style={{left:'20px',bottom:'-115px',fontSize:'40px'}}
+                style={{left:'-5px',bottom:'-115px',fontSize:'40px'}}
                 buttonType={'image'}
+                buttonClass={'large'}
                 text={'x^y'}
+                p={'Exponentiation'}
                 onClick={() => addCharacter('^')}
             />
 
-            <BaseButton
+            <Button
+                style={{left:'-5px',bottom:'-35px',fontSize:'40px'}}
+                buttonType={'image'}
+                text={'?'}
+                buttonClass={'large'}
+                onClick={(e) => setDisplayKeymap(true)}
+            />
+
+            <Button
                 onClick={(e) => close(e)}
+                p={'Home'}
                 style={{opacity:'1',right:'0px',top:'80px'}}
                 darkmode={darkmode}
-            >
-                {backButton()}
-            </BaseButton>
+                text={backButton()}
+            />
 
-            <BaseButton
+            <Button
                 onClick={(e) => setInformation('arith')}
                 style={{right:'0px'}}
                 darkmode={darkmode}
-            >
-                {Book()}
-            </BaseButton>
+                text={Book()}
+                p={'Documentation'}
+            />
 
             <Button
                 onClick={() => addCharacter(')')}
@@ -88,19 +99,20 @@ const StandardKeys = (props) => {
                 styles={{fontSize:'32px',right:'0px',top:'160px'}}
             />
 
-            <EqualButton
+            <Button
+                text={'='}
                 style={{left:'-5px'}}
                 onClick={(e) => execution(e)}
-            >
-                <strong>=</strong>
-            </EqualButton>
+                buttonClass={'equal'}
+                p={'Calculate'}
+            />
 
             {/* --- CLEAR BUTTON --- */}
             <Button
                 buttonClass={'all_clear'}
                 style={{left:'-5px',top:'80px'}}
                 text={'AC'}
-                p={'All_Clear'}
+                p={'All clear'}
                 onClick={() => setState({...state,mathFunc:'',calculation:'0'})}
             />
 
