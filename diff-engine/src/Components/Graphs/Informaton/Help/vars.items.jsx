@@ -16,7 +16,7 @@ const Vars = ({darkmode}) => {
                 <tbody>
                     <tr>
                         <td>x,y,u</td>
-                        <td>500 Linearly spaced elements:-250,250 </td>
+                        <td>500 Linearly spaced elements:-2.5,2.5 </td>
                     </tr>
                 </tbody>
             </OperatorTable>

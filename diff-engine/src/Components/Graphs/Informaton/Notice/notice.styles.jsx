@@ -8,14 +8,14 @@ const {
     lightDark,midDark,dark
 } = backgroundColors
 
-const containerLight = css`
-    background-color:${midDark};
-    color:#fff;
-`
+// const containerLight = css`
+//     background-color:${midDark};
+//     color:#fff;
+// `
 
-const containerDark = css`
-    background-color:${paper};
-`
+// const containerDark = css`
+//     background-color:${paper};
+// `
 
 const hidden = css`
     visibility: hidden;

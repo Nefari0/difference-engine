@@ -22,7 +22,7 @@ export const ViewProvider = ({ children }) => {
     const [currentView,setCurrentView] = useState(null)
     const [displayKeymap,setDisplayKeymap] = useState(false)
     const [information,setInformation] = useState(null)
-    const [darkmode,setDarkMode] = useState(false)
+    const [darkmode,setDarkMode] = useState(true)
     const [about,setAbout] = useState(false)
     
     const value = {

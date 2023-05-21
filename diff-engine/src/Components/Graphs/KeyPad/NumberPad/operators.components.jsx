@@ -1,16 +1,12 @@
 import { ViewContext } from "../../../Context/view.context";
 import { useContext } from "react";
-import { BaseButton, } from "../keypad.styles";
 import { OperatorPad } from "./nums.styles";
-import { numdata } from "./nums.data";
 import { opsdata } from "./operators.data";
 import Button from "../Button";
 
 export const Operators = ({styles,state,setState}) => {
 
     const {mathFunc} = state
-
-    const {darkmode} = useContext(ViewContext)
 
     const setItems = (e,val) => {
 
@@ -46,7 +42,7 @@ export const Operators = ({styles,state,setState}) => {
 
     const mappedOperators = opsdata.map(el => {
 
-        const display = (el.svg ? (el.svg) : (el.val))
+        const display = (el.svg ? (el.svg) : (el.display))
 
         return (
             <Button
@@ -63,7 +59,6 @@ export const Operators = ({styles,state,setState}) => {
     return (
 
         <OperatorPad>
-            {/* {mappedKeys} */}
             {mappedOperators}
         </OperatorPad>
     )

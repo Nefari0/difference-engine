@@ -1,7 +1,6 @@
 import { useState,useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { DocumentContainer } from "./info.styles";
-import { BaseButton } from "../../KeyPad/keypad.styles";
 import Button from "../../KeyPad/Button";
 import { OperatorTable } from "./info.styles";
 import Trig from "./trig.items";
@@ -10,9 +9,7 @@ import Resource from "./resource.items";
 import ArithmeticTable from "./arithmetic.items";
 import { Book } from "../../SVG";
 
-const  Document = ({setState,state,selection}) => {
-
-    const [view,setView] = useState('arith')
+const  Document = () => {
 
     const {
         information,
@@ -30,27 +27,11 @@ const  Document = ({setState,state,selection}) => {
             {information === 'vars' && <Vars darkmode={darkmode}/>}
             {information === 'texts' && <Resource darkmode={darkmode}/>}
 
-
-            {/* --- BUTTONS --- */}
-            {/* <BaseButton
-                onClick={() => setInformation('trig')}
-                style={{bottom:'10px',left:'10px'}}
-            >
-                Trig
-            </BaseButton> */}
-
             <Button
                 onClick={() => setInformation('trig')}
                 style={{bottom:'10px',left:'10px'}}
                 text={'Trig'}
             />
-
-            {/* <BaseButton
-            onClick={() => setInformation('vars')}
-                style={{bottom:'10px',left:'90px'}}
-            >
-                Vars
-            </BaseButton> */}
 
             <Button
                 onClick={() => setInformation('vars')}
@@ -58,41 +39,17 @@ const  Document = ({setState,state,selection}) => {
                 text={'Vars'}
             />
 
-            {/* <BaseButton
-            // onClick={() => setView('arith')}
-                onClick={() => setInformation('arith')}
-                style={{bottom:'10px',left:'170px'}}
-            >
-                Arith
-            </BaseButton> */}
-
             <Button
-                // onClick={() => setView('arith')}
                 onClick={() => setInformation('arith')}
                 style={{bottom:'10px',left:'170px'}}
                 text={'Arith'}
             />
-
-            {/* <BaseButton
-                onClick={() => setInformation('texts')}
-                style={{bottom:'10px',left:'255px'}}
-            >
-                {Book()}
-            </BaseButton> */}
 
             <Button
                 onClick={() => setInformation('texts')}
                 text={Book()}
                 style={{bottom:'10px',left:'255px'}}
             />
-
-            {/* <BaseButton
-                // onClick={() => setState({...state,help:false})}
-                onClick={() => setInformation(null)}
-                style={{bottom:'10px',right:'10px'}}
-            >
-                close
-            </BaseButton> */}
 
             <Button
                 onClick={() => setInformation(null)}

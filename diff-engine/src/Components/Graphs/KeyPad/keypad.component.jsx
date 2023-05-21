@@ -1,141 +1,149 @@
-import { KeyBox,BaseButton,LargeButton,CloseHelp } from "./keypad.styles";
-import { Book,CalculatorIcon,CogWheel,beaker } from "../SVG";
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
-import Button from "./Button";
 
-// --- kaytex --- //
-import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
+import Gaussian from "../Plots/Gaussian/gaus.component";
+import ParabKeys from "../Plots/Parabolas/parab.keys";
+// import Ellipse from "../Plots/Ellipses/ellipse.keys";
+import UnitCircle from "../Calculators/Trig/AngleConversion/angle_keys.component";
+import StandardKeys from "../Calculators/Standard/standard.keys";
+import FractionKeys from "../Calculators/Fractions/frac.keys";
+import CogKeys from "../Calculators/GearCalculators/involute.keys";
+import UnitsKeys from "../Calculators/UnitConverter/units.keys";
+import PercentKeys from "../Calculators/Percentages/percent.keys";
+import PlotKeys from "../Plots/plots.keys";
+import HomeKeys from './HomeKeys/homekeys.component'
 
-const vp = 80 // -- Vertical Position
-
-const KeyPad = (props) => {
-
-    const {
-        setCurrentView,
-        setDisplayKeymap,
-        displayKeymap,
-        setInformation,
-
-        darkmode,
-    } = useContext(ViewContext)
+const KeyModule = (props) => {
 
     const {
+        state,setState,
+        execute,
+        calculate,
+        inputHandler,
+        close,
         linearVector,
         polarVector,
-        state,
+        formatFunction,
+        returnPlots
     } = props
 
-    const { mathFunc,degrees } = state 
+    const { currentView } = useContext(ViewContext)
 
     return (
-        <KeyBox
-            displayKeymap={displayKeymap}
-            darkmode={darkmode}
-        >
+        <div>
 
-            <Button
-                styles={{position:'absolute',right:`${10}px`,fontSize:'32px'}}
-                onClick={() => setCurrentView('gaus')}
-                darkmode={darkmode}
-                buttonType={'image'}
-                text={`\\mu`}
-                p={'Guasian'}
+            {!currentView && 
+            <HomeKeys
+                formatFunction={formatFunction}
+                linearVector={linearVector}
+                polarVector={polarVector}
+                execute={execute}
+                state={state}
+                setState={setState}
+                returnPlots={returnPlots}
+            />}
+
+
+            {currentView === 'standard' && 
+            <StandardKeys
+                state={state}
+                setState={setState}
+                execute={execute}
+                calculate={calculate}
+                inputHandler={inputHandler}
+                close={close}
+            />}
+
+            {currentView === 'fracs' && 
+            <FractionKeys
+                state={state}
+                setState={setState}
+                inputHandler={inputHandler}
+                execute={execute}
+                close={close}
+            />}
+
+            {currentView === 'gaus' &&
+            <Gaussian
+                state={state}
+                setState={setState}
+                formatFunction={formatFunction}
+                linearVector={linearVector}
+                execute={execute}
+                inputHandler={inputHandler}
+                close={close}
+            />}
+
+            {currentView === "parabolas" &&
+            <ParabKeys
+                state={state}
+                setState={setState}
+                execute={execute}
+                linearVector={linearVector}
+                inputHandler={inputHandler}
+                close={close}
+            />}
+
+            {/* ELLIPSE - currently non-functional */}
+            {/* {currentView === 'ellipse' &&
+                <Ellipse
+                    state={state}
+                    setState={setState}
+                    execute={execute}
+                    linearVector={linearVector}
+                    inputHandler={inputHandler}
+                    close={close}
+                />
+            } */}
+
+            {currentView === 'unit_circle' && 
+            <UnitCircle
+                state={state}
+                setState={setState}
+                formatFunction={formatFunction}
+                linearVector={linearVector}
+                polarVector={polarVector}
+                execute={execute}
+                inputHandler={inputHandler}
+                close={close}
+            />}
+
+            {currentView === 'gear_calculator' &&
+            <CogKeys
+                execute={execute}
+                inputHandler={inputHandler}
+                state={state}
+                setState={setState}
+                close={close}
+            />}
+
+            {currentView === 'unit_converter' &&
+            <UnitsKeys
+                inputHandler={inputHandler}
+                state={state}
+                setState={setState}
+                close={close}
+                execute={execute}
+                calculate={calculate}
+            />}
+
+            {currentView === 'percentages' &&
+            <PercentKeys 
+                close={close}
+                state={state}
+                setState={setState}
+                execute={execute}
+            />}
+
+            {currentView === 'plots' &&
+            <PlotKeys
+                close={close}
+                state={state}
+                setState={setState}
             />
-
-            <Button
-               styles={{position:'absolute',right:`${90}px`,zIndex:'2',fontSize:'24px'}}
-               onClick={() => setCurrentView('unit_circle')}
-               darkmode={darkmode}
-               text={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`}
-               p={'Unit circle and trig functions'}
-               buttonType={'image'}
-            />
-
-            {/*  STANDARD CALCULATOR */}
-            <Button
-                styles={{right:`${170}px`,zIndex:'1'}}
-                onClick={(e) => setCurrentView('standard')}
-                darkmode={darkmode}
-                text={CalculatorIcon()}
-                p={'Standard calculator'}
-            />
-
-            {/* FRACTIONS */}
-            <Button
-                styles={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'1',fontSize:'32px'}}
-                onClick={(e) => setCurrentView('fracs')}
-                darkmode={darkmode}
-                text={`\\frac{${'a'} }{${'b'}}`}
-                buttonType={'image'}
-                p={'Decimal to fraction'}
-            />
-
-            <Button
-                styles={{right:'170px',top:`${vp}px`,fontSize:'32px'}}
-                onClick={() => setCurrentView('parabolas')}
-                darkmode={darkmode}
-                text={`\ax^2`}
-                buttonType={'image'}
-                p={'Quadradics'}
-            />
-
-            <Button
-                styles={{right:'10px',top:`${vp}px`,zIndex:'1'}}
-                onClick={() => setCurrentView('gear_calculator')}
-                darkmode={darkmode}
-                text={CogWheel()}
-                p={'Gear Calculator'}
-            />
-
-            <Button
-                onClick={(e) => setInformation('trig')}
-                styles={{right:'10px',top:`${vp*2}px`}}
-                darkmode={darkmode}
-                text={Book()}
-                p={'Documentation and resources'}
-            />
-
-            <Button
-                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`}}
-                onClick={() => setDisplayKeymap(true)}
-                darkmode={darkmode}
-                text={'?'}
-            />
-            
-            <Button
-                darkmode={darkmode}
-                onClick={() => setCurrentView('unit_converter')}
-                styles={{right:'90px',top:'160px'}}
-                text={beaker()}
-                p={'Unit Converter'}
-            />
-
-            <Button
-                style={{left:'0px',width:'125px',zIndex:'2',fontSize:'16px'}}
-                onClick={() => linearVector(mathFunc)}
-                darkmode={darkmode}
-                p={'Execute cartesian coordinates'}
-                text={'cartesian'}
-                buttonType={'textage'}
-                buttonClass={'large'}
-            />
-
-
-
-            <Button
-                darkmode={darkmode}
-                style={{top:'80px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
-                onClick={() => polarVector(mathFunc)}
-                p={'Execute polar coordinates'}
-                text={'polar'}
-                buttonType={'textage'}
-                buttonClass={'large'}
-            />
-
-        </KeyBox>
+            }
+        </div>
     )
 }
 
-export default KeyPad
+export default KeyModule

@@ -1,8 +1,7 @@
 import { useState,useEffect,useContext } from "react";
-import { KeyBox,Param,ParamInput } from "../../KeyPad/keypad.styles";
-// import { ParamInput } from "../../../graph.styles";
+import { KeyBox,Param,ParamInput } from "../../KeyPad/input.styles";
 import { MathComponent } from "mathjax-react";
-import { backButton,ExecuteButton } from "../../SVG";
+import { ExecuteButton,uturnArrow } from "../../SVG";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
@@ -29,7 +28,7 @@ const Gaussian = (props) => {
     } = props
     const [h,setH] = useState(.999)
 
-    const {darkmode} = useContext(ViewContext)
+    const {darkmode,setCurrentView} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -37,6 +36,7 @@ const Gaussian = (props) => {
             mathFunc:`y = exp(-4*log(2)*x^2/h^2)`,
             displayInput:false
         })
+        // linearVector(`exp(-4*log(2)*x^2/${h}^2)`)
     },[])
 
     return (
@@ -59,8 +59,8 @@ const Gaussian = (props) => {
 
             <Button
                 style={back}
-                onClick={(e) => close(e)}
-                text={backButton()}
+                onClick={() => setCurrentView('plots')}
+                text={uturnArrow()}
             />
 
         </KeyBox>
