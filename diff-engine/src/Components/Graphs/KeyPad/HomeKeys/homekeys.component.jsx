@@ -132,6 +132,7 @@ const KeyPad = (props) => {
                 onClick={() => setDisplayKeymap(true)}
                 darkmode={darkmode}
                 text={'?'}
+                buttonClass={'help'}
             />
             
             <Button

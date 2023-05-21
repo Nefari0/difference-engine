@@ -8,17 +8,19 @@ const TemperatureKeys = ({execute}) => {
         <>
 
             <Button
-                style={{right:'80px',zIndex:'1'}}
+                style={{right:'80px',zIndex:'1',fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','celsius')}
                 text={'C'}
                 p={'celsius'}
+                buttonClass={'operator'}
             />
 
             <Button
-                style={{right:'80px',zIndex:'1',top:`${vp}px`}}
+                style={{right:'80px',zIndex:'1',top:`${vp}px`,fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','fahrenheit')}
                 text={'F'}
                 p={'fahrenheit'}
+                buttonClass={'operator'}
             />
 
         </>

@@ -109,9 +109,10 @@ const UnitsKeys = (props) => {
             />
 
             <Button
-                style={{right:'0px',zIndex:'0'}}
+                style={{right:'0px',zIndex:'1'}}
                 onClick={(e) => close(e)}
                 text={backButton()}
+                p={'Home'}
             />
 
             <Button
@@ -119,6 +120,7 @@ const UnitsKeys = (props) => {
                 onClick={(e) => setDisplayKeymap(true)}
                 buttonType={'image'}
                 text={'?'}
+                buttonClass={'help'}
             />
 
             {/* <Button
@@ -130,9 +132,10 @@ const UnitsKeys = (props) => {
             /> */}
 
             <Button
-                style={{right:'265px',bottom:`-195px`,zIndex:'0',fontSize:'32px'}}
+                style={{right:'265px',bottom:`-195px`,zIndex:'1',fontSize:'32px'}}
                 onClick={(e) => changeSign(e)}
                 text={'-'}
+                p={'Change sign'}
             />
 
             <Button

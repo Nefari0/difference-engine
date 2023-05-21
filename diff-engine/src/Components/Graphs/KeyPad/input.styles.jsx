@@ -163,16 +163,13 @@ export const AllClearButton = styled(EqualButton)`
     }
 `
 
-const opButtonDark = css`
-    background-color: ${darkLight};
-    color:#2e86c0;
-`
-const opButtonLight = css`
-    // background-color: ${light};
-    color:#2e86c0;
-`
 export const OperatorButton = styled(BaseButton)`
-    ${({darkmode}) => darkmode ? opButtonDark : opButtonLight}
+    color:#2e86c0;
+    background-color:${({darkmode}) => darkmode && darkLight}
+`
+
+export const HelpButton = styled(BaseButton)`
+    color:#f0595f;
 `
 
 export const CopyCoordinatesButton = styled(BaseButton)`

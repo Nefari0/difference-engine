@@ -10,31 +10,35 @@ const LengthKeys = (props) => {
     return (
         <div>
             <Button
-                style={{right:'80px',zIndex:'1'}}
+                style={{right:'80px',zIndex:'1',fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','mm')}
                 text={'mm'}
                 p={'Millimeter'}
+                buttonClass={'operator'}
             />
 
             <Button
-                style={{right:'80px',top:`${vp}px`,zIndex:'1'}}
+                style={{right:'80px',top:`${vp}px`,zIndex:'1',fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','in')}
                 text={'in'}
                 p={'Inches'}
+                buttonClass={'operator'}
             />
 
             <Button
-                style={{right:'80px',top:`${vp * 2}px`}}
+                style={{right:'80px',top:`${vp * 2}px`,fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','ft')}
                 text={'ft'}
                 p={'Feet'}
+                buttonClass={'operator'}
             />
 
             <Button
-                style={{right:'80px',top:`${vp * 3}px`}}
+                style={{right:'80px',top:`${vp * 3}px`,fontSize:'22px'}}
                 onClick={(e) => execute(e,'units','cm')}
                 text={'cm'}
                 p={'Centimeter'}
+                buttonClass={'operator'}
             />
 
         </div>
