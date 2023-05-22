@@ -127,7 +127,7 @@ const KeyPad = (props) => {
             />
 
             <Button
-                styles={{fontSize:'32px',right:'170px',top:`${vp*2}px`,zIndex:'1'}}
+                styles={{right:'170px',top:`${vp*2}px`,zIndex:'1'}}
                 buttonType={'image'}
                 onClick={() => setDisplayKeymap(true)}
                 darkmode={darkmode}

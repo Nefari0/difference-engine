@@ -170,6 +170,8 @@ export const OperatorButton = styled(BaseButton)`
 
 export const HelpButton = styled(BaseButton)`
     color:#f0595f;
+    font-size:32px;
+    background-color:${({darkmode}) => darkmode && darkLight}
 `
 
 export const CopyCoordinatesButton = styled(BaseButton)`
