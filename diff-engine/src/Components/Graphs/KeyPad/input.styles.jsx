@@ -4,13 +4,13 @@ import { backgroundColors } from "../global.styles";
 const {
     paper,
 
-    // light,
+    light,
     midLight,
-    // darkLight,
+    darkLight,
 
     lightDark,
-    // midDark,
-    // dark
+    midDark,
+    dark
 } = backgroundColors
 
 const messageBox = css`
@@ -151,9 +151,9 @@ export const EqualButton = styled(BaseButton)`
         font-size:40px;
         color: #fff;
     }
-    `
+`
     
-    export const AllClearButton = styled(EqualButton)`
+export const AllClearButton = styled(EqualButton)`
     background-color: #f0595f;
     border-color: #b0353a;
     color: #fff;
@@ -161,6 +161,17 @@ export const EqualButton = styled(BaseButton)`
     strong {
         font-weight:200;
     }
+`
+
+export const OperatorButton = styled(BaseButton)`
+    color:#2e86c0;
+    background-color:${({darkmode}) => darkmode && darkLight}
+`
+
+export const HelpButton = styled(BaseButton)`
+    color:#f0595f;
+    font-size:32px;
+    background-color:${({darkmode}) => darkmode && darkLight}
 `
 
 export const CopyCoordinatesButton = styled(BaseButton)`

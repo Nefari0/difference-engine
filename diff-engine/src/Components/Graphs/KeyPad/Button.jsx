@@ -10,6 +10,8 @@ import {
     AllClearButton,
     EqualButton,
     CopyCoordinatesButton,
+    OperatorButton,
+    HelpButton
 } from "./input.styles";
 
 export const BUTTON_CLASSES = {
@@ -19,7 +21,9 @@ export const BUTTON_CLASSES = {
     rare:'rare',
     equal:'equal',
     all_clear:'all_clear',
-    copy_coords:'copy_coords'
+    copy_coords:'copy_coords',
+    operator:'operator',
+    help:'help'
 }
 
 const getButtonClass = (buttonClass = BUTTON_CLASSES.base) =>
@@ -30,6 +34,8 @@ const getButtonClass = (buttonClass = BUTTON_CLASSES.base) =>
     [BUTTON_CLASSES.all_clear]:AllClearButton,
     [BUTTON_CLASSES.equal]:EqualButton,
     [BUTTON_CLASSES.copy_coords]:CopyCoordinatesButton,
+    [BUTTON_CLASSES.operator]:OperatorButton,
+    [BUTTON_CLASSES.help]:HelpButton
   }[buttonClass]);
 
 export const BUTTON_TYPE = {
@@ -38,7 +44,7 @@ export const BUTTON_TYPE = {
     i:'i',
     EqualButton:'EqaulButton',
     AllClearButton:'AllClearButton',
-    CopyCoordinates:'CopyCoordinates'
+    CopyCoordinates:'CopyCoordinates',
 }
 
 const getButtonType = (buttonType = BUTTON_TYPE.textage) => 

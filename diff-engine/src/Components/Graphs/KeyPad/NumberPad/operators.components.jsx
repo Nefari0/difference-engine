@@ -4,7 +4,7 @@ import { OperatorPad } from "./nums.styles";
 import { opsdata } from "./operators.data";
 import Button from "../Button";
 
-export const Operators = ({styles,state,setState}) => {
+export const Operators = ({style,state,setState}) => {
 
     const {mathFunc} = state
 
@@ -24,22 +24,6 @@ export const Operators = ({styles,state,setState}) => {
         })
     }
 
-    // const mappedKeys = numdata.map(el => {
-
-    //     const display = (el.svg ? (el.svg) : (el.val))
-
-    //     return (
-    //         <Button
-    //             buttonClass={'tiny'}
-    //             key={el.val}
-    //             onClick={(e) => setItems(e,el.val)}
-    //             text={display}
-    //             styles={el.style}
-    //         />
-
-    //     )
-    // })
-
     const mappedOperators = opsdata.map(el => {
 
         const display = (el.svg ? (el.svg) : (el.display))
@@ -48,8 +32,9 @@ export const Operators = ({styles,state,setState}) => {
             <Button
                 key={el.val}
                 onClick={(e) => setItems(e,el.val)}
-                styles={el.style}
+                style={el.style}
                 text={display}
+                buttonClass={'operator'}
             />
 
             

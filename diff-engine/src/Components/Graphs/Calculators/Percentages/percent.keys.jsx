@@ -114,9 +114,11 @@ const PercentKeys = (props) => {
             />
 
             <Button
-                style={{right:'265px',bottom:`-195px`,zIndex:'0',fontSize:'32px'}}
+                style={{right:'265px',bottom:`-195px`,zIndex:'1',fontSize:'32px'}}
                 onClick={(e) => changeSign(e)}
                 text={'-'}
+                p={'Change sign'}
+                buttonClass={'operator'}
             />
 
             <Button
@@ -131,6 +133,7 @@ const PercentKeys = (props) => {
                 style={{right:'10px',top:'30px'}}
                 text={backButton()}
                 onClick={(e) => close(e)}
+                p={'Home'}
             />
 
             <Button
@@ -138,6 +141,7 @@ const PercentKeys = (props) => {
                 onClick={(e) => setDisplayKeymap(true)}
                 buttonType={'image'}
                 text={'?'}
+                buttonClass={'help'}
             />
         </KeyBox>
     )
