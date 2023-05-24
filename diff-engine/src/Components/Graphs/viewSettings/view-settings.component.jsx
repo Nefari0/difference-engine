@@ -1,5 +1,6 @@
 import { useState,useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
+import Button from "../KeyPad/Button";
 
 import {
   ZoomInButton,
@@ -30,7 +31,7 @@ import {
   verticalTranslation 
 } from "./viewLogic";
 
-const resetViewMessageText = 'If this app does not fit on your display, please click the "reset view" button'
+const resetViewMessageText = 'If this app does not fit on your display, please click the "reset view" button.'
 
 const ViewSettings = (props) => {
 
@@ -43,9 +44,6 @@ const ViewSettings = (props) => {
       hovered:false
     })
 
-    const {
-      hovered
-    } = localState
 
     const {
       about,setAbout,
@@ -102,15 +100,19 @@ const ViewSettings = (props) => {
         </AboutButton>
 
         <ResetViewMessage
+          visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
           darkmode={darkmode}
-          hovered={hovered}
           onMouseEnter={() => setLocalState({...localState,hovered:true})}
         >
           <p>{resetViewMessageText}</p>
+
+          <Button 
+            buttonClass={'tiny'}
+            style={{position:'relative',margin:'auto',height:'20px'}}
+            text={'got it!'}
+            onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
+          />
         </ResetViewMessage>
-        {/* <ResetViewMessage2>reset</ResetViewMessage2> */}
-        {/* <button styly={{zIndex:'10000000'}}>button</button>
-        <p>reset</p> */}
 
       </ViewSettingsPanel>
     )

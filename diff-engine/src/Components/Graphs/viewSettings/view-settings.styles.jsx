@@ -50,9 +50,10 @@ const fadeOut = css`
 `
 export const ResetViewMessage = styled.div`
 & { position: absolute;
-    ${({darkmode}) => darkmode ? basicDark : basicLight}
+    background-color:${backgroundColors.paper};
+    color:${backgroundColors.midDark};
     width: 200px;
-    height: 60px;
+    height: 100px;
     border-radius: 5px;
     visibility: visible;
     opacity: 1;
@@ -61,19 +62,19 @@ export const ResetViewMessage = styled.div`
     z-index: 3;
     font-size:12px;
 
-    ${({hovered}) => hovered && fadeOut}
+    ${({visited}) => visited && fadeOut}
 }
 
 &:after {
     content: "";
     position: absolute;
-    bottom: 95px;
+    bottom: 135px;
     width: 0;
     height: 0;
-    border-right: solid 10px ${({darkmode}) => darkmode ? midDark : paper};
     border-bottom: 33px solid transparent;
     border-left: 10px solid transparent;
-    transform: translateX(45px) translateY(42px)  rotate(90deg);
+    border-right: solid 10px ${paper};
+    transform: translateX(36.2px) translateY(45px)  rotate(90deg);
     z-index: 0;
 }
 
