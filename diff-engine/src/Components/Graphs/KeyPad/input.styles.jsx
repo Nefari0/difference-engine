@@ -171,6 +171,18 @@ export const OperatorButton = styled(BaseButton)`
 export const HelpButton = styled(BaseButton)`
     color:#f0595f;
     font-size:32px;
+    
+    strong {
+        font-size:42px;
+        animation: blinker 1s linear infinite;
+        
+        @keyframes blinker {
+            50% {
+              opacity: .5;
+            }
+          }
+    }
+    
     background-color:${({darkmode}) => darkmode && darkLight}
 `
 
