@@ -9,17 +9,25 @@ import { register as registerServiceWorker } from './serviceWorkerRegistration';
 // import { HashRouter, BrowserRouter } from 'react-router-dom';
 // const Router = process.env.NODE_ENV === 'development' ? HashRouter : BrowserRouter;
 
+var appUpdate = false
+
+const appUpdateAvailable = (update) => {
+  if (update) {
+    appUpdate = true
+  }
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ViewProvider>
       <Offline>
         {/* <Router> */}
-          <App />
+          <App appUpdate={appUpdate}/>
         {/* </Router> */}
       </Offline>
     </ViewProvider>
   </React.StrictMode>
 );
 // reportWebVitals();
-registerServiceWorker()
+registerServiceWorker(appUpdateAvailable)

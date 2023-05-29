@@ -3,15 +3,23 @@ import { AppContainer,Adapter,Header,ImageContainer } from './App.styles';
 import Nav from './Components/Nav/nav.component';
 import pic from './Components/admin_photo1.jpg'
 import { ViewContext } from './Components/Context/view.context';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 
-function App() {
+function App({appUpdate}) {
 
   const { 
     setCurrentView,
 
-    darkmode,setDarkMode
+    darkmode,setDarkMode,
+
+    
   } = useContext(ViewContext)
+
+  useEffect(() => {
+    if (appUpdate) {
+    
+    }
+  },[])
 
   return (
     <AppContainer darkmode={darkmode}>
