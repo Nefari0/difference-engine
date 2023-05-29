@@ -3,9 +3,9 @@ import { AppContainer,Adapter,Header,ImageContainer } from './App.styles';
 import Nav from './Components/Nav/nav.component';
 // import pic from './Components/admin_photo1.jpg'
 import { ViewContext } from './Components/Context/view.context';
-import { useContext,useEffect } from 'react';
+import { useContext } from 'react';
 
-function App({appUpdate}) {
+function App({appUpdate,appUpdateAvailable}) {
 
   const { 
     setCurrentView,
@@ -15,11 +15,10 @@ function App({appUpdate}) {
     setAlert,
   } = useContext(ViewContext)
 
-  useEffect(() => {
-    if (appUpdate) {
-      setAlert('A new version of this app is available. To download the latest updates, close all browser tabs and re-open this sited in new browser session')
-    }
-  },[])
+  if (appUpdate) {
+    setAlert('A new version of this app is available. To download the latest updates, close all browser tabs and re-open this sited in new browser session')
+    appUpdateAvailable(false)
+  }
 
   return (
     <AppContainer darkmode={darkmode}>

@@ -23,7 +23,10 @@ root.render(
     <ViewProvider>
       <Offline>
         {/* <Router> */}
-          <App appUpdate={appUpdate}/>
+          <App 
+            appUpdate={appUpdate}
+            appUpdateAvailable={appUpdateAvailable}
+          />
         {/* </Router> */}
       </Offline>
     </ViewProvider>
