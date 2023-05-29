@@ -12,7 +12,7 @@ function App({appUpdate}) {
 
     darkmode,setDarkMode,
 
-    
+    setAlert,
   } = useContext(ViewContext)
 
   useEffect(() => {
