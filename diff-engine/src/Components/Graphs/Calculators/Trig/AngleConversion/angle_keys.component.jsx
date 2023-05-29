@@ -60,6 +60,8 @@ const UnitCircle = (props) => {
         })
     },[])
 
+    const input = showDegrees ? "degrees":'radians'
+
     // -- Copy the converted value to clip board -- //
     const copyVal = () => {
         const value = showDegrees ? (degrees*(Math.PI/180)):(radians*(180/Math.PI))
@@ -69,6 +71,19 @@ const UnitCircle = (props) => {
             noticeContent:` ${value} ${!showDegrees ? "degrees":'radians'} copied to clipboard`
         })
     }
+
+    const changeSign = (e) => {
+        e.preventDefault()
+        const mathArr = state[input].toString().split('')
+        mathArr[0] != '-' ? mathArr.splice(0,0,'-') : mathArr.splice(0,1,'')
+
+        setState({
+            ...state,
+            [input]:mathArr.join('')
+        })
+    }
+
+    // console.log('SELECTED INPUT',typeof state[input])
 
     return (
         <KeyBox>
@@ -126,6 +141,14 @@ const UnitCircle = (props) => {
                 text={'AC'}
                 style={{bottom:'-160px',right:'15px'}}
                 onClick={(e) => execute(e,(!showDegrees ? "radians":"degrees"),'0')}
+            />
+
+            <Button
+                styles={{left:'240px',bottom:'-158px',fontSize:'32px'}}
+                onClick={(e) => changeSign(e)}
+                text={'-'}
+                p={'Change sign'}
+                buttonClass={'operator'}
             />
 
         </KeyBox>

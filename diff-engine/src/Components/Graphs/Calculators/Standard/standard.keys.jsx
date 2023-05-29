@@ -56,16 +56,16 @@ const StandardKeys = (props) => {
             />
 
             <Button
-                style={{left:'-5px',bottom:'-115px',fontSize:'40px'}}
+                style={{left:'-5px',bottom:'-115px',fontSize:'40px',width:'100px'}}
                 buttonType={'image'}
-                buttonClass={'large'}
+                buttonClass={'operator'}
                 text={'x^y'}
                 p={'Exponentiation'}
                 onClick={() => addCharacter('^')}
             />
 
             <Button
-                style={{left:'-5px',bottom:'-35px',fontSize:'40px'}}
+                style={{left:'-5px',bottom:'-35px',fontSize:'40px',color:'#f0595f'}}
                 buttonType={'image'}
                 text={'?'}
                 buttonClass={'large'}
@@ -92,11 +92,13 @@ const StandardKeys = (props) => {
                 onClick={() => addCharacter(')')}
                 text={')'}
                 styles={{fontSize:'32px',right:'0px',top:'240px'}}
+                buttonClass={'operator'}
             />
             <Button
                 onClick={() => addCharacter('(')}
                 text={'('}
                 styles={{fontSize:'32px',right:'0px',top:'160px'}}
+                buttonClass={'operator'}
             />
 
             <Button
