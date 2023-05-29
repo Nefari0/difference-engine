@@ -2,9 +2,9 @@ import { InlineMath } from "react-katex";
 
 const CustomMath = ({children}) => {
     return (
-        <div>
+        <strong>
             <InlineMath math={children}/>
-        </div>
+        </strong>
     )
 }
 
