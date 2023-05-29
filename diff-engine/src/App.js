@@ -17,7 +17,7 @@ function App({appUpdate}) {
 
   useEffect(() => {
     if (appUpdate) {
-      // setAlert('A new version of this app is available. To download the lat')
+      setAlert('A new version of this app is available. To download the latest updates, close all browser tabs and re-open this sited in new browser session')
     }
   },[])
 
