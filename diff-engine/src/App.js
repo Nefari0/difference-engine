@@ -15,10 +15,12 @@ function App({appUpdate,appUpdateAvailable}) {
     setAlert,
   } = useContext(ViewContext)
 
-  if (appUpdate) {
-    setAlert('A new version of this app is available. To download the latest updates, close all browser tabs and re-open this sited in new browser session')
-    appUpdateAvailable(false)
-  }
+  console.log('when app is loaded, it should display appUpdate as a boolean value',appUpdate)
+
+  // if (appUpdate) {
+  //   setAlert('A new version of this app is available. To download the latest updates, close all browser tabs and re-open this sited in new browser session')
+  //   appUpdateAvailable(false)
+  // }
 
   return (
     <AppContainer darkmode={darkmode}>
