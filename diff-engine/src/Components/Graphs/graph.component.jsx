@@ -60,6 +60,8 @@ export default function Graph() {
     darkmode,
 
     about,
+
+    alert,setAlert
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -87,7 +89,7 @@ export default function Graph() {
 
     // --- Help / Information display --- //
     help:false,
-    alert:null,
+    // alert:null,
     noticeContent:null,
 
     // --- For using standard calculator --- //
@@ -118,7 +120,7 @@ export default function Graph() {
     // xAspect,yAspect, // Grid acale
     mathFunc,
     displayInput,
-    alert,
+    // alert,
     history,
     // --- Zoom in / out
     viewScale,
@@ -161,7 +163,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      setAlert(errorMessage+'Hint: You may be using an invalid variable')
       return
     }
 
@@ -195,7 +197,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      setAlert(errorMessage+'Hint: You may be using an invalid variable')
       return
     }
     
@@ -225,7 +227,7 @@ export default function Graph() {
       })
       return
     } catch (err) {
-      setState({...state,alert:errorMessage+' NOTE: Variables are not allowed during standard calculations'})
+      setAlert(errorMessage+' NOTE: Variables are not allowed during standard calculations')
       return
     }
 

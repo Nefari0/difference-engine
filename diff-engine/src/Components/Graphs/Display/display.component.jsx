@@ -32,7 +32,8 @@ const DisplayModule = (props) => {
 
     const {
         darkmode,
-        currentView
+        currentView,
+        setAlert,
     } = useContext(ViewContext)
 
     const copy = () => {
@@ -40,7 +41,7 @@ const DisplayModule = (props) => {
           navigator.clipboard.writeText(JSON.stringify(returnPlots()))
           setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
         } else {
-          setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
         }
     }
 

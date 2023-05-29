@@ -10,18 +10,22 @@ const close = {
     bottom:'10px'
 }
 
-const Alert = ({state,execute}) => {
+const Alert = ({execute}) => {
 
-    const { alert } = state
+    // const { alert } = state
 
-    const { darkmode } = useContext(ViewContext)
+    const { 
+        darkmode,
+        alert,
+        setAlert
+     } = useContext(ViewContext)
 
     return (
         <AlertContainer darkmode={darkmode}>
             <p>{alert}</p>
 
             <BaseButton
-                onClick={(e) => execute(e,'alert',null)}
+                onClick={(e) => setAlert(null)}
                 style={close}
             >
                 close

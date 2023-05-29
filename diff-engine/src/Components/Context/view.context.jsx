@@ -15,6 +15,9 @@ export const ViewContext = createContext({
 
     about:false,
     setAbout:() => null,
+
+    alert:null,
+    setAlert:() => null
 })
 
 export const ViewProvider = ({ children }) => {
@@ -24,6 +27,7 @@ export const ViewProvider = ({ children }) => {
     const [information,setInformation] = useState(null)
     const [darkmode,setDarkMode] = useState(true)
     const [about,setAbout] = useState(false)
+    const [alert,setAlert] = useState(null)
     
     const value = {
         currentView,
@@ -40,6 +44,8 @@ export const ViewProvider = ({ children }) => {
 
         about,
         setAbout,
+
+        alert,setAlert
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>
