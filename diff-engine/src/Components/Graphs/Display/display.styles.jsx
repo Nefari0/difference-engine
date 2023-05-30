@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { backgroundColors } from "../global.styles"
 
 const {
@@ -6,6 +6,18 @@ const {
     paper,
     light
 } = backgroundColors
+
+const scrollSnapOn = css`
+    scroll-snap-type: both mandatory;
+`
+
+const hideScrollBar = css`
+    ::-webkit-scrollbar {
+        display:none;
+    }
+    pointer-events: none;
+    ${scrollSnapOn}
+`
 
 export const ViewPort = styled.div`
     position: absolute;
@@ -20,11 +32,11 @@ export const ViewPort = styled.div`
     align-content: stretch;
     border: 2px solid rgba(0, 0, 0, 0.5);
     z-index: 0;
-    // overflow:hidden;
     overflow:scroll;
-    left:5px;
-    scroll-snap-type: both mandatory;
     
+    left:5px;
+    ${({scrollSnap,scrollBar}) => scrollSnap && scrollSnapOn}
+    ${({scrollBar}) => !scrollBar && hideScrollBar}
 
     @media (max-height:400px) {
         transform: scale(0.60);
@@ -40,6 +52,7 @@ export const OriginContainer = styled.div`
     top:493px;
     z-index:1;
     scroll-snap-align: center;
+    pointer-events:auto;
 `
 
 export const Row = styled.section`

@@ -11,7 +11,8 @@ import {
   Zoom,
   AboutButton,
   DarkmodeButton,
-  ResetViewMessage
+  ResetViewMessage,
+  ActivateScrollingButton
 } from "./view-settings.styles";
 
 import {
@@ -48,7 +49,9 @@ const ViewSettings = (props) => {
     const {
       about,setAbout,
 
-      darkmode,setDarkMode
+      darkmode,setDarkMode,
+
+      scrollBar,setScrollBar
     } = useContext(ViewContext)
 
     return (
@@ -98,6 +101,14 @@ const ViewSettings = (props) => {
         >
           about
         </AboutButton>
+
+        <ActivateScrollingButton
+          onClick={() => setScrollBar(!scrollBar)}
+          scrollBar={scrollBar}
+          // style={{backgroundColor:'blue'}}
+        >
+          scrolling
+        </ActivateScrollingButton>
 
         <ResetViewMessage
           visited={localStorage.getItem('NO_MESSAGE_PLEASE')}

@@ -9,6 +9,8 @@ import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
+import { LockClosed,LockOpen } from "../SVG"
+import Button from "../KeyPad/Button"
 
 
 const DisplayModule = (props) => {
@@ -32,8 +34,12 @@ const DisplayModule = (props) => {
 
     const {
         darkmode,
-        currentView
+        currentView,
+        scrollBar,
+        scrollSnap
     } = useContext(ViewContext)
+
+    // disableBodyScroll(document.body)
 
     const copy = () => {
         if (returnPlots()[0]) {
@@ -73,16 +79,17 @@ const DisplayModule = (props) => {
 
     return (
         <ViewPort
-            darkmode={darkmode}   
+            darkmode={darkmode} 
+            scrollBar={scrollBar}
+            scrollSnap={scrollSnap}
         >
-
-                <Row>
-                    {/* GRID CELLS */}
-                    {!polars && mappedTiles}
-                </Row>
+            
+            <Row>
+                {/* GRID CELLS */}
+                {!polars && mappedTiles}
+            </Row>
 
             <OriginContainer>
-               
 
                 {/* NUMBER LINES */}
                 {!polars &&

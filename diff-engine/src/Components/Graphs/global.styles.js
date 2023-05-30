@@ -17,6 +17,10 @@ export const backgroundColors = {
     lightDark:tier4,
     midDark:tier5,
     dark:tier6,
+
+    blue:'#2e86c0',
+    red:'#f0595f',
+    white:'#fff'
 }
 
 // --- Global app size parameters --- //
