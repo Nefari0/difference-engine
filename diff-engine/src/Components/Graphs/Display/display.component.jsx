@@ -4,7 +4,7 @@ import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Percentages/percent.display"
-import { Table,Row,GridCell,MathFormula } from "./display.styles"
+import { OriginContainer,ViewPort,Row,GridCell,MathFormula } from "./display.styles"
 import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
@@ -72,13 +72,17 @@ const DisplayModule = (props) => {
       });
 
     return (
-        <Table
+        <ViewPort
             darkmode={darkmode}   
         >
-            <Row>
 
-                {/* GRID CELLS */}
-                {!polars && mappedTiles}
+                <Row>
+                    {/* GRID CELLS */}
+                    {!polars && mappedTiles}
+                </Row>
+
+            <OriginContainer>
+               
 
                 {/* NUMBER LINES */}
                 {!polars &&
@@ -134,10 +138,9 @@ const DisplayModule = (props) => {
                     setState={setState}
                     execute={execute}
                 />}
-
-            </Row>
+                </OriginContainer>
             
-        </Table>
+        </ViewPort>
     )
 }
 

@@ -7,7 +7,7 @@ const {
     light
 } = backgroundColors
 
-export const Table = styled.div`
+export const ViewPort = styled.div`
     position: absolute;
     opacity:.8;
     height: 500px;
@@ -16,17 +16,30 @@ export const Table = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items:center;
     align-content: stretch;
     border: 2px solid rgba(0, 0, 0, 0.5);
     z-index: 0;
-    overflow:hidden;
+    // overflow:hidden;
+    overflow:scroll;
     left:5px;
+    scroll-snap-type: both mandatory;
+    
 
     @media (max-height:400px) {
         transform: scale(0.60);
         top:120px;
     }
+`
+
+export const OriginContainer = styled.div`
+    width:500px;
+    height:500px;
+    position:absolute;
+    left:493px;
+    top:493px;
+    z-index:1;
+    scroll-snap-align: center;
 `
 
 export const Row = styled.section`
@@ -36,16 +49,19 @@ export const Row = styled.section`
     justify-content: center;
     align-items: flex-start;
     align-content: stretch;
-    z-index:1;
-`
-
-export const Origin = styled.span`
+    z-index:0;
+    width:2000px;
+    `
+    
+    export const Origin = styled.span`
     height:1px;
     width:1px;
     position: absolute;
     left: ${({polars}) => (!polars ? `125px` : `250px`)};
     transition: all 1000ms;
     bottom:235px;
+    // position:relative;
+    // margin:auto;
 `
 
 export const GridCell = styled.span`
