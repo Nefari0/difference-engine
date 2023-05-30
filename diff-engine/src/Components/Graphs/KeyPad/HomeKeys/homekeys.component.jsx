@@ -1,5 +1,15 @@
 import { KeyBox,AllClearButton } from "../input.styles";
-import { Book,CalculatorIcon,CogWheel,beaker,CopyIcon } from "../../SVG";
+
+import { 
+    Book,
+    CalculatorIcon,
+    CogWheel,
+    beaker,
+    CopyIcon,
+    LockOpen,
+    LockClosed
+ } from "../../SVG";
+
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../Button";
@@ -19,6 +29,10 @@ const KeyPad = (props) => {
         setInformation,
 
         darkmode,
+
+        scrollSnap,setScrollSnap,
+
+        scrollBar
     } = useContext(ViewContext)
 
     const {
@@ -57,11 +71,29 @@ const KeyPad = (props) => {
                         top:'-560px',
                         zIndex:'100',
                     }}
-                    buttonClass={'copy_coords'}
+                    buttonClass={'translucent'}
                     onClick={() => copy()}
                     text={CopyIcon()}
                 />
             }
+
+            {scrollBar &&
+                <Button 
+                    styles={{
+                        position:'absolute',
+                        width:'75px',
+                        height:'75px',
+                        left:'10px',
+                        top:'-480px',
+                        zIndex:'100',
+                    }}
+                    buttonClass={'translucent'}
+                    text={!scrollSnap ? LockOpen() : LockClosed()}
+                    onClick={() => setScrollSnap(!scrollSnap)}
+                    p={'Scroll lock'}
+                />
+            }
+            
 
             <Button
                 styles={{position:'absolute',right:`${10}px`,fontSize:'22px'}}
