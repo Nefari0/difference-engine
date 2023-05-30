@@ -4,7 +4,13 @@ import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Percentages/percent.display"
-import { OriginContainer,ViewPort,Row,GridCell,MathFormula } from "./display.styles"
+import { 
+    OriginContainer,
+    ViewPort,
+    Row,
+    GridCell,
+    MathFormula,
+ } from "./display.styles"
 import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
@@ -80,7 +86,7 @@ const DisplayModule = (props) => {
             scrollBar={scrollBar}
             scrollSnap={scrollSnap}
         >
-            
+
             <Row>
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}

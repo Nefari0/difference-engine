@@ -64,7 +64,7 @@ export const Row = styled.section`
     align-content: stretch;
     z-index:0;
     width:2000px;
-    `
+`
     
     export const Origin = styled.span`
     height:1px;
