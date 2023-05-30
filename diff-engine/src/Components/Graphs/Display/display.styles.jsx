@@ -48,11 +48,12 @@ export const OriginContainer = styled.div`
     width:500px;
     height:500px;
     position:absolute;
-    left:493px;
-    top:493px;
+    left:395px;
+    top:395px;
     z-index:1;
     scroll-snap-align: center;
     pointer-events:auto;
+    // background-color:blue;
 `
 
 export const Row = styled.section`
