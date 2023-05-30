@@ -9,9 +9,6 @@ import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
-import { LockClosed,LockOpen } from "../SVG"
-import Button from "../KeyPad/Button"
-
 
 const DisplayModule = (props) => {
 
