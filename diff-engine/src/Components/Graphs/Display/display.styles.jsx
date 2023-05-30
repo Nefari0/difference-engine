@@ -53,7 +53,6 @@ export const OriginContainer = styled.div`
     z-index:1;
     scroll-snap-align: center;
     pointer-events:auto;
-    // background-color:blue;
 `
 
 export const Row = styled.section`
