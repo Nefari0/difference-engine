@@ -88,7 +88,7 @@ export const GridCell = styled.span`
 `
 
 export const MathFormula = styled.div`
-    position:absolute;
+    position:fixed;
     top:0px;
     right:40px;
     font-size:20px;
