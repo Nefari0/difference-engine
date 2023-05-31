@@ -8,7 +8,6 @@ import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.compon
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import CircleGraph from "../Calculators/Trig/overlay.component";
 
-
 const GraphingModule = (props) => {
 
     const { 
@@ -37,13 +36,6 @@ const GraphingModule = (props) => {
             polars={polars}
         >
 
-            {!polars && 
-                <>
-                    <ZeroMarker darkmode={darkmode}/>
-                    <ZeroMarker rotation={90} darkmode={darkmode}/>
-                </>
-            }
-            
             {/* BASIC PLOTS */}
             {vectorMap(returnPlots())}
 

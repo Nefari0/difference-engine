@@ -17,13 +17,13 @@ export const Numbers = styled.ul`
     align-items:flex-end;
     transform:rotate(${({parameters}) => parameters.lRotation}deg);
     background-color:${({darkmode}) => darkmode ? dark : paper};
+    z-index:1;
 
     li {
         position:relative;
         height:48px;
         margin:2px;
         width:48px;
-        z-index:10000000000;
 
         strong {
             position:absolute;

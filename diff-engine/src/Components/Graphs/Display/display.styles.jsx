@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components"
 import { backgroundColors } from "../global.styles"
-import { basicDark,basicLight } from "../global.styles"
+// import { basicDark,basicLight } from "../global.styles"
 
 const {
     dark,
     paper,
-    light
+    light,
+    red,
+    blue
 } = backgroundColors
 
 const nonPolarOrigin = '125'
@@ -68,6 +70,9 @@ export const Row = styled.section`
     align-content: stretch;
     z-index:0;
     width:2000px;
+    // height:2000px;
+    // overflow:hidden;
+    // background-color:orange;
 `
     
     export const Origin = styled.span`
@@ -77,8 +82,6 @@ export const Row = styled.section`
     left: ${({polars}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
     transition: all 1000ms;
     bottom:235px;
-    // position:relative;
-    // margin:auto;
 `
 
 export const GridCell = styled.span`
@@ -87,7 +90,6 @@ export const GridCell = styled.span`
     position: relative;
     margin: 0px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    // border:1px solid #fff;
     border:1px solid ${({darkmode}) => !darkmode ? dark : light};
 `
 
@@ -101,13 +103,12 @@ export const MathFormula = styled.div`
 `
 
 export const ZeroMarker = styled.span`
-    width:460px;
+    width:1200px;
     height:3px;
-    background-color:yellow;
+    background-color:${({color}) => color};
     position:absolute;
-    left:${-nonPolarOrigin+20}px;
-    bottom:13px;
-    ${({darkmode}) => !darkmode ? basicDark : basicLight}
+    top:643px;
+    left:46px;
     transform:rotate(${({rotation}) => rotation && rotation}deg);
     z-index:0;
 `

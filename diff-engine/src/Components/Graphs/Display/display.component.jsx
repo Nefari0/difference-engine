@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ViewContext } from "../../Context/view.context"
+import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
@@ -10,11 +11,14 @@ import {
     Row,
     GridCell,
     MathFormula,
+    ZeroMarker
  } from "./display.styles"
 import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
 import GraphingModule from "./graphing.module"
+
+const { red,blue } = backgroundColors 
 
 const DisplayModule = (props) => {
 
@@ -93,6 +97,8 @@ const DisplayModule = (props) => {
                     <div>
                         <NumberLine parameters={vNumParams} darkmode={darkmode} />
                         <NumberLine parameters={hNumParams} darkmode={darkmode} />
+                        <ZeroMarker darkmode={darkmode} color={blue}/>
+                        <ZeroMarker rotation={90} darkmode={darkmode} color={red}/>
                     </div>
                 }
 
