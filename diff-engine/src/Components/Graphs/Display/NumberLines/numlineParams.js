@@ -1,6 +1,6 @@
 export const hNumParams = {
     lineL:10,
-    lineB:-395,
+    lineB:-405,
     strongR:-5,
     strongB:3,
     numRotation:0,
@@ -8,10 +8,10 @@ export const hNumParams = {
   }
   
   export const vNumParams = {
-    lineL:-180,
-    lineB:-175,
-    strongR:-3,
-    strongB:25,
+    lineL:-208,
+    lineB:-163,
+    strongR:0,
+    strongB:0,
     numRotation:90,
     lRotation:-90
   }
