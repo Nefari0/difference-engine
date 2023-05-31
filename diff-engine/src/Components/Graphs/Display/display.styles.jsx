@@ -35,7 +35,7 @@ export const ViewPort = styled.div`
     overflow:scroll;
     
     left:5px;
-    ${({scrollSnap,scrollBar}) => scrollSnap && scrollSnapOn}
+    ${({scrollSnap}) => scrollSnap && scrollSnapOn}
     ${({scrollBar}) => !scrollBar && hideScrollBar}
 
     @media (max-height:400px) {
