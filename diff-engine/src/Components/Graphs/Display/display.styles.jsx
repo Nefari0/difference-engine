@@ -1,11 +1,15 @@
 import styled, { css } from "styled-components"
 import { backgroundColors } from "../global.styles"
+import { basicDark,basicLight } from "../global.styles"
 
 const {
     dark,
     paper,
     light
 } = backgroundColors
+
+const nonPolarOrigin = '125'
+const polarOrigin = '225'
 
 const scrollSnapOn = css`
     scroll-snap-type: both mandatory;
@@ -70,7 +74,7 @@ export const Row = styled.section`
     height:1px;
     width:1px;
     position: absolute;
-    left: ${({polars}) => (!polars ? `125px` : `250px`)};
+    left: ${({polars}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
     transition: all 1000ms;
     bottom:235px;
     // position:relative;
@@ -94,4 +98,16 @@ export const MathFormula = styled.div`
     font-size:20px;
     font-weight:800;
     color:${({darkmode}) => darkmode ? '#fff' : '#555'};
+`
+
+export const ZeroMarker = styled.span`
+    width:460px;
+    height:3px;
+    background-color:yellow;
+    position:absolute;
+    left:${-nonPolarOrigin+20}px;
+    bottom:13px;
+    ${({darkmode}) => !darkmode ? basicDark : basicLight}
+    transform:rotate(${({rotation}) => rotation && rotation}deg);
+    z-index:0;
 `

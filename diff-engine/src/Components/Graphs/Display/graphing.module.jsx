@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { Origin } from "./display.styles";
+import { Origin,ZeroMarker } from "./display.styles";
 import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.component";
@@ -24,14 +24,11 @@ const GraphingModule = (props) => {
         yAspect,
         polars,
         otherPlots,
-        polarCoords,
         cartCoords,
         showUnitCircleAngles,
-        // vectorMap,
-        // returnPlots
     } = state
 
-    const { currentView } = useContext(ViewContext)
+    const { currentView,darkmode } = useContext(ViewContext)
 
     return (
         <Origin
@@ -40,6 +37,13 @@ const GraphingModule = (props) => {
             polars={polars}
         >
 
+            {!polars && 
+                <>
+                    <ZeroMarker darkmode={darkmode}/>
+                    <ZeroMarker rotation={90} darkmode={darkmode}/>
+                </>
+            }
+            
             {/* BASIC PLOTS */}
             {vectorMap(returnPlots())}
 
