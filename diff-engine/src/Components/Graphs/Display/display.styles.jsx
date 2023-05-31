@@ -1,13 +1,10 @@
 import styled, { css } from "styled-components"
 import { backgroundColors } from "../global.styles"
-// import { basicDark,basicLight } from "../global.styles"
 
 const {
     dark,
     paper,
     light,
-    red,
-    blue
 } = backgroundColors
 
 const nonPolarOrigin = '125'
@@ -70,9 +67,6 @@ export const Row = styled.section`
     align-content: stretch;
     z-index:0;
     width:2000px;
-    // height:2000px;
-    // overflow:hidden;
-    // background-color:orange;
 `
     
     export const Origin = styled.span`
