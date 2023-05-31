@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { backgroundColors } from "../../global.styles";
 
 const { dark,paper } = backgroundColors
-
+const neg5 = -5
 export const Numbers = styled.ul`
     position:absolute;
-    width:500px;
+    width:1225px;
     margin:0px;
     padding:0px;
     bottom:${({parameters}) => parameters.lineB}px;
@@ -17,9 +17,11 @@ export const Numbers = styled.ul`
 
     li {
         position:relative;
-        height:50px;
-        width:50px;
-        
+        height:48px;
+        margin:2px;
+        width:48px;
+        z-index:10000000000;
+
         strong {
             position:absolute;
             // background-color:#FFF5FF;

@@ -42,8 +42,6 @@ const DisplayModule = (props) => {
         scrollSnap
     } = useContext(ViewContext)
 
-    // disableBodyScroll(document.body)
-
     const copy = () => {
         if (returnPlots()[0]) {
           navigator.clipboard.writeText(JSON.stringify(returnPlots()))
@@ -90,27 +88,18 @@ const DisplayModule = (props) => {
             <Row>
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}
+                {/* NUMBER LINES */}
+                {!polars &&
+                    <div>
+                        <NumberLine parameters={vNumParams} darkmode={darkmode} />
+                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
+                    </div>
+                }
+
             </Row>
 
             <OriginContainer>
 
-                {/* NUMBER LINES */}
-                {!polars &&
-                    <div>
-                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
-                        <NumberLine parameters={vNumParams} darkmode={darkmode} />
-                    </div>
-                }
-
-                {/* GRAPHING */}
-                {/* {!currentView && 
-                    <Button 
-                        p={'copy coordinates'}
-                        style={{position:'absolute',width:'75px',height:'75px',left:'10px',top:'10px',zIndex:'100',opacity:'.6 '}}
-                        onClick={() => copy()}
-                        text={CopyIcon()}
-                    />
-                } */}
                 <GraphingModule
                     state={state}
                     setState={setState}
