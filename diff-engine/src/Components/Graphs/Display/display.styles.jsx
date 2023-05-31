@@ -98,7 +98,7 @@ export const MathFormula = styled.div`
 
 export const ZeroMarker = styled.span`
     width:1200px;
-    height:3px;
+    height:5px;
     background-color:${({color}) => color};
     position:absolute;
     top:643px;
