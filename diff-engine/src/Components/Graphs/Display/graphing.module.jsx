@@ -8,6 +8,8 @@ import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.compon
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import CircleGraph from "../Calculators/Trig/overlay.component";
 
+const nonPolarOrigin = '125'
+
 const GraphingModule = (props) => {
 
     const { 
@@ -34,10 +36,18 @@ const GraphingModule = (props) => {
             xAspect={xAspect}
             yAspect={yAspect}
             polars={polars}
+            nonPolarOrigin={nonPolarOrigin}
         >
 
             {/* BASIC PLOTS */}
-            {vectorMap(returnPlots())}
+            <div 
+                style={{
+                    position:'absolute',
+                    right:`${!polars ? nonPolarOrigin : '0'}px`
+                }}
+            >
+                {vectorMap(returnPlots())}
+            </div>
 
             {/* GEAR CALCULATOR */}
             {currentView === 'gear_calculator' &&
