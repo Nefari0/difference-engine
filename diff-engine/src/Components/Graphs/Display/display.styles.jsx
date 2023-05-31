@@ -9,7 +9,7 @@ const {
 } = backgroundColors
 
 const nonPolarOrigin = '125'
-const polarOrigin = '225'
+const polarOrigin = '250'
 
 const scrollSnapOn = css`
     scroll-snap-type: both mandatory;
