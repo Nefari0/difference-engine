@@ -4,8 +4,11 @@ import { backgroundColors } from "../global.styles"
 const {
     dark,
     paper,
-    light
+    light,
 } = backgroundColors
+
+const nonPolarOrigin = '125'
+const polarOrigin = '250'
 
 const scrollSnapOn = css`
     scroll-snap-type: both mandatory;
@@ -35,7 +38,7 @@ export const ViewPort = styled.div`
     overflow:scroll;
     
     left:5px;
-    ${({scrollSnap,scrollBar}) => scrollSnap && scrollSnapOn}
+    ${({scrollSnap}) => scrollSnap && scrollSnapOn}
     ${({scrollBar}) => !scrollBar && hideScrollBar}
 
     @media (max-height:400px) {
@@ -70,11 +73,9 @@ export const Row = styled.section`
     height:1px;
     width:1px;
     position: absolute;
-    left: ${({polars}) => (!polars ? `125px` : `250px`)};
+    left: ${({polars}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
     transition: all 1000ms;
     bottom:235px;
-    // position:relative;
-    // margin:auto;
 `
 
 export const GridCell = styled.span`
@@ -83,7 +84,6 @@ export const GridCell = styled.span`
     position: relative;
     margin: 0px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    // border:1px solid #fff;
     border:1px solid ${({darkmode}) => !darkmode ? dark : light};
 `
 
@@ -94,4 +94,15 @@ export const MathFormula = styled.div`
     font-size:20px;
     font-weight:800;
     color:${({darkmode}) => darkmode ? '#fff' : '#555'};
+`
+
+export const ZeroMarker = styled.span`
+    width:1200px;
+    height:3px;
+    background-color:${({color}) => color};
+    position:absolute;
+    top:643px;
+    left:46px;
+    transform:rotate(${({rotation}) => rotation && rotation}deg);
+    z-index:0;
 `

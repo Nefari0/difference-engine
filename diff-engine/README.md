@@ -27,6 +27,8 @@ The title (The Difference Engine) is inspired by the mechanical calculator desig
 
 * Standard calculator
 * Converting decimals to fractions
+* Unit converter
+* Percent calculator
 
 # Plans
 

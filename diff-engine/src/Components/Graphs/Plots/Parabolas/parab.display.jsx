@@ -1,6 +1,10 @@
+import { useContext } from "react"
+import { ViewContext } from "../../../Context/view.context"
 import { ParabOrigin,ParabLegend } from "./parab.styles"
 
 const ParabolaDisplay = (props) => {
+
+    const { darkmode } = useContext(ViewContext)
 
     const {
         xAspect,
@@ -32,7 +36,7 @@ const ParabolaDisplay = (props) => {
 
     return (
         <ParabOrigin>
-            <ParabLegend>
+            <ParabLegend darkmode={darkmode}>
                 <ul>
                     <li>
                         <span style={{borderRadius:'50%',backgroundColor:'blue'}}></span>
@@ -50,7 +54,14 @@ const ParabolaDisplay = (props) => {
                     </li>
 
                     <li>
-                        <span style={{left:'-5px',width:'25px',height:'5px',backgroundColor:'red'}}></span>
+                        <span 
+                            style={{
+                                left:'-5px',
+                                width:'25px',
+                                height:'5px',
+                                backgroundColor:`${!darkmode ? 'red' : 'white'}`
+                            }}
+                        ></span>
                         <i>Parabola</i>
                     </li>
                 </ul>

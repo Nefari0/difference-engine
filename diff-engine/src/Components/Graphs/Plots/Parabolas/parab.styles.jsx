@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import { backgroundColors,basicDark,basicLight } from "../../global.styles";
+
+const { 
+    paper,
+    dark 
+} = backgroundColors
 
 export const ParabOrigin = styled.div`
     position:absolute;
@@ -14,7 +20,7 @@ export const ParabLegend = styled.div`
     top:-200px;
     width:150px;
     height:100px;
-    background-color:#fff;
+    ${({darkmode}) => darkmode ? basicDark : basicLight}
     z-index:1;
     border: solid 1px;
     border-radius:5px;
