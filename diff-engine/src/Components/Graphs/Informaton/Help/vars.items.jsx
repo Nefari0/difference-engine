@@ -1,6 +1,11 @@
 import { OperatorTable } from "./info.styles"
+import { min,max } from "../../graph.component"
+
 
 const Vars = ({darkmode}) => {
+    const total = Math.abs(min)+max
+    const minValue = min/100
+    const maxValue = max/100
     return (
         <section>
             <h4>Default Variables:</h4>
@@ -16,7 +21,7 @@ const Vars = ({darkmode}) => {
                 <tbody>
                     <tr>
                         <td>x,y,u</td>
-                        <td>500 Linearly spaced elements:-2.5,2.5 </td>
+                        <td>{total} Linearly spaced elements:{minValue},{maxValue} </td>
                     </tr>
                 </tbody>
             </OperatorTable>
