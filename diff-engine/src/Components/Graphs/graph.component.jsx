@@ -233,7 +233,7 @@ export default function Graph() {
 
   const boardFactory = () => {
     var matrix = [];
-    var numOfTiles = 40;
+    var numOfTiles = 10;
     var M = Array.from(Array(numOfTiles)); // rows
     for (let i = 0; i < numOfTiles; i++) {
       matrix.push(M);

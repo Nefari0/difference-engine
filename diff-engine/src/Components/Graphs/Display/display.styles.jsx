@@ -58,6 +58,28 @@ export const OriginContainer = styled.div`
     pointer-events:auto;
 `
 
+export const Quadrant = styled.section`
+    height:500px;
+    width:500px;
+    // background-color:blue;
+    position:absolute;
+    // bottom:-500px;
+    // left:500px;
+    
+    
+    // transform: scale(1,-1);
+    transform: scale(${({scaleSection}) => scaleSection});
+    bottom:${({y}) => y}px;
+    left:${({x}) => x}px;
+    background-color:${({color}) => color};
+
+    p {
+        // transform:rotate(180deg);
+        // transform: scaleY(${({scaleContent}) => scaleContent});
+    }
+    
+`
+
 export const Row = styled.section`
     display: flex;
     flex-direction: row;
@@ -66,7 +88,9 @@ export const Row = styled.section`
     align-items: flex-start;
     align-content: stretch;
     z-index:0;
-    width:2000px;
+    width:500px;
+    // position:absolute;
+    // bottom:0px;
 `
     
     export const Origin = styled.span`

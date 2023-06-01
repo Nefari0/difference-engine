@@ -11,7 +11,8 @@ import {
     Row,
     GridCell,
     MathFormula,
-    ZeroMarker
+    ZeroMarker,
+    Quadrant
  } from "./display.styles"
 import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
@@ -76,9 +77,9 @@ const DisplayModule = (props) => {
         return (polars === true ? polarCoords : cartCoords)
     }
 
-    const mappedTiles = matrix.map((row, id1) => {
+    const mappedTiles = matrix.reverse().map((row, id1) => {
         return row.map((col, id2) => {
-          return <GridCell key={id2} darkmode={darkmode}></GridCell>;
+          return <GridCell key={id2} darkmode={darkmode}><p>{id1+' '+id2}</p></GridCell>;
         });
       });
 
@@ -89,20 +90,37 @@ const DisplayModule = (props) => {
             scrollSnap={scrollSnap}
         >
 
-            <Row>
-                {/* GRID CELLS */}
-                {!polars && mappedTiles}
-                {/* NUMBER LINES */}
-                {!polars &&
-                    <div>
-                        <NumberLine parameters={vNumParams} darkmode={darkmode} />
-                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
-                        <ZeroMarker darkmode={darkmode} color={blue}/>
-                        <ZeroMarker rotation={90} darkmode={darkmode} color={red}/>
-                    </div>
-                }
+            <Quadrant
+                x={'500'} 
+                y={'-500'} 
+                color={'red'}
+            >
+                <Row>{!polars && mappedTiles}</Row>
+            </Quadrant>
 
-            </Row>
+            <Quadrant 
+                x={'500'} 
+                y={'0'} 
+                color={'blue'}
+                // scaleSection={'-1,1'}
+                scaleSection={'1,-1'}
+                scaleContent={'-1'}
+            >
+                <Row>
+                    {/* GRID CELLS */}
+                    {!polars && mappedTiles}
+                    {/* NUMBER LINES */}
+                    {/* {!polars &&
+                        <div>
+                            <NumberLine parameters={vNumParams} darkmode={darkmode} />
+                            <NumberLine parameters={hNumParams} darkmode={darkmode} />
+                            <ZeroMarker darkmode={darkmode} color={blue}/>
+                            <ZeroMarker rotation={90} darkmode={darkmode} color={red}/>
+                        </div>
+                    } */}
+
+                </Row>
+            </Quadrant>
 
             <OriginContainer>
 
