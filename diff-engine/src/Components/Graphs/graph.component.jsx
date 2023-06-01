@@ -28,8 +28,8 @@ const errorMessage = "There is an error preventing this operation from continuin
 var par = parser()
 
 // Vectors
-const max = 250
-const min = -250
+export const max = 500
+export const min = -500
 
 // Linear vector generator
 var xVector = []

@@ -7,7 +7,6 @@ const {
     light,
 } = backgroundColors
 
-const nonPolarOrigin = '125'
 const polarOrigin = '250'
 
 const scrollSnapOn = css`
@@ -73,7 +72,7 @@ export const Row = styled.section`
     height:1px;
     width:1px;
     position: absolute;
-    left: ${({polars}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
+    left: ${({polars,nonPolarOrigin}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
     transition: all 1000ms;
     bottom:235px;
 `
