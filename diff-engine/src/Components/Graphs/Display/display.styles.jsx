@@ -56,19 +56,6 @@ export const OriginContainer = styled.div`
     scroll-snap-align: center;
     pointer-events:auto;
 `
-
-export const Row = styled.section`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: stretch;
-    z-index:0;
-    width:500px;
-    // position:absolute;
-    // bottom:0px;
-`
     
     export const Origin = styled.span`
     height:1px;

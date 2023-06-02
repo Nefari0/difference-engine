@@ -1,6 +1,7 @@
 export const hNumParams = {
-    lineL:10,
-    lineB:-405,
+    lineL:500,
+    // lineB:-405,
+    lineB:-250,
     strongR:-5,
     strongB:3,
     numRotation:0,
