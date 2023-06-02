@@ -9,11 +9,11 @@ import {
     OriginContainer,
     ViewPort,
     Row,
-    GridCell,
+    // GridCell,
     MathFormula,
     ZeroMarker,
-    Quadrant
  } from "./display.styles"
+import { Quadrant, GridCell } from "./Quadrants/quadrant.styles"
 import NumberLine from "./NumberLines/nums.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
@@ -77,11 +77,15 @@ const DisplayModule = (props) => {
         return (polars === true ? polarCoords : cartCoords)
     }
 
-    const mappedTiles = matrix.reverse().map((row, id1) => {
-        return row.map((col, id2) => {
-          return <GridCell key={id2} darkmode={darkmode}><p>{id1+' '+id2}</p></GridCell>;
+    const mappedTiles = matrix.map((row, x) => {
+        return row.map((col, y) => {
+          return <GridCell key={y} darkmode={darkmode}><p>{x}</p> <p>{y}</p></GridCell>;
         });
       });
+
+    // const quadrant4 = mappedTiles.slice(0,mappedTiles.length-1)
+    //   console.log('tiles',quadrant4)
+
 
     return (
         <ViewPort
@@ -90,22 +94,29 @@ const DisplayModule = (props) => {
             scrollSnap={scrollSnap}
         >
 
-            <Quadrant
-                x={'500'} 
-                y={'-500'} 
-                color={'red'}
-            >
-                <Row>{!polars && mappedTiles}</Row>
-            </Quadrant>
 
-            <Quadrant 
-                x={'500'} 
-                y={'0'} 
-                color={'blue'}
-                // scaleSection={'-1,1'}
-                scaleSection={'1,-1'}
-                scaleContent={'-1'}
-            >
+            <Quadrant
+                    x={'500'} 
+                    y={'0'} 
+                    color={'blue'}
+                    // scaleSection={'-1,1'}
+                    // sectionRotation={'1,-1'}
+                    // spanRotation={'180deg'}
+                    // pRotation={'-1'}
+
+                    // scaleSection={'-1,1'}
+                    // sectionRotation={'1,-1'}
+                    // spanRotation={'180deg'}
+                    // pRotation={'-1'}
+                    >
+                {/* {!polars &&
+                    <div style={{position:'absolute',right:'1000px'}}>
+                        <NumberLine parameters={vNumParams} darkmode={darkmode} />
+                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
+                        <ZeroMarker darkmode={darkmode} color={blue}/>
+                        <ZeroMarker rotation={90} darkmode={darkmode} color={red}/>
+                    </div>
+                } */}
                 <Row>
                     {/* GRID CELLS */}
                     {!polars && mappedTiles}
@@ -120,6 +131,43 @@ const DisplayModule = (props) => {
                     } */}
 
                 </Row>
+            </Quadrant>
+
+            
+            <Quadrant
+                zIndex={'0'}
+                x={'0'} 
+                y={'0'} 
+                color={'pink'}
+                sectionRotation={'-1,1'}
+                spanRotation={'180deg'}
+                pRotation={'1,-1'}
+            >
+                <Row>{!polars && mappedTiles}</Row>
+            </Quadrant>
+
+            <Quadrant
+                zIndex={'0'}
+                x={'0'} 
+                y={'-500'} 
+                color={'yellow'}
+                sectionRotation={'-1,1'}
+                spanRotation={'180deg'}
+                pRotation={'1,-1'}
+            >
+                <Row>{!polars && mappedTiles}</Row>
+            </Quadrant>
+
+            <Quadrant
+                x={'500'} 
+                y={'-500'} 
+                color={'red'}
+                zIndex={'1'}
+                sectionRotation={'1,-1'}
+                spanRotation={'180deg'}
+                pRotation={'-1'}
+            >
+                <Row>{!polars && mappedTiles}</Row>
             </Quadrant>
 
             <OriginContainer>

@@ -50,33 +50,11 @@ export const OriginContainer = styled.div`
     width:500px;
     height:500px;
     position:absolute;
-    left:395px;
-    top:395px;
+    left:250px;
+    top:250px;
     z-index:1;
     scroll-snap-align: center;
     pointer-events:auto;
-`
-
-export const Quadrant = styled.section`
-    height:500px;
-    width:500px;
-    // background-color:blue;
-    position:absolute;
-    // bottom:-500px;
-    // left:500px;
-    
-    
-    // transform: scale(1,-1);
-    transform: scale(${({scaleSection}) => scaleSection});
-    bottom:${({y}) => y}px;
-    left:${({x}) => x}px;
-    background-color:${({color}) => color};
-
-    p {
-        // transform:rotate(180deg);
-        // transform: scaleY(${({scaleContent}) => scaleContent});
-    }
-    
 `
 
 export const Row = styled.section`
@@ -101,14 +79,14 @@ export const Row = styled.section`
     bottom:235px;
 `
 
-export const GridCell = styled.span`
-    height: 48px;
-    width: 48px;
-    position: relative;
-    margin: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border:1px solid ${({darkmode}) => !darkmode ? dark : light};
-`
+// export const GridCell = styled.span`
+//     height: 48px;
+//     width: 48px;
+//     position: relative;
+//     margin: 0px;
+//     // border: 1px solid rgba(0, 0, 0, 0.5);
+//     border:1px solid ${({darkmode}) => !darkmode ? dark : light};
+// `
 
 export const MathFormula = styled.div`
     position:fixed;
