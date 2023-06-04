@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 
-import { MathComponent,Node } from "mathjax-react"
+// import { MathComponent,Node } from "mathjax-react"
 import { RadianContainer } from "./rads.styles";
-import {
-    Fraction,
-    evaluate,
-    Simplify
-} from "mathjs";
+// import {
+//     Fraction,
+//     evaluate,
+//     Simplify
+// } from "mathjs";
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -15,8 +15,8 @@ import { InlineMath, BlockMath } from 'react-katex';
 
 const RationalRads = (props) => {
 
-    const { degrees,radians,showDegrees,radianVal,degreeVal,style } = props
-    const pi = Math.PI
+    const { radianVal,degreeVal,style } = props
+    // const pi = Math.PI
     const { darkmode } = useContext(ViewContext)
 
     // --- THESE ARE VALUES FROM UNIT CIRCLE FOR TESTING --- //
@@ -66,20 +66,9 @@ const RationalRads = (props) => {
     const pair = `\\left(${sinFormat},${cosFormat}\\right)`
     // ---------------------------------//
 
-    const radDisplay = {
-        // transform: 'scale(0.50)',
-        fontSize:'20px',
-        position:'absolute',
-        bottom:'7px',
-        left:'0px'
-    }
+    const radDisplay = {fontSize:'20px'}
 
-    const degDisplay = {
-        fontSize:'18px',
-        position:'absolute',
-        right:'0px',
-        top:'20px'
-    }
+    const degDisplay = {fontSize:'18px'}
 
     return (
         <RadianContainer

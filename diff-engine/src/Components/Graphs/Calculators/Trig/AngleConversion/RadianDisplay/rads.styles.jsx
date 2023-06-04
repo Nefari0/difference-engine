@@ -5,7 +5,10 @@ const {dark,paper} = backgroundColors
 
 export const RadianContainer = styled.div`
     position:absolute;
-    width:150px;
-    height:100px;
+    width:100px;
+    height:115px;
     color:${({darkmode}) => darkmode ? paper:'black'};
+    // background-color:yellow;
+    display:flex;
+    flex-direction:column;
 `
