@@ -108,7 +108,7 @@ const KeyPad = (props) => {
                styles={{position:'absolute',right:`${90}px`,zIndex:'3',fontSize:'24px'}}
                onClick={() => setCurrentView('unit_circle')}
                darkmode={darkmode}
-               text={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`}
+               text={`\\phase{${degrees.toString().substring(0,3).replace(/^0/, '')}^\\circ}`}
                p={'Unit circle and trig functions'}
                buttonType={'image'}
             />

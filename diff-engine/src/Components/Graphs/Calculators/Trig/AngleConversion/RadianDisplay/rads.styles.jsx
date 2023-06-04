@@ -8,7 +8,6 @@ export const RadianContainer = styled.div`
     width:100px;
     height:115px;
     color:${({darkmode}) => darkmode ? paper:'black'};
-    // background-color:yellow;
     display:flex;
     flex-direction:column;
 `
