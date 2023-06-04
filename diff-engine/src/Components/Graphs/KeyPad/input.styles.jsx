@@ -72,7 +72,7 @@ const largeInput = css`
     width:500px;
     left:-6px;
 `
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
     ${({inputClass}) => inputClass==='small' ? smallInput : largeInput}
 `
     

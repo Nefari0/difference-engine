@@ -19,13 +19,24 @@ const getInputClass = (inputClass = INPUT_CLASSES.small) =>
     }[inputClass]);
 
 
-const InputField = ({ type,inputClass,styles,value,name,i,...otherProps}) => {
+const InputField = (props) => {
+    const { 
+        type,
+        inputClass,
+        styles,
+        value,
+        name,
+        i,
+        executionMethod,
+        ...otherProps
+    } = props
     const CustomInput = getInputClass(inputClass);
     const { darkmode } = useContext(ViewContext)
     return (
         <InputWrapper
             style={styles}
             inputClass={inputClass}
+            onSubmit={(e) => executionMethod(value,null,e)}
         >
             {i && <i style={{color:`${darkmode?'#fff':'#333'}`,marginRight:'4px'}}>{i}</i>}
             <CustomInput

@@ -144,7 +144,8 @@ export default function Graph() {
       // gears()
     },[]);
   
-  const polarVector = async (mathFunc) => {
+  const polarVector = async (mathFunc,otherPlots,e) => {
+    if (e) {e.preventDefault()}
     var func = [];
     var coords = [];
 
@@ -177,7 +178,8 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async (mathFunc,otherPlots) => {
+  const linearVector = async (mathFunc,otherPlots,e) => {
+    if(e) {e.preventDefault()}
     var func = []
     var coords =[]
 
@@ -343,6 +345,7 @@ export default function Graph() {
           value={mathFunc}
           name="mathFunc"
           inputClass={'large'}
+          executionMethod={polars ? polarVector : linearVector}
       />}
 
       <KeyModule
