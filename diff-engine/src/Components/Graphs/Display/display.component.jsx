@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
@@ -43,17 +43,20 @@ const DisplayModule = (props) => {
         darkmode,
         currentView,
         scrollBar,
-        scrollSnap
+        scrollSnap,
+        setScrollSnap,
     } = useContext(ViewContext)
 
-    const copy = () => {
-        if (returnPlots()[0]) {
-          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-        } else {
-          setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
-        }
-    }
+    useEffect(() => {setScrollSnap(false)},[])
+
+    // const copy = () => {
+    //     if (returnPlots()[0]) {
+    //       navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+    //       setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+    //     } else {
+    //       setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+    //     }
+    // }
 
     const vectorMap = (coordArray) => {
         const mappedItems = coordArray.map((el,i) => {

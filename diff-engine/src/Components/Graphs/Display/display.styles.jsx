@@ -22,6 +22,8 @@ const hideScrollBar = css`
         display:none;
     }
     pointer-events: none;
+    overflow:hidden;
+    ${scrollSnapOn}
 `
 
 export const ViewPort = styled.div`
@@ -37,8 +39,8 @@ export const ViewPort = styled.div`
     align-content: stretch;
     border: 2px solid rgba(0, 0, 0, 0.5);
     z-index: 0;
-    overflow:hidden;
     left:5px;
+    
     ${({scrollSnap}) => scrollSnap && scrollSnapOn}
     ${({scrollBar}) => !scrollBar ? hideScrollBar : scrollingOn}
     
