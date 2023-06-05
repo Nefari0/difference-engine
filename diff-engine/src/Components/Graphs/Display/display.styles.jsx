@@ -9,6 +9,10 @@ const {
 
 const polarOrigin = '250'
 
+const scrollingOn = css`
+    overflow:scroll;
+`
+
 const scrollSnapOn = css`
     scroll-snap-type: both mandatory;
 `
@@ -18,7 +22,6 @@ const hideScrollBar = css`
         display:none;
     }
     pointer-events: none;
-    ${scrollSnapOn}
 `
 
 export const ViewPort = styled.div`
@@ -34,18 +37,17 @@ export const ViewPort = styled.div`
     align-content: stretch;
     border: 2px solid rgba(0, 0, 0, 0.5);
     z-index: 0;
-    overflow:scroll;
-    
+    overflow:hidden;
     left:5px;
     ${({scrollSnap}) => scrollSnap && scrollSnapOn}
-    ${({scrollBar}) => !scrollBar && hideScrollBar}
-
+    ${({scrollBar}) => !scrollBar ? hideScrollBar : scrollingOn}
+    
     @media (max-height:400px) {
         transform: scale(0.60);
         top:120px;
     }
-`
-
+    `
+    
 export const OriginContainer = styled.div`
     width:500px;
     height:500px;
