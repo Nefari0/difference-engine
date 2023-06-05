@@ -30,9 +30,9 @@ const KeyPad = (props) => {
 
         darkmode,
 
-        scrollSnap,setScrollSnap,
+        // scrollSnap,setScrollSnap,
 
-        scrollBar
+        // scrollBar
     } = useContext(ViewContext)
 
     const {
@@ -77,7 +77,7 @@ const KeyPad = (props) => {
                 />
             }
 
-            {scrollBar &&
+            {/* {scrollBar &&
                 <Button 
                     styles={{
                         position:'absolute',
@@ -92,7 +92,7 @@ const KeyPad = (props) => {
                     onClick={() => setScrollSnap(!scrollSnap)}
                     p={'Scroll lock'}
                 />
-            }
+            } */}
             
 
             <Button
