@@ -105,9 +105,8 @@ const ViewSettings = (props) => {
         <ActivateScrollingButton
           onClick={() => setScrollBar(!scrollBar)}
           scrollBar={scrollBar}
-          // style={{backgroundColor:'blue'}}
         >
-          scrolling
+          scrolling {scrollBar ? 'on' : 'off'}
         </ActivateScrollingButton>
 
         <ResetViewMessage
