@@ -14,6 +14,7 @@ import {
   // evaluate,
   parser,
   // parse,
+  derivative,
   // derivative,
   // simplify,
   // exp,
@@ -233,6 +234,22 @@ export default function Graph() {
 
   }
 
+  const checkDerivitive = async () => {
+    var func = []
+    await cartCoords.forEach((i) => {
+      par.set('x',i)
+      par.set('y',i)
+      par.set('u',i)
+      par.set('X',i)
+      par.set('Y',i)
+      par.set('U',i)
+      func.push(par.evaluate(theFunction))
+    });
+    const theFunction = 'x**2'
+    const theDerivative = derivative(theFunction,'x',{simplify: false})
+    console.log(theFunction)
+  }
+
   const boardFactory = () => {
     var matrix = [];
     var numOfTiles = 40;
@@ -353,6 +370,7 @@ export default function Graph() {
           setState={setState}
           execute={execute}
           calculate={calculate}
+          checkDerivitive={checkDerivitive}
           inputHandler={inputHandler}
           close={close}
           linearVector={linearVector}
