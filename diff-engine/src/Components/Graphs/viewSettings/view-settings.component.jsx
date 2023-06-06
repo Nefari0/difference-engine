@@ -60,12 +60,9 @@ const ViewSettings = (props) => {
     const checkIfDarkmodeIsOn = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
-        if (savedMode) {
-          setDarkMode(JSON.parse(savedMode))
-        }
-      } catch (error) {
-        return
-      }
+        if (savedMode) {setDarkMode(JSON.parse(savedMode))}
+
+      } catch (error) {return}
     }
 
     const settingDarkmode = () => {
