@@ -238,14 +238,13 @@ export default function Graph() {
     var func = []
     var coords = []
     await xVector.forEach((i) => {
-      par.set('x',i/100)
-      // par.set('y',i)
-      // par.set('u',i)
-      // par.set('X',i)
-      // par.set('Y',i)
-      // par.set('U',i)
-      // func.push(par.evaluate(theFunction))
-      // parse(theFunction)
+      i = i/100
+      par.set('x',i)
+      par.set('y',i)
+      par.set('u',i)
+      par.set('X',i)
+      par.set('Y',i)
+      par.set('U',i)
       const derivativeIndexValue = par.evaluate(derivative((mathFunc), 'x').toString())
       func.push(derivativeIndexValue)
     });

@@ -49,15 +49,6 @@ const DisplayModule = (props) => {
 
     useEffect(() => {setScrollSnap(false)},[])
 
-    // const copy = () => {
-    //     if (returnPlots()[0]) {
-    //       navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-    //       setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-    //     } else {
-    //       setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
-    //     }
-    // }
-
     const vectorMap = (coordArray) => {
         const mappedItems = coordArray.map((el,i) => {
           var locations = {
@@ -67,8 +58,8 @@ const DisplayModule = (props) => {
             backgroundColor: `${darkmode ? 'white' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "2px",
-            height: "2px"
+            width: "3px",
+            height: "3px"
           };
           return <p style={locations} key={i}></p>;
         })
