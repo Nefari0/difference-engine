@@ -235,19 +235,52 @@ export default function Graph() {
   }
 
   const checkDerivitive = async () => {
+    // const diff = derivative('x^2', 'x') 
     var func = []
-    await cartCoords.forEach((i) => {
-      par.set('x',i)
-      par.set('y',i)
-      par.set('u',i)
-      par.set('X',i)
-      par.set('Y',i)
-      par.set('U',i)
-      func.push(par.evaluate(theFunction))
+    var coords = []
+    // const theFunction = '3 - x^3'
+    // const theFunction = 'x^3'
+    // console.log('DERIVES',parseInt(derivative(theFunction, 'x')))
+    await xVector.forEach((i) => {
+      // console.log(i/100)
+      par.set('x',i/100)
+
+      // par.set('y',i)
+      // par.set('u',i)
+      // par.set('X',i)
+      // par.set('Y',i)
+      // par.set('U',i)
+      // func.push(par.evaluate(theFunction))
+      // parse(theFunction)
+
+      // func.push(derivative('x^2', 'x').toString())
+      // console.log(par.evaluate(derivative((theFunction), 'x').toString()))
+      const derivativeIndexValue = par.evaluate(derivative((mathFunc), 'x').toString())
+      func.push(derivativeIndexValue)
+      // func.push(derivative((theFunction), 'x'))
+
+      // func.push(derivative('x^2'))
     });
-    const theFunction = 'x**2'
-    const theDerivative = derivative(theFunction,'x',{simplify: false})
-    console.log(theFunction)
+    
+    // console.log(theFunction)
+    await func.forEach((el,x) => {
+      // console.log(xVector[x])
+      el = el/10
+      // x = x / 100
+      var xVal = xVector[x]/100
+      coords.push([xVal,el])
+      // coords.push([xVal,el])
+    });
+    // setState({...state, cartCoords:coords})
+    await setState({
+      ...state,
+      cartCoords:coords,
+      polars:false,
+      // otherPlots:(otherPlots ? otherPlots:[]),
+    })
+    // const theDerivative = derivative(theFunction,'x',{simplify: false})
+    // console.log()
+
   }
 
   const boardFactory = () => {

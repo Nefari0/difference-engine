@@ -200,7 +200,7 @@ const KeyPad = (props) => {
                 darkmode={darkmode}
                 style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
                 onClick={() => checkDerivitive()}
-                p={'Execute polar coordinates'}
+                p={'Find derivative'}
                 text={'derivative'}
                 buttonType={'textage'}
                 buttonClass={'large'}
