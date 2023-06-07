@@ -275,7 +275,7 @@ export default function Graph() {
       // ------------------------------------ //
 
       el = el / 10
-      var xVal = xVector[x]/100
+      var xVal = (xVector[x]/100)+5
       // x = x / 100
       coords.push([xVal,el])
       // coords.push([el,xVal])
