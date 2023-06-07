@@ -61,6 +61,8 @@ export default function Graph() {
     darkmode,
 
     about,
+
+    // isLoading,setIsLoading
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature

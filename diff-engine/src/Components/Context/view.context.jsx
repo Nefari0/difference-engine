@@ -20,7 +20,10 @@ export const ViewContext = createContext({
     setScrollSnap:() => null,
 
     scrollingBar:false,
-    setScrollBar:() => null
+    setScrollBar:() => null,
+
+    isLoading:false,
+    setIsLoading:() => null,
 })
 
 export const ViewProvider = ({ children }) => {
@@ -32,6 +35,7 @@ export const ViewProvider = ({ children }) => {
     const [about,setAbout] = useState(false)
     const [scrollBar,setScrollBar] = useState(false)
     const [scrollSnap,setScrollSnap] = useState(true)
+    const [isLoading,setIsLoading] = useState(false)
     
     const value = {
         currentView,
@@ -51,7 +55,9 @@ export const ViewProvider = ({ children }) => {
 
         scrollBar,setScrollBar,
 
-        scrollSnap,setScrollSnap
+        scrollSnap,setScrollSnap,
+
+        isLoading,setIsLoading
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

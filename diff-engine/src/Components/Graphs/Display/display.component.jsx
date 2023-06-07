@@ -5,6 +5,7 @@ import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Percentages/percent.display"
+import GraphingModule from "./graphing.module"
 import { 
     OriginContainer,
     ViewPort,
@@ -13,10 +14,11 @@ import {
     MathFormula,
     ZeroMarker
  } from "./display.styles"
+
 import NumberLine from "./NumberLines/nums.component"
+import Loading from "./Loading/loading.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
-import GraphingModule from "./graphing.module"
 
 const { red,blue } = backgroundColors 
 
@@ -36,7 +38,7 @@ const DisplayModule = (props) => {
         mathFunc,
         matrix,
         polarCoords,
-        cartCoords
+        cartCoords,
     } = state
 
     const {
@@ -45,6 +47,7 @@ const DisplayModule = (props) => {
         scrollBar,
         scrollSnap,
         setScrollSnap,
+        isLoading
     } = useContext(ViewContext)
 
     useEffect(() => {setScrollSnap(false)},[])
@@ -82,6 +85,7 @@ const DisplayModule = (props) => {
             scrollBar={scrollBar}
             scrollSnap={scrollSnap}
         >
+            {isLoading && <Loading/>}
 
             <Row>
                 {/* GRID CELLS */}
