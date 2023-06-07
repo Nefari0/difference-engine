@@ -1,4 +1,4 @@
-import { useState,useContext } from "react";
+import { useState,useContext,useEffect } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
 
@@ -52,7 +52,23 @@ const ViewSettings = (props) => {
       darkmode,setDarkMode,
 
       scrollBar,setScrollBar
+
     } = useContext(ViewContext)
+
+    useEffect(() => {checkIfDarkmodeIsOn()},[])
+
+    const checkIfDarkmodeIsOn = () => {
+      try {
+        const savedMode = localStorage.getItem('DARKMODE')
+        if (savedMode) {setDarkMode(JSON.parse(savedMode))}
+
+      } catch (error) {return}
+    }
+
+    const settingDarkmode = () => {
+      localStorage.setItem('DARKMODE',!darkmode)
+      setDarkMode(!darkmode)
+    }
 
     return (
         <ViewSettingsPanel>
@@ -78,7 +94,7 @@ const ViewSettings = (props) => {
         </ResetViewButton>
 
         <DarkmodeButton
-          onClick={() => setDarkMode(!darkmode)}
+          onClick={() => settingDarkmode(!darkmode)}
         >
           {!darkmode ? 'dark mode' : 'light mode'}
         </DarkmodeButton>
@@ -105,9 +121,8 @@ const ViewSettings = (props) => {
         <ActivateScrollingButton
           onClick={() => setScrollBar(!scrollBar)}
           scrollBar={scrollBar}
-          // style={{backgroundColor:'blue'}}
         >
-          scrolling
+          scrolling {scrollBar ? 'on' : 'off'}
         </ActivateScrollingButton>
 
         <ResetViewMessage
