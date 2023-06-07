@@ -243,7 +243,10 @@ export default function Graph() {
     // console.log('DERIVES',parseInt(derivative(theFunction, 'x')))
     await xVector.forEach((i) => {
       // console.log(i/100)
+
+      // --- GETS GOOD RESULTS --- //
       par.set('x',i/100)
+      // ------------------------- //
 
       // par.set('y',i)
       // par.set('u',i)
@@ -265,11 +268,17 @@ export default function Graph() {
     // console.log(theFunction)
     await func.forEach((el,x) => {
       // console.log(xVector[x])
-      el = el/10
-      // x = x / 100
+
+      // --- GOOD RESULTS, BUT NEEDS WORK --- //
+      // el = el/10 // This gets good results, but begins at x = -5
+      // var xVal = xVector[x]/100
+      // ------------------------------------ //
+
+      el = el / 10
       var xVal = xVector[x]/100
+      // x = x / 100
       coords.push([xVal,el])
-      // coords.push([xVal,el])
+      // coords.push([el,xVal])
     });
     // setState({...state, cartCoords:coords})
     await setState({
@@ -278,6 +287,7 @@ export default function Graph() {
       polars:false,
       // otherPlots:(otherPlots ? otherPlots:[]),
     })
+    return coords
     // const theDerivative = derivative(theFunction,'x',{simplify: false})
     // console.log()
 
