@@ -47,7 +47,7 @@ const KeyPad = (props) => {
         findDerivative
     } = props
 
-    const { mathFunc,degrees } = state
+    const { mathFunc,degrees,polars } = state
 
     const copy = () => {
         if (returnPlots()[0]) {
@@ -81,7 +81,7 @@ const KeyPad = (props) => {
                 />
             }
 
-            {!currentView &&
+            {!currentView && !polars &&
                 <Button
                     p={'copy coordinates'}
                     styles={{
