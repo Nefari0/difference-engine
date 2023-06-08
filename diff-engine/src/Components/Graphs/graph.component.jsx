@@ -14,7 +14,7 @@ import {
   // evaluate,
   parser,
   // parse,
-  derivative,
+  // derivative,
   // derivative,
   // simplify,
   // exp,
@@ -146,8 +146,9 @@ export default function Graph() {
         }
       // gears()
     },[]);
-  
-  const polarVector = async (mathFunc,otherPlots,e) => {
+
+  // ---- POLAR ---- //
+  const polarVector = async (mathFunctionParam,otherPlots,e) => {
     if (e) {e.preventDefault()}
     var func = [];
     var coords = [];
@@ -161,7 +162,7 @@ export default function Graph() {
         par.set('X',i)
         par.set('Y',i)
         par.set('U',i)
-        func.push(par.evaluate(mathFunc))
+        func.push(par.evaluate(mathFunctionParam ? mathFunctionParam : mathFunc))
       });
 
     } catch (err) {
@@ -181,7 +182,7 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async (mathFunc,otherPlots,e) => {
+  const linearVector = async (mathFunctionParam,otherPlots,e) => {
     if(e) {e.preventDefault()}
     var func = []
     var coords =[]
@@ -196,7 +197,7 @@ export default function Graph() {
         par.set('X',i)
         par.set('Y',i)
         par.set('U',i)
-        func.push(par.evaluate(mathFunc))
+        func.push(par.evaluate(mathFunctionParam ? mathFunctionParam : mathFunc))
       });
 
     } catch (err) {
@@ -234,34 +235,6 @@ export default function Graph() {
       return
     }
 
-  }
-
-  const checkDerivitive = async () => {
-    var func = []
-    var coords = []
-    await xVector.forEach((i) => {
-      i = i/100
-      par.set('x',i)
-      par.set('y',i)
-      par.set('u',i)
-      par.set('X',i)
-      par.set('Y',i)
-      par.set('U',i)
-      const derivativeIndexValue = par.evaluate(derivative((mathFunc), 'x').toString())
-      func.push(derivativeIndexValue)
-    });
-    
-    await func.forEach((el,x) => {
-      var xVal = (xVector[x]/100)+5
-      coords.push([xVal,el])
-    });
-    
-    await setState({
-      ...state,
-      cartCoords:coords,
-      polars:false,
-    })
-    return coords
   }
 
   const boardFactory = () => {
@@ -384,7 +357,6 @@ export default function Graph() {
           setState={setState}
           execute={execute}
           calculate={calculate}
-          checkDerivitive={checkDerivitive}
           inputHandler={inputHandler}
           close={close}
           linearVector={linearVector}

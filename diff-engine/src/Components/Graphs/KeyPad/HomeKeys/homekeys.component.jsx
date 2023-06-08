@@ -1,4 +1,5 @@
 import { KeyBox,AllClearButton } from "../input.styles";
+import { derivative } from "mathjs";
 
 import { 
     Book,
@@ -199,7 +200,7 @@ const KeyPad = (props) => {
             <Button
                 darkmode={darkmode}
                 style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
-                onClick={() => checkDerivitive()}
+                onClick={() => linearVector(derivative((mathFunc), 'x').toString())}
                 p={'Find derivative'}
                 text={'derivative'}
                 buttonType={'textage'}
