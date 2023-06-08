@@ -1,10 +1,12 @@
 import { useContext,useEffect } from "react"
+import { derivative } from "mathjs"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Percentages/percent.display"
+import GraphingModule from "./graphing.module"
 import { 
     OriginContainer,
     ViewPort,
@@ -13,10 +15,11 @@ import {
     MathFormula,
     ZeroMarker
  } from "./display.styles"
+
 import NumberLine from "./NumberLines/nums.component"
+import Loading from "./Loading/loading.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
-import GraphingModule from "./graphing.module"
 
 const { red,blue } = backgroundColors 
 
@@ -36,7 +39,7 @@ const DisplayModule = (props) => {
         mathFunc,
         matrix,
         polarCoords,
-        cartCoords
+        cartCoords,
     } = state
 
     const {
@@ -45,18 +48,10 @@ const DisplayModule = (props) => {
         scrollBar,
         scrollSnap,
         setScrollSnap,
+        isLoading
     } = useContext(ViewContext)
 
     useEffect(() => {setScrollSnap(false)},[])
-
-    // const copy = () => {
-    //     if (returnPlots()[0]) {
-    //       navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-    //       setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-    //     } else {
-    //       setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
-    //     }
-    // }
 
     const vectorMap = (coordArray) => {
         const mappedItems = coordArray.map((el,i) => {
@@ -67,8 +62,8 @@ const DisplayModule = (props) => {
             backgroundColor: `${darkmode ? 'white' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "2px",
-            height: "2px"
+            width: "3px",
+            height: "3px"
           };
           return <p style={locations} key={i}></p>;
         })
@@ -91,6 +86,7 @@ const DisplayModule = (props) => {
             scrollBar={scrollBar}
             scrollSnap={scrollSnap}
         >
+            {isLoading && <Loading/>}
 
             <Row>
                 {/* GRID CELLS */}
@@ -119,7 +115,18 @@ const DisplayModule = (props) => {
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
                     {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
-                </MathFormula>
+                    {!showUnitCircleAngles && state.derivative && 
+                    <div onClick={(e) => execute(e,'mathFunc',state.derivative)}>
+                        <MathComponent 
+                            tex={String.raw`${'\\frac{d}{dx} = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
+                        />
+                    </div>
+                    }
+                </MathFormula>                
+
+                {/* <MathFormula darkmode={darkmode} >
+                    
+                </MathFormula> */}
 
                 {/* PERCENT CALCULATOR */}
                 {currentView === 'percentages' && <PercentDisplay

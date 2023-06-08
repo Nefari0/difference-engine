@@ -14,7 +14,7 @@ import {
   // evaluate,
   parser,
   // parse,
-  // derivative,
+  derivative,
   // simplify,
   // exp,
   // log
@@ -60,6 +60,8 @@ export default function Graph() {
     darkmode,
 
     about,
+
+    // isLoading,setIsLoading
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -74,6 +76,7 @@ export default function Graph() {
     cartCoords:[],
     polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)', // INPUT
+    derivative:null,
     displayInput:true, // Toggles main input on/off 
 
     unitCircle:null, // Display Unit Circle ?
@@ -143,8 +146,9 @@ export default function Graph() {
         }
       // gears()
     },[]);
-  
-  const polarVector = async (mathFunc,otherPlots,e) => {
+
+  // ---- POLAR ---- //
+  const polarVector = async (mathFunctionParam,otherPlots,e) => {
     if (e) {e.preventDefault()}
     var func = [];
     var coords = [];
@@ -158,7 +162,7 @@ export default function Graph() {
         par.set('X',i)
         par.set('Y',i)
         par.set('U',i)
-        func.push(par.evaluate(mathFunc))
+        func.push(par.evaluate(mathFunctionParam ? mathFunctionParam : mathFunc))
       });
 
     } catch (err) {
@@ -178,13 +182,16 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async (mathFunc,otherPlots,e) => {
+  const linearVector = async (mathFunctionParam,otherPlots,e) => {
+
+    const mathFunc = mathFunctionParam ? mathFunctionParam : mathFunc
+
     if(e) {e.preventDefault()}
     var func = []
     var coords =[]
+    var deriv = null
 
     try {
-
       await xVector.forEach((i) => {
         i = i / 100
         par.set('x',i)
@@ -206,13 +213,31 @@ export default function Graph() {
       coords.push([x,el])
     });
 
+    // --- Try finding derivative --- //
+    try {
+      deriv = derivative((mathFunc), 'x').toString()
+    } catch (error) {
+      return
+    }
+
     await setState({
       ...state,
       cartCoords:coords,
       polars:false,
+      derivative:deriv,
       otherPlots:(otherPlots ? otherPlots:[]),
     })
     return coords
+  }
+
+  // ----- DERIVATIVE ----- //
+  const findDerivative = (mathFunc) => {
+    try {
+      linearVector(derivative((mathFunc), 'x').toString())
+    } catch (err) {
+      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      return
+    }
   }
 
   const calculate = (e,mathFunc) => {
@@ -357,6 +382,7 @@ export default function Graph() {
           close={close}
           linearVector={linearVector}
           polarVector={polarVector}
+          findDerivative={findDerivative}
           formatFunction={formatFunction}
           returnPlots={returnPlots}
       />

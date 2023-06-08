@@ -1,4 +1,5 @@
 import { KeyBox,AllClearButton } from "../input.styles";
+import { derivative } from "mathjs";
 
 import { 
     Book,
@@ -40,7 +41,8 @@ const KeyPad = (props) => {
         polarVector,
         state,
         returnPlots,
-        setState
+        setState,
+        findDerivative
     } = props
 
     const { mathFunc,degrees } = state
@@ -191,6 +193,16 @@ const KeyPad = (props) => {
                 onClick={() => polarVector(mathFunc)}
                 p={'Execute polar coordinates'}
                 text={'polar'}
+                buttonType={'textage'}
+                buttonClass={'large'}
+            />
+
+            <Button
+                darkmode={darkmode}
+                style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
+                onClick={() => findDerivative(mathFunc)}
+                p={'Find derivative'}
+                text={'derivative'}
                 buttonType={'textage'}
                 buttonClass={'large'}
             />
