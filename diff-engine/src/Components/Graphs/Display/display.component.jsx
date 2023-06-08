@@ -118,8 +118,7 @@ const DisplayModule = (props) => {
                     {!showUnitCircleAngles && state.derivative && 
                     <div onClick={(e) => execute(e,'mathFunc',state.derivative)}>
                         <MathComponent 
-                            tex={String.raw`${'d/dx = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
-                            
+                            tex={String.raw`${'\\frac{d}{dx} = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
                         />
                     </div>
                     }
