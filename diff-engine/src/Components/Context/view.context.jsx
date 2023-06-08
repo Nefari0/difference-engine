@@ -28,8 +28,6 @@ export const ViewContext = createContext({
     showPlotValues:false,
     setShowPlotValues:() => null,
 
-    polars:false,
-    setPolars:() => null
 })
 
 export const ViewProvider = ({ children }) => {
@@ -43,11 +41,6 @@ export const ViewProvider = ({ children }) => {
     const [scrollSnap,setScrollSnap] = useState(true)
     const [isLoading,setIsLoading] = useState(false)
     const [showPlotValues,setShowPlotValues] = useState(false)
-    const [polars,setPolars] = useState(false)
-
-    const showPlotValuesController = (boolean) => {
-        
-    }
 
     const value = {
         currentView,setCurrentView,
@@ -67,8 +60,7 @@ export const ViewProvider = ({ children }) => {
         isLoading,setIsLoading,
 
         showPlotValues,setShowPlotValues,
-        
-        polars,setPolars
+
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>
