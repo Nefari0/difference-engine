@@ -1,4 +1,4 @@
-import { useContext,useEffect,useState } from "react"
+import { useContext,useEffect } from "react"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
@@ -31,8 +31,8 @@ const DisplayModule = (props) => {
     } = props
 
     const {
-        xAspect,
-        yAspect,
+        // xAspect,
+        // yAspect,
         polars,
         showUnitCircleAngles,
         mathFunc,
@@ -49,12 +49,6 @@ const DisplayModule = (props) => {
         setScrollSnap,
         isLoading
     } = useContext(ViewContext)
-
-    const [localState,setLocalState] = useState({
-        showPlotValues:true
-    })
-
-    const { showPlotValues } = localState
 
     useEffect(() => {setScrollSnap(false)},[])
       
