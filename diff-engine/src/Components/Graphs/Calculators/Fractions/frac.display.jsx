@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { ViewContext } from "../../../Context/view.context";
 
 import { FracDisplay } from "./frac.styles"
@@ -12,7 +12,7 @@ const FractionCalc = (props) => {
 
     const { state,input } = props
 
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setScrollBar } = useContext(ViewContext)
     
     // const decimal = input
     const decimal = input
@@ -22,6 +22,8 @@ const FractionCalc = (props) => {
     // console.log(numerator)
     // console.log(fraction)
     const frac = `\\frac{${fraction[0]} }{${fraction[1]}}` 
+
+    useEffect(() => {setScrollBar(false)},[])
 
     function reduce(number,denomin){
         var gcd = function gcd(a,b){

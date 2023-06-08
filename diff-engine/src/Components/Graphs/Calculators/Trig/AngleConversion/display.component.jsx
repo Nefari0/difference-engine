@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
 import { ViewContext } from "../../../../Context/view.context"
 import { OuterRotation, Theta, ThetaOrigin } from "./display.styles"
 import { TrigFunctions } from "./TrigFunctions/functions.component"
@@ -9,9 +9,11 @@ import Tan from "./SinCos/tan.component"
 
 const UnitCircleDisplay = (props) => {
 
-    const { state,setState,vectorMap } = props
-    const { degrees,showDegrees,radians,polarVector,arc } = state
-    const { darkmode } = useContext(ViewContext)
+    const { state } = props
+    const { degrees,showDegrees,radians } = state
+    const { darkmode,setScrollBar } = useContext(ViewContext)
+
+    useEffect(() => {setScrollBar(false)},[])
 
     const returnDegrees = () => { // Display angle line in degrees or radians
         return (showDegrees ? degrees : radians * (180/Math.PI))

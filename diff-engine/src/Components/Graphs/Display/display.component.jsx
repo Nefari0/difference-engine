@@ -115,7 +115,7 @@ const DisplayModule = (props) => {
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
                     {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
-                    {!showUnitCircleAngles && state.derivative && 
+                    {!showUnitCircleAngles && state.derivative && !currentView &&
                     <div onClick={(e) => execute(e,'mathFunc',state.derivative)}>
                         <MathComponent 
                             tex={String.raw`${'\\frac{d}{dx} = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
