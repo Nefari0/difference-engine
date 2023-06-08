@@ -25,7 +25,7 @@ const KeyModule = (props) => {
         polarVector,
         formatFunction,
         returnPlots,
-        checkDerivitive
+        findDerivative
     } = props
 
     const { currentView } = useContext(ViewContext)
@@ -42,7 +42,7 @@ const KeyModule = (props) => {
                 state={state}
                 setState={setState}
                 returnPlots={returnPlots}
-                checkDerivitive={checkDerivitive}
+                findDerivative={findDerivative}
             />}
 
 

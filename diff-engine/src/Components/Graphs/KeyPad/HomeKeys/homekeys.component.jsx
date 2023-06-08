@@ -42,7 +42,7 @@ const KeyPad = (props) => {
         state,
         returnPlots,
         setState,
-        checkDerivitive
+        findDerivative
     } = props
 
     const { mathFunc,degrees } = state
@@ -200,7 +200,7 @@ const KeyPad = (props) => {
             <Button
                 darkmode={darkmode}
                 style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
-                onClick={() => linearVector(derivative((mathFunc), 'x').toString())}
+                onClick={() => findDerivative(mathFunc)}
                 p={'Find derivative'}
                 text={'derivative'}
                 buttonType={'textage'}

@@ -1,4 +1,5 @@
 import { useContext,useEffect } from "react"
+import { derivative } from "mathjs"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
@@ -114,7 +115,19 @@ const DisplayModule = (props) => {
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
                     {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
-                </MathFormula>
+                    {!showUnitCircleAngles && state.derivative && 
+                    <div onClick={(e) => execute(e,'mathFunc',state.derivative)}>
+                        <MathComponent 
+                            tex={String.raw`${'d/dx = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
+                            
+                        />
+                    </div>
+                    }
+                </MathFormula>                
+
+                {/* <MathFormula darkmode={darkmode} >
+                    
+                </MathFormula> */}
 
                 {/* PERCENT CALCULATOR */}
                 {currentView === 'percentages' && <PercentDisplay
