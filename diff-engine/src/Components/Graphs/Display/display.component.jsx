@@ -1,5 +1,4 @@
 import { useContext,useEffect } from "react"
-import { derivative } from "mathjs"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
@@ -153,7 +152,7 @@ const DisplayModule = (props) => {
                     setState={setState}
                     execute={execute}
                 />}
-                </OriginContainer>
+            </OriginContainer>
             
         </ViewPort>
     )
