@@ -1,5 +1,5 @@
-import { KeyBox,AllClearButton } from "../input.styles";
-import { derivative } from "mathjs";
+import { KeyBox } from "../input.styles";
+// import { derivative } from "mathjs";
 
 import { 
     Book,
@@ -7,8 +7,8 @@ import {
     CogWheel,
     beaker,
     CopyIcon,
-    LockOpen,
-    LockClosed
+    // LockOpen,
+    // LockClosed
  } from "../../SVG";
 
 import { useContext } from "react";
@@ -34,6 +34,8 @@ const KeyPad = (props) => {
         // scrollSnap,setScrollSnap,
 
         // scrollBar
+
+        showPlotValues,setShowPlotValues
     } = useContext(ViewContext)
 
     const {
@@ -45,7 +47,7 @@ const KeyPad = (props) => {
         findDerivative
     } = props
 
-    const { mathFunc,degrees } = state
+    const { mathFunc,degrees,polars } = state
 
     const copy = () => {
         if (returnPlots()[0]) {
@@ -62,7 +64,7 @@ const KeyPad = (props) => {
             darkmode={darkmode}
         >
 
-            {!currentView && 
+            {!currentView &&
                 <Button
                     p={'copy coordinates'}
                     styles={{
@@ -71,7 +73,7 @@ const KeyPad = (props) => {
                         height:'75px',
                         left:'10px',
                         top:'-560px',
-                        zIndex:'100',
+                        zIndex:'2',
                     }}
                     buttonClass={'translucent'}
                     onClick={() => copy()}
@@ -79,22 +81,22 @@ const KeyPad = (props) => {
                 />
             }
 
-            {/* {scrollBar &&
-                <Button 
+            {!currentView && !polars &&
+                <Button
+                    p={'Show coordinate values'}
                     styles={{
                         position:'absolute',
                         width:'75px',
-                        height:'75px',
+                        height:'45px',
                         left:'10px',
                         top:'-480px',
-                        zIndex:'100',
+                        zIndex:'1',
                     }}
                     buttonClass={'translucent'}
-                    text={!scrollSnap ? LockOpen() : LockClosed()}
-                    onClick={() => setScrollSnap(!scrollSnap)}
-                    p={'Scroll lock'}
+                    onClick={() => setShowPlotValues(!showPlotValues)}
+                    text={'values'}
                 />
-            } */}
+            }
             
 
             <Button

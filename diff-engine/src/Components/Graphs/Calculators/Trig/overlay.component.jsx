@@ -5,6 +5,7 @@ import { CircleOverlay, Crosshair } from "./overlay.styles"
 import Rotations from "./UnitCircle/unitcircle.component"
 import {angleData} from './angle.data'
 import { ThetaOrigin } from "./AngleConversion/display.styles"
+import { useEffect } from "react"
 
 // const tOrigin = {
 //     top:'200px',
@@ -13,7 +14,7 @@ import { ThetaOrigin } from "./AngleConversion/display.styles"
 
 const CircleGraph = ({showUnitCircleAngles}) => {
 
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,showPlotValues,setShowPlotValues } = useContext(ViewContext)
 
     const mappedAngles = angleData.map(el => {
         return <Rotations key={el.degrees} items={el} />
@@ -23,6 +24,10 @@ const CircleGraph = ({showUnitCircleAngles}) => {
     const left = {top:'190px',left:'-46px'}
     const top ={top:'-36px',left:'190px'}
     const bottom = {bottom:'-35px',left:'190px'}
+
+    useEffect(() => {
+        setShowPlotValues(false)
+    })
 
     return (
         <CircleOverlay

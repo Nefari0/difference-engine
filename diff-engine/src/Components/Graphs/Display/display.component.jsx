@@ -31,8 +31,8 @@ const DisplayModule = (props) => {
     } = props
 
     const {
-        xAspect,
-        yAspect,
+        // xAspect,
+        // yAspect,
         polars,
         showUnitCircleAngles,
         mathFunc,
@@ -51,23 +51,6 @@ const DisplayModule = (props) => {
     } = useContext(ViewContext)
 
     useEffect(() => {setScrollSnap(false)},[])
-
-    const vectorMap = (coordArray) => {
-        const mappedItems = coordArray.map((el,i) => {
-          var locations = {
-            bottom: `${yAspect*el[1]}px`,
-            left: `${xAspect*el[0]}px`,
-            borderRadius: "50%",
-            backgroundColor: `${darkmode ? 'white' : 'red'}`,
-            position: "absolute",
-            transition: "all 1000ms",
-            width: "3px",
-            height: "3px"
-          };
-          return <p style={locations} key={i}></p>;
-        })
-        return <div>{mappedItems}</div>
-    }
       
     const returnPlots = () => {
         return (polars === true ? polarCoords : cartCoords)
@@ -87,6 +70,7 @@ const DisplayModule = (props) => {
         >
             {isLoading && <Loading/>}
 
+            {/* GENERATES AND DISPLAYS GRID CELLS AND NUMBERLINES */}
             <Row>
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}
@@ -102,13 +86,13 @@ const DisplayModule = (props) => {
 
             </Row>
 
+            {/* THIS IS LAYERED ONTO THE ROW COMPONENT ABOVE */}
             <OriginContainer>
 
                 <GraphingModule
                     state={state}
                     setState={setState}
                     returnPlots={returnPlots}
-                    vectorMap={vectorMap}
                 />
 
                 {/* CURRENT MATH FORMULA */}

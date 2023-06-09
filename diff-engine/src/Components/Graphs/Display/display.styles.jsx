@@ -78,7 +78,7 @@ export const Row = styled.section`
     position: absolute;
     left: ${({polars,nonPolarOrigin}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
     transition: all 1000ms;
-    bottom:235px;
+    bottom:240px;
 `
 
 export const GridCell = styled.span`

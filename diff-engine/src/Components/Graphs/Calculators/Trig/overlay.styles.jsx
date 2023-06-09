@@ -8,7 +8,7 @@ export const CircleOverlay = styled.div`
     border: solid 1px ${({darkmode}) => darkmode ? '#fff' : '#333'};
     border-radius:50%;
     left:-202px;
-    top:-216px;
+    top:-206px;
     transition: all 1000ms;
     color:${({darkmode}) => darkmode ? '#fff' : '#333'};
 
