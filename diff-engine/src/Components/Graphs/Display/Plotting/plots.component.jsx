@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
+import { CoordinatePair } from "./plots.styles";
 
 const VectorMap = (props) => {
 
@@ -36,24 +37,30 @@ const VectorMap = (props) => {
         var locations = {
             bottom: `${yAspect*el[1]}px`,
             left: `${xAspect*el[0]}px`,
-            borderRadius: "50%",
             backgroundColor:defineBackground(),
             position: "absolute",
             transition: "all 1000ms",
-            width: `${showPlotValues ? '30' : '3'}px`,
-            height:`${'3'}px`,
             fontSize:'6px',
             fontWeight:'800',
-            color:`${darkmode ? '#fff' : '#555'}`
+            color:`${darkmode ? '#fff' : '#555'}`,
+            // display:`${i % 40 === 0 && showPlotValues === true ? 'none' : 'inline'}`
           };
         return (
-           <p
-                key={i} 
-                style={locations}
-            >
-                {showPlotValues && (i % 40 === 0 ? truncateValues(el[0],el[1]) : null)}
-            </p>
-            
+                <CoordinatePair 
+                    showPlotValues={showPlotValues}
+                    key={i}
+                    style={locations}
+                    indexVal={i}
+                    darkmode={darkmode}
+                >
+                    {showPlotValues && i % 40 === 0 && 
+                    <p>
+                        {truncateValues(el[0],el[1])}
+                        {/* {showPlotValues && (i % 40 === 0 ? truncateValues(el[0],el[1]) : null)} */}
+                    </p>
+                    }
+                  
+                </CoordinatePair>
         )
     })
 

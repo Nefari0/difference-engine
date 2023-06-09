@@ -73,7 +73,7 @@ const KeyPad = (props) => {
                         height:'75px',
                         left:'10px',
                         top:'-560px',
-                        zIndex:'100',
+                        zIndex:'2',
                     }}
                     buttonClass={'translucent'}
                     onClick={() => copy()}
@@ -83,14 +83,14 @@ const KeyPad = (props) => {
 
             {!currentView && !polars &&
                 <Button
-                    p={'copy coordinates'}
+                    p={'Show coordinate values'}
                     styles={{
                         position:'absolute',
                         width:'75px',
                         height:'45px',
                         left:'10px',
                         top:'-480px',
-                        zIndex:'100',
+                        zIndex:'1',
                     }}
                     buttonClass={'translucent'}
                     onClick={() => setShowPlotValues(!showPlotValues)}

@@ -44,4 +44,5 @@ export const basicDark = css`
 `
 export const basicLight = css`
     background-color:${backgroundColors.paper};
+    color:#555;
 `
