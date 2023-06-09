@@ -180,7 +180,7 @@ const KeyPad = (props) => {
             />
 
             <Button
-                style={{left:'0px',width:'125px',zIndex:'2',fontSize:'16px'}}
+                style={{left:'0px',width:'125px',zIndex:'3',fontSize:'16px'}}
                 onClick={() => linearVector(mathFunc)}
                 darkmode={darkmode}
                 p={'Execute cartesian coordinates'}
@@ -191,7 +191,7 @@ const KeyPad = (props) => {
 
             <Button
                 darkmode={darkmode}
-                style={{top:'80px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
+                style={{top:'80px',left:'0px',zIndex:'2',width:'125px',fontSize:'16px'}}
                 onClick={() => polarVector(mathFunc)}
                 p={'Execute polar coordinates'}
                 text={'polar'}
