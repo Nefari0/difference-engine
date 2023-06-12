@@ -51,7 +51,7 @@ var iteration = 0
 export default function Graph() {
 
   const {
-    setCurrentView,currentView,
+    setCurrentView,
 
     displayKeymap,setDisplayKeymap,
 
@@ -68,8 +68,7 @@ export default function Graph() {
 
   const [state, setState] = useState({
     xAspect:50,yAspect:50, // Grid scale
-    polarOrigin:'250',
-    nonPolarOrigin:'125',
+    polarOrigin:min/-2,
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
