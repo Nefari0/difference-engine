@@ -7,8 +7,6 @@ const {
     light,
 } = backgroundColors
 
-const polarOrigin = '250'
-
 const scrollingOn = css`
     overflow:scroll;
 `
@@ -76,7 +74,7 @@ export const Row = styled.section`
     height:1px;
     width:1px;
     position: absolute;
-    left: ${({polars,nonPolarOrigin}) => (!polars ? `${nonPolarOrigin}px` : `${polarOrigin}px`)};
+    left: ${({polars,polarOrigin}) => (!polars ? `${(polarOrigin/2).toString()}px` : `${polarOrigin.toString()}px`)};
     transition: all 1000ms;
     bottom:240px;
 `

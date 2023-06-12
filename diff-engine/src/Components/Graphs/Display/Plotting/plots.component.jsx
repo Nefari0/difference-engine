@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { CoordinatePair } from "./plots.styles";
 
@@ -17,6 +17,8 @@ const VectorMap = (props) => {
         xAspect,
         polars,
     } = state
+
+    const [selected,setSelected] = useState(null)
 
     const defineBackground = () => {
         if (!showPlotValues) {
@@ -52,11 +54,12 @@ const VectorMap = (props) => {
                     style={locations}
                     indexVal={i}
                     darkmode={darkmode}
+                    onClick={() => setSelected(i)}
+                    selected={selected}
                 >
                     {showPlotValues && i % 40 === 0 && 
                     <p>
                         {truncateValues(el[0],el[1])}
-                        {/* {showPlotValues && (i % 40 === 0 ? truncateValues(el[0],el[1]) : null)} */}
                     </p>
                     }
                   

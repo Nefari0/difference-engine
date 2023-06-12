@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { backgroundColors } from "../../../../global.styles";
 
-const {dark,paper} = backgroundColors
+const {paper} = backgroundColors
 
 export const RadianContainer = styled.div`
     position:absolute;
