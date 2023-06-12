@@ -42,7 +42,7 @@ const UnitCircleDisplay = (props) => {
     // }
 
     const tOrigin = {
-        top:'10px',
+        top:'16px',
         left:'0px'
     }
 
