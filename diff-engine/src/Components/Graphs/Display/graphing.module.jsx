@@ -9,8 +9,6 @@ import VectorMap from "./Plotting/plots.component";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import CircleGraph from "../Calculators/Trig/overlay.component";
 
-const nonPolarOrigin = '125'
-
 const GraphingModule = (props) => {
 
     const { 
@@ -28,6 +26,8 @@ const GraphingModule = (props) => {
         otherPlots,
         cartCoords,
         showUnitCircleAngles,
+        nonPolarOrigin,
+        polarOrigin
     } = state
 
     const { currentView } = useContext(ViewContext)
@@ -38,6 +38,7 @@ const GraphingModule = (props) => {
             yAspect={yAspect}
             polars={polars}
             nonPolarOrigin={nonPolarOrigin}
+            polarOrigin={polarOrigin}
         >
 
             {/* BASIC PLOTS */}
