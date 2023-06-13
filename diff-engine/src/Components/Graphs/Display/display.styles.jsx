@@ -74,7 +74,7 @@ export const Row = styled.section`
     height:1px;
     width:1px;
     position: absolute;
-    left: ${({polars,polarOrigin}) => (!polars ? `${(polarOrigin/2).toString()}px` : `${polarOrigin.toString()}px`)};
+    left: ${({polars,polarOrigin}) => (!polars ? `${(0).toString()}px` : `${polarOrigin.toString()}px`)};
     transition: all 1000ms;
     bottom:240px;
 `

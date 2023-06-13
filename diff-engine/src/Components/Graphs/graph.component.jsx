@@ -68,7 +68,7 @@ export default function Graph() {
 
   const [state, setState] = useState({
     xAspect:50,yAspect:50, // Grid scale
-    polarOrigin:min/-2,
+    polarOrigin:max/2,
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
