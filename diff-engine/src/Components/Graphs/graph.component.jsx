@@ -34,19 +34,7 @@ export const min = -500
 // Linear vector generator
 var xVector = []
 var yVector = []
-for (let i = min; i < max; i++) {
-  xVector.push(i)
-  yVector.push(i)
-}
-
-// Circular vector generator
 const circleVector = []
-const fragment = 2*Math.PI/max
-var iteration = 0
-  for (let i = 0; i < (max*2); i++) {
-  iteration += fragment
-  circleVector.push(iteration)
-}
 
 export default function Graph() {
 
@@ -68,7 +56,10 @@ export default function Graph() {
 
   const [state, setState] = useState({
     xAspect:50,yAspect:50, // Grid scale
-    polarOrigin:min/-2,
+    // polarOrigin:min/-2,
+    polarOrigin:0,
+    min:-500,
+    max:500,
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
@@ -120,6 +111,7 @@ export default function Graph() {
   });
   const {
     // xAspect,yAspect, // Grid acale
+    min,max,
     mathFunc,
     displayInput,
     alert,
@@ -146,7 +138,26 @@ export default function Graph() {
           return err
         }
       // gears()
+      linearVectorGenerator(min,max)
+      polarVectorGenerator(min,max)
     },[]);
+
+    const linearVectorGenerator = (min,max) => {
+      for (let i = min; i < max; i++) {
+        xVector.push(i)
+        yVector.push(i)
+      }
+    }
+    
+    // Circular vector generator
+    const polarVectorGenerator = (min,max) => {
+      const fragment = 2*Math.PI/max
+      var iteration = 0
+        for (let i = 0; i < (max*2); i++) {
+        iteration += fragment
+        circleVector.push(iteration)
+      }
+    }
 
   // ---- POLAR ---- //
   const polarVector = async (mathFunctionParam,otherPlots,e) => {
@@ -177,7 +188,8 @@ export default function Graph() {
     });
     await setState({ ...state,
       polarCoords:coords,
-      polars:true
+      polars:true,
+      polarOrigin:min/-2
     });
     return
   };
@@ -227,6 +239,7 @@ export default function Graph() {
       polars:false,
       derivative:deriv,
       otherPlots:(otherPlots ? otherPlots:[]),
+      polarOrigin:0
     })
     return coords
   }
@@ -269,7 +282,7 @@ export default function Graph() {
     setState({
       ...state,
       viewScale:checkDeviceSize(state,setState),
-      matrix: matrix
+      matrix: matrix,
     });
   };
 

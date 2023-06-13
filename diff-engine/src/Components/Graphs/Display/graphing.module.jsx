@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { Origin,ZeroMarker } from "./display.styles";
+import { Origin } from "./display.styles";
 import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.component";
@@ -27,10 +27,17 @@ const GraphingModule = (props) => {
         cartCoords,
         showUnitCircleAngles,
         nonPolarOrigin,
-        polarOrigin
+        polarOrigin,
+        min,max
     } = state
 
     const { currentView } = useContext(ViewContext)
+
+    useEffect(() => {
+        if (polars) {
+            setState({...state,polarOrigin:max/2})
+        } else {setState({...state,polarOriginz:min})}
+    },[polars])
 
     return (
         <Origin
