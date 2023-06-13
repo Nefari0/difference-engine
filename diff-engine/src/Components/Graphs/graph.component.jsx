@@ -37,7 +37,7 @@ var par = parser()
 export default function Graph() {
 
   const {
-    setCurrentView,
+    setCurrentView,currentView,
 
     displayKeymap,setDisplayKeymap,
 
@@ -133,6 +133,9 @@ export default function Graph() {
 
   useEffect(() => {
 
+    
+    initialize()
+
     try {
 
       if (location[1].length > 0) {
@@ -143,9 +146,7 @@ export default function Graph() {
         return err
       }
 
-      initialize()
-
-    },[]);
+    },[currentView]);
 
   // ---- POLAR ---- //
   const polarVector = async (mathFunctionParam,otherPlots,e) => {
@@ -287,7 +288,7 @@ export default function Graph() {
 
     setState({
       ...state,
-      // viewScale:checkDeviceSize(state,setState),
+      viewScale:checkDeviceSize(state,setState),
       matrix: matrix,
       xVector:x,
       yVector:y,
