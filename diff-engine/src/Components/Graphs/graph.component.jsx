@@ -28,11 +28,11 @@ const errorMessage = "There is an error preventing this operation from continuin
 var par = parser()
 
 // Linear vectors
-var xVector = []
-var yVector = []
+// var xVector = []
+// var yVector = []
 
 // Circle vector
-const circleVector = []
+// const circleVector = []
 
 export default function Graph() {
 
@@ -58,6 +58,11 @@ export default function Graph() {
     polarOrigin:0,
     min:-500,
     max:500,
+
+    // Coordinate Vectors
+    xVector:[],
+    yVector:[],
+    circleVector:[],
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
@@ -109,6 +114,9 @@ export default function Graph() {
   });
   const {
     // xAspect,yAspect, // Grid acale
+
+    xVector,yVector,circleVector,
+    matrix,
     min,max,
     mathFunc,
     displayInput,
@@ -124,38 +132,20 @@ export default function Graph() {
   } = state;
 
   useEffect(() => {
-    boardFactory()
 
-      try {
+    try {
 
-        if (location[1].length > 0) {
-          setCurrentView(location[1])
-        }
+      if (location[1].length > 0) {
+        setCurrentView(location[1])
+      }
 
-        } catch (err) {
-          return err
-        }
-      // gears()
-      linearVectorGenerator(min,max)
-      polarVectorGenerator(min,max)
+      } catch (err) {
+        return err
+      }
+
+      initialize()
+
     },[]);
-
-    const linearVectorGenerator = (min,max) => {
-      for (let i = min; i < max; i++) {
-        xVector.push(i)
-        yVector.push(i)
-      }
-    }
-    
-    // Circular vector generator
-    const polarVectorGenerator = (min,max) => {
-      const fragment = 2*Math.PI/max
-      var iteration = 0
-        for (let i = 0; i < (max*2); i++) {
-        iteration += fragment
-        circleVector.push(iteration)
-      }
-    }
 
   // ---- POLAR ---- //
   const polarVector = async (mathFunctionParam,otherPlots,e) => {
@@ -270,17 +260,38 @@ export default function Graph() {
 
   }
 
-  const boardFactory = () => {
+  const initialize = () => {
+    var x = []
+    var y = []
+    var circle = []
     var matrix = [];
     var numOfTiles = 40;
     var M = Array.from(Array(numOfTiles)); // rows
     for (let i = 0; i < numOfTiles; i++) {
       matrix.push(M);
     } // columns
+
+    // LINEAR //
+    for (let i = min; i < max; i++) {
+      x.push(i)
+      y.push(i)
+    }
+
+    // POLAR //
+    const fragment = 2*Math.PI/max
+    var iteration = 0
+      for (let i = 0; i < (max*2); i++) {
+      iteration += fragment
+      circle.push(iteration)
+    }
+
     setState({
       ...state,
-      viewScale:checkDeviceSize(state,setState),
+      // viewScale:checkDeviceSize(state,setState),
       matrix: matrix,
+      xVector:x,
+      yVector:y,
+      circleVector:circle
     });
   };
 
