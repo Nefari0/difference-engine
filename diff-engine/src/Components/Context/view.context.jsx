@@ -41,6 +41,10 @@ export const ViewProvider = ({ children }) => {
     const [scrollSnap,setScrollSnap] = useState(true)
     const [isLoading,setIsLoading] = useState(false)
     const [showPlotValues,setShowPlotValues] = useState(false)
+    const [range,setRange] = useState({ // Number of plots
+        min:-500,
+        max:500
+    })
 
     const value = {
         currentView,setCurrentView,
@@ -60,6 +64,8 @@ export const ViewProvider = ({ children }) => {
         isLoading,setIsLoading,
 
         showPlotValues,setShowPlotValues,
+
+        range,setRange,
 
     };
     

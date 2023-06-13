@@ -1,8 +1,10 @@
 import { OperatorTable } from "./info.styles"
-import { min,max } from "../../graph.component"
-
+import { useContext } from "react"
+import { ViewContext } from "../../../Context/view.context"
 
 const Vars = ({darkmode}) => {
+    const { range } = useContext(ViewContext)
+    const { min,max } = range
     const total = Math.abs(min)+max
     const minValue = min/100
     const maxValue = max/100

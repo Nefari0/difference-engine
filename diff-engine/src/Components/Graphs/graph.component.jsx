@@ -27,13 +27,11 @@ import { checkDeviceSize } from "./ViewSettings/viewLogic";
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
 
-// Vectors
-export const max = 500
-export const min = -500
-
-// Linear vector generator
+// Linear vectors
 var xVector = []
 var yVector = []
+
+// Circle vector
 const circleVector = []
 
 export default function Graph() {
