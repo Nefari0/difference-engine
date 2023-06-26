@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { Origin } from "./display.styles";
+import { Origin,ZeroMarker } from "./display.styles";
 import CogDisplay from "../Calculators/GearCalculators/involute.display";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.component";
+import VectorMap from "./Plotting/plots.component";
 // import EllipseDisplay from "../Plots/Ellipses/ellipse.keys";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
-import CircleGraph from "../Calculators/Trig/overlay.component";
-
+import CircleGraph from "./PolarDisplay/overlay.component";
 
 const GraphingModule = (props) => {
 
@@ -24,11 +24,10 @@ const GraphingModule = (props) => {
         yAspect,
         polars,
         otherPlots,
-        polarCoords,
         cartCoords,
         showUnitCircleAngles,
-        // vectorMap,
-        // returnPlots
+        nonPolarOrigin,
+        polarOrigin
     } = state
 
     const { currentView } = useContext(ViewContext)
@@ -38,10 +37,16 @@ const GraphingModule = (props) => {
             xAspect={xAspect}
             yAspect={yAspect}
             polars={polars}
+            nonPolarOrigin={nonPolarOrigin}
+            polarOrigin={polarOrigin}
         >
 
             {/* BASIC PLOTS */}
-            {vectorMap(returnPlots())}
+            <VectorMap 
+                returnPlots={returnPlots}
+                state={state}
+                nonPolarOrigin={nonPolarOrigin}
+            />
 
             {/* GEAR CALCULATOR */}
             {currentView === 'gear_calculator' &&

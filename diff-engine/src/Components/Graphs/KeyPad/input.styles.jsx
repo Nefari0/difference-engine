@@ -10,7 +10,8 @@ const {
 
     lightDark,
     midDark,
-    dark
+    dark,
+    red,blue
 } = backgroundColors
 
 const messageBox = css`
@@ -71,7 +72,7 @@ const largeInput = css`
     width:500px;
     left:-6px;
 `
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
     ${({inputClass}) => inputClass==='small' ? smallInput : largeInput}
 `
     
@@ -143,7 +144,7 @@ export const Buttoni = styled.i`
 `
 
 export const EqualButton = styled(BaseButton)`
-    background-color: #2e86c0;
+    background-color: ${blue};
     border-color: #337cac;
     width:100px;
 
@@ -154,7 +155,7 @@ export const EqualButton = styled(BaseButton)`
 `
     
 export const AllClearButton = styled(EqualButton)`
-    background-color: #f0595f;
+    background-color: ${red};
     border-color: #b0353a;
     color: #fff;
 
@@ -186,7 +187,7 @@ export const HelpButton = styled(BaseButton)`
     background-color:${({darkmode}) => darkmode && darkLight}
 `
 
-export const CopyCoordinatesButton = styled(BaseButton)`
+export const Translucent = styled(BaseButton)`
     background-color:rgba(${({darkmode}) => !darkmode ? '177, 189, 197, .3' : '136, 159, 165, .3'});
 `
 

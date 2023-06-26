@@ -1,15 +1,26 @@
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
 import { ViewContext } from "../../Context/view.context"
+import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
 import FractionCalc from "../Calculators/Fractions/frac.display"
 import Units from "../Calculators/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Percentages/percent.display"
-import { Table,Row,GridCell,MathFormula } from "./display.styles"
+import GraphingModule from "./graphing.module"
+import { 
+    OriginContainer,
+    ViewPort,
+    Row,
+    GridCell,
+    MathFormula,
+    ZeroMarker
+ } from "./display.styles"
+
 import NumberLine from "./NumberLines/nums.component"
+import Loading from "./Loading/loading.component"
 import { vNumParams,hNumParams } from "./NumberLines/numlineParams"
 import { MathComponent } from "mathjax-react"
-import GraphingModule from "./graphing.module"
 
+const { red,blue } = backgroundColors 
 
 const DisplayModule = (props) => {
 
@@ -20,47 +31,27 @@ const DisplayModule = (props) => {
     } = props
 
     const {
-        xAspect,
-        yAspect,
+        // xAspect,
+        // yAspect,
         polars,
         showUnitCircleAngles,
         mathFunc,
         matrix,
         polarCoords,
-        cartCoords
+        cartCoords,
     } = state
 
     const {
         darkmode,
         currentView,
+        scrollBar,
+        scrollSnap,
+        setScrollSnap,
+        isLoading,
         setAlert,
     } = useContext(ViewContext)
 
-    const copy = () => {
-        if (returnPlots()[0]) {
-          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-        } else {
-          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
-        }
-    }
-
-    const vectorMap = (coordArray) => {
-        const mappedItems = coordArray.map((el,i) => {
-          var locations = {
-            bottom: `${yAspect*el[1]}px`,
-            left: `${xAspect*el[0]}px`,
-            borderRadius: "50%",
-            backgroundColor: `${darkmode ? 'white' : 'red'}`,
-            position: "absolute",
-            transition: "all 1000ms",
-            width: "2px",
-            height: "2px"
-          };
-          return <p style={locations} key={i}></p>;
-        })
-        return <div>{mappedItems}</div>
-    }
+    useEffect(() => {setScrollSnap(false)},[])
       
     const returnPlots = () => {
         return (polars === true ? polarCoords : cartCoords)
@@ -73,42 +64,53 @@ const DisplayModule = (props) => {
       });
 
     return (
-        <Table
-            darkmode={darkmode}   
+        <ViewPort
+            darkmode={darkmode} 
+            scrollBar={scrollBar}
+            scrollSnap={scrollSnap}
         >
-            <Row>
+            {isLoading && <Loading/>}
 
+            {/* GENERATES AND DISPLAYS GRID CELLS AND NUMBERLINES */}
+            <Row>
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}
-
                 {/* NUMBER LINES */}
                 {!polars &&
                     <div>
-                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
                         <NumberLine parameters={vNumParams} darkmode={darkmode} />
+                        <NumberLine parameters={hNumParams} darkmode={darkmode} />
+                        <ZeroMarker darkmode={darkmode} color={blue}/>
+                        <ZeroMarker rotation={90} darkmode={darkmode} color={red}/>
                     </div>
                 }
 
-                {/* GRAPHING */}
-                {/* {!currentView && 
-                    <Button 
-                        p={'copy coordinates'}
-                        style={{position:'absolute',width:'75px',height:'75px',left:'10px',top:'10px',zIndex:'100',opacity:'.6 '}}
-                        onClick={() => copy()}
-                        text={CopyIcon()}
-                    />
-                } */}
+            </Row>
+
+            {/* THIS IS LAYERED ONTO THE ROW COMPONENT ABOVE */}
+            <OriginContainer>
+
                 <GraphingModule
                     state={state}
                     setState={setState}
                     returnPlots={returnPlots}
-                    vectorMap={vectorMap}
                 />
 
                 {/* CURRENT MATH FORMULA */}
                 <MathFormula darkmode={darkmode} >
                     {!showUnitCircleAngles && <MathComponent tex={String.raw`${mathFunc.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} />}
-                </MathFormula>
+                    {!showUnitCircleAngles && state.derivative && !currentView &&
+                    <div onClick={(e) => execute(e,'mathFunc',state.derivative)}>
+                        <MathComponent 
+                            tex={String.raw`${'\\frac{d}{dx} = '+state.derivative.replace(/ /g, "").replace(/\*/g, ' \\cdot ')}`} 
+                        />
+                    </div>
+                    }
+                </MathFormula>                
+
+                {/* <MathFormula darkmode={darkmode} >
+                    
+                </MathFormula> */}
 
                 {/* PERCENT CALCULATOR */}
                 {currentView === 'percentages' && <PercentDisplay
@@ -135,10 +137,9 @@ const DisplayModule = (props) => {
                     setState={setState}
                     execute={execute}
                 />}
-
-            </Row>
+            </OriginContainer>
             
-        </Table>
+        </ViewPort>
     )
 }
 

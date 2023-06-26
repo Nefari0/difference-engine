@@ -1,5 +1,16 @@
-import { KeyBox,AllClearButton } from "../input.styles";
-import { Book,CalculatorIcon,CogWheel,beaker,CopyIcon } from "../../SVG";
+import { KeyBox } from "../input.styles";
+// import { derivative } from "mathjs";
+
+import { 
+    Book,
+    CalculatorIcon,
+    CogWheel,
+    beaker,
+    CopyIcon,
+    // LockOpen,
+    // LockClosed
+ } from "../../SVG";
+
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../Button";
@@ -20,6 +31,12 @@ const KeyPad = (props) => {
 
         darkmode,
 
+        // scrollSnap,setScrollSnap,
+
+        // scrollBar
+
+        showPlotValues,setShowPlotValues,
+
         setAlert
     } = useContext(ViewContext)
 
@@ -28,10 +45,11 @@ const KeyPad = (props) => {
         polarVector,
         state,
         returnPlots,
-        setState
+        setState,
+        findDerivative
     } = props
 
-    const { mathFunc,degrees } = state
+    const { mathFunc,degrees,polars } = state
 
     const copy = () => {
         if (returnPlots()[0]) {
@@ -48,7 +66,7 @@ const KeyPad = (props) => {
             darkmode={darkmode}
         >
 
-            {!currentView && 
+            {!currentView &&
                 <Button
                     p={'copy coordinates'}
                     styles={{
@@ -57,13 +75,31 @@ const KeyPad = (props) => {
                         height:'75px',
                         left:'10px',
                         top:'-560px',
-                        zIndex:'100',
+                        zIndex:'2',
                     }}
-                    buttonClass={'copy_coords'}
+                    buttonClass={'translucent'}
                     onClick={() => copy()}
                     text={CopyIcon()}
                 />
             }
+
+            {!currentView && !polars &&
+                <Button
+                    p={'Show coordinate values'}
+                    styles={{
+                        position:'absolute',
+                        width:'75px',
+                        height:'45px',
+                        left:'10px',
+                        top:'-480px',
+                        zIndex:'1',
+                    }}
+                    buttonClass={'translucent'}
+                    onClick={() => setShowPlotValues(!showPlotValues)}
+                    text={'values'}
+                />
+            }
+            
 
             <Button
                 styles={{position:'absolute',right:`${10}px`,fontSize:'22px'}}
@@ -78,7 +114,7 @@ const KeyPad = (props) => {
                styles={{position:'absolute',right:`${90}px`,zIndex:'3',fontSize:'24px'}}
                onClick={() => setCurrentView('unit_circle')}
                darkmode={darkmode}
-               text={`\\phase{${degrees.toString().substring(0,3)}^\\circ}`}
+               text={`\\phase{${degrees.toString().substring(0,3).replace(/^0/, '')}^\\circ}`}
                p={'Unit circle and trig functions'}
                buttonType={'image'}
             />
@@ -146,7 +182,7 @@ const KeyPad = (props) => {
             />
 
             <Button
-                style={{left:'0px',width:'125px',zIndex:'2',fontSize:'16px'}}
+                style={{left:'0px',width:'125px',zIndex:'3',fontSize:'16px'}}
                 onClick={() => linearVector(mathFunc)}
                 darkmode={darkmode}
                 p={'Execute cartesian coordinates'}
@@ -157,10 +193,20 @@ const KeyPad = (props) => {
 
             <Button
                 darkmode={darkmode}
-                style={{top:'80px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
+                style={{top:'80px',left:'0px',zIndex:'2',width:'125px',fontSize:'16px'}}
                 onClick={() => polarVector(mathFunc)}
                 p={'Execute polar coordinates'}
                 text={'polar'}
+                buttonType={'textage'}
+                buttonClass={'large'}
+            />
+
+            <Button
+                darkmode={darkmode}
+                style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
+                onClick={() => findDerivative(mathFunc)}
+                p={'Find derivative'}
+                text={'derivative'}
                 buttonType={'textage'}
                 buttonClass={'large'}
             />

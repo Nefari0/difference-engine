@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { backgroundColors } from "../../../../global.styles";
 
-const {dark,paper} = backgroundColors
+const {paper} = backgroundColors
 
 export const RadianContainer = styled.div`
     position:absolute;
-    width:150px;
-    height:100px;
+    width:100px;
+    height:115px;
     color:${({darkmode}) => darkmode ? paper:'black'};
+    display:flex;
+    flex-direction:column;
 `

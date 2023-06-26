@@ -1,16 +1,18 @@
 import { PercentDisplayContainer,PercentDisplayTable } from "./percent.styles";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { ViewContext } from "../../../Context/view.context";
 
 const PercentDisplay = ({state}) => {
     
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setScrollBar } = useContext(ViewContext)
     const { partialValue,totalValue,findPercentValue} = state
 
     const percentValNum = parseFloat(partialValue)
     const totalValNum = parseFloat(totalValue)/100 // --- 1 percent value of total value
     const valueOfPercentage = parseFloat(percentValNum*totalValNum).toFixed(4) // -- Find value of percentage
     const percentageOfValue = parseFloat(percentValNum/totalValNum).toFixed(4) // -- Finding the percentage of given values
+
+    useEffect(() => {setScrollBar(false)},[])
 
     const isNumber = (param) => {return (param != 'NaN' ? param: 'cannot compute values')} // -- Force a numerical value
 

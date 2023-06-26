@@ -1,5 +1,5 @@
 import { ViewContext } from "../../../Context/view.context"
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
 import { Standard,History,HistoryItem } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
 import Button from "../../KeyPad/Button"
@@ -15,7 +15,9 @@ const clearHistButton = {
 const StandarMathDisplay = ({state,execute,setState}) => {
 
     const { calculation,history } = state
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setScrollBar } = useContext(ViewContext)
+
+    useEffect(() => {setScrollBar(false)},[])
 
     const copy = () => {
         navigator.clipboard.writeText(calculation)

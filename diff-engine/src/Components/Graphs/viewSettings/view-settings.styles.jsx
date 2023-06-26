@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components"
 import { TinyButton } from "../KeyPad/input.styles"
 import { backgroundColors } from "../global.styles"
-import { basicDark,basicLight } from "../global.styles"
+// import { basicDark,basicLight } from "../global.styles"
 
-const { paper,midDark } = backgroundColors
+const { paper,red,white,blue } = backgroundColors
 
 export const Zoom = styled(TinyButton)`
     right:20px;
@@ -34,6 +34,13 @@ export const AboutButton = styled(Zoom)`
 export const DarkmodeButton = styled(Zoom)`
     right:205px;
     width:100px;
+`
+
+export const ActivateScrollingButton = styled(Zoom)`
+    left:105px;
+    width:100px;
+    color:${white};
+    background-color:${({scrollBar}) => !scrollBar ? red : blue};
 `
 
 export const ViewSettingsPanel = styled.div`

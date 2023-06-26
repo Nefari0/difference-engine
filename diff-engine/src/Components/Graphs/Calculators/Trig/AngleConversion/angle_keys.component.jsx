@@ -91,7 +91,7 @@ const UnitCircle = (props) => {
             <DegreeRadH1
                 darkmode={darkmode}
             >
-                {showDegrees ? "degrees":"radians"}: {(showDegrees ? degrees : radians).toString().substring(0,6)}
+                {showDegrees ? "degrees":"radians"}: {(showDegrees ? degrees : radians).toString().substring(0,6).replace(/^0/, '')}
             </DegreeRadH1>
 
             <NumberPad

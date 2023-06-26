@@ -14,7 +14,7 @@ import {
   // evaluate,
   parser,
   // parse,
-  // derivative,
+  derivative,
   // simplify,
   // exp,
   // log
@@ -28,8 +28,8 @@ const errorMessage = "There is an error preventing this operation from continuin
 var par = parser()
 
 // Vectors
-const max = 250
-const min = -250
+export const max = 500
+export const min = -500
 
 // Linear vector generator
 var xVector = []
@@ -51,7 +51,7 @@ var iteration = 0
 export default function Graph() {
 
   const {
-    setCurrentView,currentView,
+    setCurrentView,
 
     displayKeymap,setDisplayKeymap,
 
@@ -61,6 +61,8 @@ export default function Graph() {
 
     about,
 
+    // isLoading,setIsLoading
+
     alert,setAlert
   } = useContext(ViewContext)
 
@@ -68,6 +70,7 @@ export default function Graph() {
 
   const [state, setState] = useState({
     xAspect:50,yAspect:50, // Grid scale
+    polarOrigin:max/2,
 
     otherPlots:[], // Second, optional parameter for linear and polar vectors
     
@@ -76,6 +79,7 @@ export default function Graph() {
     cartCoords:[],
     polars:false, // Display polars or cartesian
     mathFunc:'cos(3 * x) + sin(2 * x)', // INPUT
+    derivative:null,
     displayInput:true, // Toggles main input on/off 
 
     unitCircle:null, // Display Unit Circle ?
@@ -145,8 +149,10 @@ export default function Graph() {
         }
       // gears()
     },[]);
-  
-  const polarVector = async (mathFunc) => {
+
+  // ---- POLAR ---- //
+  const polarVector = async (mathFunctionParam,otherPlots,e) => {
+    if (e) {e.preventDefault()}
     var func = [];
     var coords = [];
 
@@ -159,7 +165,7 @@ export default function Graph() {
         par.set('X',i)
         par.set('Y',i)
         par.set('U',i)
-        func.push(par.evaluate(mathFunc))
+        func.push(par.evaluate(mathFunctionParam ? mathFunctionParam : mathFunc))
       });
 
     } catch (err) {
@@ -179,12 +185,16 @@ export default function Graph() {
   };
 
   // ---- Linear ---- //
-  const linearVector = async (mathFunc,otherPlots) => {
+  const linearVector = async (mathFunctionParam,otherPlots,e) => {
+
+    const mathFunc = mathFunctionParam ? mathFunctionParam : mathFunc
+
+    if(e) {e.preventDefault()}
     var func = []
     var coords =[]
+    var deriv = null
 
     try {
-
       await xVector.forEach((i) => {
         i = i / 100
         par.set('x',i)
@@ -206,13 +216,31 @@ export default function Graph() {
       coords.push([x,el])
     });
 
+    // --- Try finding derivative --- //
+    try {
+      deriv = derivative((mathFunc), 'x').toString()
+    } catch (error) {
+      return
+    }
+
     await setState({
       ...state,
       cartCoords:coords,
       polars:false,
+      derivative:deriv,
       otherPlots:(otherPlots ? otherPlots:[]),
     })
     return coords
+  }
+
+  // ----- DERIVATIVE ----- //
+  const findDerivative = (mathFunc) => {
+    try {
+      linearVector(derivative((mathFunc), 'x').toString())
+    } catch (err) {
+      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      return
+    }
   }
 
   const calculate = (e,mathFunc) => {
@@ -235,7 +263,7 @@ export default function Graph() {
 
   const boardFactory = () => {
     var matrix = [];
-    var numOfTiles = 10;
+    var numOfTiles = 40;
     var M = Array.from(Array(numOfTiles)); // rows
     for (let i = 0; i < numOfTiles; i++) {
       matrix.push(M);
@@ -345,6 +373,7 @@ export default function Graph() {
           value={mathFunc}
           name="mathFunc"
           inputClass={'large'}
+          executionMethod={polars ? polarVector : linearVector}
       />}
 
       <KeyModule
@@ -356,6 +385,7 @@ export default function Graph() {
           close={close}
           linearVector={linearVector}
           polarVector={polarVector}
+          findDerivative={findDerivative}
           formatFunction={formatFunction}
           returnPlots={returnPlots}
       />

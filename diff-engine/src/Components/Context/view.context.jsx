@@ -16,6 +16,19 @@ export const ViewContext = createContext({
     about:false,
     setAbout:() => null,
 
+    scrollSnap:true,
+    setScrollSnap:() => null,
+
+    scrollingBar:false,
+    setScrollBar:() => null,
+
+    isLoading:false,
+    setIsLoading:() => null,
+
+    showPlotValues:false,
+    setShowPlotValues:() => null,
+
+
     alert:null,
     setAlert:() => null
 })
@@ -27,23 +40,31 @@ export const ViewProvider = ({ children }) => {
     const [information,setInformation] = useState(null)
     const [darkmode,setDarkMode] = useState(true)
     const [about,setAbout] = useState(false)
+    const [scrollBar,setScrollBar] = useState(false)
+    const [scrollSnap,setScrollSnap] = useState(true)
+    const [isLoading,setIsLoading] = useState(false)
+    const [showPlotValues,setShowPlotValues] = useState(false)
     const [alert,setAlert] = useState(null)
-    
+
     const value = {
-        currentView,
-        setCurrentView,
+        currentView,setCurrentView,
+        
+        displayKeymap,setDisplayKeymap,
 
-        displayKeymap,
-        setDisplayKeymap,
+        information,setInformation,
 
-        information,
-        setInformation,
+        darkmode,setDarkMode,
 
-        darkmode,
-        setDarkMode,
+        about,setAbout,
 
-        about,
-        setAbout,
+        scrollBar,setScrollBar,
+
+        scrollSnap,setScrollSnap,
+
+        isLoading,setIsLoading,
+
+        showPlotValues,setShowPlotValues,
+
 
         alert,setAlert
     };

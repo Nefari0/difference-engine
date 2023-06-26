@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { ViewContext } from "../../../Context/view.context";
 
 import { UnitsDisplay,UnitsDisplayContainer } from "./unit.styles";
@@ -11,7 +11,9 @@ const Units = ({state,setState,execute}) => {
 
     const { mathFunc,units,unitType } = state
 
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setScrollBar } = useContext(ViewContext)
+
+    useEffect(() => {setScrollBar(false)},[])
 
     const copy = (value,unit) => {
         if (isNumber(value) != 'input a number') {

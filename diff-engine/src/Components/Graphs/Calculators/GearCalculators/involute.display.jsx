@@ -1,13 +1,13 @@
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
 import { ViewContext } from "../../../Context/view.context"
 import { backgroundColors } from "../../global.styles"
 
 
 import { 
-    CogOrigin,
+    // CogOrigin,
     CogContainer,
-    ReferenceCircle,
-    TipCircle
+    // ReferenceCircle,
+    // TipCircle
 } from "./involute.styles"
 
 const { paper,dark } = backgroundColors
@@ -16,7 +16,9 @@ const CogDisplay = ({state}) => {
 
     // const { refRadius,involute,mathFunc } = state
 
-    const { darkmode } = useContext(ViewContext)
+    const { darkmode,setScrollBar } = useContext(ViewContext)
+
+    useEffect(() => {setScrollBar(false)},[])
 
     // --- UNDER CONSTRUCTION --- //
     // const mappedGears = involute.map((el,i) => {
