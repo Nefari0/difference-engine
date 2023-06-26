@@ -7,7 +7,7 @@ import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.compon
 import VectorMap from "./Plotting/plots.component";
 // import EllipseDisplay from "../Plots/Ellipses/ellipse.keys";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
-import CircleGraph from "../Calculators/Trig/overlay.component";
+import CircleGraph from "./PolarDisplay/overlay.component";
 
 const GraphingModule = (props) => {
 

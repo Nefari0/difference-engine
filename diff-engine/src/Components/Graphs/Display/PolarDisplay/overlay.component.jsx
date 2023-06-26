@@ -2,9 +2,9 @@ import { useContext } from "react"
 import { ViewContext } from "../../../Context/view.context"
 
 import { CircleOverlay, Crosshair } from "./overlay.styles"
-import Rotations from "./UnitCircle/unitcircle.component"
-import {angleData} from './angle.data'
-import { ThetaOrigin } from "./AngleConversion/display.styles"
+import Rotations from "../../Calculators/Trig/UnitCircle/unitcircle.component"
+import {angleData} from '../../Calculators/Trig/angle.data'
+import { ThetaOrigin } from "../../Calculators/Trig/AngleConversion/display.styles"
 import { useEffect } from "react"
 
 // const tOrigin = {
@@ -32,15 +32,16 @@ const CircleGraph = ({showUnitCircleAngles}) => {
     return (
         <CircleOverlay
             darkmode={darkmode}
-        >
+            >
+
+            {/* UNIT CIRCLE */}
+            {showUnitCircleAngles && mappedAngles}
+
+            {/* CROSSHAIR */}
             {/* VERTICAL */}
             <i style={top}>(0,1)</i>
             <Crosshair rotation={0}></Crosshair>
             <i style={bottom}>(0,-1)</i>
-
-            {/* <ThetaOrigin style={tOrigin}> */}
-                {showUnitCircleAngles && mappedAngles}
-            {/* </ThetaOrigin> */}
             
             {/* HORIZONTAL */}
             <i style={right}>(1,0)</i>
