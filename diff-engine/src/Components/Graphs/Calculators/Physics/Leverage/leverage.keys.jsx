@@ -9,16 +9,17 @@ const LeverageKeys = (props) => {
 
     const { state,setState } = props
 
-    const { F_e,F_r,d_e,d_r } = state
+    const { F_e,d_e,d_r } = state
 
     const { setCurrentView,setDisplayKeymap,darkmode } = useContext(ViewContext)
 
     const input = (prop,e) => {
         e.preventDefault()
         const { value } = e.target
+        const intValue = parseInt(value)
         setState({
             ...state,
-            [prop]:value
+            [prop]:intValue
         })
     }
 
@@ -42,6 +43,7 @@ const LeverageKeys = (props) => {
                 onChange={(e) => input('F_e',e)}
                 value={F_e}
                 name="F_e"
+                type="number"
                 mathRendering={'F_e = '}
                 styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
             />
@@ -50,6 +52,7 @@ const LeverageKeys = (props) => {
                 onChange={(e) => input('d_e',e)}
                 value={d_e}
                 name="d_e"
+                type="number"
                 mathRendering={'d_e = '}
                 styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
             />
@@ -58,6 +61,7 @@ const LeverageKeys = (props) => {
                 onChange={(e) => input('d_r',e)}
                 value={d_r}
                 name="d_r"
+                type="number"
                 mathRendering={'d_r = '}
                 styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
             />
