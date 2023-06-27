@@ -7,8 +7,8 @@ import { backButton } from "../../SVG";
 const PhysicsKeys = (props) => {
 
     const { setState,state,close } = props
-    const degrees = 10
-    const leverage = '\MA = \\frac{Fb}{Fa} '
+    // const degrees = 10
+    const leverage = '\\frac{F}{R} '
 
     const { setCurrentView,setDisplayKeymap } = useContext(ViewContext)
 
@@ -31,7 +31,7 @@ const PhysicsKeys = (props) => {
             />
 
             <Button
-                style={{left:'0px',top:'0px',fontSize:'16px'}}
+                style={{left:'0px',top:'0px',fontSize:'26px'}}
                 onClick={() => setCurrentView('leverage')}
                 text={leverage}
                 p={'Leverage'}

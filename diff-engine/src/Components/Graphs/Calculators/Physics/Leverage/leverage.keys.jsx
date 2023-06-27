@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
-import { KeyBox } from "../../../KeyPad/input.styles";
+import { KeyBox,InfoMessage } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import { uturnArrow } from "../../../SVG";
 import InputField from "../../../KeyPad/InputField";
+import { InlineMath } from "react-katex";
 
 const LeverageKeys = (props) => {
 
@@ -11,7 +12,12 @@ const LeverageKeys = (props) => {
 
     const { F_e,d_e,d_r } = state
 
-    const { setCurrentView,setDisplayKeymap,darkmode } = useContext(ViewContext)
+    const { 
+        setCurrentView,
+        setDisplayKeymap,
+        displayKeymap,
+        darkmode,
+    } = useContext(ViewContext)
 
     const input = (prop,e) => {
         e.preventDefault()
@@ -23,16 +29,28 @@ const LeverageKeys = (props) => {
         })
     }
 
+    const messageStyle={zIndex:'2',top:'-200px',left:'100px',width:'300px',transform:'rotateY(180deg'}
+
     return (
         <KeyBox>
+
+            {/* {displayKeymap && 
+                <InfoMessage style={{zIndex:'2',top:'-200px',left:'100px',maxWidth:'300px',transform:'rotateY(180deg'}}>
+                    <p style={{transform:'rotateY(180deg)'}}>
+                        Leverage/Force multiplication:
+                    </p>
+                    <InlineMath>{'F_r'}</InlineMath>
+                </InfoMessage>
+            } */}
+
             <Button 
-                styles={{right:'10px'}}
+                styles={{right:'10px',zIndex:'0'}}
                 onClick={() => setCurrentView('physics')}
                 text={uturnArrow()}
             />
 
             <Button
-                style={{right:'10px',top:'80px'}}
+                style={{right:'10px',top:'80px',zIndex:'0'}}
                 buttonType={'image'}
                 onClick={() => setDisplayKeymap(true)}
                 text={'?'}
@@ -47,6 +65,7 @@ const LeverageKeys = (props) => {
                 mathRendering={'F_e = '}
                 styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
             />
+            {displayKeymap && <InfoMessage style={{left:'188px',top:'20px',zIndex:'2',fontSize:'10px'}}>Force appied (input)</InfoMessage>}
 
             <InputField
                 onChange={(e) => input('d_e',e)}
@@ -54,8 +73,15 @@ const LeverageKeys = (props) => {
                 name="d_e"
                 type="number"
                 mathRendering={'d_e = '}
-                styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
+                styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`,zIndex:'0'}}
             />
+
+            {displayKeymap && 
+                <InfoMessage 
+                    style={{left:'200px',top:'80px',zIndex:'20',fontSize:'10px'}}
+                >
+                    Distance of force to fulcrum
+                </InfoMessage>}
 
             <InputField
                 onChange={(e) => input('d_r',e)}
@@ -65,6 +91,14 @@ const LeverageKeys = (props) => {
                 mathRendering={'d_r = '}
                 styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
             />
+            {displayKeymap && 
+                <InfoMessage 
+                    style={{left:'220px',top:'140px',zIndex:'20',fontSize:'10px'}}
+                >
+                    Distance of fulcrum to resistance
+                    <InlineMath>{'(F_r)'}</InlineMath>
+                </InfoMessage>}
+
         </KeyBox>
     )
 }
