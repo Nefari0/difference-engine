@@ -5,8 +5,10 @@ import {
     Book,
     CalculatorIcon,
     CogWheel,
-    beaker,
+    // beaker,
     CopyIcon,
+    Scale,
+    Bolt
     // LockOpen,
     // LockClosed
  } from "../../SVG";
@@ -120,14 +122,14 @@ const KeyPad = (props) => {
             />
 
             {/*  PERCENTAGES */}
-            <Button
+            {/* <Button
                 styles={{right:'170px',top:`${vp}px`,zIndex:'2',fontSize:'24px'}}
                 onClick={(e) => setCurrentView('percentages')}
                 darkmode={darkmode}
                 text={`\\%`}
                 p={'Percenage Calculator'}
                 buttonType={'image'}
-            />
+            /> */}
 
             {/* STANDARD CALCULATOR */}
             <Button
@@ -138,14 +140,14 @@ const KeyPad = (props) => {
                 p={'Standard calculator'}
             />
 
-            {/* FRACTIONS */}
+            {/* PHYSICS */}
             <Button
                 styles={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'2',fontSize:'32px'}}
-                onClick={(e) => setCurrentView('fracs')}
+                onClick={(e) => setCurrentView('physics')}
                 darkmode={darkmode}
-                text={`\\frac{${'a'} }{${'b'}}`}
-                buttonType={'image'}
-                p={'Decimal to fraction'}
+                text={Bolt()}
+                // buttonType={'image'}
+                p={'Physics'}
             />
 
             <Button
@@ -175,10 +177,10 @@ const KeyPad = (props) => {
             
             <Button
                 darkmode={darkmode}
-                onClick={() => setCurrentView('unit_converter')}
+                onClick={() => setCurrentView('converters')}
                 styles={{right:'90px',top:'160px',zIndex:'1'}}
-                text={beaker()}
-                p={'Unit Converter'}
+                text={Scale()}
+                p={'Converters'}
             />
 
             <Button

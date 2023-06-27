@@ -6,12 +6,14 @@ import ParabKeys from "../Plots/Parabolas/parab.keys";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import UnitCircle from "../Calculators/Trig/AngleConversion/angle_keys.component";
 import StandardKeys from "../Calculators/Standard/standard.keys";
-import FractionKeys from "../Calculators/Fractions/frac.keys";
+// import FractionKeys from "../Calculators/Fractions/frac.keys";
+import FractionKeys from "../Calculators/Converters/Fractions/frac.keys";
 import CogKeys from "../Calculators/GearCalculators/involute.keys";
 import UnitsKeys from "../Calculators/UnitConverter/units.keys";
-import PercentKeys from "../Calculators/Percentages/percent.keys";
+import PercentKeys from "../Calculators/Converters/Percentages/percent.keys";
 import PlotKeys from "../Plots/plots.keys";
 import HomeKeys from './HomeKeys/homekeys.component'
+import Converters from "../Calculators/Converters/converters.keys";
 
 const KeyModule = (props) => {
 
@@ -138,11 +140,19 @@ const KeyModule = (props) => {
             />}
 
             {currentView === 'plots' &&
-            <PlotKeys
-                close={close}
-                state={state}
-                setState={setState}
-            />
+                <PlotKeys
+                    close={close}
+                    state={state}
+                    setState={setState}
+                />
+            }
+
+            {currentView === "converters" &&
+                <Converters
+                    close={close}
+                    state={state}
+                    setState={setState}
+                />
             }
         </div>
     )

@@ -1,7 +1,7 @@
-import { KeyBox } from "../../KeyPad/input.styles";
-import InputField from "../../KeyPad/InputField";
-import Button from "../../KeyPad/Button";
-import { backButton } from "../../SVG";
+import { KeyBox } from "../../../KeyPad/input.styles";
+import InputField from "../../../KeyPad/InputField";
+import Button from "../../../KeyPad/Button";
+import { backButton } from "../../../SVG";
 import {useEffect} from "react";
 
 const errorMessage = 'Only numbers can be entered into this input field. Note: A decimal point must be present as the first element'
