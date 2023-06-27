@@ -45,7 +45,7 @@ const LeverageKeys = (props) => {
                 name="F_e"
                 type="number"
                 mathRendering={'F_e = '}
-                styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
+                styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
             />
 
             <InputField
@@ -54,7 +54,7 @@ const LeverageKeys = (props) => {
                 name="d_e"
                 type="number"
                 mathRendering={'d_e = '}
-                styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
+                styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
             />
 
             <InputField
@@ -63,7 +63,7 @@ const LeverageKeys = (props) => {
                 name="d_r"
                 type="number"
                 mathRendering={'d_r = '}
-                styles={{backgroundColor:'',color:`${darkmode ? '#fff' : '#555'}`}}
+                styles={{width:'160px',color:`${darkmode ? '#fff' : '#555'}`}}
             />
         </KeyBox>
     )
