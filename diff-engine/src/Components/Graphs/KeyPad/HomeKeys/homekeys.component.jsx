@@ -178,7 +178,7 @@ const KeyPad = (props) => {
             <Button
                 darkmode={darkmode}
                 onClick={() => setCurrentView('converters')}
-                styles={{right:'90px',top:'160px',zIndex:'1'}}
+                styles={{right:'170px',top:'80px',zIndex:'1'}}
                 text={Scale()}
                 p={'Converters'}
             />
