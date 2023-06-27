@@ -14,6 +14,8 @@ import PercentKeys from "../Calculators/Converters/Percentages/percent.keys";
 import PlotKeys from "../Plots/plots.keys";
 import HomeKeys from './HomeKeys/homekeys.component'
 import Converters from "../Calculators/Converters/converters.keys";
+import PhysicsKeys from "../Calculators/Physics/physics.keys";
+import LeverageKeys from "../Calculators/Physics/Leverage/leverage.keys";
 
 const KeyModule = (props) => {
 
@@ -152,6 +154,22 @@ const KeyModule = (props) => {
                     close={close}
                     state={state}
                     setState={setState}
+                />
+            }
+
+            {currentView === 'physics' &&
+                <PhysicsKeys
+                    close={close}
+                    state={state}
+                    setState={setState}
+                />
+            }
+
+            {currentView === 'leverage' &&
+                <LeverageKeys
+                    state={state}
+                    setState={setState}
+                    close={close}
                 />
             }
         </div>
