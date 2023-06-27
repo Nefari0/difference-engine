@@ -44,7 +44,7 @@ const InputField = (props) => {
             {mathRendering &&  <CustomMath>{mathRendering}</CustomMath>}
             <CustomInput
                 darkmode={darkmode}
-                type='text'
+                type={type}
                 {...otherProps}
                 value={value}
                 name={`${name}`}
