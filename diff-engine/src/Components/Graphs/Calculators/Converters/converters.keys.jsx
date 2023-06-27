@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { KeyBox } from "../../KeyPad/input.styles";
 import Button from "../../KeyPad/Button";
@@ -6,9 +6,11 @@ import { backButton,beaker } from "../../SVG";
 
 const Converters = (props) => {
 
-    const  { close } = props
+    const  { close,state,setState } = props
 
     const { setCurrentView,setDisplayKeymap,darkmode } = useContext(ViewContext)
+
+    useEffect(() => {setState({...state,displayInput:false})},[])
 
     return (
         <KeyBox>

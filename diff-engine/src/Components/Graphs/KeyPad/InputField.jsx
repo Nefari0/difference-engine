@@ -6,6 +6,7 @@ import {
     ParamInput,
     DisplayScreen
 } from "./input.styles";
+import CustomMath from "./CostomMath";
 
 const INPUT_CLASSES = {
     small:'small',
@@ -27,6 +28,7 @@ const InputField = (props) => {
         value,
         name,
         i,
+        mathRendering,
         executionMethod,
         ...otherProps
     } = props
@@ -39,10 +41,10 @@ const InputField = (props) => {
             onSubmit={(e) => executionMethod(value,null,e)}
         >
             {i && <i style={{color:`${darkmode?'#fff':'#333'}`,marginRight:'4px'}}>{i}</i>}
+            {mathRendering &&  <CustomMath>{mathRendering}</CustomMath>}
             <CustomInput
                 darkmode={darkmode}
                 type='text'
-                // onChange={inputHandler}
                 {...otherProps}
                 value={value}
                 name={`${name}`}

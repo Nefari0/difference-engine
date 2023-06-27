@@ -1,22 +1,25 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import Button from "../../KeyPad/Button";
 import { KeyBox } from "../../KeyPad/input.styles";
 import { backButton } from "../../SVG";
 
-const PhysicsKeys = () => {
+const PhysicsKeys = (props) => {
 
+    const { setState,state,close } = props
     const degrees = 10
     const leverage = '\MA = \\frac{Fb}{Fa} '
 
     const { setCurrentView,setDisplayKeymap } = useContext(ViewContext)
+
+    useEffect(() => {setState({...state,displayInput:false})},[])
     
     return (
         <KeyBox>
             <Button
+                onClick={(e) => close(e)}
                 style={{right:'10px'}}
                 text={backButton()}
-                onClick={() => setCurrentView(null)}
             />
 
             <Button
@@ -29,11 +32,7 @@ const PhysicsKeys = () => {
 
             <Button
                 style={{left:'0px',top:'0px',fontSize:'16px'}}
-                // buttonType={'image'}
                 onClick={() => setCurrentView('leverage')}
-                // text={'?'}
-                // buttonClass={'image'}
-                // text={`\\phase{${degrees.toString().substring(0,3).replace(/^0/, '')}^\\circ}`}
                 text={leverage}
                 p={'Leverage'}
                 buttonType={'image'}

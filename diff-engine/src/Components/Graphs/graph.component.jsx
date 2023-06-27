@@ -118,6 +118,12 @@ export default function Graph() {
     totalValue:'',
     partialValue:'',  // --- Value to find
 
+    // --- Leverage --- //
+    F_e:0, // Effort
+    // F_r:0, // Resistance 
+    d_e:2, // Distance between effort and fulcrum
+    d_r:4, // Distance betweem resistance and fulcrum
+
   
   });
   const {
