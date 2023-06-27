@@ -5,9 +5,9 @@ import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
 import { KeyBox,AllClearButton,InfoMessage } from "../../KeyPad/input.styles";
 import Button from "../../KeyPad/Button";
 
-import TemperatureKeys from "./Temperature/temp.keys";
-import LengthKeys from "./Length/length.keys";
-import MassKeys from "./Mass/mass.keys";
+import TemperatureKeys from "./UnitConverter/Temperature/temp.keys";
+import LengthKeys from "./UnitConverter/Length/length.keys";
+import MassKeys from "./UnitConverter/Mass/mass.keys";
 
 const vp = 80 // -- Vertical Position
 
