@@ -62,7 +62,8 @@ const LeverageDisplay = (props) => {
 
     return (
         <LeverageDisplayContainer darkmode={darkmode}>
-            <h1>Leverage</h1>
+            {/* <h1>Leverage</h1> */}
+            <h1>Force/Distance Multipliers</h1>
             
             <InputForceValue>
                 <CustomMath >{`F_e = ${isNaN(F_e) ? '0':F_e}`}</CustomMath>
@@ -97,14 +98,14 @@ const LeverageDisplay = (props) => {
                         {fulcrumDistance > 100 ? `${d_e} is out of range` : 'fulcrum'}
                     </i>
                 </Fulcrum>
-                    <i 
+                    {/* <i 
                         style={{
-                            right:`-50px`,
-                            top:'-20px',
+                            right:`-20px`,
+                            top:'-40px',
                             position:'absolute',
                             transform:`rotate(${-rotation}deg)`
                         }}
-                    >distance</i>
+                    >d = {d_r}</i> */}
             </LeverBar>
         </LeverageDisplayContainer>
     )

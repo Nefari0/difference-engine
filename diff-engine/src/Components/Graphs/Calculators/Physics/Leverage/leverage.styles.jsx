@@ -45,6 +45,7 @@ export const Fulcrum = styled.span`
 
     i {
         margin-left:10px;
+        font-weight:600;
     }
 
     svg {
@@ -60,6 +61,7 @@ export const Axis = styled.div`
     border-bottom:solid;
     border-style: dashed none none none;
     height:1px;
+    opacity:.5;
 
     i {
         position:absolute;
