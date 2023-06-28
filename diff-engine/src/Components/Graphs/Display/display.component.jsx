@@ -2,10 +2,12 @@ import { useContext,useEffect } from "react"
 import { ViewContext } from "../../Context/view.context"
 import { backgroundColors } from "../global.styles"
 import StandarMathDisplay from "../Calculators/Standard/standard.display"
-import FractionCalc from "../Calculators/Fractions/frac.display"
-import Units from "../Calculators/UnitConverter/units.display"
-import PercentDisplay from "../Calculators/Percentages/percent.display"
+// import FractionCalc from "../Calculators/Fractions/frac.display"
+import FractionCalc from "../Calculators/Converters/Fractions/frac.display"
+import Units from "../Calculators/Converters/UnitConverter/units.display"
+import PercentDisplay from "../Calculators/Converters/Percentages/percent.display"
 import GraphingModule from "./graphing.module"
+import LeverageDisplay from "../Calculators/Physics/Leverage/leverage.display"
 import { 
     OriginContainer,
     ViewPort,
@@ -47,7 +49,8 @@ const DisplayModule = (props) => {
         scrollBar,
         scrollSnap,
         setScrollSnap,
-        isLoading
+        isLoading,
+        setAlert,
     } = useContext(ViewContext)
 
     useEffect(() => {setScrollSnap(false)},[])
@@ -136,6 +139,14 @@ const DisplayModule = (props) => {
                     setState={setState}
                     execute={execute}
                 />}
+
+                {currentView === 'leverage' &&
+                    <LeverageDisplay 
+                        state={state}
+                        setState={setState}
+                    />
+                }
+                
             </OriginContainer>
             
         </ViewPort>

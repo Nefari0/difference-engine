@@ -5,8 +5,10 @@ import {
     Book,
     CalculatorIcon,
     CogWheel,
-    beaker,
+    // beaker,
     CopyIcon,
+    Scale,
+    Bolt
     // LockOpen,
     // LockClosed
  } from "../../SVG";
@@ -35,7 +37,9 @@ const KeyPad = (props) => {
 
         // scrollBar
 
-        showPlotValues,setShowPlotValues
+        showPlotValues,setShowPlotValues,
+
+        setAlert
     } = useContext(ViewContext)
 
     const {
@@ -54,7 +58,7 @@ const KeyPad = (props) => {
           navigator.clipboard.writeText(JSON.stringify(returnPlots()))
           setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
         } else {
-          setState({...state,alert:`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`})
+          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
         }
     }
 
@@ -118,14 +122,14 @@ const KeyPad = (props) => {
             />
 
             {/*  PERCENTAGES */}
-            <Button
+            {/* <Button
                 styles={{right:'170px',top:`${vp}px`,zIndex:'2',fontSize:'24px'}}
                 onClick={(e) => setCurrentView('percentages')}
                 darkmode={darkmode}
                 text={`\\%`}
                 p={'Percenage Calculator'}
                 buttonType={'image'}
-            />
+            /> */}
 
             {/* STANDARD CALCULATOR */}
             <Button
@@ -136,14 +140,14 @@ const KeyPad = (props) => {
                 p={'Standard calculator'}
             />
 
-            {/* FRACTIONS */}
+            {/* PHYSICS */}
             <Button
                 styles={{position:'absolute',right:'90px',top:`${vp}px`,zIndex:'2',fontSize:'32px'}}
-                onClick={(e) => setCurrentView('fracs')}
+                onClick={(e) => setCurrentView('physics')}
                 darkmode={darkmode}
-                text={`\\frac{${'a'} }{${'b'}}`}
-                buttonType={'image'}
-                p={'Decimal to fraction'}
+                text={Bolt()}
+                // buttonType={'image'}
+                p={'Physics'}
             />
 
             <Button
@@ -173,10 +177,10 @@ const KeyPad = (props) => {
             
             <Button
                 darkmode={darkmode}
-                onClick={() => setCurrentView('unit_converter')}
-                styles={{right:'90px',top:'160px',zIndex:'1'}}
-                text={beaker()}
-                p={'Unit Converter'}
+                onClick={() => setCurrentView('converters')}
+                styles={{right:'170px',top:'80px',zIndex:'1'}}
+                text={Scale()}
+                p={'Converters'}
             />
 
             <Button

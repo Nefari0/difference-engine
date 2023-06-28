@@ -28,7 +28,9 @@ const messageBox = css`
     box-shadow: 0px 5px 20px -7px #000000;
     border-radius:2px;
     border: solid .5px;
-    border-radius: 0px 20px 20px;
+    z-index:2;
+
+    border-radius: 0px 20px 20px 20px;
 `
 
 export const InfoMessage = styled.p`${messageBox}`

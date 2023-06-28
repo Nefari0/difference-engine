@@ -1,9 +1,9 @@
 import { useEffect,useContext } from "react";
-import { ViewContext } from "../../../Context/view.context";
-import { backButton } from "../../SVG";
-import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
-import { KeyBox,AllClearButton,InfoMessage } from "../../KeyPad/input.styles";
-import Button from "../../KeyPad/Button";
+import { ViewContext } from "../../../../Context/view.context";
+import { uturnArrow } from "../../../SVG";
+import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
+import { KeyBox,InfoMessage } from "../../../KeyPad/input.styles";
+import Button from "../../../KeyPad/Button";
 
 import TemperatureKeys from "./Temperature/temp.keys";
 import LengthKeys from "./Length/length.keys";
@@ -15,7 +15,6 @@ const UnitsKeys = (props) => {
 
     const {
         state,
-        close,
         execute,
         setState,
     } = props
@@ -24,7 +23,8 @@ const UnitsKeys = (props) => {
 
     const {
         setDisplayKeymap,
-        displayKeymap
+        displayKeymap,
+        setCurrentView
     } = useContext(ViewContext)
 
     useEffect(() => {
@@ -110,8 +110,9 @@ const UnitsKeys = (props) => {
 
             <Button
                 style={{right:'0px',zIndex:'1'}}
-                onClick={(e) => close(e)}
-                text={backButton()}
+                // onClick={(e) => close(e)}
+                onClick={() => setCurrentView('converters')}
+                text={uturnArrow()}
                 p={'Home'}
             />
 

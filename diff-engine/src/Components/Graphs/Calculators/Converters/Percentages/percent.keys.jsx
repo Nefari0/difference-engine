@@ -1,9 +1,9 @@
 import { useEffect,useState,useContext } from "react";
-import { ViewContext } from "../../../Context/view.context";
-import { KeyBox,AllClearButton,InfoMessage } from "../../KeyPad/input.styles";
-import Button from "../../KeyPad/Button";
-import { backButton } from "../../SVG";
-import { NumberPad } from "../../KeyPad/NumberPad/nums.component";
+import { ViewContext } from "../../../../Context/view.context";
+import { KeyBox,AllClearButton,InfoMessage } from "../../../KeyPad/input.styles";
+import Button from "../../../KeyPad/Button";
+import { backButton, uturnArrow } from "../../../SVG";
+import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 import { GuideText } from "./percent.styles";
 
 const PercentKeys = (props) => {
@@ -18,7 +18,8 @@ const PercentKeys = (props) => {
     const {
         setDisplayKeymap,
         displayKeymap,
-        darkmode
+        darkmode,
+        setCurrentView
     } = useContext(ViewContext)
 
     const [textFieldSelection,setTextFieldSelection] = useState('totalValue')
@@ -131,8 +132,8 @@ const PercentKeys = (props) => {
 
             <Button
                 style={{right:'10px',top:'30px'}}
-                text={backButton()}
-                onClick={(e) => close(e)}
+                text={uturnArrow()}
+                onClick={() => setCurrentView('converters')}
                 p={'Home'}
             />
 

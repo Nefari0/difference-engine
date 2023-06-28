@@ -1,8 +1,9 @@
-import { KeyBox } from "../../KeyPad/input.styles";
-import InputField from "../../KeyPad/InputField";
-import Button from "../../KeyPad/Button";
-import { backButton } from "../../SVG";
-import {useEffect} from "react";
+import {useEffect,useContext} from "react";
+import { ViewContext } from "../../../../Context/view.context";
+import { KeyBox } from "../../../KeyPad/input.styles";
+import InputField from "../../../KeyPad/InputField";
+import Button from "../../../KeyPad/Button";
+import { uturnArrow } from "../../../SVG";
 
 const errorMessage = 'Only numbers can be entered into this input field. Note: A decimal point must be present as the first element'
 
@@ -17,6 +18,8 @@ const FractionKeys = (props) => {
     } = props
 
     const { mathFunc } = state
+
+    const { setCurrentView } = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -53,9 +56,9 @@ const FractionKeys = (props) => {
             />
 
             <Button 
-                onClick={(e) => close(e)}
+                onClick={() => setCurrentView('converters')}
                 styles={{right:'10px'}}
-                text={backButton()}
+                text={uturnArrow()}
             />
 
         </KeyBox>

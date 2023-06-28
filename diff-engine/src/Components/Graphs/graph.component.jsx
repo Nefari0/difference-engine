@@ -62,6 +62,8 @@ export default function Graph() {
     about,
 
     // isLoading,setIsLoading
+
+    alert,setAlert
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -91,7 +93,7 @@ export default function Graph() {
 
     // --- Help / Information display --- //
     help:false,
-    alert:null,
+    // alert:null,
     noticeContent:null,
 
     // --- For using standard calculator --- //
@@ -116,13 +118,19 @@ export default function Graph() {
     totalValue:'',
     partialValue:'',  // --- Value to find
 
+    // --- Leverage --- //
+    F_e:0, // Effort
+    // F_r:0, // Resistance 
+    d_e:2, // Distance between effort and fulcrum
+    d_r:4, // Distance betweem resistance and fulcrum
+
   
   });
   const {
     // xAspect,yAspect, // Grid acale
     mathFunc,
     displayInput,
-    alert,
+    // alert,
     history,
     // --- Zoom in / out
     viewScale,
@@ -167,7 +175,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      setAlert(errorMessage+'Hint: You may be using an invalid variable')
       return
     }
 
@@ -205,7 +213,7 @@ export default function Graph() {
       });
 
     } catch (err) {
-      setState({...state,alert:errorMessage+'Hint: You may be using an invalid variable'})
+      setAlert(errorMessage+'Hint: You may be using an invalid variable')
       return
     }
     
@@ -253,7 +261,7 @@ export default function Graph() {
       })
       return
     } catch (err) {
-      setState({...state,alert:errorMessage+' NOTE: Variables are not allowed during standard calculations'})
+      setAlert(errorMessage+' NOTE: Variables are not allowed during standard calculations')
       return
     }
 

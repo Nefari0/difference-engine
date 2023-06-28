@@ -1,7 +1,9 @@
 import { useContext,useEffect } from "react";
-import { ViewContext } from "../../../Context/view.context";
+// import { ViewContext } from "../../../Context/view.context";
+import { ViewContext } from "../../../../Context/view.context";
 
-import { FracDisplay } from "./frac.styles"
+// import { FracDisplay } from "./frac.styles"
+import { FracDisplay } from './frac.styles'
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
