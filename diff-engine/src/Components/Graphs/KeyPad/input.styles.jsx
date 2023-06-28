@@ -30,7 +30,7 @@ const messageBox = css`
     border: solid .5px;
     z-index:2;
 
-    border-radius: 0px 20px 20px 20px; // ORIGINAL / DEFAULT
+    border-radius: 0px 20px 20px 20px;
 `
 
 export const InfoMessage = styled.p`${messageBox}`
