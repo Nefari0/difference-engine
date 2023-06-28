@@ -14,7 +14,7 @@ const {
     red,blue
 } = backgroundColors
 
-export const messageBox = css`
+const messageBox = css`
     position:absolute;
     background-color:#fff;
     transition: all 500ms;
@@ -30,7 +30,6 @@ export const messageBox = css`
     border: solid .5px;
     z-index:2;
 
-// ---- Pointing to an item with corner. Can be change the the Component's style prop ---- //  
     border-radius: 0px 20px 20px 20px; // ORIGINAL / DEFAULT
 `
 
