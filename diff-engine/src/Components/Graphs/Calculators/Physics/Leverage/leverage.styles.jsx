@@ -32,12 +32,16 @@ export const LeverBar = styled.div`
 `
 
 export const Fulcrum = styled.span`
+    top:4px;
+
     i {
         margin-left:10px;
     }
 
     svg {
-        height:40px;
+        position:absolute;
+        left:-11px;
+        top:-5px;
     }
 `
 

@@ -21,19 +21,20 @@ import CustomMath from "../../../KeyPad/CostomMath";
 
 const LeverageDisplay = (props) => {
     const { state } = props
-    const { F_e,d_e,d_r} = state
+    const { F_e,d_e,leverTotalLength} = state
+    const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
     const d_eNum = Math.abs(parseFloat(d_e))
     const d_rNum = Math.abs(parseFloat(d_r))
     const totalLength = Math.abs(parseFloat(d_rNum+d_eNum))
-    const totalPercentage = Math.abs(parseFloat((totalLength)) / 100)
+    const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
     const leverBarLength = 400
     const fulcrumParameters = {
-        left:`${fulcrumDistance}%`,
+        left:`${fulcrumDistance > 100 ? '0' : fulcrumDistance}%`,
         transition: "all 1000ms",
-        position:'absolute'
+        position:'absolute',
     }
 
     return (
@@ -68,7 +69,7 @@ const LeverageDisplay = (props) => {
                 <Fulcrum style={fulcrumParameters}>
                     {upArrow()}
                     <i>
-                        fulcrum
+                        {fulcrumDistance > 100 ? `${d_e} is out of range` : 'fulcrum'}
                     </i>
                 </Fulcrum>
             </LeverBar>
