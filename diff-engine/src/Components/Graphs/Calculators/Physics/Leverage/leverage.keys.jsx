@@ -37,15 +37,15 @@ const LeverageKeys = (props) => {
             {displayKeymap && 
                 <>
                     <InfoMessage 
-                        style={{top:'-200px',left:'220px',borderRadius:'20px 0px 20px 20px'}}
+                        style={{top:'-200px',left:'100px',borderRadius:'20px 0px 20px 20px'}}
                     >
-                        <InlineMath>{'F_r'}</InlineMath> = output force <br/> 
+                        <InlineMath>{'F_r'}</InlineMath> = output force (resistance)<br/> 
                     </InfoMessage>
 
                     <InfoMessage 
                         style={{top:'-300px',left:'150px',borderRadius:'20px 20px 20px 0px'}}
                     >
-                        <InlineMath>{'F_r'}</InlineMath> = input force <br/> 
+                        <InlineMath>{'F_e'}</InlineMath> = input force (effort) <br/> 
                     </InfoMessage>
                 </>
             }
@@ -87,7 +87,8 @@ const LeverageKeys = (props) => {
                 <InfoMessage 
                     style={{left:'200px',top:'80px',zIndex:'20',fontSize:'10px'}}
                 >
-                    Distance of force to fulcrum
+                    Distance of input to fulcrum<br/>
+                    <InlineMath>{'(F_e)'}</InlineMath>
                 </InfoMessage>}
 
             <InputField
@@ -100,9 +101,9 @@ const LeverageKeys = (props) => {
             />
             {displayKeymap && 
                 <InfoMessage 
-                    style={{left:'220px',top:'140px',zIndex:'20',fontSize:'10px'}}
+                    style={{left:'202px',top:'160px',zIndex:'20',fontSize:'10px'}}
                 >
-                    Distance of fulcrum to resistance
+                    Distance of output to fulcrum<br/>
                     <InlineMath>{'(F_r)'}</InlineMath>
                 </InfoMessage>}
 
