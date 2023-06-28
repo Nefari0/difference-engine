@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
@@ -8,8 +8,11 @@ import {
     OutputForceValue,
     TotalLength,
     D_eLength,
-    D_rLength
+    D_rLength,
+    Axis
 } from "./leverage.styles";
+
+// import Fulcrum from "./Fulcrum";
 
 import { 
     upArrow,
@@ -30,7 +33,10 @@ const LeverageDisplay = (props) => {
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
-    const leverBarLength = 400
+    const distanceTraveled = d_eNum/totalLength
+    // const leverBarLength = 400
+
+    const [rotation,setRotation] = useState(-10)
 
     const fulcrumParameters = {
         left:`${fulcrumDistance > 100 ? '0' : fulcrumDistance}%`,
@@ -38,10 +44,21 @@ const LeverageDisplay = (props) => {
         position:'absolute',
     }
 
-    const origin = { // This is for dispaying rotational distances
-        transformOrigin: `${fulcrumDistance}% 20px`,
-        transform:`rotate(0deg)`
+    const leverBarOrigin = { // This is for dispaying rotational distances
+        transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
+        transform:`rotate(${rotation}deg)`,
+        transition: "all 1000ms",
     }
+
+    const axisOrigin = { // This is for dispaying rotational distances
+        transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
+        transition: "all 1000ms",
+        top:'-5px'
+        // left:'100px'
+        // transform:`rotate(10deg)`
+    }
+
+    console.log(fulcrumDistance)
 
     return (
         <LeverageDisplayContainer darkmode={darkmode}>
@@ -71,13 +88,23 @@ const LeverageDisplay = (props) => {
                 {LongLeftArrow()}
             </D_rLength>
 
-            <LeverBar style={origin} leverBarLength={leverBarLength}>
+            <LeverBar style={leverBarOrigin} rotation={rotation}>
+                <Axis style={axisOrigin}><i>axis</i></Axis>
+                <i style={{top:'-30px',left:'90px',position:'absolute',width:'210px'}}>lever bar at {rotation} degrees</i>
                 <Fulcrum style={fulcrumParameters}>
                     {upArrow()}
                     <i>
                         {fulcrumDistance > 100 ? `${d_e} is out of range` : 'fulcrum'}
                     </i>
                 </Fulcrum>
+                    <i 
+                        style={{
+                            right:`-50px`,
+                            top:'-20px',
+                            position:'absolute',
+                            transform:`rotate(${-rotation}deg)`
+                        }}
+                    >distance</i>
             </LeverBar>
         </LeverageDisplayContainer>
     )
