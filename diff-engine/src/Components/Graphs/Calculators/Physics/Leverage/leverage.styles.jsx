@@ -8,7 +8,7 @@ export const LeverageDisplayContainer = styled.section`
     font-size:20px;
     bottom:0px;
     width:100%;
-    height:70%;
+    height:100%;
     background-color:${({darkmode}) => darkmode ? dark:paper};
     color:${({darkmode}) => darkmode ? '#fff':'black'};
     border: solid 1px;
@@ -22,26 +22,51 @@ export const LeverageDisplayContainer = styled.section`
 `
 
 export const LeverBar = styled.div`
-    position:relative;
+    position:absolute;
     width:400px;
-    height:20px;
+    height:1px;
     // background-color:blue;
     margin:auto;
-    top:150px;
+    top:350px;
+    left:50px;
     border-top: solid;
+    border-color: red;
+    text-align:left;
+
+    div,
+    span {
+        transform:rotate(${({rotation}) => -rotation}deg)
+    }
 `
 
 export const Fulcrum = styled.span`
-    top:4px;
+    top:24px;
+    border-left:solid;
 
     i {
         margin-left:10px;
+        font-weight:600;
     }
 
     svg {
         position:absolute;
         left:-11px;
         top:-5px;
+    }
+`
+
+export const Axis = styled.div`
+    position:absolute;
+    width:400px;
+    border-bottom:solid;
+    border-style: dashed none none none;
+    height:1px;
+    opacity:.5;
+
+    i {
+        position:absolute;
+        left:0px;
+        top:-30px;
     }
 `
 
