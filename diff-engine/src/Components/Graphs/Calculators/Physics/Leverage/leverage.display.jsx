@@ -31,10 +31,16 @@ const LeverageDisplay = (props) => {
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
     const leverBarLength = 400
+
     const fulcrumParameters = {
         left:`${fulcrumDistance > 100 ? '0' : fulcrumDistance}%`,
         transition: "all 1000ms",
         position:'absolute',
+    }
+
+    const origin = { // This is for dispaying rotational distances
+        transformOrigin: `${fulcrumDistance}% 20px`,
+        transform:`rotate(0deg)`
     }
 
     return (
@@ -65,7 +71,7 @@ const LeverageDisplay = (props) => {
                 {LongLeftArrow()}
             </D_rLength>
 
-            <LeverBar leverBarLength={leverBarLength}>
+            <LeverBar style={origin} leverBarLength={leverBarLength}>
                 <Fulcrum style={fulcrumParameters}>
                     {upArrow()}
                     <i>
