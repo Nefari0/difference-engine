@@ -54,11 +54,7 @@ const LeverageDisplay = (props) => {
         transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
         transition: "all 1000ms",
         top:'-5px'
-        // left:'100px'
-        // transform:`rotate(10deg)`
     }
-
-    console.log(fulcrumDistance)
 
     return (
         <LeverageDisplayContainer darkmode={darkmode}>
