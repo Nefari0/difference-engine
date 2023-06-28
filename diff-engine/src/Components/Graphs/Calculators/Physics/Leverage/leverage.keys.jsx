@@ -29,19 +29,26 @@ const LeverageKeys = (props) => {
         })
     }
 
-    const messageStyle={zIndex:'2',top:'-200px',left:'100px',width:'300px',transform:'rotateY(180deg'}
+    // const messageStyle={zIndex:'2',top:'-200px',left:'100px',width:'300px',transform:'rotateY(180deg'}
 
     return (
         <KeyBox>
 
-            {/* {displayKeymap && 
-                <InfoMessage style={{zIndex:'2',top:'-200px',left:'100px',maxWidth:'300px',transform:'rotateY(180deg'}}>
-                    <p style={{transform:'rotateY(180deg)'}}>
-                        Leverage/Force multiplication:
-                    </p>
-                    <InlineMath>{'F_r'}</InlineMath>
-                </InfoMessage>
-            } */}
+            {displayKeymap && 
+                <>
+                    <InfoMessage 
+                        style={{top:'-200px',left:'220px',borderRadius:'20px 0px 20px 20px'}}
+                    >
+                        <InlineMath>{'F_r'}</InlineMath> = output force <br/> 
+                    </InfoMessage>
+
+                    <InfoMessage 
+                        style={{top:'-300px',left:'150px',borderRadius:'20px 20px 20px 0px'}}
+                    >
+                        <InlineMath>{'F_r'}</InlineMath> = input force <br/> 
+                    </InfoMessage>
+                </>
+            }
 
             <Button 
                 styles={{right:'10px',zIndex:'0'}}

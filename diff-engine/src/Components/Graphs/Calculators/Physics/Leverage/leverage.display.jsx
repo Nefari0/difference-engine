@@ -39,9 +39,11 @@ const LeverageDisplay = (props) => {
     return (
         <LeverageDisplayContainer darkmode={darkmode}>
             <h1>Leverage</h1>
+            
             <InputForceValue>
                 <CustomMath >{`F_e = ${isNaN(F_e) ? '0':F_e}`}</CustomMath>
             </InputForceValue>
+
             <OutputForceValue>
                 <CustomMath>
                     {`F_r = ${isNaN(resistance) ? '0' : resistance}`}
