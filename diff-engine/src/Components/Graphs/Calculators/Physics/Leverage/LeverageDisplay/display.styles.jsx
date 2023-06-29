@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { backgroundColors } from "../../../../global.styles";
+// import { rotate } from "mathjs";
 
 const { paper,dark } = backgroundColors
 
@@ -32,6 +33,8 @@ export const LeverBarContainer = styled.div`
     border-top: solid;
     border-color: red;
     text-align:left;
+    transform:rotate(${({rotation}) => rotation}deg);
+    transition: all 1000ms;
 
     div,
     span {
@@ -42,6 +45,8 @@ export const LeverBarContainer = styled.div`
 export const Fulcrum = styled.span`
     top:24px;
     border-left:solid;
+    transition: all 1000ms;
+    position:absolute;
 
     i {
         margin-left:10px;
@@ -62,6 +67,8 @@ export const Axis = styled.div`
     border-style: dashed none none none;
     height:1px;
     opacity:.5;
+    top:-5px;
+    transition: all 1000ms;
 
     i {
         position:absolute;

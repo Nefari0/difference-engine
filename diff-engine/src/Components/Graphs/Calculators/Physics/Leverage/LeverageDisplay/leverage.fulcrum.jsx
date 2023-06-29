@@ -14,20 +14,14 @@ const LeverBar = (props) => {
 
     const fulcrumParameters = {
         left:`${fulcrumDistance > 100 ? '0' : fulcrumDistance}%`,
-        transition: "all 1000ms",
-        position:'absolute',
     }
 
     const leverBarOrigin = { // This is for dispaying rotational distances
         transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
-        transform:`rotate(${rotation}deg)`,
-        transition: "all 1000ms",
     }
 
     const axisOrigin = { // This is for dispaying rotational distances
         transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
-        transition: "all 1000ms",
-        top:'-5px'
     }
 
     return (
@@ -37,7 +31,8 @@ const LeverBar = (props) => {
             <Fulcrum style={fulcrumParameters}>
                 {upArrow()}
                 <i>
-                    {fulcrumDistance > 100 ? `${d_e} is out of range` : 'fulcrum'}
+                    {fulcrumDistance > 100 ? 
+                    `${d_e} is out of range` : 'fulcrum'}
                 </i>
             </Fulcrum>
         </LeverBarContainer>
