@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { backgroundColors } from "../../../../global.styles";
 // import { rotate } from "mathjs";
 
@@ -42,6 +42,24 @@ export const LeverBarContainer = styled.div`
     }
 `
 
+export const LeverBarText = styled.i`
+    top:-30px;
+    left:90px;
+    position:absolute;
+    width:210px;
+`
+
+const errorIndicator = css`
+background-color:red;
+color:white;
+animation: blinker 1s linear infinite;
+        
+@keyframes blinker {
+    50% {
+      opacity: .5;
+    }
+  }
+`
 export const Fulcrum = styled.span`
     top:24px;
     border-left:solid;
@@ -51,6 +69,7 @@ export const Fulcrum = styled.span`
     i {
         margin-left:10px;
         font-weight:600;
+        ${({condition}) => condition && errorIndicator}
     }
 
     svg {

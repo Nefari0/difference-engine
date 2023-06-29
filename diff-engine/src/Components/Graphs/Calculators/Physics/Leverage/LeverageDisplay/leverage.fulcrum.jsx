@@ -1,40 +1,47 @@
 import { useState } from "react";
 // import { Fulcrum } from "../leverage.styles";
-import { Fulcrum,Axis,LeverBarContainer } from "./display.styles";
+import { Fulcrum,Axis,LeverBarContainer,LeverBarText } from "./display.styles";
 import { upArrow } from "../../../../SVG";
 
 const LeverBar = (props) => {
 
-    const { state } = props
-    const { d_e,leverTotalLength } = state
-    const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
-    const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
-
+    const { state,fulcrumDistance } = props
+    const { d_e } = state
+    const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true
     const [rotation,setRotation] = useState(-10)
 
     const fulcrumParameters = {
-        left:`${fulcrumDistance > 100 ? '0' : fulcrumDistance}%`,
+        left:`${checkBoundary ? '0' : fulcrumDistance}%`,
     }
 
     const leverBarOrigin = { // This is for dispaying rotational distances
-        transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
+        transformOrigin: `${checkBoundary ? '0' : fulcrumDistance}% 0px`,
     }
 
     const axisOrigin = { // This is for dispaying rotational distances
-        transformOrigin: `${fulcrumDistance > 100 ? '0' : fulcrumDistance}% 0px`,
+        transformOrigin: `${checkBoundary ? '0' : fulcrumDistance}% 0px`,
     }
 
     return (
         <LeverBarContainer style={leverBarOrigin} rotation={rotation}>
+            
             <Axis style={axisOrigin}><i>axis</i></Axis>
-            <i style={{top:'-30px',left:'90px',position:'absolute',width:'210px'}}>lever bar at {rotation} degrees</i>
-            <Fulcrum style={fulcrumParameters}>
+
+            <LeverBarText>
+                lever bar at {rotation} degrees
+            </LeverBarText>
+
+            <Fulcrum style={fulcrumParameters} condition={checkBoundary}>
+
                 {upArrow()}
-                <i>
-                    {fulcrumDistance > 100 ? 
-                    `${d_e} is out of range` : 'fulcrum'}
+
+                <i >
+                    {checkBoundary && !isNaN(d_e) ? 
+                    `${d_e} is out of range` : 
+                    (isNaN(d_e) ? 'invalid input' : 'fulcrum')}
                 </i>
             </Fulcrum>
+
         </LeverBarContainer>
     )
 }
