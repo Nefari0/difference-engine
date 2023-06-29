@@ -15,7 +15,7 @@ const LeverBar = (props) => {
 
     const { state,fulcrumDistance } = props
     const { d_e } = state
-    const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true
+    const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true || d_e === ''
     const [rotation,setRotation] = useState(-10)
 
     const fulcrumParameters = {
@@ -49,9 +49,8 @@ const LeverBar = (props) => {
                 />
 
                 <FulcrumText condition={checkBoundary} >
-                    {checkBoundary && !isNaN(d_e) ? 
-                    `${d_e} is out of range` : 
-                    (isNaN(d_e) ? 'invalid input' : 'fulcrum')}
+                    {checkBoundary ?
+                    `out of range or invalid input` : 'Fulcrum'}
                 </FulcrumText>
             </Fulcrum>
 

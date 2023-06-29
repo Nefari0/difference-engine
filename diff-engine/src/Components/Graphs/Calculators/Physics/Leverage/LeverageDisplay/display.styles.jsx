@@ -113,16 +113,15 @@ export const OutputForceValue = styled(InputForceValue)`
 
 export const Length = styled.i`
     position:absolute;
+    ${({condition}) => condition && errorIndicator}
 `
 
 export const TotalLength = styled(Length)`    
     font-size:20px;
-    top:100px;
-    left:190px;
+    position:relative;
 `
 
 export const D_eLength = styled(Length)`
-    // font-size:10px;
     top:190px;
     left:60px;
     

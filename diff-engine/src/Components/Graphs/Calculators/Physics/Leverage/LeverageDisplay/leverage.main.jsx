@@ -38,13 +38,11 @@ const LeverageDisplay = (props) => {
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
 
     const validate = (value) => { // Verifies values are numbers and within range
-        if(isNaN(value) === true) {
-            return ('0')
-        }
-
-        if (fulcrumDistance >= 100) {
-            return ('0')
-        } else {return value}
+        var error = false
+        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100) {
+            error = true
+        } 
+        return (error ? 'invalid' : value)
     }
 
     return (
@@ -62,11 +60,11 @@ const LeverageDisplay = (props) => {
                 </CustomMath>
             </OutputForceValue>
 
-            <TotalLength>
-                total length = {totalLength}
+            <TotalLength condition={leverTotalLength === ""}>
+                total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
             
-            <D_eLength>
+            <D_eLength condition={validate(d_e) === 'invalid'}>
                 <CustomMath>{`d_e = ${validate(d_e)}`}</CustomMath>
                 {LongRightArrow()}
             </D_eLength>

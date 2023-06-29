@@ -119,9 +119,9 @@ export default function Graph() {
     partialValue:'',  // --- Value to find
 
     // --- Leverage --- //
-    F_e:10, // Effort / Input force
-    leverTotalLength:4,
-    d_e:2, // Distance between effort and fulcrum
+    F_e:'10', // Effort / Input force
+    leverTotalLength:'4',
+    d_e:'2', // Distance between effort and fulcrum
 
   
   });
