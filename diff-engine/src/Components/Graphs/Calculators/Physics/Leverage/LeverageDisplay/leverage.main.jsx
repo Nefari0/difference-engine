@@ -54,13 +54,11 @@ const LeverageDisplay = (props) => {
             
             <InputForceValue>
                 <CustomMath >{`F_e = ${isNaN(F_e) ? '0':F_e}`}</CustomMath>
-                {/* <CustomMath >{`F_e = ${validate(F_e)}`}</CustomMath> */}
             </InputForceValue>
 
             <OutputForceValue>
                 <CustomMath>
                     {`F_r = ${isNaN(resistance) ? '0' : resistance}`}
-                    {/* {`F_r = ${validate(resistance)}`} */}
                 </CustomMath>
             </OutputForceValue>
 
@@ -69,18 +67,16 @@ const LeverageDisplay = (props) => {
             </TotalLength>
             
             <D_eLength>
-                {/* <CustomMath>{`d_e = ${isNaN(d_e) ? '0' : d_e}`}</CustomMath> */}
                 <CustomMath>{`d_e = ${validate(d_e)}`}</CustomMath>
                 {LongRightArrow()}
             </D_eLength>
 
             <D_rLength>
-                {/* <CustomMath>{`d_r = ${isNaN(d_r) ? '0' : d_r}`}</CustomMath> */}
                 <CustomMath>{`d_r = ${validate(d_r)}`}</CustomMath>
                 {LongLeftArrow()}
             </D_rLength>
 
-            {/* DISPLAY ANGLE GRAPH */}
+            {/* DISPLAY ANGLE GRAPH (FULCRUM) */}
             <LeverBar
                 fulcrumDistance={fulcrumDistance}
                 state={state}
