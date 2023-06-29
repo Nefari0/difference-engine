@@ -8,8 +8,8 @@ const hide = css`
 export const Wedge = styled.div`
     position:absolute;
     transform-origin: 50px 50px;
-    right:40px;
-    top:-15px;
+    right:-45px;
+    top:-25px;
     width: 0; 
     height: 0; 
     border-left: 40px solid transparent;
@@ -18,4 +18,4 @@ export const Wedge = styled.div`
     border-bottom: 60px solid ${({darkmode}) => darkmode ? lightDark : darkLight};
 
     ${({condition}) => condition === true && hide}
-    `
+`

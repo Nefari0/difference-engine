@@ -61,7 +61,10 @@ export const Fulcrum = styled.span`
 `
 
 export const FulcrumText = styled.i`
-    margin-left:10px;
+    position:absolute;
+    top:50px;
+    left:-30px;
+    width:200px;
     font-weight:600;
     ${({condition}) => condition && errorIndicator}
 `
