@@ -1,7 +1,15 @@
 import { useState } from "react";
 // import { Fulcrum } from "../leverage.styles";
-import { Fulcrum,Axis,LeverBarContainer,LeverBarText } from "./display.styles";
-import { upArrow } from "../../../../SVG";
+import { 
+    Fulcrum,
+    Axis,
+    LeverBarContainer,
+    LeverBarText,
+    FulcrumText
+} from "./display.styles";
+
+// import { upArrow } from "../../../../SVG";
+import Triangle from "./Fulcrum/triangle";
 
 const LeverBar = (props) => {
 
@@ -20,11 +28,12 @@ const LeverBar = (props) => {
 
     const axisOrigin = { // This is for dispaying rotational distances
         transformOrigin: `${checkBoundary ? '0' : fulcrumDistance}% 0px`,
+        transform:`rotate(${-rotation}deg)`
     }
 
     return (
         <LeverBarContainer style={leverBarOrigin} rotation={rotation}>
-            
+
             <Axis style={axisOrigin}><i>axis</i></Axis>
 
             <LeverBarText>
@@ -33,13 +42,17 @@ const LeverBar = (props) => {
 
             <Fulcrum style={fulcrumParameters} condition={checkBoundary}>
 
-                {upArrow()}
+                {/* {upArrow()} */}
+                <Triangle 
+                    rotation={rotation} 
+                    condition={checkBoundary}
+                />
 
-                <i >
+                <FulcrumText condition={checkBoundary} >
                     {checkBoundary && !isNaN(d_e) ? 
                     `${d_e} is out of range` : 
                     (isNaN(d_e) ? 'invalid input' : 'fulcrum')}
-                </i>
+                </FulcrumText>
             </Fulcrum>
 
         </LeverBarContainer>

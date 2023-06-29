@@ -13,11 +13,11 @@ import {
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
-
+// import { Wedge } from "./Fulcrum/triangle.styles";
 // import Fulcrum from "./Fulcrum";
 
 import { 
-    upArrow,
+    // upArrow,
     LongLeftArrow,
     LongRightArrow
  } from "../../../../SVG";
@@ -51,7 +51,7 @@ const LeverageDisplay = (props) => {
         <LeverageDisplayContainer darkmode={darkmode}>
 
             <h1>Force/Distance Multipliers</h1>
-            
+
             <InputForceValue>
                 <CustomMath >{`F_e = ${isNaN(F_e) ? '0':F_e}`}</CustomMath>
             </InputForceValue>

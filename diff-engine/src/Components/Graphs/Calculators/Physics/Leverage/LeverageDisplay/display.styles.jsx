@@ -35,9 +35,8 @@ export const LeverBarContainer = styled.div`
     transform:rotate(${({rotation}) => rotation}deg);
     transition: all 1000ms;
 
-    div,
     span {
-        transform:rotate(${({rotation}) => -rotation}deg)
+        transform:rotate(${({rotation}) => -rotation}deg);
     }
 `
 
@@ -54,17 +53,17 @@ export const Fulcrum = styled.span`
     transition: all 1000ms;
     position:absolute;
 
-    i {
-        margin-left:10px;
-        font-weight:600;
-        ${({condition}) => condition && errorIndicator}
-    }
-
     svg {
         position:absolute;
         left:-11px;
         top:-5px;
     }
+`
+
+export const FulcrumText = styled.i`
+    margin-left:10px;
+    font-weight:600;
+    ${({condition}) => condition && errorIndicator}
 `
 
 export const Axis = styled.div`
