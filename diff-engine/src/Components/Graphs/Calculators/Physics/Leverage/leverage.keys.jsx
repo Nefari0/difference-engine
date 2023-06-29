@@ -1,16 +1,15 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import { KeyBox,InfoMessage } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import { uturnArrow } from "../../../SVG";
-import InputField from "../../../KeyPad/InputField";
 import { InlineMath } from "react-katex";
+import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
+import { ValueButtonPad,Label } from "./key.styles";
 
 const LeverageKeys = (props) => {
 
     const { state,setState } = props
-
-    const { F_e,d_e,leverTotalLength } = state
 
     const { 
         setCurrentView,
@@ -19,15 +18,7 @@ const LeverageKeys = (props) => {
         darkmode,
     } = useContext(ViewContext)
 
-    const input = (prop,e) => {
-        e.preventDefault()
-        const { value } = e.target
-        const intValue = parseFloat(value)
-        setState({
-            ...state,
-            [prop]:intValue
-        })
-    }
+    const [textFieldSelection,setTextFieldSelection] = useState('leverTotalLength')
 
     return (
         <KeyBox>
@@ -62,48 +53,44 @@ const LeverageKeys = (props) => {
                 buttonClass={'help'}
             />
 
-            <InputField
-                onChange={(e) => input('F_e',e)}
-                value={F_e}
-                name="F_e"
-                type="number"
-                mathRendering={'F_e = '}
-                styles={{width:'240px',color:`${darkmode ? '#fff' : '#555'}`}}
-            />
-            {displayKeymap && <InfoMessage style={{left:'230px',top:'20px',zIndex:'2',fontSize:'10px'}}>Force appied (input)</InfoMessage>}
+            {/* EDIT VALUES */}
+            <ValueButtonPad darkmode={darkmode}>
+                
+                <Label>edit values:</Label>
 
-            <InputField
-                onChange={(e) => input('d_e',e)}
-                value={d_e}
-                name="d_e"
-                type="number"
-                mathRendering={'d_e = '}
-                styles={{width:'240px',color:`${darkmode ? '#fff' : '#555'}`,zIndex:'0'}}
-            />
+                <Button
+                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px'}}
+                    buttonType={'image'}
+                    buttonClass={'large'}
+                    onClick={() => setTextFieldSelection('F_e')}
+                    text={'F_e'}
+                    p={'Force appied (input)'}
+                />
 
-            {displayKeymap && 
-                <InfoMessage 
-                    style={{left:'240px',top:'80px',zIndex:'20',fontSize:'10px'}}
-                >
-                    Distance of input to fulcrum<br/>
-                    <InlineMath>{'(F_e)'}</InlineMath>
-                </InfoMessage>}
+                <Button
+                    styles={{right:'',zIndex:'2',fontSize:'22px',top:'120px'}}
+                    buttonType={'image'}
+                    buttonClass={'large'}
+                    onClick={() => setTextFieldSelection('d_e')}
+                    text={'d_e'}
+                    p={`Distance of input to fulcrum`}
+                />
 
-            <InputField
-                onChange={(e) => input('leverTotalLength',e)}
-                value={leverTotalLength}
-                name="leverTotalLength"
-                type="number"
-                mathRendering={'d_r+d_e = '}
-                styles={{width:'200px',color:`${darkmode ? '#fff' : '#555'}`}}
+                <Button
+                    styles={{right:'',zIndex:'1',fontSize:'22px',top:'200px'}}
+                    buttonType={'image'}
+                    buttonClass={'large'}
+                    onClick={() => setTextFieldSelection('leverTotalLength')}
+                    text={'d_e+d_r'}
+                    p={`Total length of leverbar`}
+                />
+            </ValueButtonPad>
+
+            <NumberPad
+                state={state}
+                setState={setState}
+                inputField={textFieldSelection}
             />
-            {displayKeymap && 
-                <InfoMessage 
-                    style={{left:'253px',top:'160px',zIndex:'20',fontSize:'10px'}}
-                >
-                    Total length of lever<br/>
-                    <InlineMath>{'(d_r)'}</InlineMath> = distance of output to fulcrum
-                </InfoMessage>}
 
         </KeyBox>
     )
