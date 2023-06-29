@@ -46,3 +46,15 @@ export const basicLight = css`
     background-color:${backgroundColors.paper};
     color:#555;
 `
+
+export const errorIndicator = css`
+    background-color:red;
+    color:white;
+    animation: blinker 1s linear infinite;
+            
+    @keyframes blinker {
+        50% {
+        opacity: .5;
+        }
+    }
+`
