@@ -35,13 +35,13 @@ const LeverageKeys = (props) => {
             {displayKeymap && 
                 <>
                     <InfoMessage 
-                        style={{top:'-200px',left:'100px',borderRadius:'20px 0px 20px 20px'}}
+                        style={{top:'-350px',left:'100px',borderRadius:'20px 0px 20px 20px'}}
                     >
                         <InlineMath>{'F_r'}</InlineMath> = output force (resistance)<br/> 
                     </InfoMessage>
 
                     <InfoMessage 
-                        style={{top:'-300px',left:'150px',borderRadius:'20px 20px 20px 0px'}}
+                        style={{top:'-450px',left:'150px',borderRadius:'20px 20px 20px 0px'}}
                     >
                         <InlineMath>{'F_e'}</InlineMath> = input force (effort) <br/> 
                     </InfoMessage>
