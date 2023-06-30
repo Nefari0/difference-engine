@@ -13,10 +13,15 @@ import Triangle from "./Fulcrum/triangle";
 
 const LeverBar = (props) => {
 
-    const { state,fulcrumDistance } = props
+    const { state,fulcrumDistance,rotation } = props
     const { d_e } = state
     const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true || d_e === ''
-    const [rotation,setRotation] = useState(-10)
+
+    var nRotation = parseFloat(rotation)*-1
+    const radValue = nRotation * (3.1415926/180) // Convert to Radians
+    const hypo = (fulcrumDistance/100)*400
+    const b = hypo*Math.cos(radValue)
+    const a = Math.sqrt(hypo**2 -b**2)
 
     const fulcrumParameters = {
         left:`${checkBoundary ? '0' : fulcrumDistance}%`,
@@ -34,11 +39,23 @@ const LeverBar = (props) => {
     return (
         <LeverBarContainer style={leverBarOrigin} rotation={rotation}>
 
-            <Axis style={axisOrigin}><i>axis</i></Axis>
+            <Axis style={axisOrigin}>
+                <i>axis</i>
+            <div 
+                style={{
+                    height:`${a}px`,
+                    width:'2px',
+                    backgroundColor:'blue',
+                    transition:'all 1000ms'
+                }}
+            >
+            </div>
+            </Axis>
 
             <LeverBarText>
                 lever bar at {rotation} degrees
             </LeverBarText>
+
 
             <Fulcrum style={fulcrumParameters} condition={checkBoundary}>
 

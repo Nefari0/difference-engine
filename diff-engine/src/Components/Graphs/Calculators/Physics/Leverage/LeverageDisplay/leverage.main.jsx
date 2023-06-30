@@ -29,13 +29,10 @@ const LeverageDisplay = (props) => {
     const { F_e,d_e,leverTotalLength} = state
     const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
-    const d_eNum = Math.abs(parseFloat(d_e))
-    const d_rNum = Math.abs(parseFloat(d_r))
-    const totalLength = Math.abs(parseFloat(d_rNum+d_eNum))
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
-
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
+    const [rotation,setRotation] = useState(-20)
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
@@ -70,8 +67,8 @@ const LeverageDisplay = (props) => {
     //     // return (error ? 'invalid' : value)
     // }
 
-    // console.log(d_r)
     return (
+
         <LeverageDisplayContainer darkmode={darkmode}>
 
             <h1>Force/Distance Multipliers</h1>
@@ -103,6 +100,7 @@ const LeverageDisplay = (props) => {
 
             {/* DISPLAY ANGLE GRAPH (FULCRUM) */}
             <LeverBar
+                rotation={rotation}
                 fulcrumDistance={fulcrumDistance}
                 state={state}
             />
