@@ -100,6 +100,9 @@ export const DisplayScreen = styled(BaseInput )`
 const LightsOff = css`background-color:${lightDark};color:#fff; `
 const lightsOn = css`background-color:${midLight};color:#333;`
 
+const selectedButton = css`
+    border: 2px solid ${blue};
+`
 export const BaseButton = styled.button`
     position:absolute;
     width:75px;
@@ -108,6 +111,7 @@ export const BaseButton = styled.button`
     overflow:hidden;
     z-index:0;
     border: 1px solid #c4c4c4;
+    ${({selected}) => selected && selectedButton}
 
     ${({darkmode}) => darkmode ? LightsOff : lightsOn}
 

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const ValueButtonPad = styled.div`
     position:absolute;
-    width:100px;
+    width:150px;
     height:300px;
-    right:140px;
+    right:100px;
     display:flex;
     flex-direction:column;
     color:${({darkmode}) => darkmode ? '#fff' : 'black'}

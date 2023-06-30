@@ -11,6 +11,8 @@ const LeverageKeys = (props) => {
 
     const { state,setState } = props
 
+    const { d_e,F_e,leverTotalLength } = state
+
     const { 
         setCurrentView,
         setDisplayKeymap,
@@ -59,30 +61,33 @@ const LeverageKeys = (props) => {
                 <Label>edit values:</Label>
 
                 <Button
-                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px'}}
+                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('F_e')}
-                    text={'F_e'}
+                    text={`F_e = ${F_e}`}
                     p={'Force appied (input)'}
+                    selected={textFieldSelection === 'F_e'}
                 />
 
                 <Button
-                    styles={{right:'',zIndex:'2',fontSize:'22px',top:'120px'}}
+                    styles={{right:'',zIndex:'2',fontSize:'22px',top:'120px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('d_e')}
-                    text={'d_e'}
+                    text={`d_e = ${d_e}`}
                     p={`Distance of input to fulcrum`}
+                    selected={textFieldSelection === 'd_e'}
                 />
 
                 <Button
-                    styles={{right:'',zIndex:'1',fontSize:'22px',top:'200px'}}
+                    styles={{right:'',zIndex:'1',fontSize:'22px',top:'200px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('leverTotalLength')}
-                    text={'d_e+d_r'}
+                    text={`d_e+d_r = ${leverTotalLength}`}
                     p={`Total length of leverbar`}
+                    selected={textFieldSelection === 'leverTotalLength'}
                 />
             </ValueButtonPad>
 

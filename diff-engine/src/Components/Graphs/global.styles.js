@@ -48,7 +48,7 @@ export const basicLight = css`
 `
 
 export const errorIndicator = css`
-    background-color:red;
+    background-color:${backgroundColors.red};
     color:white;
     animation: blinker 1s linear infinite;
             

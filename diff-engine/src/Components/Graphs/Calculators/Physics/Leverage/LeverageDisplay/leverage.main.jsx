@@ -2,14 +2,14 @@ import { useContext,useState } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
-    LeverBarContainer,
-    Fulcrum,
+    // LeverBarContainer,
+    // Fulcrum,
     InputForceValue,
     OutputForceValue,
     TotalLength,
     D_eLength,
     D_rLength,
-    Axis
+    // Axis
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
@@ -29,23 +29,22 @@ const LeverageDisplay = (props) => {
     const { F_e,d_e,leverTotalLength} = state
     const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
-    const d_eNum = Math.abs(parseFloat(d_e))
-    const d_rNum = Math.abs(parseFloat(d_r))
-    const totalLength = Math.abs(parseFloat(d_rNum+d_eNum))
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
-
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
+    const [rotation,setRotation] = useState(-20)
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
-        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100) {
+        const valueArr = value.split('')
+        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || (valueArr[0] === '0' && valueArr[1] != '.')) {
             error = true
         } 
         return (error ? 'invalid' : value)
     }
 
     return (
+
         <LeverageDisplayContainer darkmode={darkmode}>
 
             <h1>Force/Distance Multipliers</h1>
@@ -60,7 +59,7 @@ const LeverageDisplay = (props) => {
                 </CustomMath>
             </OutputForceValue>
 
-            <TotalLength condition={leverTotalLength === ""}>
+            <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
             
@@ -76,6 +75,7 @@ const LeverageDisplay = (props) => {
 
             {/* DISPLAY ANGLE GRAPH (FULCRUM) */}
             <LeverBar
+                rotation={rotation}
                 fulcrumDistance={fulcrumDistance}
                 state={state}
             />
