@@ -59,7 +59,6 @@ const LeverBar = (props) => {
 
             <Fulcrum style={fulcrumParameters} condition={checkBoundary}>
 
-                {/* {upArrow()} */}
                 <Triangle 
                     rotation={rotation} 
                     condition={checkBoundary}
@@ -67,7 +66,7 @@ const LeverBar = (props) => {
 
                 <FulcrumText condition={checkBoundary} >
                     {checkBoundary ?
-                    `out of range or invalid input` : 'Fulcrum'}
+                    `out of range or invalid parameter` : 'Fulcrum'}
                 </FulcrumText>
             </Fulcrum>
 

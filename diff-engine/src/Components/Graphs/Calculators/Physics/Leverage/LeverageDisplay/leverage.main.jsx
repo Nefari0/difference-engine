@@ -36,36 +36,12 @@ const LeverageDisplay = (props) => {
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
-        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || value.split('')[0] === '0') {
+        const valueArr = value.split('')
+        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || (valueArr[0] === '0' && valueArr[1] != '.')) {
             error = true
         } 
         return (error ? 'invalid' : value)
     }
-
-    // const validate = (value) => { // Verifies values are numbers and within range
-    //     var error = false
-    //     // if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || value.split('')[0] === '0') {
-    //     //     error = true
-    //     // } 
-
-    //     switch (value) {
-    //         case isNaN(value) === true:
-    //             error = true
-    //             break
-    //         case value === '':
-    //             error = true
-    //             break
-    //         case fulcrumDistance >= 100:
-    //             error = true
-    //             break
-    //         case value.split('')[0] === '0':
-    //             error = true
-    //             break
-    //         default:return
-    //     }
-    //     console.log(error)
-    //     // return (error ? 'invalid' : value)
-    // }
 
     return (
 
@@ -83,7 +59,6 @@ const LeverageDisplay = (props) => {
                 </CustomMath>
             </OutputForceValue>
 
-            {/* <TotalLength condition={leverTotalLength === ""}> */}
             <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
