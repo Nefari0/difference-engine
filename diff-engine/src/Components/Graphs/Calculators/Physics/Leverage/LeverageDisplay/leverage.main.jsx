@@ -2,14 +2,14 @@ import { useContext,useState } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
-    LeverBarContainer,
-    Fulcrum,
+    // LeverBarContainer,
+    // Fulcrum,
     InputForceValue,
     OutputForceValue,
     TotalLength,
     D_eLength,
     D_rLength,
-    Axis
+    // Axis
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
@@ -39,12 +39,38 @@ const LeverageDisplay = (props) => {
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
-        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100) {
+        if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || value.split('')[0] === '0') {
             error = true
         } 
         return (error ? 'invalid' : value)
     }
 
+    // const validate = (value) => { // Verifies values are numbers and within range
+    //     var error = false
+    //     // if(isNaN(value) === true || value === '' || fulcrumDistance >= 100 || value.split('')[0] === '0') {
+    //     //     error = true
+    //     // } 
+
+    //     switch (value) {
+    //         case isNaN(value) === true:
+    //             error = true
+    //             break
+    //         case value === '':
+    //             error = true
+    //             break
+    //         case fulcrumDistance >= 100:
+    //             error = true
+    //             break
+    //         case value.split('')[0] === '0':
+    //             error = true
+    //             break
+    //         default:return
+    //     }
+    //     console.log(error)
+    //     // return (error ? 'invalid' : value)
+    // }
+
+    // console.log(d_r)
     return (
         <LeverageDisplayContainer darkmode={darkmode}>
 
@@ -60,7 +86,8 @@ const LeverageDisplay = (props) => {
                 </CustomMath>
             </OutputForceValue>
 
-            <TotalLength condition={leverTotalLength === ""}>
+            {/* <TotalLength condition={leverTotalLength === ""}> */}
+            <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
             
