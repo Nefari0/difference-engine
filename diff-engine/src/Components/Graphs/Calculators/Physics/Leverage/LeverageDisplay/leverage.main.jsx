@@ -2,22 +2,16 @@ import { useContext,useState } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
-    // LeverBarContainer,
-    // Fulcrum,
     InputForceValue,
     OutputForceValue,
     TotalLength,
     D_eLength,
     D_rLength,
-    // Axis
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
-// import { Wedge } from "./Fulcrum/triangle.styles";
-// import Fulcrum from "./Fulcrum";
 
 import { 
-    // upArrow,
     LongLeftArrow,
     LongRightArrow
  } from "../../../../SVG";

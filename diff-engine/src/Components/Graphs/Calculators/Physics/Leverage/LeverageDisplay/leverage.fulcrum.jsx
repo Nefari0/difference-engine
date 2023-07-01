@@ -17,9 +17,14 @@ const LeverBar = (props) => {
 
     var nRotation = parseFloat(rotation)*-1
     const radValue = nRotation * (3.1415926/180) // Convert to Radians
-    const hypo = (fulcrumDistance/100)*{widthOfLeverBar}
-    const b = hypo*Math.cos(radValue)
-    const a = Math.sqrt(hypo**2 -b**2)
+
+    // Input side
+    const hypotenuse_1 = (fulcrumDistance/100)*widthOfLeverBar
+    const b_1 = hypotenuse_1*Math.cos(radValue)
+    const a_1 = Math.sqrt(hypotenuse_1**2 -b_1**2)
+
+    // Output side
+
 
     const fulcrumParameters = {
         left:`${checkBoundary ? '0' : fulcrumDistance}%`,
@@ -44,7 +49,7 @@ const LeverBar = (props) => {
                 <i>axis</i>
                 <div 
                     style={{
-                        height:`${a}px`,
+                        height:`${a_1}px`,
                         width:'2px',
                         backgroundColor:'blue',
                         transition:'all 1000ms'
