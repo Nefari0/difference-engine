@@ -32,6 +32,7 @@ const LeverageDisplay = (props) => {
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
+
     const [rotation,setRotation] = useState(-20)
 
     const validate = (value) => { // Verifies values are numbers and within range

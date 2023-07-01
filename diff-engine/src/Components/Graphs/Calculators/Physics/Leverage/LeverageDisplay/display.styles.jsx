@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { backgroundColors,errorIndicator } from "../../../../global.styles";
 
 const { paper,dark } = backgroundColors
+export const widthOfLeverBar = 400; // --- In pixels
 
 export const LeverageDisplayContainer = styled.section`
     position:absolute;
@@ -23,9 +24,8 @@ export const LeverageDisplayContainer = styled.section`
 
 export const LeverBarContainer = styled.div`
     position:absolute;
-    width:400px;
+    width:${widthOfLeverBar}px;
     height:1px;
-    // background-color:blue;
     margin:auto;
     top:350px;
     left:50px;
@@ -71,7 +71,7 @@ export const FulcrumText = styled.i`
 
 export const Axis = styled.div`
     position:absolute;
-    width:400px;
+    width:${widthOfLeverBar}px;
     border-bottom:solid;
     border-style: dashed none none none;
     height:1px;

@@ -1,14 +1,12 @@
-import { useState } from "react";
-// import { Fulcrum } from "../leverage.styles";
 import { 
     Fulcrum,
     Axis,
     LeverBarContainer,
     LeverBarText,
-    FulcrumText
+    FulcrumText,
+    widthOfLeverBar
 } from "./display.styles";
 
-// import { upArrow } from "../../../../SVG";
 import Triangle from "./Fulcrum/triangle";
 
 const LeverBar = (props) => {
@@ -19,7 +17,7 @@ const LeverBar = (props) => {
 
     var nRotation = parseFloat(rotation)*-1
     const radValue = nRotation * (3.1415926/180) // Convert to Radians
-    const hypo = (fulcrumDistance/100)*400
+    const hypo = (fulcrumDistance/100)*{widthOfLeverBar}
     const b = hypo*Math.cos(radValue)
     const a = Math.sqrt(hypo**2 -b**2)
 
@@ -37,19 +35,22 @@ const LeverBar = (props) => {
     }
 
     return (
-        <LeverBarContainer style={leverBarOrigin} rotation={rotation}>
+        <LeverBarContainer 
+            style={leverBarOrigin} 
+            rotation={rotation} 
+        >
 
             <Axis style={axisOrigin}>
                 <i>axis</i>
-            <div 
-                style={{
-                    height:`${a}px`,
-                    width:'2px',
-                    backgroundColor:'blue',
-                    transition:'all 1000ms'
-                }}
-            >
-            </div>
+                <div 
+                    style={{
+                        height:`${a}px`,
+                        width:'2px',
+                        backgroundColor:'blue',
+                        transition:'all 1000ms'
+                    }}
+                >
+                </div>
             </Axis>
 
             <LeverBarText>
