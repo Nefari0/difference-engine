@@ -1,39 +1,45 @@
-import { useContext,useState } from "react";
+import { useContext } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
-    // LeverBarContainer,
-    // Fulcrum,
     InputForceValue,
     OutputForceValue,
     TotalLength,
-    D_eLength,
-    D_rLength,
-    // Axis
+    widthOfLeverBar,
+    DistanceExchangeDisplay
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
-// import { Wedge } from "./Fulcrum/triangle.styles";
-// import Fulcrum from "./Fulcrum";
-
-import { 
-    // upArrow,
-    LongLeftArrow,
-    LongRightArrow
- } from "../../../../SVG";
-
+import HeightArrow from "./HeightArrow/height-arrow.component";
 import CustomMath from "../../../../KeyPad/CostomMath";
 
 const LeverageDisplay = (props) => {
     const { state } = props
-    const { F_e,d_e,leverTotalLength} = state
+    const { F_e,d_e,leverTotalLength,leverRotation} = state
     const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
 
-    const [rotation,setRotation] = useState(-20)
+    const rotation = leverRotation
+
+    // --- TRAVEL DISTANCES --- //
+    var nRotation = parseFloat(rotation)*-1
+    const radValue = nRotation * (3.1415926/180) // Convert to Radians
+    // Input side
+
+    const hypotenuse_1 = (fulcrumDistance/100)*widthOfLeverBar
+    const b_1 = hypotenuse_1*Math.cos(radValue)
+    const a_1 = Math.sqrt(hypotenuse_1**2 -b_1**2)
+
+    // Output side
+    const hypotenuse_2 = widthOfLeverBar-hypotenuse_1
+    const b_2 = hypotenuse_2*Math.cos(radValue)
+    const a_2 = Math.sqrt(hypotenuse_2**2 -b_2**2)
+    
+    // Output distance exchange
+    const distanceExchange = a_2/(a_1/100)
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
@@ -63,23 +69,25 @@ const LeverageDisplay = (props) => {
             <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
-            
-            <D_eLength condition={validate(d_e) === 'invalid'}>
-                <CustomMath>{`d_e = ${validate(d_e)}`}</CustomMath>
-                {LongRightArrow()}
-            </D_eLength>
 
-            <D_rLength>
-                <CustomMath>{`d_r = ${validate(d_r)}`}</CustomMath>
-                {LongLeftArrow()}
-            </D_rLength>
 
             {/* DISPLAY ANGLE GRAPH (FULCRUM) */}
             <LeverBar
+                validate={validate}
                 rotation={rotation}
                 fulcrumDistance={fulcrumDistance}
                 state={state}
+                d_r={d_r}
+                a_1={a_1}
+                a_2={a_2}
+                nRotation={nRotation}
             />
+
+            {fulcrumDistance < 100 && 
+            <DistanceExchangeDisplay rotation={rotation} a_2={a_2}>
+                <i>travel distance = {distanceExchange.toFixed(1)} %</i>
+                <HeightArrow/>
+            </DistanceExchangeDisplay>}
 
         </LeverageDisplayContainer>
     )

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { backgroundColors,errorIndicator } from "../../../../global.styles";
 
 const { paper,dark } = backgroundColors
@@ -25,26 +25,27 @@ export const LeverageDisplayContainer = styled.section`
 export const LeverBarContainer = styled.div`
     position:absolute;
     width:${widthOfLeverBar}px;
-    height:1px;
     margin:auto;
     top:350px;
     left:50px;
+    height:1px;
     border-top: solid;
     border-color: red;
     text-align:left;
     transform:rotate(${({rotation}) => rotation}deg);
     transition: all 1000ms;
-
-    span {
-        transform:rotate(${({rotation}) => -rotation}deg);
-    }
+    z-index:1;
 `
 
-export const LeverBarText = styled.i`
+export const LeverBarText = styled.div`
     top:-30px;
-    left:90px;
     position:absolute;
-    width:210px;
+    width:400px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+
+    ${({condition}) => condition && errorIndicator}
 `
 
 export const Fulcrum = styled.span`
@@ -52,17 +53,27 @@ export const Fulcrum = styled.span`
     border-left:solid;
     transition: all 1000ms;
     position:absolute;
+    transform:rotate(${({rotation}) => -rotation}deg);
+
+    span {transform:rotate(${({rotation}) => -rotation}deg);}
 
     svg {
         position:absolute;
         left:-11px;
         top:-5px;
     }
+
+    button {
+        height:50px;
+        width:50px;
+        top:0px;
+        right:-60px;
+    }
 `
 
 export const FulcrumText = styled.i`
     position:absolute;
-    top:50px;
+    top:0px;
     left:-30px;
     width:200px;
     font-weight:600;
@@ -99,7 +110,6 @@ export const ValDisplay = styled.div`
 export const InputForceValue = styled(ValDisplay)`
     left:10px;
     border-radius:50%;
-    // background-color:blue;
     border:solid;
 
     strong {
@@ -121,17 +131,25 @@ export const TotalLength = styled(Length)`
     position:relative;
 `
 
-export const D_eLength = styled(Length)`
-    top:190px;
-    left:60px;
+const dedHeight = 115
+export const DistanceExchangeDisplay = styled.div`
+    position:absolute;
+    bottom:30px;
+    right:30px;
+    height:${({a_2}) => dedHeight+a_2}px;
+    width:300px;
+    transition: all 1000ms;
     
-    svg {
-        position:absolute;
-        top:30px;
-        left:20px;
-    }
-`
+    border-style: none dashed dashed none;
+    z-index:0;
+    text-align:left;
 
-export const D_rLength = styled(D_eLength)`
-    left:380px;
+    i {
+        position:absolute;
+        bottom:-30px;
+        margin:0px;
+        width:100%;
+        // background-color:blue;
+    }
+    
 `

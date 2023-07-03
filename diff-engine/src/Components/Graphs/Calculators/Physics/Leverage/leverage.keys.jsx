@@ -6,6 +6,7 @@ import { uturnArrow } from "../../../SVG";
 import { InlineMath } from "react-katex";
 import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 import { ValueButtonPad,Label } from "./key.styles";
+import RotationController from "./RotationControls/rotation-panel.component";
 
 const LeverageKeys = (props) => {
 
@@ -95,6 +96,11 @@ const LeverageKeys = (props) => {
                 state={state}
                 setState={setState}
                 inputField={textFieldSelection}
+            />
+
+            <RotationController
+                state={state}
+                setState={setState}
             />
 
         </KeyBox>
