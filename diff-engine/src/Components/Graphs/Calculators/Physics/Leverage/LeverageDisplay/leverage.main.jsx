@@ -83,10 +83,11 @@ const LeverageDisplay = (props) => {
                 nRotation={nRotation}
             />
 
+            {fulcrumDistance < 100 && 
             <DistanceExchangeDisplay rotation={rotation} a_2={a_2}>
                 <i>travel distance = {distanceExchange.toFixed(1)} %</i>
                 <HeightArrow/>
-            </DistanceExchangeDisplay>
+            </DistanceExchangeDisplay>}
 
         </LeverageDisplayContainer>
     )

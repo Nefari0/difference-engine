@@ -48,6 +48,7 @@ const LeverBar = (props) => {
         >
 
             <Axis style={axisOrigin}>
+                {fulcrumDistance < 100 &&
                 <span
                     style={{
                         position:'absolute',
@@ -57,9 +58,10 @@ const LeverBar = (props) => {
                         transition:'all 1000ms'
                     }}
                 >
-                </span>
+                </span>}
             </Axis>
 
+            {fulcrumDistance < 100 &&
             <span
                 style={{
                     position:'absolute',
@@ -71,9 +73,9 @@ const LeverBar = (props) => {
                     transform:`rotate(${nRotation}deg)`
                 }}
             >
-            </span>
+            </span>}
     
-            <LeverBarText>
+            <LeverBarText condition={validate(d_e) === 'invalid'}>
                 <CustomMath>{`d_e = ${validate(d_e).toString()}`}</CustomMath>
                 <CustomMath>{`d_r = ${validate(d_r).toString()}`}</CustomMath>
             </LeverBarText>
@@ -103,7 +105,7 @@ const LeverBar = (props) => {
                 }
 
             </Fulcrum>
-            
+
         </LeverBarContainer>
     )
 }

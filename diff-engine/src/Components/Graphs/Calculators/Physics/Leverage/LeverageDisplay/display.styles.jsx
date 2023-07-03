@@ -44,6 +44,8 @@ export const LeverBarText = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+
+    ${({condition}) => condition && errorIndicator}
 `
 
 export const Fulcrum = styled.span`
