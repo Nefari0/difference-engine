@@ -6,7 +6,8 @@ import {
     LeverBarContainer,
     LeverBarText,
     FulcrumText,
-    widthOfLeverBar
+    widthOfLeverBar,
+    DistanceExchangeDisplay
 } from "./display.styles";
 
 import Triangle from "./Fulcrum/triangle";
@@ -34,8 +35,7 @@ const LeverBar = (props) => {
     const a_2 = Math.sqrt(hypotenuse_2**2 -b_2**2)
     
     // Output distance exchange
-    // const distanceExchange = a_2/(a_1/100)
-    // console.log(distanceExchange)
+    const distanceExchange = a_2/(a_1/100)
 
     const fulcrumParameters = {
         left:`${checkBoundary ? '0' : fulcrumDistance}%`,
@@ -112,7 +112,9 @@ const LeverBar = (props) => {
                     }
                 </FulcrumText>
             </Fulcrum>
-
+            {/* <DistanceExchangeDisplay rotation={rotation}>
+                travel distance + {distanceExchange.toFixed(1)} %
+            </DistanceExchangeDisplay> */}
         </LeverBarContainer>
     )
 }

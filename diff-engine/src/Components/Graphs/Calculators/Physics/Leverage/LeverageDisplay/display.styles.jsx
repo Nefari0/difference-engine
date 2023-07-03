@@ -128,3 +128,13 @@ export const TotalLength = styled(Length)`
     font-size:20px;
     position:relative;
 `
+
+export const DistanceExchangeDisplay = styled.h4`
+    position:absolute;
+    top:-200px;
+    left:50px;
+    height:30px;
+    width:300px;
+    background-color:yellow;
+    transform:rotate(${({rotation}) =>- rotation}deg);
+`
