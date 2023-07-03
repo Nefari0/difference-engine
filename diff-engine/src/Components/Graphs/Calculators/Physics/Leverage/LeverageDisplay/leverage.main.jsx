@@ -5,16 +5,9 @@ import {
     InputForceValue,
     OutputForceValue,
     TotalLength,
-    D_eLength,
-    D_rLength,
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
-
-import { 
-    LongLeftArrow,
-    LongRightArrow
- } from "../../../../SVG";
 
 import CustomMath from "../../../../KeyPad/CostomMath";
 
