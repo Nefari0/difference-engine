@@ -16,26 +16,17 @@ import Button from "../../../../KeyPad/Button";
 
 const LeverBar = (props) => {
 
-    const { d_r,state,fulcrumDistance,rotation,validate } = props
+    const {
+        d_r,
+        state,
+        fulcrumDistance,
+        rotation,
+        validate,
+        a_1,a_2,nRotation
+    } = props
     const { darkmode,setDisplayKeymap } = useContext(ViewContext)
     const { d_e } = state
     const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true || d_e === ''
-
-    var nRotation = parseFloat(rotation)*-1
-    const radValue = nRotation * (3.1415926/180) // Convert to Radians
-
-    // Input side
-    const hypotenuse_1 = (fulcrumDistance/100)*widthOfLeverBar
-    const b_1 = hypotenuse_1*Math.cos(radValue)
-    const a_1 = Math.sqrt(hypotenuse_1**2 -b_1**2)
-
-    // Output side
-    const hypotenuse_2 = widthOfLeverBar-hypotenuse_1
-    const b_2 = hypotenuse_2*Math.cos(radValue)
-    const a_2 = Math.sqrt(hypotenuse_2**2 -b_2**2)
-    
-    // Output distance exchange
-    const distanceExchange = a_2/(a_1/100)
 
     const fulcrumParameters = {
         left:`${checkBoundary ? '0' : fulcrumDistance}%`,
@@ -93,28 +84,26 @@ const LeverBar = (props) => {
                 condition={checkBoundary}
             >
 
+                {!checkBoundary ? 
                 <Triangle 
                     rotation={rotation} 
                     condition={checkBoundary}
                     darkmode={darkmode}
                 />
-
+                :
                 <FulcrumText condition={checkBoundary} >
-                    {checkBoundary ?
-                    `out of range or invalid parameter` : 'Fulcrum'}
-                    {checkBoundary &&
-                        <Button 
-                            buttonType={'textage'}
-                            onClick={() => setDisplayKeymap(true)}
-                            text={'?'}
-                            buttonClass={'help'}
-                        />
-                    }
+                    out of range or invalid parameter
+                    <Button 
+                        buttonType={'textage'}
+                        onClick={() => setDisplayKeymap(true)}
+                        text={'?'}
+                        buttonClass={'help'}
+                    />
                 </FulcrumText>
+                }
+
             </Fulcrum>
-            {/* <DistanceExchangeDisplay rotation={rotation}>
-                travel distance + {distanceExchange.toFixed(1)} %
-            </DistanceExchangeDisplay> */}
+            
         </LeverBarContainer>
     )
 }

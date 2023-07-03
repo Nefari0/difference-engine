@@ -34,6 +34,7 @@ export const LeverBarContainer = styled.div`
     text-align:left;
     transform:rotate(${({rotation}) => rotation}deg);
     transition: all 1000ms;
+    z-index:1;
 `
 
 export const LeverBarText = styled.div`
@@ -70,7 +71,7 @@ export const Fulcrum = styled.span`
 
 export const FulcrumText = styled.i`
     position:absolute;
-    top:50px;
+    top:0px;
     left:-30px;
     width:200px;
     font-weight:600;
@@ -107,7 +108,6 @@ export const ValDisplay = styled.div`
 export const InputForceValue = styled(ValDisplay)`
     left:10px;
     border-radius:50%;
-    // background-color:blue;
     border:solid;
 
     strong {
@@ -129,12 +129,25 @@ export const TotalLength = styled(Length)`
     position:relative;
 `
 
-export const DistanceExchangeDisplay = styled.h4`
+const dedHeight = 115
+export const DistanceExchangeDisplay = styled.div`
     position:absolute;
-    top:-200px;
-    left:50px;
-    height:30px;
+    bottom:30px;
+    right:30px;
+    height:${({a_2}) => dedHeight+a_2}px;
     width:300px;
-    background-color:yellow;
-    transform:rotate(${({rotation}) =>- rotation}deg);
+    transition: all 1000ms;
+    
+    border-style: none dashed dashed none;
+    z-index:0;
+    text-align:left;
+
+    i {
+        position:absolute;
+        bottom:-30px;
+        margin:0px;
+        width:100%;
+        // background-color:blue;
+    }
+    
 `

@@ -5,10 +5,12 @@ import {
     InputForceValue,
     OutputForceValue,
     TotalLength,
+    widthOfLeverBar,
+    DistanceExchangeDisplay
 } from "../LeverageDisplay/display.styles";
 
 import LeverBar from "./leverage.fulcrum";
-
+import HeightArrow from "./HeightArrow/height-arrow.component";
 import CustomMath from "../../../../KeyPad/CostomMath";
 
 const LeverageDisplay = (props) => {
@@ -21,6 +23,23 @@ const LeverageDisplay = (props) => {
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
 
     const [rotation,setRotation] = useState(-20)
+
+    // --- TRAVEL DISTANCES --- //
+    var nRotation = parseFloat(rotation)*-1
+    const radValue = nRotation * (3.1415926/180) // Convert to Radians
+    // Input side
+
+    const hypotenuse_1 = (fulcrumDistance/100)*widthOfLeverBar
+    const b_1 = hypotenuse_1*Math.cos(radValue)
+    const a_1 = Math.sqrt(hypotenuse_1**2 -b_1**2)
+
+    // Output side
+    const hypotenuse_2 = widthOfLeverBar-hypotenuse_1
+    const b_2 = hypotenuse_2*Math.cos(radValue)
+    const a_2 = Math.sqrt(hypotenuse_2**2 -b_2**2)
+    
+    // Output distance exchange
+    const distanceExchange = a_2/(a_1/100)
 
     const validate = (value) => { // Verifies values are numbers and within range
         var error = false
@@ -59,7 +78,15 @@ const LeverageDisplay = (props) => {
                 fulcrumDistance={fulcrumDistance}
                 state={state}
                 d_r={d_r}
+                a_1={a_1}
+                a_2={a_2}
+                nRotation={nRotation}
             />
+
+            <DistanceExchangeDisplay rotation={rotation} a_2={a_2}>
+                <i>travel distance = {distanceExchange.toFixed(1)} %</i>
+                <HeightArrow/>
+            </DistanceExchangeDisplay>
 
         </LeverageDisplayContainer>
     )
