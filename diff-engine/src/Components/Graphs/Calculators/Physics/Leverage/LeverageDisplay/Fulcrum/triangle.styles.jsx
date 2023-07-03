@@ -14,7 +14,7 @@ export const Wedge = styled.div`
     height: 0; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    // border-bottom: 60px solid red;
+    // border-bottom: 60px solid red; 
     border-bottom: 60px solid ${({darkmode}) => darkmode ? lightDark : darkLight};
 
     ${({condition}) => condition === true && hide}

@@ -40,12 +40,12 @@ export const LeverBarContainer = styled.div`
     }
 `
 
-export const LeverBarText = styled.i`
-    top:-30px;
-    left:90px;
-    position:absolute;
-    width:210px;
-`
+// export const LeverBarText = styled.i`
+//     top:-30px;
+//     left:90px;
+//     position:absolute;
+//     width:210px;
+// `
 
 export const Fulcrum = styled.span`
     top:24px;
