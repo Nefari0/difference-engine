@@ -101,7 +101,7 @@ const LightsOff = css`background-color:${lightDark};color:#fff; `
 const lightsOn = css`background-color:${midLight};color:#333;`
 
 const selectedButton = css`
-    border: 2px solid ${blue};
+    border: 4px solid ${blue};
 `
 export const BaseButton = styled.button`
     position:absolute;

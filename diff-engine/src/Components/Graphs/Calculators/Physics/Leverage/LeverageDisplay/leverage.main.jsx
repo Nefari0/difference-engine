@@ -1,4 +1,4 @@
-import { useContext,useState } from "react";
+import { useContext } from "react";
 import { ViewContext } from "../../../../../Context/view.context";
 import { 
     LeverageDisplayContainer,
@@ -15,14 +15,14 @@ import CustomMath from "../../../../KeyPad/CostomMath";
 
 const LeverageDisplay = (props) => {
     const { state } = props
-    const { F_e,d_e,leverTotalLength} = state
+    const { F_e,d_e,leverTotalLength,leverRotation} = state
     const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
     const resistance = ((d_r/d_e) * F_e).toFixed(2)
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
 
-    const [rotation,setRotation] = useState(-20)
+    const rotation = leverRotation
 
     // --- TRAVEL DISTANCES --- //
     var nRotation = parseFloat(rotation)*-1
