@@ -4,18 +4,19 @@ import {
     Fulcrum,
     Axis,
     LeverBarContainer,
-    // LeverBarText,
+    LeverBarText,
     FulcrumText,
     widthOfLeverBar
 } from "./display.styles";
 
 import Triangle from "./Fulcrum/triangle";
 import CustomMath from "../../../../KeyPad/CostomMath";
+import Button from "../../../../KeyPad/Button";
 
 const LeverBar = (props) => {
 
-    const { state,fulcrumDistance,rotation } = props
-    const { darkmode } = useContext(ViewContext)
+    const { d_r,state,fulcrumDistance,rotation,validate } = props
+    const { darkmode,setDisplayKeymap } = useContext(ViewContext)
     const { d_e } = state
     const checkBoundary = fulcrumDistance >= 100 || isNaN(fulcrumDistance) === true || d_e === ''
 
@@ -34,6 +35,7 @@ const LeverBar = (props) => {
     
     // Output distance exchange
     // const distanceExchange = a_2/(a_1/100)
+    // console.log(distanceExchange)
 
     const fulcrumParameters = {
         left:`${checkBoundary ? '0' : fulcrumDistance}%`,
@@ -55,7 +57,7 @@ const LeverBar = (props) => {
         >
 
             <Axis style={axisOrigin}>
-                <div 
+                <span
                     style={{
                         position:'absolute',
                         height:`${a_1}px`,
@@ -64,10 +66,10 @@ const LeverBar = (props) => {
                         transition:'all 1000ms'
                     }}
                 >
-                </div>
+                </span>
             </Axis>
 
-            <div 
+            <span
                 style={{
                     position:'absolute',
                     right:'0px',
@@ -78,22 +80,36 @@ const LeverBar = (props) => {
                     transform:`rotate(${nRotation}deg)`
                 }}
             >
-            </div>
+            </span>
+    
+            <LeverBarText>
+                <CustomMath>{`d_e = ${validate(d_e).toString()}`}</CustomMath>
+                <CustomMath>{`d_r = ${validate(d_r).toString()}`}</CustomMath>
+            </LeverBarText>
 
-            {/* <LeverBarText>
-                lever bar at {rotation} degrees
-            </LeverBarText> */}
-
-            <Fulcrum style={fulcrumParameters} condition={checkBoundary}>
+            <Fulcrum 
+                rotation={rotation}
+                style={fulcrumParameters} 
+                condition={checkBoundary}
+            >
 
                 <Triangle 
                     rotation={rotation} 
                     condition={checkBoundary}
+                    darkmode={darkmode}
                 />
 
                 <FulcrumText condition={checkBoundary} >
                     {checkBoundary ?
                     `out of range or invalid parameter` : 'Fulcrum'}
+                    {checkBoundary &&
+                        <Button 
+                            buttonType={'textage'}
+                            onClick={() => setDisplayKeymap(true)}
+                            text={'?'}
+                            buttonClass={'help'}
+                        />
+                    }
                 </FulcrumText>
             </Fulcrum>
 

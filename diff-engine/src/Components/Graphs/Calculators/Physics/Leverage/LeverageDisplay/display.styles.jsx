@@ -25,38 +25,46 @@ export const LeverageDisplayContainer = styled.section`
 export const LeverBarContainer = styled.div`
     position:absolute;
     width:${widthOfLeverBar}px;
-    height:1px;
     margin:auto;
     top:350px;
     left:50px;
+    height:1px;
     border-top: solid;
     border-color: red;
     text-align:left;
     transform:rotate(${({rotation}) => rotation}deg);
     transition: all 1000ms;
-
-    span {
-        transform:rotate(${({rotation}) => -rotation}deg);
-    }
 `
 
-// export const LeverBarText = styled.i`
-//     top:-30px;
-//     left:90px;
-//     position:absolute;
-//     width:210px;
-// `
+export const LeverBarText = styled.div`
+    top:-30px;
+    position:absolute;
+    width:400px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+`
 
 export const Fulcrum = styled.span`
     top:24px;
     border-left:solid;
     transition: all 1000ms;
     position:absolute;
+    transform:rotate(${({rotation}) => -rotation}deg);
+
+    span {transform:rotate(${({rotation}) => -rotation}deg);}
 
     svg {
         position:absolute;
         left:-11px;
         top:-5px;
+    }
+
+    button {
+        height:50px;
+        width:50px;
+        top:0px;
+        right:-60px;
     }
 `
 
@@ -119,19 +127,4 @@ export const Length = styled.i`
 export const TotalLength = styled(Length)`    
     font-size:20px;
     position:relative;
-`
-
-export const D_eLength = styled(Length)`
-    top:190px;
-    left:60px;
-    
-    svg {
-        position:absolute;
-        top:30px;
-        left:20px;
-    }
-`
-
-export const D_rLength = styled(D_eLength)`
-    left:380px;
 `

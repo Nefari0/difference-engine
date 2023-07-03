@@ -57,22 +57,15 @@ const LeverageDisplay = (props) => {
             <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}
             </TotalLength>
-            
-            <D_eLength condition={validate(d_e) === 'invalid'}>
-                <CustomMath>{`d_e = ${validate(d_e)}`}</CustomMath>
-                {LongRightArrow()}
-            </D_eLength>
 
-            <D_rLength>
-                <CustomMath>{`d_r = ${validate(d_r)}`}</CustomMath>
-                {LongLeftArrow()}
-            </D_rLength>
 
             {/* DISPLAY ANGLE GRAPH (FULCRUM) */}
             <LeverBar
+                validate={validate}
                 rotation={rotation}
                 fulcrumDistance={fulcrumDistance}
                 state={state}
+                d_r={d_r}
             />
 
         </LeverageDisplayContainer>

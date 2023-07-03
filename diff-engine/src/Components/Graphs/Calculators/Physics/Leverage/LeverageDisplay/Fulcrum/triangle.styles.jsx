@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../../../../../global.styles";
+
 const { lightDark,darkLight } = backgroundColors
 
 const hide = css`
@@ -14,8 +15,7 @@ export const Wedge = styled.div`
     height: 0; 
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    // border-bottom: 60px solid red; 
-    border-bottom: 60px solid ${({darkmode}) => darkmode ? lightDark : darkLight};
-
+    border-bottom: 60px solid ${({darkmode}) => !darkmode ? darkLight : lightDark};
+    
     ${({condition}) => condition === true && hide}
 `
