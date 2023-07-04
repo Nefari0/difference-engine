@@ -7,7 +7,7 @@ const RotationController = ({state,setState}) => {
     const rotationMap = rotations.map(el => {
         return (
             <Button
-                text={`${el}^\\circ`} 
+                text={`${Math.abs(-el)}^\\circ`} 
                 buttonClass={'tiny'}
                 buttonType={'image'}
                 onClick={() => setRotation(el)}
@@ -23,31 +23,6 @@ const RotationController = ({state,setState}) => {
     }
     return (
         <RotationControlContainer>
-            {/* <Button
-                text={'10^\\circ'} 
-                buttonClass={'tiny'}
-                buttonType={'image'}
-                onClick={() => setRotation(-10)}
-                selected={leverRotation === -10}
-            />
-            <Button
-               text={'15^\\circ'} 
-               buttonClass={'tiny'}
-               buttonType={'image'}
-               onClick={() => setRotation(-15)}
-            />
-            <Button   
-                text={'20^\\circ'} 
-                buttonType={'image'}
-                buttonClass={'tiny'}
-                onClick={() => setRotation(-20)}
-            />
-            <Button
-                text={'30^\\circ'} 
-                buttonType={'image'}
-                buttonClass={'tiny'}
-                onClick={() => setRotation(-30)}
-           /> */}
            {rotationMap}
         </RotationControlContainer>
     )
