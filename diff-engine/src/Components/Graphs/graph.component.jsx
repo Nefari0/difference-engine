@@ -1,5 +1,5 @@
 import { Enclosure } from "./graph.styles";
-import ViewSettings from "./ViewSettings/view-settings.component";
+import ViewSettings from "./viewSettings/view-settings.component";
 import InputField from "./KeyPad/InputField";
 import Document from "./Informaton/Help/info.component";
 import Alert from "./Informaton/Alert/alert.component";
@@ -22,7 +22,7 @@ import {
  
 import { useEffect, useState, useContext, useRef } from "react";
 import { ViewContext } from "../Context/view.context";
-import { checkDeviceSize } from "./ViewSettings/viewLogic";
+import { checkDeviceSize } from "./viewSettings/viewLogic";
 
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
