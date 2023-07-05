@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { backgroundColors } from "../../global.styles";
 
 const { midLight } = backgroundColors
+const width = 400
 
 const scale = 200
 
@@ -23,18 +24,14 @@ const scale = 200
 
 export const CogContainer = styled.div`
     position:relative;
-    top:-215px;
+    top:-205px;
     left:-200px;
     right:400px;
-    height:400px;
-    width:400px;
-    display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: center;
-	align-content: stretch;
-    // background-color:green;
+    height:${width}px;
+    width:${width}px;
+    background-color:green;
+    // transform-origin: center;
+    // transform: translate(50%, 50%) translate(0%, 0%);
 
     h1 {
         font-family: 'Silkscreen', cursive;
@@ -48,44 +45,51 @@ export const CogContainer = styled.div`
 
 export const ReferenceCircle = styled.div`
     // position:relative;
-    position:absolute;
-    width: ${({mathFunc}) => (mathFunc)}px;
-    height: ${({mathFunc}) => (mathFunc)}px;
-    left:${({mathFunc}) => -mathFunc/2}px;
-    top:${({mathFunc}) => -mathFunc/2}px;
+    // position:absolute;
+    width: ${({mathFunc}) => (25+mathFunc/2)}px;
+    height: ${({mathFunc}) => (25+mathFunc/2)}px;
     // border: solid;
-    border: solid .5px;
+    border: solid 5px;
     border-radius:50%;
-    // margin-left:auto;
-    // margin-right:auto;
-    // margin-top:${scale-180}px;
-`
-
-export const BaseCircle = styled(ReferenceCircle)
-
-export const TipCircle = styled.div`
-    // position:relative;
-    position:absolute;
-    background-color:purple;
-    width: ${({mathFunc}) => 25+(mathFunc*2)}px;
-    height: ${({mathFunc}) => 25+(mathFunc*2)}px;
-    left: ${({mathFunc}) => -25-(mathFunc)/2}px;
-    // left:-20px;
-    border: solid .5px;
-    border-radius:50%;
-    margin:auto;
     `
+    // left:${({mathFunc}) => -mathFunc/2}px;
+    // top:${({mathFunc}) => -mathFunc/2}px;
+
+// background-color:purple;
+// left: ${({mathFunc}) => -25-(mathFunc)/2}px;
+// width: ${({mathFunc}) => 25+(mathFunc*2)}px;
+// height: ${({mathFunc}) => 25+(mathFunc*2)}px;
+export const TipCircle = styled.div`
+position:absolute;
+    width: ${({tipDiameter}) =>(tipDiameter)/2}px;
+    height: ${({tipDiameter}) =>tipDiameter}px;
+    border: solid 1px;
+    border-radius:50%;
+    // margin:auto;
     // transform: scale(2.60);
+    transform: translate(-50%, -50%);
+    
+    `
+    // transform: translate(${({mathFunc}) => (width/2)+(-25-mathFunc/2) }px, 0%);
+    // transform: translate(50%, ${width/2}px) translate(0%, 0%);
+    // transform-origin: 10px 100px;
+
+export const BaseCircle = styled(TipCircle)`
+    width: ${({baseCircle}) => ((25+(baseCircle)/2)*.9396950000000001)}px;
+    height: ${({baseCircle}) => ((25+(baseCircle/2))*.9396950000000001)}px;
+    // background-color:blue;
+    border:solid 2px yellow;
+`
 
 export const CogOrigin = styled.div`
     height:1px;
     width:1px;
     z-index:1000;
-    background-color:blue;
+    // background-color:blue;
     border-radius:50%;
-    // right:${1*.9396950000000001}px;
-    // top:50%;
-    // top:30%;
+
     position:absolute;
     // transform: rotate(30deg);
+    // transform-origin: 500px 500px;
+    transform: translate(${width/2}px, ${width/2}px);
 `

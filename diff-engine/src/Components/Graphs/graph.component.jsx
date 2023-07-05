@@ -102,7 +102,7 @@ export default function Graph() {
 
     // --- Involute gear calculator --- //
     uMax:1,
-    refRadius:5,
+    // refRadius:5,
     involute:[],
 
     // --- Unit converter --- //
