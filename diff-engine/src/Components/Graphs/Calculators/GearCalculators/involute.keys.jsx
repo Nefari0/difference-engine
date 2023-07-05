@@ -17,7 +17,7 @@ const CogKeys = (props) => {
 
     const { mathFunc,uMax } = state
 
-    const {darkmode} = useContext(ViewContext)
+    const {darkmode,setAlert} = useContext(ViewContext)
 
     useEffect(() => {
         // gears()
@@ -112,10 +112,7 @@ const CogKeys = (props) => {
 
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
-        setState({
-            ...state,
-            [name]:message
-        })
+        setAlert(message)
     }
 
     return (
