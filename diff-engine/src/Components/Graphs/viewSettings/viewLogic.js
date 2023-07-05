@@ -74,5 +74,5 @@ export const verticalTranslation = (e,size,state,execute) => {
 
 export const resetSize = (e,execute) => {
   execute(e,'viewScale',.5)
-  localStorage.removeItem('screenWidth')
+  localStorage.setItem('screenWidth',.5)
 }

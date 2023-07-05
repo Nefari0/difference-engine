@@ -18,18 +18,11 @@ import {
 import {
   zoomIn,
   zoomOut,
-  RefreshButton,
-  backButton,
-  upArrow,
-  downArrow
 } from "../SVG";
 
 import {
-  checkDeviceSizem,
-  screenSizeExtraction,
   changeSize,
   resetSize,
-  verticalTranslation 
 } from "./viewLogic";
 
 const resetViewMessageText = 'If this app does not fit on your display, please click the "reset view" button.'
