@@ -6,6 +6,20 @@ import { useEffect,useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
+import { cogScale } from "./involute.display";
+// import { parser } from "mathjs";
+// var par = parser()
+
+// export const max = 500
+// export const min = -500
+// const circleVector = []
+// const fragment = 2*Math.PI/max
+// var iteration = 0
+//   for (let i = 0; i < (max*2); i++) {
+//   iteration += fragment
+//   circleVector.push(iteration)
+// }
+
 
 const CogKeys = (props) => {
 
@@ -29,28 +43,41 @@ const CogKeys = (props) => {
         })
     },[])
 
+    const z = mathFunc;
+    const ref_dia1 = z; // reference diameter
+    const ref_radi = ref_dia1 / 2;
+    const tip_dia1 = ref_dia1 + 2;
+    const tip_radi = tip_dia1 / 2;
+    const base_dia1 = ref_dia1 * 0.9396950000000001;
+    const base_circ = base_dia1 * 3.1415926;
+
+    const base_radi = base_dia1 / 2;
+    const root_diameter = ref_dia1 - 2.5;
+    const root_radi = root_diameter / 2;
+
     const gears = () => {
-        const {uMax,refRadius} = state
-        var uStep = 100
-        var uMin = 0
-        var u = []
-        for (let i = 0; i < uStep; i++) {
-            u.push(uMin)
-            // uMin += 2*Math.PI/uStep
-            uMin += 1/uStep
-            console.log('iteration',uMax/uStep)
+        const u1 = [];
+        const uMin = 0;
+        const uMax = 30;
+        const uStep = 50;
+        for (let i = uMin; i < uMax; i++) {
+        u1.push(i / uStep);
         }
+
     
         var invCoords = []
-        for (let i = 0; i<uMax; i++) {
-          var x = mathFunc * (((Math.cos(u[i])) + u[i] * (Math.sin(u[i]))))
-          var y = mathFunc * (((Math.sin(u[i])) - u[i] * (Math.cos(u[i]))))
-        // var x = `100*cos(u) + u * sin(u)`
-        // var y =`100 * sin(u) - u * cos(u)`
-        // par.set('u',u[i])
-        // invCoords.push([par.evaluate(x),par.evaluate(y)])
-        invCoords.push([x-mathFunc,y])
-        }
+        const xVector = [];
+        const yVector = [];
+
+        u1.forEach((el, i) => {
+            xVector.push(cogScale*((base_dia1 / 2) * (Math.cos(u1[i]) + u1[i] * Math.sin(u1[i]))));
+            yVector.push(cogScale*((base_dia1 / 2) * (Math.sin(u1[i]) - u1[i] * Math.cos(u1[i]))));
+        });
+    
+        xVector.forEach((el,i) => {
+            invCoords.push([xVector[i],yVector[i]])
+        })
+        console.log(invCoords,'end of coords')
         setState({
           ...state,
           involute:invCoords
@@ -118,17 +145,18 @@ const CogKeys = (props) => {
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}} darkmode={darkmode}>
 
-                <InputField
-                    type='text'
-                    onChange={(e) => inputHandler(e)}
-                    value={mathFunc}
-                    name="mathFunc"
-                    inputClass={'small'}
-                    i={'Number of gear teeth:'}
-                />
+            <InputField
+                type='text'
+                onChange={(e) => inputHandler(e)}
+                value={mathFunc}
+                name="mathFunc"
+                inputClass={'small'}
+                i={'Number of gear teeth:'}
+            />
 
             <Button 
-                onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
+                // onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
+                onClick={() => gears()}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
             />
