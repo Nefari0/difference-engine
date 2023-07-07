@@ -30,6 +30,7 @@ const InputField = (props) => {
         i,
         mathRendering,
         executionMethod,
+        iStyle,
         ...otherProps
     } = props
     const CustomInput = getInputClass(inputClass);
@@ -40,7 +41,7 @@ const InputField = (props) => {
             inputClass={inputClass}
             onSubmit={(e) => executionMethod(value,null,e)}
         >
-            {i && <i style={{color:`${darkmode?'#fff':'#333'}`,marginRight:'4px'}}>{i}</i>}
+            {i && <i style={iStyle ? iStyle : {color:`${darkmode?'#fff':'#333'}`,marginRight:'4px'}}>{i}</i>}
             {mathRendering &&  <CustomMath>{mathRendering}</CustomMath>}
             <CustomInput
                 darkmode={darkmode}

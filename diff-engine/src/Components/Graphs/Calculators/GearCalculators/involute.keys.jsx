@@ -1,5 +1,5 @@
 import { KeyBox } from "../../KeyPad/input.styles";
-import { backButton,ExecuteButton } from "../../SVG";
+import { backButton,ExecuteButton,CopyIcon } from "../../SVG";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
 import { useEffect,useContext,useState } from "react";
@@ -13,10 +13,10 @@ const CogKeys = (props) => {
     const {state,
         setState,
         inputHandler,
-        close
+        close,
     } = props
-    const { mathFunc,uMax } = state
-    const {darkmode,setAlert} = useContext(ViewContext)
+    const { mathFunc,uMax,involute } = state
+    const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
 
     useEffect(() => {
         // gears()
@@ -30,15 +30,15 @@ const CogKeys = (props) => {
 
     const z = mathFunc;
     const ref_dia1 = z; // reference diameter
-    const ref_radi = ref_dia1 / 2;
-    const tip_dia1 = ref_dia1 + 2;
-    const tip_radi = tip_dia1 / 2;
+    // const ref_radi = ref_dia1 / 2;
+    // const tip_dia1 = ref_dia1 + 2;
+    // const tip_radi = tip_dia1 / 2;
     const base_dia1 = ref_dia1 * 0.9396950000000001;
-    const base_circ = base_dia1 * 3.1415926;
+    // const base_circ = base_dia1 * 3.1415926;
 
-    const base_radi = base_dia1 / 2;
-    const root_diameter = ref_dia1 - 2.5;
-    const root_radi = root_diameter / 2;
+    // const base_radi = base_dia1 / 2;
+    // const root_diameter = ref_dia1 - 2.5;
+    // const root_radi = root_diameter / 2;
 
     const gears = (increment) => {
         const u1 = [];
@@ -69,6 +69,7 @@ const CogKeys = (props) => {
           involute:invCoords,
           uMax:newUMaxValue
         })
+        // console.log(invCoords)
       }
 
     const pitch = 360 / mathFunc
@@ -76,6 +77,7 @@ const CogKeys = (props) => {
     const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
     const copyPitch = `${pitch} saved to clipbaord`
 
+    // -- THE uMax parameter must equal 1 for this script to work in the python script below
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
     '\nimport math as math' +
@@ -125,8 +127,18 @@ const CogKeys = (props) => {
     '\ncreateMeshFromData( "Profile", [0, 0, 0], coords, edges1, [] )'
 
     const copyVal = (val,name,message) => {
+        // console.log('value',val)
         navigator.clipboard.writeText(val)
         setAlert(message)
+    }
+
+    const iStyle = {
+        width:'300px',
+        height:'50px',
+        // backgroundColor:'blue',
+        fontSize:'30px',
+        position:'absolute',
+        marginLeft:'100px'
     }
 
     return (
@@ -138,7 +150,8 @@ const CogKeys = (props) => {
                 value={mathFunc}
                 name="mathFunc"
                 inputClass={'small'}
-                i={'Number of gear teeth:'}
+                i={'Number of gear teeth'}
+                iStyle={iStyle}
             />
 
             <Button 
@@ -166,7 +179,17 @@ const CogKeys = (props) => {
                 text={backButton()}
             />
 
-                <h2
+            
+            <Button
+                styles={{right:'10px',top:`${250}px`,zIndex:'1'}}
+                buttonType={'image'}
+                onClick={() => setDisplayKeymap(true)}
+                darkmode={darkmode}
+                text={'?'}
+                buttonClass={'help'}
+            />
+
+                {/* <h2
                     style={{
                         position:'absolute',
                         left:'0px',
@@ -174,14 +197,39 @@ const CogKeys = (props) => {
                     }}
                 >
                     Pitch: <InlineMath math={`${pitch}^\\circ`} />
-                </h2>
+                </h2> */}
 
-                <Button
-                    styles={{top:'210px',left:'0px',width:'120px'}}
+                {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
+                    styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
+                    // onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
+                    onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
+                    text={`Generate Profile`}
+                    buttonClass={'large'}
+                    // buttonType={'image'}
+                    p={'Save profile generator script'}
+                />}
+
+                {/* - THIS BLOCK TESTS COPYING THE INVOLUTE ARRAY */}
+                {/* {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
+                    styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
+                    onClick={() => copyVal(involute,'coordinates',"inv coords")}
+                    // onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
+                    text={`Generate Profile`}
+                    buttonClass={'large'}
+                    // buttonType={'image'}
+                    p={'Save profile generator script'}
+                />} */}
+
+                
+
+                {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
+                    styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
                     onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
-                    text={'copy pitch'}
-                    buttonClass={'tiny'}
-                />
+                    text={`pitch = ${pitch}^\\circ`}
+                    // buttonClass={'tiny'}
+                    buttonType={'image'}
+                    p={'copy pitch'}
+                />}
 
                 <a
                     style={{
@@ -216,3 +264,6 @@ const CogKeys = (props) => {
 }
 
 export default CogKeys
+
+// For testing in Blender
+// verts1 = [[751.7560000000001,0,0],[751.906336165214,0.0020046024805073152,0],[752.3571642594625,0.016034895486146738,0],[753.1079431988271,0.05410694898958918,0],[754.1577715775912,0.12821759763082965,0],[755.5053882692227,0.2503348374781843,0],[757.1491732672819,0.43238824009377863,0],[759.0871487657762,0.6862593896568256,0],[761.3169804783677,1.0237723488866397,0],[763.8359791956817,1.4566841594910156,0],[766.641102579855,1.9966753828479478,0],[769.7289571953108,2.655340686606693,0],[773.0958007746283,3.4441794828700023,0],[776.7375447182312,4.374586623591773,0],[780.6497568265017,5.457843158793367,0],[784.8276642627796,6.705107163169274,0],[789.2661567455932,8.127404636615523,0],[793.959789968327,9.735620484174742,0],[798.902789244411,11.540489580849886,0],[804.089053375985,13.552587926693295,0],[809.5121587438656,15.782323897528691,0],[815.1653636165247,18.23992959661401,0],[821.0416126756553,20.935452312497414,0],[827.1335417557856,23.878746088263874,0],[833.4334827952778,27.079463407308545,0],[839.9334689959296,30.547047000711704,0]]
