@@ -2,24 +2,11 @@ import { KeyBox } from "../../KeyPad/input.styles";
 import { backButton,ExecuteButton } from "../../SVG";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
-import { useEffect,useContext } from "react";
+import { useEffect,useContext,useState } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
 import { cogScale } from "./involute.display";
-// import { parser } from "mathjs";
-// var par = parser()
-
-// export const max = 500
-// export const min = -500
-// const circleVector = []
-// const fragment = 2*Math.PI/max
-// var iteration = 0
-//   for (let i = 0; i < (max*2); i++) {
-//   iteration += fragment
-//   circleVector.push(iteration)
-// }
-
 
 const CogKeys = (props) => {
 
@@ -28,9 +15,7 @@ const CogKeys = (props) => {
         inputHandler,
         close
     } = props
-
     const { mathFunc,uMax } = state
-
     const {darkmode,setAlert} = useContext(ViewContext)
 
     useEffect(() => {
@@ -39,7 +24,7 @@ const CogKeys = (props) => {
             ...state,
             mathFunc:`40`,
             displayInput:false,
-            polars:true
+            polars:true,
         })
     },[])
 
@@ -55,12 +40,13 @@ const CogKeys = (props) => {
     const root_diameter = ref_dia1 - 2.5;
     const root_radi = root_diameter / 2;
 
-    const gears = () => {
+    const gears = (increment) => {
         const u1 = [];
         const uMin = 0;
-        const uMax = 30;
+        // const uMax = 30;
+        const newUMaxValue = uMax+increment
         const uStep = 50;
-        for (let i = uMin; i < uMax; i++) {
+        for (let i = uMin; i < newUMaxValue; i++) {
         u1.push(i / uStep);
         }
 
@@ -77,10 +63,11 @@ const CogKeys = (props) => {
         xVector.forEach((el,i) => {
             invCoords.push([xVector[i],yVector[i]])
         })
-        console.log(invCoords,'end of coords')
+
         setState({
           ...state,
-          involute:invCoords
+          involute:invCoords,
+          uMax:newUMaxValue
         })
       }
 
@@ -156,9 +143,21 @@ const CogKeys = (props) => {
 
             <Button 
                 // onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
-                onClick={() => gears()}
+                onClick={() => gears(0)}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
+            />
+
+            <Button
+                text={'+'}
+                style={{top:'90px',right:'90px',fontSize:'30px'}}
+                onClick={() => {gears(1)}}
+            />
+
+            <Button
+                text={'-'}
+                style={{top:'170px',right:'90px',fontSize:'30px'}}
+                onClick={() => {gears(-1)}}
             />
 
             <Button 
