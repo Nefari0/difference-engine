@@ -154,8 +154,7 @@ const CogKeys = (props) => {
     '\n# Update mesh with new data' +
     '\n    me.update()' +
 
-    '\n# This script will NOT work if you do not replace the "#...PASTE COORDINATES HERE..." with the coordinate array you want to plot.' +
-    `\nverts1 = ${blenderCoords} #...PASTE COORDINATES HERE...` +
+    `\nverts1 = ${blenderCoords}` +
 
     '\nedges1 = [[len(verts1) - 1, 0]]' +
     '\nfor i in range( 0, len(verts1)-1):' +
@@ -164,8 +163,21 @@ const CogKeys = (props) => {
 
     `\n# Thickness circle#` +
     `\nbpy.ops.mesh.primitive_circle_add(radius=1.57,enter_editmode=False, location=(ref_radius*math.cos(0), math.sin(rad_difference), 0))` +
+    `\nbpy.data.objects['Circle'].name = 'THICKNESS CIRCLE'` +
 
-    `\ncreateMeshFromData( 'Profile', [0, 0, 0], verts1, edges1, [] )`
+    `\n# Reference circle` +
+    `\nbpy.ops.mesh.primitive_circle_add(radius=z/2,enter_editmode=False, location=(0, 0, 0))` +
+    `\nbpy.data.objects['Circle'].name = 'REFERENCE CIRCLE'` +
+    `\nbpy.ops.object.select_all(action='DESELECT')` +
+
+    `\n# Generating Profile` +
+    `\ncreateMeshFromData( 'Profile', [0, 0, 0], verts1, edges1, [] )` +
+    `\nbpy.data.objects['Profile'].select_set(True)` +
+
+
+    `\nbpy.context.view_layer.objects.active = bpy.data.objects['Profile']` +
+    `\nbpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"linked":False, "mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(0, 0, 0), "orient_type":'GLOBAL', "orient_matrix":((1, 0, 0), (0, 1, 0), (0, 0, 1)), "orient_matrix_type":'GLOBAL', "constraint_axis":(False, False, False), "mirror":True, "use_proportional_edit":False, "proportional_edit_falloff":'SMOOTH', "proportional_size":1, "use_proportional_connected":False, "use_proportional_projected":False, "snap":False, "snap_target":'CLOSEST', "snap_point":(0, 0, 0), "snap_align":False, "snap_normal":(0, 0, 0), "gpencil_strokes":False, "cursor_transform":False, "texture_space":False, "remove_on_cancel":False, "release_confirm":False, "use_accurate":False})` +
+    `\nbpy.ops.transform.rotate(value=3.14159, orient_axis='X')`
 
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
