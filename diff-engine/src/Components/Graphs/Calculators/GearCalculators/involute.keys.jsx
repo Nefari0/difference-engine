@@ -132,6 +132,11 @@ const CogKeys = (props) => {
     const gearScript2 = '\nimport bpy'+
     '\nfrom math import *' +
     '\nimport math' +
+
+    `\nz = ${mathFunc} # Number of teeth` +
+    `\nref_radius = z/2` +
+    `\nbase_radius = ref_radius*.9396950000000001` +    
+    `\nrad_difference = (ref_radius-base_radius)*(.25)` +
     
     '\ndef createMeshFromData(name, origin, verts, edges, faces):' +
     '\n    # Create mesh and object' +
@@ -152,13 +157,13 @@ const CogKeys = (props) => {
     '\n# This script will NOT work if you do not replace the "#...PASTE COORDINATES HERE..." with the coordinate array you want to plot.' +
     `\nverts1 = ${blenderCoords} #...PASTE COORDINATES HERE...` +
 
-    '\n# Adds z coordinate.' +
-    '\n#print(verts1)' +
-
     '\nedges1 = [[len(verts1) - 1, 0]]' +
     '\nfor i in range( 0, len(verts1)-1):' +
     '\n    edges1.append( [i, i+1] )' +
     `\ndel edges1[0]` +
+
+    `\n# Thickness circle#` +
+    `\nbpy.ops.mesh.primitive_circle_add(radius=1.57,enter_editmode=False, location=(ref_radius*math.cos(0), math.sin(rad_difference), 0))` +
 
     `\ncreateMeshFromData( 'Profile', [0, 0, 0], verts1, edges1, [] )`
 
