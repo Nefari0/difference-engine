@@ -1,5 +1,6 @@
-import { KeyBox } from "../../KeyPad/input.styles";
 import { backButton,ExecuteButton,CopyIcon } from "../../SVG";
+// import { Py1, pyScript } from './gear.py1'
+import { KeyBox } from "../../KeyPad/input.styles";
 import Button from "../../KeyPad/Button";
 import InputField from "../../KeyPad/InputField";
 import { useEffect,useContext,useState } from "react";
@@ -15,7 +16,7 @@ const CogKeys = (props) => {
         inputHandler,
         close,
     } = props
-    const { mathFunc,uMax,involute } = state
+    const { mathFunc,uMax,blenderCoords } = state
     const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
 
     useEffect(() => {
@@ -39,7 +40,7 @@ const CogKeys = (props) => {
     // const base_radi = base_dia1 / 2;
     // const root_diameter = ref_dia1 - 2.5;
     // const root_radi = root_diameter / 2;
-
+    // console.log(blenderCoords)
     const gears = (increment) => {
         const u1 = [];
         const uMin = 0;
@@ -47,11 +48,12 @@ const CogKeys = (props) => {
         const newUMaxValue = uMax+increment
         const uStep = 50;
         for (let i = uMin; i < newUMaxValue; i++) {
-        u1.push(i / uStep);
+            u1.push(i / uStep);
         }
 
     
-        var invCoords = []
+        var invCoords = [] // For displaying in this app
+        var exportCoords = [] // Scaled down for blender
         const xVector = [];
         const yVector = [];
 
@@ -59,17 +61,18 @@ const CogKeys = (props) => {
             xVector.push(cogScale*((base_dia1 / 2) * (Math.cos(u1[i]) + u1[i] * Math.sin(u1[i]))));
             yVector.push(cogScale*((base_dia1 / 2) * (Math.sin(u1[i]) - u1[i] * Math.cos(u1[i]))));
         });
-    
-        xVector.forEach((el,i) => {
+
+        xVector.map((el,i) => {
             invCoords.push([xVector[i],yVector[i]])
+            exportCoords.push([xVector[i]/cogScale,yVector[i]/cogScale,0])
         })
 
         setState({
-          ...state,
-          involute:invCoords,
-          uMax:newUMaxValue
+            ...state,
+            involute:invCoords,
+            blenderCoords:JSON.stringify(exportCoords),
+            uMax:newUMaxValue
         })
-        // console.log(invCoords)
       }
 
     const pitch = 360 / mathFunc
@@ -126,8 +129,40 @@ const CogKeys = (props) => {
     '\n    edges1.append( [i, i+1] )' +
     '\ncreateMeshFromData( "Profile", [0, 0, 0], coords, edges1, [] )'
 
+    const gearScript2 = '\nimport bpy'+
+    '\nfrom math import *' +
+    '\nimport math' +
+    
+    '\ndef createMeshFromData(name, origin, verts, edges, faces):' +
+    '\n    # Create mesh and object' +
+    `\n    me = bpy.data.meshes.new(name+'Mesh')` +
+    '\n    ob = bpy.data.objects.new(name, me)' +
+    '\n    ob.location = origin' +
+    '\n    ob.show_name = False' +
+    '\n    # Link object to scene and make active' +
+    '\n    bpy.context.collection.objects.link(ob)' +
+    '\n    ob.select_set(True)' +
+    
+    '\n# Create mesh from given verts, faces.' +
+    '\n    me.from_pydata(verts, edges, faces)' +
+
+    '\n# Update mesh with new data' +
+    '\n    me.update()' +
+
+    '\n# This script will NOT work if you do not replace the "#...PASTE COORDINATES HERE..." with the coordinate array you want to plot.' +
+    `\nverts1 = ${blenderCoords} #...PASTE COORDINATES HERE...` +
+
+    '\n# Adds z coordinate.' +
+    '\n#print(verts1)' +
+
+    '\nedges1 = [[len(verts1) - 1, 0]]' +
+    '\nfor i in range( 0, len(verts1)-1):' +
+    '\n    edges1.append( [i, i+1] )' +
+    `\ndel edges1[0]` +
+
+    `\ncreateMeshFromData( 'Profile', [0, 0, 0], verts1, edges1, [] )`
+
     const copyVal = (val,name,message) => {
-        // console.log('value',val)
         navigator.clipboard.writeText(val)
         setAlert(message)
     }
@@ -155,7 +190,6 @@ const CogKeys = (props) => {
             />
 
             <Button 
-                // onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
                 onClick={() => gears(0)}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
@@ -199,13 +233,22 @@ const CogKeys = (props) => {
                     Pitch: <InlineMath math={`${pitch}^\\circ`} />
                 </h2> */}
 
-                {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
+                {/* ORIGINAL */}
+                {/* {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
                     styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
                     // onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
                     onClick={() => copyVal(gearScript,'alert',copyScriptMessage)}
                     text={`Generate Profile`}
                     buttonClass={'large'}
                     // buttonType={'image'}
+                    p={'Save profile generator script'}
+                />} */}
+                {/* FROM ABOVE */}
+                {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
+                    styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
+                    onClick={() => copyVal(gearScript2,'alert','no message added')}
+                    text={`Generate Profile`}
+                    buttonClass={'large'}
                     p={'Save profile generator script'}
                 />}
 

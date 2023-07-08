@@ -104,6 +104,7 @@ export default function Graph() {
     uMax:26,
     // refRadius:5,
     involute:[],
+    exportCoords:[],
 
     // --- Unit converter --- //
     units:'in',
