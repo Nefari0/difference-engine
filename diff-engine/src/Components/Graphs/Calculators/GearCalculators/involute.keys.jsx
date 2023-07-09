@@ -7,7 +7,7 @@ import { useEffect,useContext,useState } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
-import { cogScale } from "./involute.display";
+import { cogScale } from "./GearDisplay/display.component";
 
 const CogKeys = (props) => {
 

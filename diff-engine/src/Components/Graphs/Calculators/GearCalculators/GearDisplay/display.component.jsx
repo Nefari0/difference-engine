@@ -1,5 +1,5 @@
 import { useContext,useEffect } from "react"
-import { ViewContext } from "../../../Context/view.context"
+import { ViewContext } from "../../../../Context/view.context"
 import { 
     CogOrigin,
     CogContainer,
@@ -7,7 +7,7 @@ import {
     TipCircle,
     BaseCircle,
     ShiftWrapper
-} from "./involute.styles"
+} from "./display.styles"
 export const cogScale = 40
 
 const CogDisplay = ({state}) => {
