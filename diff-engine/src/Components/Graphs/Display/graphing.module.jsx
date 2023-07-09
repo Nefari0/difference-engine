@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ViewContext } from "../../Context/view.context";
 import { Origin,ZeroMarker } from "./display.styles";
-import CogDisplay from "../Calculators/GearCalculators/involute.display";
+import CogDisplay from "../Calculators/GearCalculators/GearDisplay/display.component";
 import ParabolaDisplay from "../Plots/Parabolas/parab.display";
 import UnitCirclDisplay from "../Calculators/Trig/AngleConversion/display.component";
 import VectorMap from "./Plotting/plots.component";

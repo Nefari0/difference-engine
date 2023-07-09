@@ -101,9 +101,10 @@ export default function Graph() {
     history:[],
 
     // --- Involute gear calculator --- //
-    uMax:1,
-    refRadius:5,
+    uMax:26,
+    // refRadius:5,
     involute:[],
+    exportCoords:[],
 
     // --- Unit converter --- //
     units:'in',
