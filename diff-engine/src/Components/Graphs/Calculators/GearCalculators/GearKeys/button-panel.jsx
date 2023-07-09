@@ -18,10 +18,15 @@ const AdjustmentPanel = (props) => {
                     borderRadius:'20px 20px 20px 0px',
                     top:'-200px',
                     left:'-50px',
-                    width:'90px'
+                    width:'90px',
+                    boxShadow: 'none',
+                    opacity:'.5',
+                    fontSize:'12px',
+                    fontWeight:'800',
+                    color:'black'
                 }}
             >
-                Dots should touch purple line
+                Dots should extend to, but not beyond the purple line
             </InfoMessage>
 
             <Pointer darkmode={darkmode}>

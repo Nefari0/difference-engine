@@ -28,7 +28,7 @@ export const TipCircle = styled.div`
     height: ${({tipDiameter}) =>(tipDiameter)}px;
     position:absolute;
     transform: translate(-50%, -50%);
-    border: solid 2px purple;
+    border: solid 3px purple;
     border-radius:50%;
 `
 

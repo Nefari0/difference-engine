@@ -14,7 +14,7 @@ const {
     red,blue
 } = backgroundColors
 
-const messageBox = css`
+export const messageBox = css`
     position:absolute;
     background-color:#fff;
     transition: all 500ms;

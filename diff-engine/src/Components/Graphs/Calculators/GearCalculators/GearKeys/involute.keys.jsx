@@ -3,12 +3,13 @@ import { Py1 } from '../gear.py1'
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
-import { useEffect,useContext,useState } from "react";
+import { useEffect,useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import AdjustmentPanel from "./button-panel";
 // import { InlineMath } from 'react-katex';
 import { cogScale } from "../GearDisplay/display.component";
+import { InfoMessage } from "../../../KeyPad/input.styles";
 
 const CogKeys = (props) => {
 
@@ -30,7 +31,7 @@ const CogKeys = (props) => {
         })
     },[])
 
-    const z = mathFunc;
+    const z = parseInt(mathFunc);
     const ref_dia1 = z; // reference diameter
     // const ref_radi = ref_dia1 / 2;
     // const tip_dia1 = ref_dia1 + 2;
@@ -42,6 +43,12 @@ const CogKeys = (props) => {
     // const root_diameter = ref_dia1 - 2.5;
     // const root_radi = root_diameter / 2;
     // console.log(blenderCoords)
+
+    const pitch = 360 / z
+
+    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
+    const copyPitch = `${pitch} saved to clipbaord`
+
     const gears = (increment) => {
         const u1 = [];
         const uMin = 0;
@@ -76,10 +83,13 @@ const CogKeys = (props) => {
         })
       }
 
-    const pitch = 360 / mathFunc
-
-    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
-    const copyPitch = `${pitch} saved to clipbaord`
+    const requirements = () => {
+        if (pitch === 'Infinity' || parseFloat(mathFunc) < 10 || parseInt(mathFunc) >= 200 || mathFunc === '') {
+            return false
+        } else {
+            return true
+        }
+    }
 
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
@@ -140,21 +150,30 @@ const CogKeys = (props) => {
                 buttonClass={'help'}
             />
 
-            {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
-                styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
-                onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
-                text={`Generate Profile`}
-                buttonClass={'large'}
-                p={'Save profile generator script'}
-            />}
-
-            {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
-                styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
-                onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
-                text={`pitch = ${pitch}^\\circ`}
-                buttonType={'image'}
-                p={'copy pitch'}
-            />}
+            {!requirements() ?
+                <InfoMessage
+                    style={{width:'200px',left:'100px'}}
+                >
+                    There should be 10 to 200 gear teeth
+                </InfoMessage>
+                :
+                <>
+                    <Button
+                        styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
+                        onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
+                        text={`pitch = ${pitch}^\\circ`}
+                        buttonType={'image'}
+                        p={'copy pitch'}
+                    />
+                    <Button
+                        styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
+                        onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
+                        text={`Generate Profile`}
+                        buttonClass={'large'}
+                        p={'Save profile generator script'}
+                    />
+                </>
+            }
 
             <a
                 style={{
