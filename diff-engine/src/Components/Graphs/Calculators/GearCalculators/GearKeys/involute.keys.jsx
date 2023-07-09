@@ -31,6 +31,8 @@ const CogKeys = (props) => {
         })
     },[])
 
+    const minGearTeeth = 10
+    const maxGearTeeth = 100
     const z = parseInt(mathFunc);
     const ref_dia1 = z; // reference diameter
     // const ref_radi = ref_dia1 / 2;
@@ -45,7 +47,7 @@ const CogKeys = (props) => {
     // console.log(blenderCoords)
     const pitch = 360 / z
     // --- Conditions for gear parameters --- //
-    const conditions = pitch === 'Infinity' || isNaN(pitch) === true || parseFloat(z) < 10 || parseFloat(z) >= 200
+    const conditions = pitch === 'Infinity' || isNaN(pitch) === true || parseFloat(z) < minGearTeeth || parseFloat(z) > maxGearTeeth
 
     const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
     const copyPitch = `${pitch} saved to clipbaord`
@@ -82,7 +84,7 @@ const CogKeys = (props) => {
             blenderCoords:JSON.stringify(exportCoords),
             uMax:newUMaxValue
         })
-      }
+    }
 
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
@@ -141,7 +143,7 @@ const CogKeys = (props) => {
                 <InfoMessage
                     style={{width:'200px',left:'100px'}}
                 >
-                    There should be 10 to 200 gear teeth
+                    {`There should be ${minGearTeeth} to ${maxGearTeeth} gear teeth`}
                 </InfoMessage>
                 :
                 <>
@@ -152,17 +154,18 @@ const CogKeys = (props) => {
                         buttonType={'image'}
                         p={'copy pitch'}
                     />
-                    <Button
+                    {blenderCoords.length > 0 && <Button
                         styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
                         onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
                         text={`Generate Profile`}
                         buttonClass={'large'}
                         p={'Save profile generator script'}
-                    />
+                    />}
                     <Button 
                         onClick={() => gears(0)}
                         style={{right:'10px',top:'90px'}}
                         text={ExecuteButton()}
+                        p={'Run calculation'}
                     />
                 </>
             }

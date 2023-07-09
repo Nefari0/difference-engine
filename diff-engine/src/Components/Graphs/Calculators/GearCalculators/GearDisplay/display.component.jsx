@@ -40,7 +40,13 @@ const CogDisplay = ({state}) => {
     return(
         <CogContainer darkmode={darkmode}>
             <CogOrigin mathFunc={mathFunc}>
-            <GearTitle darkmode={darkmode}>Gear calculator</GearTitle>
+            <GearTitle darkmode={darkmode}>
+                <h1>Gear calculator</h1>
+                <a
+                    href="https://www.blender.org/"
+                    target="_blank"
+                >For use in Blender 2.8+</a>
+            </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
                     {mappedGears}
                     <TipCircle tipDiameter={tipDiameter}></TipCircle>

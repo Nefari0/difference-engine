@@ -59,12 +59,21 @@ const titleDarkBackground = css`
     ${basicDark}
     background-color:${dark};
 `
-export const GearTitle = styled.h1`
+export const GearTitle = styled.section`
 ${({darkmode}) => darkmode ? titleDarkBackground : basicLight}
     position:absolute;
     left:-250px;
-    top:-290px;
+    top:-260px;
     width:495px;
     z-index:1000000;
     padding-top:20px;
+    height:70px;
+
+    h1 {
+        margin:0px;
+    }
+
+    a {
+        color:${({darkmode}) => darkmode ? 'white' : 'blue'};
+    }
 `
