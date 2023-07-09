@@ -1,7 +1,8 @@
-import styled from "styled-components";
-import { backgroundColors } from "../../../global.styles";
+import styled, { css } from "styled-components";
+import { backgroundColors, basicDark } from "../../../global.styles";
+import { basicLight } from "../../../global.styles";
 
-const { midLight } = backgroundColors
+const { dark } = backgroundColors
 const width = 400
 
 export const CogContainer = styled.div`
@@ -11,15 +12,6 @@ export const CogContainer = styled.div`
     right:400px;
     height:${width}px;
     width:${width}px;
-
-    h1 {
-        font-family: 'Silkscreen', cursive;
-        font-weight:400;
-    }
-
-    a {
-        color: ${({darkmode}) => darkmode ? midLight : 'blue'};
-    }
 `
 
 export const ReferenceCircle = styled.div`
@@ -61,4 +53,18 @@ export const CogOrigin = styled.div`
     position:absolute;
     transform: translate(${width/2}px, ${width/2}px);
     z-index:1000;
+`
+
+const titleDarkBackground = css`
+    ${basicDark}
+    background-color:${dark};
+`
+export const GearTitle = styled.h1`
+${({darkmode}) => darkmode ? titleDarkBackground : basicLight}
+    position:absolute;
+    left:-250px;
+    top:-290px;
+    width:495px;
+    z-index:1000000;
+    padding-top:20px;
 `

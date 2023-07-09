@@ -96,7 +96,12 @@ const CogKeys = (props) => {
     }
 
     return (
-        <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}} darkmode={darkmode}>
+        <KeyBox
+            style={{
+                color:`${darkmode ? '#fff':'#555'}`
+            }} 
+            darkmode={darkmode}
+        >
 
             <AdjustmentPanel 
                 state={state}
@@ -158,6 +163,7 @@ const CogKeys = (props) => {
                     fontSize:'30px',
                     fontWeight:'200',
                     bottom:'-120px',
+                    textDecoration:'none'
                 }}
                 href='https://jupyter.madmodels3d.com/Involute%20Gear%20Calculator'
                 target="_blank"
@@ -172,6 +178,7 @@ const CogKeys = (props) => {
                     fontSize:'30px',
                     fontWeight:'200',
                     bottom:'-160px',
+                    textDecoration:'none'
                 }}
                 href="https://www.blender.org/"
                 target="_blank"

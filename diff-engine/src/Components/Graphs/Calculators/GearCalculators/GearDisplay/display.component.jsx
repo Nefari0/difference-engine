@@ -6,7 +6,8 @@ import {
     ReferenceCircle,
     TipCircle,
     BaseCircle,
-    ShiftWrapper
+    ShiftWrapper,
+    GearTitle
 } from "./display.styles"
 export const cogScale = 40
 
@@ -39,6 +40,7 @@ const CogDisplay = ({state}) => {
     return(
         <CogContainer darkmode={darkmode}>
             <CogOrigin mathFunc={mathFunc}>
+            <GearTitle darkmode={darkmode}>Gear calculator</GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
                 {mappedGears}
                 <TipCircle tipDiameter={tipDiameter}></TipCircle>
