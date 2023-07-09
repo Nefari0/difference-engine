@@ -8,7 +8,7 @@ import UnitCircle from "../Calculators/Trig/AngleConversion/angle_keys.component
 import StandardKeys from "../Calculators/Standard/standard.keys";
 // import FractionKeys from "../Calculators/Fractions/frac.keys";
 import FractionKeys from "../Calculators/Converters/Fractions/frac.keys";
-import CogKeys from "../Calculators/GearCalculators/involute.keys";
+import CogKeys from "../Calculators/GearCalculators/GearKeys/involute.keys";
 import UnitsKeys from "../Calculators/Converters/UnitConverter/units.keys";
 import PercentKeys from "../Calculators/Converters/Percentages/percent.keys";
 import PlotKeys from "../Plots/plots.keys";

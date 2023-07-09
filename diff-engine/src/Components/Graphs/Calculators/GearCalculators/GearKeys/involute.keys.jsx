@@ -1,13 +1,13 @@
-import { backButton,ExecuteButton,CopyIcon } from "../../SVG";
-import { Py1 } from './gear.py1'
-import { KeyBox } from "../../KeyPad/input.styles";
-import Button from "../../KeyPad/Button";
-import InputField from "../../KeyPad/InputField";
+import { backButton,ExecuteButton,CopyIcon } from "../../../SVG";
+import { Py1 } from '../gear.py1'
+import { KeyBox } from "../../../KeyPad/input.styles";
+import Button from "../../../KeyPad/Button";
+import InputField from "../../../KeyPad/InputField";
 import { useEffect,useContext,useState } from "react";
-import { ViewContext } from "../../../Context/view.context";
+import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
-import { cogScale } from "./GearDisplay/display.component";
+import { cogScale } from "../GearDisplay/display.component";
 
 const CogKeys = (props) => {
 
