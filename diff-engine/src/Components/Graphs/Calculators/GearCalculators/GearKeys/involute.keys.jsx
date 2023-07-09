@@ -28,6 +28,8 @@ const CogKeys = (props) => {
             mathFunc:`40`,
             displayInput:false,
             polars:true,
+            cartCoords:[],
+            polarCoords:[]
         })
     },[])
 
