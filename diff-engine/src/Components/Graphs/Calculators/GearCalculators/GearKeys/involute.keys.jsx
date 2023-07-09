@@ -3,12 +3,13 @@ import { Py1 } from '../gear.py1'
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
-import { useEffect,useContext,useState } from "react";
+import { useEffect,useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import AdjustmentPanel from "./button-panel";
 // import { InlineMath } from 'react-katex';
 import { cogScale } from "../GearDisplay/display.component";
+import { InfoMessage } from "../../../KeyPad/input.styles";
 
 const CogKeys = (props) => {
 
@@ -30,7 +31,9 @@ const CogKeys = (props) => {
         })
     },[])
 
-    const z = mathFunc;
+    const minGearTeeth = 10
+    const maxGearTeeth = 100
+    const z = parseInt(mathFunc);
     const ref_dia1 = z; // reference diameter
     // const ref_radi = ref_dia1 / 2;
     // const tip_dia1 = ref_dia1 + 2;
@@ -42,6 +45,13 @@ const CogKeys = (props) => {
     // const root_diameter = ref_dia1 - 2.5;
     // const root_radi = root_diameter / 2;
     // console.log(blenderCoords)
+    const pitch = 360 / z
+    // --- Conditions for gear parameters --- //
+    const conditions = pitch === 'Infinity' || isNaN(pitch) === true || parseFloat(z) < minGearTeeth || parseFloat(z) > maxGearTeeth
+
+    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
+    const copyPitch = `${pitch} saved to clipbaord`
+
     const gears = (increment) => {
         const u1 = [];
         const uMin = 0;
@@ -74,12 +84,7 @@ const CogKeys = (props) => {
             blenderCoords:JSON.stringify(exportCoords),
             uMax:newUMaxValue
         })
-      }
-
-    const pitch = 360 / mathFunc
-
-    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
-    const copyPitch = `${pitch} saved to clipbaord`
+    }
 
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
@@ -103,10 +108,10 @@ const CogKeys = (props) => {
             darkmode={darkmode}
         >
 
-            <AdjustmentPanel 
+            {!conditions && <AdjustmentPanel 
                 state={state}
                 gears={gears}
-            />
+            />}
 
             <InputField
                 type='text'
@@ -116,12 +121,6 @@ const CogKeys = (props) => {
                 inputClass={'small'}
                 i={'Number of gear teeth'}
                 iStyle={iStyle}
-            />
-
-            <Button 
-                onClick={() => gears(0)}
-                style={{right:'10px',top:'90px'}}
-                text={ExecuteButton()}
             />
 
             <Button 
@@ -140,21 +139,36 @@ const CogKeys = (props) => {
                 buttonClass={'help'}
             />
 
-            {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
-                styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
-                onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
-                text={`Generate Profile`}
-                buttonClass={'large'}
-                p={'Save profile generator script'}
-            />}
-
-            {pitch != 'Infinity' && parseFloat(mathFunc) >= 5 && <Button
-                styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
-                onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
-                text={`pitch = ${pitch}^\\circ`}
-                buttonType={'image'}
-                p={'copy pitch'}
-            />}
+            {conditions ?
+                <InfoMessage
+                    style={{width:'200px',left:'100px'}}
+                >
+                    {`There should be ${minGearTeeth} to ${maxGearTeeth} gear teeth`}
+                </InfoMessage>
+                :
+                <>
+                    <Button
+                        styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
+                        onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
+                        text={`pitch = ${pitch}^\\circ`}
+                        buttonType={'image'}
+                        p={'copy pitch'}
+                    />
+                    {blenderCoords.length > 0 && <Button
+                        styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
+                        onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
+                        text={`Generate Profile`}
+                        buttonClass={'large'}
+                        p={'Save profile generator script'}
+                    />}
+                    <Button 
+                        onClick={() => gears(0)}
+                        style={{right:'10px',top:'90px'}}
+                        text={ExecuteButton()}
+                        p={'Run calculation'}
+                    />
+                </>
+            }
 
             <a
                 style={{

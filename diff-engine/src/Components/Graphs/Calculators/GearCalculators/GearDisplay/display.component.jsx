@@ -29,8 +29,8 @@ const CogDisplay = ({state}) => {
             backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "2px",
-            height: "2px",
+            width: "3px",
+            height: "3px",
             borderRadius:'50%'
           };
           return <p style={locations} key={i}></p>;
@@ -40,12 +40,18 @@ const CogDisplay = ({state}) => {
     return(
         <CogContainer darkmode={darkmode}>
             <CogOrigin mathFunc={mathFunc}>
-            <GearTitle darkmode={darkmode}>Gear calculator</GearTitle>
+            <GearTitle darkmode={darkmode}>
+                <h1>Gear calculator</h1>
+                <a
+                    href="https://www.blender.org/"
+                    target="_blank"
+                >For use in Blender 2.8+</a>
+            </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
-                {mappedGears}
-                <TipCircle tipDiameter={tipDiameter}></TipCircle>
-                <ReferenceCircle refDiameter={refDiameter}></ReferenceCircle>
-                <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
+                    {mappedGears}
+                    <TipCircle tipDiameter={tipDiameter}></TipCircle>
+                    <ReferenceCircle refDiameter={refDiameter}></ReferenceCircle>
+                    <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>
             </CogOrigin>
         </CogContainer>

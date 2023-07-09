@@ -104,7 +104,7 @@ export default function Graph() {
     uMax:26,
     // refRadius:5,
     involute:[],
-    exportCoords:[],
+    blenderCoords:[],
 
     // --- Unit converter --- //
     units:'in',

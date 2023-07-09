@@ -28,7 +28,7 @@ export const TipCircle = styled.div`
     height: ${({tipDiameter}) =>(tipDiameter)}px;
     position:absolute;
     transform: translate(-50%, -50%);
-    border: solid 2px purple;
+    border: solid 3px purple;
     border-radius:50%;
 `
 
@@ -59,12 +59,21 @@ const titleDarkBackground = css`
     ${basicDark}
     background-color:${dark};
 `
-export const GearTitle = styled.h1`
+export const GearTitle = styled.section`
 ${({darkmode}) => darkmode ? titleDarkBackground : basicLight}
     position:absolute;
     left:-250px;
-    top:-290px;
+    top:-260px;
     width:495px;
     z-index:1000000;
     padding-top:20px;
+    height:70px;
+
+    h1 {
+        margin:0px;
+    }
+
+    a {
+        color:${({darkmode}) => darkmode ? 'white' : 'blue'};
+    }
 `
