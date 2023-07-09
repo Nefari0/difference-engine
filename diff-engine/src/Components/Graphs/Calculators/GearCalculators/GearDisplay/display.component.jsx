@@ -42,10 +42,10 @@ const CogDisplay = ({state}) => {
             <CogOrigin mathFunc={mathFunc}>
             <GearTitle darkmode={darkmode}>Gear calculator</GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
-                {mappedGears}
-                <TipCircle tipDiameter={tipDiameter}></TipCircle>
-                <ReferenceCircle refDiameter={refDiameter}></ReferenceCircle>
-                <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
+                    {mappedGears}
+                    <TipCircle tipDiameter={tipDiameter}></TipCircle>
+                    <ReferenceCircle refDiameter={refDiameter}></ReferenceCircle>
+                    <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>
             </CogOrigin>
         </CogContainer>

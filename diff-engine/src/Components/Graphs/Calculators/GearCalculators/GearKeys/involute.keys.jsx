@@ -43,8 +43,9 @@ const CogKeys = (props) => {
     // const root_diameter = ref_dia1 - 2.5;
     // const root_radi = root_diameter / 2;
     // console.log(blenderCoords)
-
     const pitch = 360 / z
+    // --- Conditions for gear parameters --- //
+    const conditions = pitch === 'Infinity' || isNaN(pitch) === true || parseFloat(z) < 10 || parseFloat(z) >= 200
 
     const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
     const copyPitch = `${pitch} saved to clipbaord`
@@ -83,14 +84,6 @@ const CogKeys = (props) => {
         })
       }
 
-    const requirements = () => {
-        if (pitch === 'Infinity' || parseFloat(mathFunc) < 10 || parseInt(mathFunc) >= 200 || mathFunc === '') {
-            return false
-        } else {
-            return true
-        }
-    }
-
     const copyVal = (val,name,message) => {
         navigator.clipboard.writeText(val)
         setAlert(message)
@@ -113,10 +106,10 @@ const CogKeys = (props) => {
             darkmode={darkmode}
         >
 
-            <AdjustmentPanel 
+            {!conditions && <AdjustmentPanel 
                 state={state}
                 gears={gears}
-            />
+            />}
 
             <InputField
                 type='text'
@@ -126,12 +119,6 @@ const CogKeys = (props) => {
                 inputClass={'small'}
                 i={'Number of gear teeth'}
                 iStyle={iStyle}
-            />
-
-            <Button 
-                onClick={() => gears(0)}
-                style={{right:'10px',top:'90px'}}
-                text={ExecuteButton()}
             />
 
             <Button 
@@ -150,7 +137,7 @@ const CogKeys = (props) => {
                 buttonClass={'help'}
             />
 
-            {!requirements() ?
+            {conditions ?
                 <InfoMessage
                     style={{width:'200px',left:'100px'}}
                 >
@@ -171,6 +158,11 @@ const CogKeys = (props) => {
                         text={`Generate Profile`}
                         buttonClass={'large'}
                         p={'Save profile generator script'}
+                    />
+                    <Button 
+                        onClick={() => gears(0)}
+                        style={{right:'10px',top:'90px'}}
+                        text={ExecuteButton()}
                     />
                 </>
             }
