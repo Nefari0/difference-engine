@@ -25,7 +25,7 @@ const CogDisplay = ({state}) => {
           var locations = {
             left:`${el[0]}px`,
             bottom:`${(-15 + el[1])}px`,
-            backgroundColor: `${darkmode ? 'white' : 'red'}`,
+            backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
             width: "2px",

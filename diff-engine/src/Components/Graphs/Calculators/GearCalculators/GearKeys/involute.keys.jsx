@@ -6,7 +6,8 @@ import InputField from "../../../KeyPad/InputField";
 import { useEffect,useContext,useState } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
+import AdjustmentPanel from "./button-panel";
+// import { InlineMath } from 'react-katex';
 import { cogScale } from "../GearDisplay/display.component";
 
 const CogKeys = (props) => {
@@ -97,6 +98,11 @@ const CogKeys = (props) => {
     return (
         <KeyBox style={{color:`${darkmode ? '#fff':'#555'}`}} darkmode={darkmode}>
 
+            <AdjustmentPanel 
+                state={state}
+                gears={gears}
+            />
+
             <InputField
                 type='text'
                 onChange={(e) => inputHandler(e)}
@@ -111,18 +117,6 @@ const CogKeys = (props) => {
                 onClick={() => gears(0)}
                 style={{right:'10px',top:'90px'}}
                 text={ExecuteButton()}
-            />
-
-            <Button
-                text={'+'}
-                style={{top:'90px',right:'90px',fontSize:'30px'}}
-                onClick={() => {gears(1)}}
-            />
-
-            <Button
-                text={'-'}
-                style={{top:'170px',right:'90px',fontSize:'30px'}}
-                onClick={() => {gears(-1)}}
             />
 
             <Button 
