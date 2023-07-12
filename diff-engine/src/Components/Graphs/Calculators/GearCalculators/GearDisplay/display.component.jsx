@@ -20,6 +20,9 @@ const CogDisplay = ({state}) => {
     const tipDiameter = (refDiameter + (cogScale*2))
     const baseDiameter = refDiameter*.9396950000000001
 
+    // const thicknessCircleLength = (refDiameter/2)
+    const radDifference = (((refDiameter/2)-(baseDiameter/2)))*(.25)
+
     useEffect(() => {setScrollBar(false)},[])
 
     const mappedGears = involute.map((el,i) => {
@@ -33,24 +36,53 @@ const CogDisplay = ({state}) => {
             height: "3px",
             borderRadius:'50%'
           };
-          return <p style={locations} key={i}></p>;
-      })
+        return <p style={locations} key={i}></p>;
+    })
+
+    const mappedGears2 = involute.map((el,i) => {
+        var locations = {
+            left:`${el[0]}px`,
+            bottom:`${(-15 + -el[1])}px`,
+            backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
+            position: "absolute",
+            transition: "all 1000ms",
+            width: "3px",
+            height: "3px",
+            borderRadius:'50%'
+        };
+        return <p style={locations} key={i}></p>;
+    })
     
     
     return(
         <CogContainer darkmode={darkmode}>
             <CogOrigin mathFunc={mathFunc}>
-            <GearTitle darkmode={darkmode}>
-                <h1>Gear calculator</h1>
-                <a
-                    href="https://www.blender.org/"
-                    target="_blank"
-                >For use in Blender 2.8+</a>
-            </GearTitle>
+                <GearTitle darkmode={darkmode}>
+                    <h1>Gear calculator</h1>
+                    <a
+                        href="https://www.blender.org/"
+                        target="_blank"
+                    >For use in Blender 2.8+</a>
+                </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
                     {mappedGears}
+                    <div>{mappedGears2}</div>
                     <TipCircle tipDiameter={tipDiameter}></TipCircle>
-                    <ReferenceCircle refDiameter={refDiameter}></ReferenceCircle>
+                    <ReferenceCircle refDiameter={refDiameter}>
+                    <div 
+                        style={{
+                            position:'absolute',
+                            height:`${3.1415926*cogScale}px`,
+                            width:`${3.1415926*cogScale}px`,
+                            border:'solid 1px black',
+                            right:`${0}px`,
+                            bottom:`${((refDiameter/2)-7)+radDifference}px`,
+                            borderRadius:'50%',
+                            transform: `translate(50%, 50%)`
+                        }}
+                    >
+                    </div>
+                    </ReferenceCircle>
                     <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>
             </CogOrigin>

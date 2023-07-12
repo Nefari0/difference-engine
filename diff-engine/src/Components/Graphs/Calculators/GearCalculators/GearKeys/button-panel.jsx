@@ -6,7 +6,7 @@ import Button from "../../../KeyPad/Button";
 
 const AdjustmentPanel = (props) => {
 
-    const { gears } = props
+    const { execution,inputParam1,inputParam2 } = props
 
     const { darkmode } = useContext(ViewContext)
 
@@ -37,14 +37,14 @@ const AdjustmentPanel = (props) => {
                 text={'+'}
                 style={{position:'relative',fontSize:'30px'}}
                 buttonClass={'large'}
-                onClick={() => {gears(1)}}
+                onClick={() => {execution(inputParam1)}}
             />
 
             <Button
                 text={'-'}
                 style={{position:'relative',fontSize:'30px'}}
                 buttonClass={'large'}
-                onClick={() => {gears(-1)}}
+                onClick={() => {execution(inputParam2)}}
             />
 
         </ButtonPanelContainer>

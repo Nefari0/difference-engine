@@ -55,6 +55,7 @@ const CogKeys = (props) => {
     const copyPitch = `${pitch} saved to clipbaord`
 
     const gears = (increment) => {
+        // e.preventDefault()
         const u1 = [];
         const uMin = 0;
         // const uMax = 30;
@@ -112,7 +113,9 @@ const CogKeys = (props) => {
 
             {!conditions && <AdjustmentPanel 
                 state={state}
-                gears={gears}
+                execution={gears}
+                inputParam1={1}
+                inputParam2={-1}
             />}
 
             <InputField
