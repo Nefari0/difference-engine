@@ -13,7 +13,7 @@ export const cogScale = 40
 
 const CogDisplay = ({state}) => {
 
-    const { involute,mathFunc } = state
+    const { involute,mathFunc,degrees } = state
     const { darkmode,setScrollBar } = useContext(ViewContext)
     const z = parseFloat(mathFunc) // number of teeth
     const refDiameter = cogScale*z
@@ -32,8 +32,8 @@ const CogDisplay = ({state}) => {
             backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "3px",
-            height: "3px",
+            width: "2px",
+            height: "2px",
             borderRadius:'50%'
           };
         return <p style={locations} key={i}></p>;
@@ -46,8 +46,8 @@ const CogDisplay = ({state}) => {
             backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "3px",
-            height: "3px",
+            width: "2px",
+            height: "2px",
             borderRadius:'50%'
         };
         return <p style={locations} key={i}></p>;
@@ -66,7 +66,28 @@ const CogDisplay = ({state}) => {
                 </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
                     {mappedGears}
-                    <div>{mappedGears2}</div>
+                    <div
+                        style={{
+                            position:'absolute',
+                            left:'0px',
+                            height:'1px',
+                            width:'1px',
+                            backgroundColor:'red',
+                            // transformOrigin:'-50% -50%',
+                            transform:`rotate(${degrees}deg)`
+
+                        }}
+                    >
+                    <div style={{
+                        position:'absolute',
+                        width:`${baseDiameter/2}px`,
+                        height:'0px',
+                        top:'0px',
+                        backgroundColor:'blue',
+                    }}>
+                        {mappedGears2}
+                    </div>
+                    </div>
                     <TipCircle tipDiameter={tipDiameter}></TipCircle>
                     <ReferenceCircle refDiameter={refDiameter}>
                         <div
@@ -74,13 +95,17 @@ const CogDisplay = ({state}) => {
                                 position:'absolute',
                                 height:`${3.1415926*cogScale}px`,
                                 width:`${3.1415926*cogScale}px`,
+                                // height:'1px',
+                                // width:'1px',
                                 border:'solid 1px black',
                                 right:`${0}px`,
-                                bottom:`${((refDiameter/2)-7)+radDifference}px`,
+                                // bottom:`${((refDiameter/2))+radDifference}px`,
+                                bottom:`${((refDiameter/2)+1)+radDifference}px`,
                                 borderRadius:'50%',
                                 transform: `translate(50%, 50%)`
                             }}
                         >
+                            <div style={{position:'relative',width:'6px',height:'6px',backgroundColor:'blue',top:'0px'}}></div>
                         </div>
                     </ReferenceCircle>
                     <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>

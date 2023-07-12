@@ -46,7 +46,7 @@ export const ShiftWrapper = styled.div`
     transform: translate(-50%, -50%);
 
     // height:${({tipDiameter}) => tipDiameter}px;
-    height:10px;
+    // height:10px;
     // background-color:blue;
     // opacity:.5;
     // border:solid 10px yellow;

@@ -3,7 +3,7 @@ import { Py1 } from '../gear.py1'
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
-import { useEffect,useContext } from "react";
+import { useEffect,useContext,useState } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import AdjustmentPanel from "./button-panel";
@@ -18,7 +18,12 @@ const CogKeys = (props) => {
         inputHandler,
         close,
     } = props
-    const { mathFunc,uMax,blenderCoords } = state
+
+    // const [localState,setLocalState] = useState({
+    //     step1:'TOOTH_LENGTH',
+    //     step2:'TOOTH_ROTATION'
+    // })
+    const { mathFunc,uMax,blenderCoords,degrees } = state
     const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
 
     useEffect(() => {
@@ -29,7 +34,8 @@ const CogKeys = (props) => {
             displayInput:false,
             polars:true,
             cartCoords:[],
-            polarCoords:[]
+            polarCoords:[],
+            degrees:0
         })
     },[])
 
@@ -118,6 +124,29 @@ const CogKeys = (props) => {
                 inputParam2={-1}
                 text={'Dots should extend to, but not beyond the purple line'}
             />}
+
+            {!conditions &&
+                <div
+                    style={{
+                        position:'absolute',
+                        height:'200px',
+                        width:'90px',
+                        backgroundColor:'blue',
+                        top:'-200px',
+                        left:'10px'
+                    }}
+                >
+                    <Button 
+                        text={'up'}
+                        onClick={() => setState({...state,degrees:degrees-.5})}
+                    />
+                    <Button 
+                        text={'down'}
+                        onClick={() => setState({...state,degrees:degrees+.5})}
+                        styles={{top:'100px'}}
+                    />
+                </div>
+            }
 
             <InputField
                 type='text'
