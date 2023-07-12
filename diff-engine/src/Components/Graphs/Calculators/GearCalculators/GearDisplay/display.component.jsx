@@ -69,19 +69,19 @@ const CogDisplay = ({state}) => {
                     <div>{mappedGears2}</div>
                     <TipCircle tipDiameter={tipDiameter}></TipCircle>
                     <ReferenceCircle refDiameter={refDiameter}>
-                    <div 
-                        style={{
-                            position:'absolute',
-                            height:`${3.1415926*cogScale}px`,
-                            width:`${3.1415926*cogScale}px`,
-                            border:'solid 1px black',
-                            right:`${0}px`,
-                            bottom:`${((refDiameter/2)-7)+radDifference}px`,
-                            borderRadius:'50%',
-                            transform: `translate(50%, 50%)`
-                        }}
-                    >
-                    </div>
+                        <div
+                            style={{
+                                position:'absolute',
+                                height:`${3.1415926*cogScale}px`,
+                                width:`${3.1415926*cogScale}px`,
+                                border:'solid 1px black',
+                                right:`${0}px`,
+                                bottom:`${((refDiameter/2)-7)+radDifference}px`,
+                                borderRadius:'50%',
+                                transform: `translate(50%, 50%)`
+                            }}
+                        >
+                        </div>
                     </ReferenceCircle>
                     <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>

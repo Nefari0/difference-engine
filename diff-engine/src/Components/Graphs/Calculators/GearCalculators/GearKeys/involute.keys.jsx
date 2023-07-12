@@ -116,6 +116,7 @@ const CogKeys = (props) => {
                 execution={gears}
                 inputParam1={1}
                 inputParam2={-1}
+                text={'Dots should extend to, but not beyond the purple line'}
             />}
 
             <InputField
