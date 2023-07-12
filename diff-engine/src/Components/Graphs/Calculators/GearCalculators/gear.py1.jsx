@@ -1,11 +1,12 @@
 export const Py1 = (state) => {
-    const { mathFunc,blenderCoords } = state
+    const { mathFunc,blenderCoords,degrees } = state
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
     '\nfrom math import *' +
     '\nimport math' +
     `\n` + 
     `\nz = ${mathFunc} # Number of teeth` +
+    `\ntooth_thickness_at_base = ${Math.abs(degrees)*(3.1415926/180)}` +
     `\nref_radius = z/2` +
     `\nbase_radius = ref_radius*.9396950000000001` +    
     `\nrad_difference = (ref_radius-base_radius)*(.25)` +
@@ -46,9 +47,6 @@ export const Py1 = (state) => {
     '\n    edges1.append( [i, i+1] )' +
     `\ndel edges1[0]` +
     `\n` + 
-    `\n# Thickness circle#` +
-    `\nbpy.ops.mesh.primitive_circle_add(radius=1.57,enter_editmode=False, location=(ref_radius*math.cos(0), math.sin(rad_difference), 0))` +
-    `\nbpy.data.objects['Circle'].name = thickness_cir_name` +
     `\n` + 
     `\n# Reference circle` +
     `\nbpy.ops.mesh.primitive_circle_add(radius=z/2,enter_editmode=False, location=(0, 0, 0))` +
@@ -69,7 +67,6 @@ export const Py1 = (state) => {
     `\n#bpy.data.objects[secondary_profile.split('.')[0]].select_set(True)` +
     `\nbpy.data.objects[new_secondary_profile_name.split('.')[0]].select_set(True)` +
     `\nbpy.data.objects[ref_cir_name].select_set(True)` +
-    `\nbpy.data.objects[thickness_cir_name].select_set(True)` +
     `\n` + 
     `\nobj = bpy.context.window.scene.objects[gear_name]` +
     `\nbpy.context.view_layer.objects.active = obj` +
@@ -79,6 +76,7 @@ export const Py1 = (state) => {
     `\nbpy.data.objects[new_secondary_profile_name].select_set(True)` +
     `\n` +
     `\n# Make 3d cursor the pivot point` +
-    `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'`
+    `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'` +
+    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)`
     return (gearScript)
 }
