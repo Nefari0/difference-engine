@@ -1,5 +1,6 @@
 import { useContext,useEffect } from "react"
 import { ViewContext } from "../../../../Context/view.context"
+import ToothAlignment from "./Alignment/alignment.component"
 import { 
     CogOrigin,
     CogContainer,
@@ -13,7 +14,7 @@ export const cogScale = 40
 
 const CogDisplay = ({state}) => {
 
-    const { involute,mathFunc,degrees } = state
+    const { involute,mathFunc,gearBuildingStep } = state
     const { darkmode,setScrollBar } = useContext(ViewContext)
     const z = parseFloat(mathFunc) // number of teeth
     const refDiameter = cogScale*z
@@ -44,10 +45,11 @@ const CogDisplay = ({state}) => {
             left:`${el[0]}px`,
             bottom:`${(-15 + -el[1])}px`,
             backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
+            // backgroundColor: `orange`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "2px",
-            height: "2px",
+            width: "3px",
+            height: "3px",
             borderRadius:'50%'
         };
         return <p style={locations} key={i}></p>;
@@ -65,49 +67,27 @@ const CogDisplay = ({state}) => {
                     >For use in Blender 2.8+</a>
                 </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
-                    {mappedGears}
-                    <div
-                        style={{
-                            position:'absolute',
-                            left:'0px',
-                            height:'1px',
-                            width:'1px',
-                            backgroundColor:'red',
-                            // transformOrigin:'-50% -50%',
-                            transform:`rotate(${degrees}deg)`
+                    {gearBuildingStep != 'step_3' && mappedGears}
 
-                        }}
-                    >
-                    <div style={{
-                        position:'absolute',
-                        width:`${baseDiameter/2}px`,
-                        height:'0px',
-                        top:'0px',
-                        backgroundColor:'blue',
-                    }}>
-                        {mappedGears2}
-                    </div>
-                    </div>
-                    <TipCircle tipDiameter={tipDiameter}></TipCircle>
+                    <ToothAlignment state={state} mappedGears2={mappedGears2} />
+                    {gearBuildingStep === 'step_2' && <TipCircle tipDiameter={tipDiameter}></TipCircle>}
+
+                    {gearBuildingStep === 'step_3' && 
                     <ReferenceCircle refDiameter={refDiameter}>
                         <div
                             style={{
                                 position:'absolute',
                                 height:`${3.1415926*cogScale}px`,
                                 width:`${3.1415926*cogScale}px`,
-                                // height:'1px',
-                                // width:'1px',
-                                border:'solid 1px black',
+                                borderTop:'solid 2px blue',
                                 right:`${0}px`,
-                                // bottom:`${((refDiameter/2))+radDifference}px`,
                                 bottom:`${((refDiameter/2)+1)+radDifference}px`,
-                                borderRadius:'50%',
                                 transform: `translate(50%, 50%)`
                             }}
                         >
-                            <div style={{position:'relative',width:'6px',height:'6px',backgroundColor:'blue',top:'0px'}}></div>
+                            {/* <div style={{position:'relative',width:'6px',height:'6px',backgroundColor:'blue',top:'0px'}}></div> */}
                         </div>
-                    </ReferenceCircle>
+                    </ReferenceCircle>}
                     <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>
             </CogOrigin>

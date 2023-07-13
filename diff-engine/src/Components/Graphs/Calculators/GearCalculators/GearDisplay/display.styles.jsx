@@ -18,7 +18,7 @@ export const ReferenceCircle = styled.div`
     position:absolute;
     width: ${({refDiameter}) => (refDiameter)}px;
     height: ${({refDiameter}) => (refDiameter)}px;
-    border: solid 1px black;
+    border: solid 2px red;
     border-radius:50%;
     transform: translate(-50%, -50%);
 ` 
@@ -38,7 +38,7 @@ export const BaseCircle = styled.div`
     border-radius:50%;
     transform: translate(-50%, -50%);
     position:absolute;
-    border:solid 1px yellow;
+    // border:solid 1px yellow;
 `
 
 export const ShiftWrapper = styled.div`

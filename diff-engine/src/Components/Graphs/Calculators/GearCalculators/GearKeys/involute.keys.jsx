@@ -10,6 +10,10 @@ import AdjustmentPanel from "./button-panel";
 // import { InlineMath } from 'react-katex';
 import { cogScale } from "../GearDisplay/display.component";
 import { InfoMessage } from "../../../KeyPad/input.styles";
+import Step1 from "./step1";
+import Step2 from "./step2";
+import Step4 from "./step4";
+import Step3 from "./step3";
 
 const CogKeys = (props) => {
 
@@ -23,7 +27,7 @@ const CogKeys = (props) => {
     //     step1:'TOOTH_LENGTH',
     //     step2:'TOOTH_ROTATION'
     // })
-    const { mathFunc,uMax,blenderCoords,degrees } = state
+    const { mathFunc,uMax,blenderCoords,degrees,gearBuildingStep } = state
     const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
 
     useEffect(() => {
@@ -91,6 +95,7 @@ const CogKeys = (props) => {
             ...state,
             involute:invCoords,
             blenderCoords:JSON.stringify(exportCoords),
+            gearBuildingStep:'step_2',
             uMax:newUMaxValue
         })
     }
@@ -99,6 +104,8 @@ const CogKeys = (props) => {
         navigator.clipboard.writeText(val)
         setAlert(message)
     }
+
+    const rotate = (input) => {setState({...state,degrees:degrees+input})}
 
     const iStyle = {
         width:'300px',
@@ -117,7 +124,7 @@ const CogKeys = (props) => {
             darkmode={darkmode}
         >
 
-            {!conditions && <AdjustmentPanel 
+            {!conditions && gearBuildingStep === 'step_2' && <AdjustmentPanel 
                 state={state}
                 execution={gears}
                 inputParam1={1}
@@ -125,29 +132,15 @@ const CogKeys = (props) => {
                 text={'Dots should extend to, but not beyond the purple line'}
             />}
 
-            {!conditions &&
-                <div
-                    style={{
-                        position:'absolute',
-                        height:'200px',
-                        width:'90px',
-                        backgroundColor:'blue',
-                        top:'-200px',
-                        left:'10px'
-                    }}
-                >
-                    <Button 
-                        text={'up'}
-                        onClick={() => setState({...state,degrees:degrees-.5})}
-                    />
-                    <Button 
-                        text={'down'}
-                        onClick={() => setState({...state,degrees:degrees+.5})}
-                        styles={{top:'100px'}}
-                    />
-                </div>
-            }
+            {!conditions && gearBuildingStep === 'step_3' && <AdjustmentPanel 
+                state={state}
+                execution={rotate}
+                inputParam1={-.5}
+                inputParam2={.5}
+                text={'Dots should pass through the the point where blue and red intersect'}
+            />}
 
+            {blenderCoords.length === 0 &&
             <InputField
                 type='text'
                 onChange={(e) => inputHandler(e)}
@@ -157,6 +150,7 @@ const CogKeys = (props) => {
                 i={'Number of gear teeth'}
                 iStyle={iStyle}
             />
+            }
 
             <Button 
                 onClick={(e) => close(e)}
@@ -182,26 +176,25 @@ const CogKeys = (props) => {
                 </InfoMessage>
                 :
                 <>
-                    <Button
-                        styles={{top:'170px',left:'0px',width:'170px',fontSize:'15px',zIndex:'1'}}
-                        onClick={() => copyVal(pitch,'noticeContent',copyPitch)}
-                        text={`pitch = ${pitch}^\\circ`}
-                        buttonType={'image'}
-                        p={'copy pitch'}
-                    />
-                    {blenderCoords.length > 0 && <Button
-                        styles={{top:'90px',left:'0px',width:'170px',fontSize:'15px',zIndex:'2'}}
-                        onClick={() => copyVal(Py1(state),'alert',copyScriptMessage)}
-                        text={`Generate Profile`}
-                        buttonClass={'large'}
-                        p={'Save profile generator script'}
-                    />}
-                    <Button 
-                        onClick={() => gears(0)}
-                        style={{right:'10px',top:'90px'}}
-                        text={ExecuteButton()}
-                        p={'Run calculation'}
-                    />
+
+                    {/* INITIALIZE TOOTH PROFILE */}
+                    {blenderCoords.length === 0 &&
+                    <Step1 gears={gears} inputHandler={inputHandler} state={state}/>}
+
+                    {/* ADJUST TOOTH LENGTH */}
+                    {blenderCoords.length > 0 && gearBuildingStep === 'step_2' &&
+                        <Step2 state={state} setState={setState} />
+                    }
+
+                    {/* ADJUST THICKNESS */}
+                    {gearBuildingStep === 'step_3' && 
+                        <Step3 state={state} setState={setState} />
+                    }
+
+                    {/* COPY PYTHON SCRIPT */}
+                    {blenderCoords.length > 0 && gearBuildingStep === 'step_4' && 
+                    <Step4 state={state} pitch={pitch} copyVal={copyVal} />}
+
                 </>
             }
 
