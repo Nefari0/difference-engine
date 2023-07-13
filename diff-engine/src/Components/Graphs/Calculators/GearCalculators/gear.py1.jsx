@@ -77,6 +77,14 @@ export const Py1 = (state) => {
     `\n` +
     `\n# Make 3d cursor the pivot point` +
     `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'` +
-    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)`
+    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)` +
+    `\nbpy.data.objects[profile_name].select_set(True)` +
+    `\nbpy.context.active_object.select_set(False)` +
+    `\nfor obj in bpy.context.selected_objects:` +
+    `\n    bpy.context.view_layer.objects.active = obj` +
+    `\n` +
+    `\nbpy.ops.object.join()` +
+    `\nbpy.data.objects[new_secondary_profile_name].name = profile_name`
+    // `\nbpy.ops.object.editmode_toggle()`
     return (gearScript)
 }
