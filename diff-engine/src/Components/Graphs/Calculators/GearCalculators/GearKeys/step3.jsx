@@ -9,7 +9,7 @@ const step3 = (props) => {
             <Button
                 onClick={() => setState({...state,gearBuildingStep:'step_4'})}
                 style={{
-                    right:'10px',top:'90px',
+                    left:'10px',top:'90px',
                     width:'300px',fontSize:'30px',
                     fontWeight:'200'
                 }}

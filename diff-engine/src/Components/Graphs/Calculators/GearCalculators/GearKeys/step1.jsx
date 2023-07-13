@@ -19,7 +19,7 @@ const Step1 = (props) => {
             <Button 
                 onClick={() => gears(0)}
                 style={{
-                    right:'10px',top:'90px',
+                    left:'10px',top:'90px',
                     width:'300px',fontSize:'30px',
                     fontWeight:'200'
                 }}

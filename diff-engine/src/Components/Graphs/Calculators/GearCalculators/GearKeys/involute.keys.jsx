@@ -1,5 +1,4 @@
-import { backButton,ExecuteButton,CopyIcon } from "../../../SVG";
-import { Py1 } from '../gear.py1'
+import { backButton,uturnArrow } from "../../../SVG";
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
@@ -23,15 +22,10 @@ const CogKeys = (props) => {
         close,
     } = props
 
-    // const [localState,setLocalState] = useState({
-    //     step1:'TOOTH_LENGTH',
-    //     step2:'TOOTH_ROTATION'
-    // })
     const { mathFunc,uMax,blenderCoords,degrees,gearBuildingStep } = state
     const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
 
     useEffect(() => {
-        // gears()
         setState({
             ...state,
             mathFunc:`40`,
@@ -105,6 +99,16 @@ const CogKeys = (props) => {
         setAlert(message)
     }
 
+    const reset = () => {
+        setState({
+            ...state,
+            mathFunc:'40',
+            degrees:0,
+            gearBuildingStep:'step_1',
+            blenderCoords:[]
+        })
+    }
+
     const rotate = (input) => {setState({...state,degrees:degrees+input})}
 
     const iStyle = {
@@ -158,6 +162,15 @@ const CogKeys = (props) => {
                 text={backButton()}
             />
 
+            <Button
+                style={{
+                    right:'10px',top:'90px',
+                    fontSize:'30px',
+                }}
+                text={uturnArrow()}
+                p={'Reset'}
+                onClick={() => reset()}
+            />
             
             <Button
                 styles={{right:'10px',top:`${250}px`,zIndex:'1'}}
