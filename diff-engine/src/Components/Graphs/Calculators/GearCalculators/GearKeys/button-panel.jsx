@@ -6,7 +6,7 @@ import Button from "../../../KeyPad/Button";
 
 const AdjustmentPanel = (props) => {
 
-    const { gears } = props
+    const { execution,inputParam1,inputParam2,text } = props
 
     const { darkmode } = useContext(ViewContext)
 
@@ -26,7 +26,7 @@ const AdjustmentPanel = (props) => {
                     color:'black'
                 }}
             >
-                Dots should extend to, but not beyond the purple line
+                {text}
             </InfoMessage>
 
             <Pointer darkmode={darkmode}>
@@ -37,14 +37,14 @@ const AdjustmentPanel = (props) => {
                 text={'+'}
                 style={{position:'relative',fontSize:'30px'}}
                 buttonClass={'large'}
-                onClick={() => {gears(1)}}
+                onClick={() => {execution(inputParam1)}}
             />
 
             <Button
                 text={'-'}
                 style={{position:'relative',fontSize:'30px'}}
                 buttonClass={'large'}
-                onClick={() => {gears(-1)}}
+                onClick={() => {execution(inputParam2)}}
             />
 
         </ButtonPanelContainer>

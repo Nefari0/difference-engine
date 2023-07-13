@@ -18,7 +18,7 @@ export const ReferenceCircle = styled.div`
     position:absolute;
     width: ${({refDiameter}) => (refDiameter)}px;
     height: ${({refDiameter}) => (refDiameter)}px;
-    // border: solid 1px black;
+    border: solid 2px red;
     border-radius:50%;
     transform: translate(-50%, -50%);
 ` 
@@ -43,8 +43,13 @@ export const BaseCircle = styled.div`
 
 export const ShiftWrapper = styled.div`
     width:${({tipDiameter}) => tipDiameter}px;
-    background-color:blue;
     transform: translate(-50%, -50%);
+
+    // height:${({tipDiameter}) => tipDiameter}px;
+    // height:10px;
+    // background-color:blue;
+    // opacity:.5;
+    // border:solid 10px yellow;
 `
 
 export const CogOrigin = styled.div`

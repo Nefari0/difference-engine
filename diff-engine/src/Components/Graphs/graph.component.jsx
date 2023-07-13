@@ -105,6 +105,7 @@ export default function Graph() {
     // refRadius:5,
     involute:[],
     blenderCoords:[],
+    gearBuildingStep:'step_1',
 
     // --- Unit converter --- //
     units:'in',
