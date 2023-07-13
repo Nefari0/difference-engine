@@ -31,8 +31,8 @@ const CogKeys = (props) => {
             mathFunc:`40`,
             displayInput:false,
             polars:true,
-            cartCoords:[],
-            polarCoords:[],
+            cartCoords:[], // Values will be plotted in this component if not empty
+            polarCoords:[], // Values will be plotted in this component if not empty
             degrees:0
         })
     },[])
