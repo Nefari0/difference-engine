@@ -37,7 +37,7 @@ const CogKeys = (props) => {
         })
     },[])
 
-    const minGearTeeth = 10
+    const minGearTeeth = 6
     const maxGearTeeth = 100
     const z = parseInt(mathFunc);
     const ref_dia1 = z; // reference diameter

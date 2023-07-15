@@ -6,6 +6,7 @@ export const Py1 = (state) => {
     '\nimport math' +
     `\n` + 
     `\nz = ${mathFunc} # Number of teeth` +
+    `\npitch = (360/z)*(3.1415926/180)` +
     `\ntooth_thickness_at_base = ${Math.abs(degrees)*(3.1415926/180)}` +
     `\nref_radius = z/2` +
     `\nbase_radius = ref_radius*.9396950000000001` +    
@@ -77,14 +78,32 @@ export const Py1 = (state) => {
     `\n` +
     `\n# Make 3d cursor the pivot point` +
     `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'` +
-    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)), orient_matrix_type='GLOBAL', constraint_axis=(False, False, True), mirror=True, use_proportional_edit=False, proportional_edit_falloff='SMOOTH', proportional_size=1, use_proportional_connected=False, use_proportional_projected=False)` +
+    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)))` +
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.context.active_object.select_set(False)` +
     `\nfor obj in bpy.context.selected_objects:` +
     `\n    bpy.context.view_layer.objects.active = obj` +
     `\n` +
     `\nbpy.ops.object.join()` +
-    `\nbpy.data.objects[new_secondary_profile_name].name = profile_name`
+    `\nbpy.data.objects[new_secondary_profile_name].name = profile_name` +
+    `\n` +
+    `\n#--- connecting halves` +
+    `\n#vertexList = [1,10,11,12,3]` +
+    `\nobject = bpy.data.objects[profile_name].data.vertices` +
+    `\nindex = int((len(object)/2))-1` +
+    `\nvertex_list = index` +
+    `\ncoords_to = object[index].co` +
+    `\ncoords_from = object[index-1].co = coords_to` +
+    `\nbridge = object[-1].co` +
+    `\ncoords_to.y =+ bridge.y` +
+    `\ncoords_to.x =+ bridge.x` +
+    `\n` +
+    `\n# Duplicate profile, rotate by pitch, join, set cursor to half pitch at base` +
+    `\nbpy.ops.object.duplicate_move()` + 
+    `\nbpy.ops.transform.rotate(value=-pitch, orient_axis='Z')` +
+    `\nbpy.data.objects[profile_name].select_set(True)` +
+    `\nbpy.ops.object.join()` +
+    `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]`
     // `\nbpy.ops.object.editmode_toggle()`
     return (gearScript)
 }
