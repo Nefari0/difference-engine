@@ -57,13 +57,12 @@ createMeshFromData( profile_name, [0, 0, 0], verts1, edges1, [] )
 bpy.data.objects[profile_name].select_set(True)
 
 bpy.context.view_layer.objects.active = bpy.data.objects[profile_name]
-bpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"linked":False, "mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(0, 0, 0), "orient_type":'GLOBAL', "orient_matrix":((1, 0, 0), (0, 1, 0), (0, 0, 1)), "orient_matrix_type":'GLOBAL', "constraint_axis":(False, False, False), "mirror":True, "use_proportional_edit":False, "proportional_edit_falloff":'SMOOTH', "proportional_size":1, "use_proportional_connected":False, "use_proportional_projected":False, "snap":False, "snap_target":'CLOSEST', "snap_point":(0, 0, 0), "snap_align":False, "snap_normal":(0, 0, 0), "gpencil_strokes":False, "cursor_transform":False, "texture_space":False, "remove_on_cancel":False, "release_confirm":False, "use_accurate":False})
+bpy.ops.object.duplicate_move()
 bpy.ops.transform.rotate(value=3.14159, orient_axis='X')
 bpy.data.objects[secondary_profile].name = new_secondary_profile_name
 
 ### Empty becomes parent
 bpy.data.objects[profile_name].select_set(True)
-#bpy.data.objects[secondary_profile.split('.')[0]].select_set(True)
 bpy.data.objects[new_secondary_profile_name.split('.')[0]].select_set(True)
 bpy.data.objects[ref_cir_name].select_set(True)
 
@@ -76,7 +75,7 @@ bpy.data.objects[new_secondary_profile_name].select_set(True)
 
 # Make 3d cursor the pivot point
 bpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'
-bpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)))
+bpy.ops.transform.rotate(value=-tooth_thickness_at_base, orient_axis='Z')
 bpy.data.objects[profile_name].select_set(True)
 bpy.context.active_object.select_set(False)
 for obj in bpy.context.selected_objects:
@@ -86,7 +85,6 @@ bpy.ops.object.join()
 bpy.data.objects[new_secondary_profile_name].name = profile_name
 
 #--- connecting halves
-#vertexList = [1,10,11,12,3]
 object = bpy.data.objects[profile_name].data.vertices
 index = int((len(object)/2))-1
 vertex_list = index
@@ -96,7 +94,6 @@ bridge = object[-1].co
 coords_to.y =+ bridge.y
 coords_to.x =+ bridge.x
 
-# Duplicate profile, rotate by pitch, join, set cursor to half pitch at base
 bpy.ops.object.duplicate_move()
 bpy.ops.transform.rotate(value=-pitch, orient_axis='Z')
 bpy.data.objects[profile_name].select_set(True)

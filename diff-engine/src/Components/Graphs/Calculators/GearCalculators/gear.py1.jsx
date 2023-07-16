@@ -59,7 +59,7 @@ export const Py1 = (state) => {
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\n` + 
     `\nbpy.context.view_layer.objects.active = bpy.data.objects[profile_name]` +
-    `\nbpy.ops.object.duplicate_move(OBJECT_OT_duplicate={"linked":False, "mode":'TRANSLATION'}, TRANSFORM_OT_translate={"value":(0, 0, 0), "orient_type":'GLOBAL', "orient_matrix":((1, 0, 0), (0, 1, 0), (0, 0, 1)), "orient_matrix_type":'GLOBAL', "constraint_axis":(False, False, False), "mirror":True, "use_proportional_edit":False, "proportional_edit_falloff":'SMOOTH', "proportional_size":1, "use_proportional_connected":False, "use_proportional_projected":False, "snap":False, "snap_target":'CLOSEST', "snap_point":(0, 0, 0), "snap_align":False, "snap_normal":(0, 0, 0), "gpencil_strokes":False, "cursor_transform":False, "texture_space":False, "remove_on_cancel":False, "release_confirm":False, "use_accurate":False})` +
+    `\nbpy.ops.object.duplicate_move()` +
     `\nbpy.ops.transform.rotate(value=3.14159, orient_axis='X')` +
     `\nbpy.data.objects[secondary_profile].name = new_secondary_profile_name` +
     `\n` + 
@@ -78,7 +78,7 @@ export const Py1 = (state) => {
     `\n` +
     `\n# Make 3d cursor the pivot point` +
     `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'` +
-    `\nbpy.ops.transform.rotate(value=-tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)))` +
+    `\nbpy.ops.transform.rotate(value=-tooth_thickness_at_base, orient_axis='Z')` +
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.context.active_object.select_set(False)` +
     `\nfor obj in bpy.context.selected_objects:` +
