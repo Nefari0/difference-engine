@@ -141,7 +141,7 @@ const CogKeys = (props) => {
                 execution={rotate}
                 inputParam1={-.5}
                 inputParam2={.5}
-                text={'Dots should pass through the the point where blue and red intersect'}
+                text={'Dots should pass through the point where blue and red intersect'}
             />}
 
             {blenderCoords.length === 0 &&
