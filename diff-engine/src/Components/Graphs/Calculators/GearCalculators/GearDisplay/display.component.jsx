@@ -64,7 +64,7 @@ const CogDisplay = ({state}) => {
                     <a
                         href="https://www.blender.org/"
                         target="_blank"
-                    >For use in Blender 2.8+</a>
+                    >For use in Blender 3.6+</a>
                 </GearTitle>
                 <ShiftWrapper tipDiameter={tipDiameter}>
                     {gearBuildingStep != 'step_3' && mappedGears}

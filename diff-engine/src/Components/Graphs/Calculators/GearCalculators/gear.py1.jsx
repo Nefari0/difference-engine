@@ -78,7 +78,7 @@ export const Py1 = (state) => {
     `\n` +
     `\n# Make 3d cursor the pivot point` +
     `\nbpy.context.scene.tool_settings.transform_pivot_point = 'CURSOR'` +
-    `\nbpy.ops.transform.rotate(value=tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)))` +
+    `\nbpy.ops.transform.rotate(value=-tooth_thickness_at_base, orient_axis='Z', orient_type='GLOBAL', orient_matrix=((1, 0, 0), (0, 1, 0), (0, 0, 1)))` +
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.context.active_object.select_set(False)` +
     `\nfor obj in bpy.context.selected_objects:` +
@@ -98,7 +98,7 @@ export const Py1 = (state) => {
     `\ncoords_to.y =+ bridge.y` +
     `\ncoords_to.x =+ bridge.x` +
     `\n` +
-    `\n# Duplicate profile, rotate by pitch, join, set cursor to half pitch at base` +
+    // `\n# Duplicate profile, rotate by pitch, join, set cursor to half pitch at base` +   
     `\nbpy.ops.object.duplicate_move()` + 
     `\nbpy.ops.transform.rotate(value=-pitch, orient_axis='Z')` +
     `\nbpy.data.objects[profile_name].select_set(True)` +
