@@ -1,3 +1,4 @@
+import { MotorGen } from '../motor-rigging/motor-rig'
 export const Py1 = (state) => {
     const { mathFunc,blenderCoords,degrees } = state
     var gearScript = '# --- build_a_gear.py --- #'+
@@ -13,9 +14,9 @@ export const Py1 = (state) => {
     `\nrad_difference = (ref_radius-base_radius)*(.25)` +
     `\n` +
     `\nname_iterator = str(len(bpy.data.objects))` +
-    `\nprofile_name = "Profile_"+name_iterator` +
-    `\nsecondary_profile = 'Profile_'+name_iterator+'.001' # Existing name` +
-    `\nnew_secondary_profile_name = 'Profile_'+name_iterator+'_'+'2'` +
+    `\nprofile_name = "Gear_Profile_"+name_iterator` +
+    `\nsecondary_profile = 'Gear_Profile_'+name_iterator+'.001' # Existing name` +
+    `\nnew_secondary_profile_name = 'Gear_Profile_'+name_iterator+'_'+'2'` +
     `\n` + 
     `\ngear_name = 'Gear_'+name_iterator` +
     `\nref_cir_name = 'REFERENCE CIRCLE_'+name_iterator` +
@@ -103,7 +104,10 @@ export const Py1 = (state) => {
     `\nbpy.ops.transform.rotate(value=-pitch, orient_axis='Z')` +
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.ops.object.join()` +
-    `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]`
+    `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]` +
+    `${MotorGen(`profile_name`,'gear_name',true)}` +
+    `\nbpy.data.objects[profile_name].select_set(True)`
+    // '\n`
     // `\nbpy.ops.object.editmode_toggle()`
     return (gearScript)
 }

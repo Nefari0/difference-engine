@@ -1,6 +1,5 @@
-const MotorGen = (props) => {
-    const { name } = props
-    const motorScript = `motor_generator`+
+export const MotorGen = (name,child,motor) => {
+    const motorScript = `#--- motor_generator --- #`+
     `\nimport bpy`+
     `\nfrom math import radians` +
     `\n`+
@@ -8,10 +7,11 @@ const MotorGen = (props) => {
     `\nmy_cursor_location = bpy.context.scene.cursor.location`+
     `\n` +
     `\n# object name variables` +
-    `\nAxle = "axle"` +
+    // `\nAxle = "axle"` +
+    `\nAxle = ${name}+"_axle"` +
     `\nHinge = "hinge"`+
     `\nMotor = "motor"`+
-    `\nMain = "${name}"`+
+    `\nMain = ${name}`+
     `\n`+
     `\n# motor rotation`+
     `\nmotorRotation = radians(-90)` +
@@ -61,39 +61,57 @@ const MotorGen = (props) => {
     `\n# set second object`+
     `\nbpy.context.object.rigid_body_constraint.object2 = bpy.data.objects[Axle]`+
     `\n`+
-    `\n#----------------------------------------------------------------------------------------`+
-    `\n#       adds motor`+
-    `\n#----------------------------------------------------------------------------------------`+
-    `\n`+
-    `\n# adds empty as Motor`+
-    `\nbpy.ops.object.empty_add(type='ARROWS', location=(my_cursor_location))`+
-    `\nfor obj in bpy.context.selected_objects:`+
-    `\n    obj.name = Motor`+
-    `\n`+
-    `\n# moves down in z`+
-    `\nbpy.context.object.location[2] = -10`+
-    `\n# rotates 1.5708`+
-    `\nbpy.context.object.rotation_euler[1] = motorRotation`+
-    `\n# add rigidbody properties/motor`+
-    `\nbpy.ops.rigidbody.constraint_add()`+
-    `\nbpy.context.object.rigid_body_constraint.type = 'MOTOR'`+
-    `\nbpy.context.object.rigid_body_constraint.use_motor_ang = True`+
-    `\n# set first object`+
-    `\nbpy.context.object.rigid_body_constraint.object1 = bpy.data.objects[Main]`+
-    `\n# set second object`+
-    `\nbpy.context.object.rigid_body_constraint.object2 = bpy.data.objects[Axle]`+
-    `\n`+
-    `\n#----------------------------------------------------------------------------------------`+
-    `\n#       parents items`+
-    `\n#----------------------------------------------------------------------------------------`+
+    // `\n#----------------------------------------------------------------------------------------`+
+    // `\n#       adds motor`+
+    // `\n#----------------------------------------------------------------------------------------`+
+    `\n${motor === true ? create_motor('Motor') : ''}` +
     `\n` +
-    `\n# Selects objects`+
-    `\nbpy.data.objects[Hinge].select_set(True)`+
-    `\nbpy.data.objects[Axle].select_set(True)`+
-    `\n# makes Axle active`+
-    `\nobj = bpy.context.window.scene.objects[Axle]`+
-    `\nbpy.context.view_layer.objects.active = obj`+
-    `\n# parents objects to Axle`+
-    `\nbpy.ops.object.parent_set(type='OBJECT', keep_transform=True)`
+    // `\n#----------------------------------------------------------------------------------------`+
+    // `\n#       parents items`+
+    // `\n#----------------------------------------------------------------------------------------`+
+    `\n${child ? parent_items(child) : ''}` +
+    `\n` 
     return (motorScript)
+}
+
+const create_motor = (motor) => {
+    return (
+        `\n#----------------------------------------------------------------------------------------`+
+        `\n#       adds motor`+
+        `\n#----------------------------------------------------------------------------------------`+
+        `\n`+
+        `\n# adds empty as ${motor}`+
+        `\nbpy.ops.object.empty_add(type='ARROWS', location=(my_cursor_location))`+
+        `\nfor obj in bpy.context.selected_objects:`+
+        `\n    obj.name = Motor`+
+        `\n`+
+        `\n# moves down in z`+
+        `\nbpy.context.object.location[2] = -10`+
+        `\n# rotates 1.5708`+
+        `\nbpy.context.object.rotation_euler[1] = motorRotation`+
+        `\n# add rigidbody properties/motor`+
+        `\nbpy.ops.rigidbody.constraint_add()`+
+        `\nbpy.context.object.rigid_body_constraint.type = 'MOTOR'`+
+        `\nbpy.context.object.rigid_body_constraint.use_motor_ang = True`+
+        `\n# set first object`+
+        `\nbpy.context.object.rigid_body_constraint.object1 = bpy.data.objects[Main]`+
+        `\n# set second object`+
+        `\nbpy.context.object.rigid_body_constraint.object2 = bpy.data.objects[Axle]`
+    )
+}
+
+const parent_items = (parent) => {
+    return (
+        `\n#----------------------------------------------------------------------------------------`+
+        `\n#       parents items`+
+        `\n#----------------------------------------------------------------------------------------`+
+        `\n# Selects objects`+
+        `\nbpy.data.objects[Hinge].select_set(True)`+
+        `\nbpy.data.objects[${parent}].select_set(True)`+
+        `\n# makes Axle active`+
+        `\nobj = bpy.context.window.scene.objects[Axle]`+
+        `\nbpy.context.view_layer.objects.active = obj`+
+        `\n# parents objects to Axle`+
+        `\nbpy.ops.object.parent_set(type='OBJECT', keep_transform=True)`
+    )
 }
