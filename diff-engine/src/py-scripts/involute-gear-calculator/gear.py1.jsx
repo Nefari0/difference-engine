@@ -11,7 +11,7 @@ export const Py1 = (state) => {
     `\nref_radius = z/2` +
     `\nbase_radius = ref_radius*.9396950000000001` +    
     `\nrad_difference = (ref_radius-base_radius)*(.25)` +
-    `\n` + 
+    `\n` +
     `\nname_iterator = str(len(bpy.data.objects))` +
     `\nprofile_name = "Profile_"+name_iterator` +
     `\nsecondary_profile = 'Profile_'+name_iterator+'.001' # Existing name` +

@@ -1,6 +1,6 @@
 // Copy profile generating python script
 import Button from '../../../KeyPad/Button'
-import { Py1 } from '../gear.py1'
+import { Py1 } from '../../../../../py-scripts/involute-gear-calculator/gear.py1'
 const Step4 = (props) => {
 
     const { state, pitch, copyVal, } = props
