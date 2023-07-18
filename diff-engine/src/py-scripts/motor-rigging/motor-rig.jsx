@@ -9,7 +9,7 @@ export const MotorGen = (name,child,motor) => {
     `\n# object name variables` +
     // `\nAxle = "axle"` +
     `\nAxle = ${name}+"_axle"` +
-    `\nHinge = "hinge"`+
+    `\nHinge = ${name}+"_hinge"`+
     `\nMotor = "motor"`+
     `\nMain = ${name}`+
     `\n`+
