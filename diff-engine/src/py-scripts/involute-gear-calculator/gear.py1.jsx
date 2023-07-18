@@ -1,6 +1,6 @@
 import { MotorGen } from '../motor-rigging/motor-rig'
 export const Py1 = (state) => {
-    const { mathFunc,blenderCoords,degrees } = state
+    const { mathFunc,blenderCoords,degrees,createMotor } = state
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
     '\nfrom math import *' +
@@ -105,7 +105,7 @@ export const Py1 = (state) => {
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.ops.object.join()` +
     `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]` +
-    `${MotorGen(`profile_name`,'gear_name',true)}` +
+    `${MotorGen(`profile_name`,'gear_name',createMotor)}` +
     `\nbpy.data.objects[profile_name].select_set(True)`
     // '\n`
     // `\nbpy.ops.object.editmode_toggle()`

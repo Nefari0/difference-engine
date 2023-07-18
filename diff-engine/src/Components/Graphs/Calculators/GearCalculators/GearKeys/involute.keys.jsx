@@ -206,7 +206,7 @@ const CogKeys = (props) => {
 
                     {/* COPY PYTHON SCRIPT */}
                     {blenderCoords.length > 0 && gearBuildingStep === 'step_4' && 
-                    <Step4 state={state} pitch={pitch} copyVal={copyVal} />}
+                    <Step4 state={state} setState={setState} pitch={pitch} copyVal={copyVal} />}
 
                 </>
             }

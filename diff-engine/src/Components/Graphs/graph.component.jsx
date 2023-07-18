@@ -106,6 +106,7 @@ export default function Graph() {
     involute:[],
     blenderCoords:[],
     gearBuildingStep:'step_1',
+    createMotor:false,
 
     // --- Unit converter --- //
     units:'in',
