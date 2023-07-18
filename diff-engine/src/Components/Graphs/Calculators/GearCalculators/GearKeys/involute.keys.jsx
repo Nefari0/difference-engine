@@ -55,9 +55,6 @@ const CogKeys = (props) => {
     // --- Conditions for gear parameters --- //
     const conditions = pitch === 'Infinity' || isNaN(pitch) === true || parseFloat(z) < minGearTeeth || parseFloat(z) > maxGearTeeth
 
-    const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
-    const copyPitch = `${pitch} saved to clipbaord`
-
     const gears = (increment) => {
         // e.preventDefault()
         const u1 = [];
