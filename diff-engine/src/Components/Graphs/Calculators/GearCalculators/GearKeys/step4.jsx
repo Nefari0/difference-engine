@@ -27,7 +27,7 @@ const Step4 = (props) => {
             />
 
             <input type="checkbox" onChange={() => setState({...state,createMotor:!createMotor})}></input>
-            <label for="vehicle3"> add motor for testing in Blender?</label><br></br>
+            <label> add motor for testing in Blender?</label><br></br>
 
         </div>
     )
