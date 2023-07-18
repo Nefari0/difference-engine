@@ -1,10 +1,10 @@
 // Copy profile generating python script
 import Button from '../../../KeyPad/Button'
-import { Py1 } from '../gear.py1'
+import { Py1 } from '../../../../../py-scripts/involute-gear-calculator/gear.py1'
 const Step4 = (props) => {
 
-    const { state, pitch, copyVal, } = props
-    const { mathFunc,blenderCoords } = state
+    const { state, pitch, copyVal, setState } = props
+    const { mathFunc,createMotor } = state
 
     const copyScriptMessage = `A Python script that will generate your ${mathFunc} tooth gear tooth profile has been copied to clipboard. Paste and run this script in Blender's script editor to generate your gear tooth profile`
     const copyPitch = `${pitch} saved to clipbaord`
@@ -25,6 +25,10 @@ const Step4 = (props) => {
                 buttonClass={'large'}
                 p={'Save profile generator script'}
             />
+
+            <input type="checkbox" onChange={() => setState({...state,createMotor:!createMotor})}></input>
+            <label for="vehicle3"> add motor for testing in Blender?</label><br></br>
+
         </div>
     )
 }
