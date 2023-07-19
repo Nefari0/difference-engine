@@ -47,7 +47,7 @@ export const ViewProvider = ({ children }) => {
     const [isLoading,setIsLoading] = useState(false)
     const [showPlotValues,setShowPlotValues] = useState(false)
     const [alert,setAlert] = useState(null)
-    const [zoom,setZoom] = useState(true)
+    const [zoom,setZoom] = useState(false)
 
     const value = {
         currentView,setCurrentView,
