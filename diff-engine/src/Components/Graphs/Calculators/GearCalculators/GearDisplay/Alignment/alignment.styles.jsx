@@ -7,5 +7,4 @@ export const ToothAlignmentWrapper = styled.div`
     width:1px;
     background-color:red;
     transform:rotate(${({degrees}) => degrees}deg);
-
 `

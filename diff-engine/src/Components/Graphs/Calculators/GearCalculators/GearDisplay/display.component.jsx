@@ -15,7 +15,7 @@ export const cogScale = 40
 const CogDisplay = ({state}) => {
 
     const { involute,mathFunc,gearBuildingStep } = state
-    const { darkmode,setScrollBar } = useContext(ViewContext)
+    const { darkmode,setScrollBar,zoom } = useContext(ViewContext)
     const z = parseFloat(mathFunc) // number of teeth
     const refDiameter = cogScale*z
     const tipDiameter = (refDiameter + (cogScale*2))
@@ -49,7 +49,7 @@ const CogDisplay = ({state}) => {
             position: "absolute",
             transition: "all 1000ms",
             width: "3px",
-            height: "3px",
+            height: `${zoom ? 1 : 3}px`,
             borderRadius:'50%'
         };
         return <p style={locations} key={i}></p>;
@@ -57,7 +57,7 @@ const CogDisplay = ({state}) => {
     
     
     return(
-        <CogContainer darkmode={darkmode}>
+        <CogContainer darkmode={darkmode} zoom={zoom}>
             <CogOrigin mathFunc={mathFunc}>
                 <GearTitle darkmode={darkmode}>
                     <h1>Gear calculator</h1>
@@ -73,13 +73,13 @@ const CogDisplay = ({state}) => {
                     {gearBuildingStep === 'step_2' && <TipCircle tipDiameter={tipDiameter}></TipCircle>}
 
                     {gearBuildingStep === 'step_3' && 
-                    <ReferenceCircle refDiameter={refDiameter}>
+                    <ReferenceCircle refDiameter={refDiameter} zoom={zoom}>
                         <div
                             style={{
                                 position:'absolute',
                                 height:`${3.1415926*cogScale}px`,
                                 width:`${3.1415926*cogScale}px`,
-                                borderTop:'solid 2px blue',
+                                borderTop:`solid ${zoom ? 1 : 2}px blue`,
                                 right:`${0}px`,
                                 bottom:`${((refDiameter/2)+1)+radDifference}px`,
                                 transform: `translate(50%, 50%)`

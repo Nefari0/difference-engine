@@ -1,8 +1,8 @@
-import { backButton,uturnArrow } from "../../../SVG";
+import { backButton,uturnArrow,zoomIn,zoomOut } from "../../../SVG";
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
 import InputField from "../../../KeyPad/InputField";
-import { useEffect,useContext,useState } from "react";
+import { useEffect,useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import 'katex/dist/katex.min.css';
 import AdjustmentPanel from "./button-panel";
@@ -23,7 +23,7 @@ const CogKeys = (props) => {
     } = props
 
     const { mathFunc,uMax,blenderCoords,degrees,gearBuildingStep } = state
-    const {darkmode,setAlert,setDisplayKeymap} = useContext(ViewContext)
+    const {darkmode,setAlert,setDisplayKeymap,zoom,setZoom} = useContext(ViewContext)
 
     useEffect(() => {
         setState({
@@ -124,6 +124,14 @@ const CogKeys = (props) => {
             }} 
             darkmode={darkmode}
         >
+            <div>
+                <Button
+                    style={{top:'-55px',left:'2px',width:'50px'}}
+                    text={!zoom ? zoomIn() : zoomOut()}
+                    buttonClass={'tiny'}
+                    onClick={() => setZoom(!zoom)}
+                />
+            </div>
 
             {!conditions && gearBuildingStep === 'step_2' && <AdjustmentPanel 
                 state={state}
@@ -136,8 +144,8 @@ const CogKeys = (props) => {
             {!conditions && gearBuildingStep === 'step_3' && <AdjustmentPanel 
                 state={state}
                 execution={rotate}
-                inputParam1={-.5}
-                inputParam2={.5}
+                inputParam1={zoom ? -.1 : -.5}
+                inputParam2={zoom ? .1 : .5}
                 text={'Dots should pass through the point where blue and red intersect'}
             />}
 

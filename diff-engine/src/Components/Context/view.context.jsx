@@ -30,7 +30,9 @@ export const ViewContext = createContext({
 
 
     alert:null,
-    setAlert:() => null
+    setAlert:() => null,
+
+    zoom:null,setZoom:() => null, // Zooming into view
 })
 
 export const ViewProvider = ({ children }) => {
@@ -45,6 +47,7 @@ export const ViewProvider = ({ children }) => {
     const [isLoading,setIsLoading] = useState(false)
     const [showPlotValues,setShowPlotValues] = useState(false)
     const [alert,setAlert] = useState(null)
+    const [zoom,setZoom] = useState(true)
 
     const value = {
         currentView,setCurrentView,
@@ -66,7 +69,9 @@ export const ViewProvider = ({ children }) => {
         showPlotValues,setShowPlotValues,
 
 
-        alert,setAlert
+        alert,setAlert,
+
+        zoom,setZoom
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

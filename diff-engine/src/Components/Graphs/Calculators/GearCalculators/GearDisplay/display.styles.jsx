@@ -12,13 +12,15 @@ export const CogContainer = styled.div`
     right:400px;
     height:${width}px;
     width:${width}px;
+    transform: scale(${({zoom}) => zoom ? 2.5 : 1});
+    transition: all 1000ms;
 `
 
 export const ReferenceCircle = styled.div`
     position:absolute;
     width: ${({refDiameter}) => (refDiameter)}px;
     height: ${({refDiameter}) => (refDiameter)}px;
-    border: solid 2px red;
+    border: solid ${({zoom}) => zoom ? 1:2}px red;
     border-radius:50%;
     transform: translate(-50%, -50%);
 ` 
