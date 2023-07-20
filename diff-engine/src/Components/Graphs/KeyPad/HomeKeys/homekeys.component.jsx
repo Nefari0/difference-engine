@@ -42,7 +42,7 @@ const KeyPad = (props) => {
 
         setAlert,
 
-        openMemo,setOpenMemo
+        openMemo,memoOpener
     } = useContext(ViewContext)
 
     const {
@@ -181,7 +181,7 @@ const KeyPad = (props) => {
             <Button 
                 styles={{right:'90px',top:`${vp*2}px`}}
                 text={PencilNote()}
-                onClick={() => setOpenMemo(!openMemo)}
+                onClick={() => memoOpener(!openMemo)}
                 p={'Notebook'}
                 selected={openMemo}
             />
