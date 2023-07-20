@@ -4,19 +4,29 @@ import Nav from './Components/Nav/nav.component';
 import MemoPad from './Components/Graphs/Memos/memo.component';
 // import pic from './Components/admin_photo1.jpg'
 import { ViewContext } from './Components/Context/view.context';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
+import { OPEN_MEMO_NAME } from './Components/Context/view.context';
 
-function App({appUpdate,appUpdateAvailable}) {
+function App() {
 
   const { 
     setCurrentView,
 
-    darkmode,setDarkMode,
+    darkmode,
 
-    setAlert,
-
-    openMemo
+    openMemo,setOpenMemo
   } = useContext(ViewContext)
+
+  const OPEN_MEMO = localStorage.getItem(OPEN_MEMO_NAME)
+  // const boolState = () => {return(OPEN_MEMO === 'true' ? true : false)}
+
+  useEffect(() => {
+    try {
+      if(!OPEN_MEMO) {
+        localStorage.setItem(OPEN_MEMO_NAME,false)
+      } else {setOpenMemo(OPEN_MEMO === 'true')}
+    } catch (error) {return}
+  },[])
 
   // console.log('when app is loaded, it should display appUpdate as a boolean value',appUpdate)
 
