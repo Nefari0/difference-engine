@@ -84,7 +84,7 @@ export const BaseInput = styled.input`
     position:relative;
     border:none;
     font-size:40px;
-    z-index:100000000;
+    z-index:10;
 `
 
 export const ParamInput = styled(BaseInput)`
