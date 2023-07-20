@@ -32,10 +32,7 @@ const MemoPad = () => {
             } else {
                 setLocalState({...localState, text:savedNoteBook})
             }
-        } catch (error) {
-            console.log('HERE IS THE ERROR',error)
-            return
-        }
+        } catch (error) {return}
     },[])
 
     return (
