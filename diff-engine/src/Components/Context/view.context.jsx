@@ -33,6 +33,8 @@ export const ViewContext = createContext({
     setAlert:() => null,
 
     zoom:null,setZoom:() => null, // Zooming into view
+
+    openMemo:null,setOpenMemo:() => null, // Open memo pad
 })
 
 export const ViewProvider = ({ children }) => {
@@ -48,6 +50,7 @@ export const ViewProvider = ({ children }) => {
     const [showPlotValues,setShowPlotValues] = useState(false)
     const [alert,setAlert] = useState(null)
     const [zoom,setZoom] = useState(false)
+    const [openMemo,setOpenMemo] = useState(false)
 
     const value = {
         currentView,setCurrentView,
@@ -71,7 +74,9 @@ export const ViewProvider = ({ children }) => {
 
         alert,setAlert,
 
-        zoom,setZoom
+        zoom,setZoom,
+
+        openMemo,setOpenMemo
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>
