@@ -1,4 +1,5 @@
 import { backgroundColors } from "./Components/Graphs/global.styles";
+import { widthParameters } from "./Components/Graphs/global.styles";
 import styled from "styled-components";
 
 const {
@@ -10,6 +11,7 @@ const {
     // midDark,
     // dark
 } = backgroundColors
+const {enclosureWidth,enclosurePadding} = widthParameters
 
 export const Header = styled.header`
     background-color:${({darkmode}) => !darkmode ? light:darkLight};
@@ -77,7 +79,7 @@ export const Adapter = styled.section`
     position:relative;
     margin:auto;
     margin-top:50px;
-    width:500px;
+    width:${(enclosurePadding*2)+enclosureWidth}px;
     height:700px;
 
     @media (max-width:620px) {
