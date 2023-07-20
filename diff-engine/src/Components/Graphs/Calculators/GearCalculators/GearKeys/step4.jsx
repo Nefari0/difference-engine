@@ -26,8 +26,9 @@ const Step4 = (props) => {
                 p={'Save profile generator script'}
             />
 
-            <input type="checkbox" onChange={() => setState({...state,createMotor:!createMotor})}></input>
-            <label> add motor for testing in Blender?</label><br></br>
+            {/* ADDING A MOTOR IN BLENDER. THERE ARE CURRENTLY BUGS THAT NEED TO BE IRONED OUT BEFORE THIS CAN BE ADDED */}
+            {/* <input type="checkbox" onChange={() => setState({...state,createMotor:!createMotor})}></input>
+            <label> add motor for testing in Blender?</label><br></br> */}
 
         </div>
     )
