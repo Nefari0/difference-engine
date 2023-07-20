@@ -102,7 +102,8 @@ const CogKeys = (props) => {
             mathFunc:'40',
             degrees:0,
             gearBuildingStep:'step_1',
-            blenderCoords:[]
+            blenderCoords:[],
+            createMotor:false
         })
     }
 

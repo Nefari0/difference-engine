@@ -48,7 +48,7 @@ const CogDisplay = ({state}) => {
             // backgroundColor: `orange`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "3px",
+            width: `${zoom ? 1 : 3}px`,
             height: `${zoom ? 1 : 3}px`,
             borderRadius:'50%'
         };
@@ -70,7 +70,10 @@ const CogDisplay = ({state}) => {
                     {gearBuildingStep != 'step_3' && mappedGears}
 
                     <ToothAlignment state={state} mappedGears2={mappedGears2} />
-                    {gearBuildingStep === 'step_2' && <TipCircle tipDiameter={tipDiameter}></TipCircle>}
+
+                    {gearBuildingStep === 'step_2' && 
+                        <TipCircle tipDiameter={tipDiameter}></TipCircle>
+                    }
 
                     {gearBuildingStep === 'step_3' && 
                     <ReferenceCircle refDiameter={refDiameter} zoom={zoom}>
@@ -82,11 +85,12 @@ const CogDisplay = ({state}) => {
                                 borderTop:`solid ${zoom ? 1 : 2}px blue`,
                                 right:`${0}px`,
                                 bottom:`${((refDiameter/2)+1)+radDifference}px`,
-                                transform: `translate(50%, 50%)`
+                                transform: `translate(50%, 50%)`,
+                                borderRadius:'50%'
                             }}
                         >
-                            {/* <div style={{position:'relative',width:'6px',height:'6px',backgroundColor:'blue',top:'0px'}}></div> */}
                         </div>
+                            {/* <div style={{position:'relative',width:'6px',height:'6px',backgroundColor:'blue',top:'0px'}}></div> */}
                     </ReferenceCircle>}
                     <BaseCircle mathFunc={mathFunc} baseDiameter={baseDiameter}></BaseCircle>
                 </ShiftWrapper>
