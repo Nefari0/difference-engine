@@ -2,7 +2,7 @@ import { useState,useContext,useEffect } from "react";
 import { ViewContext } from "../../Context/view.context";
 import { MemoContainer,MemoOverlay } from "./memo.styles";
 import Button from "../KeyPad/Button";
-import { CloseX,InArrows,OutArrows } from "../SVG";
+import { CloseX,InArrows,OutArrows,PencilNote } from "../SVG";
 const defaultNotebook = { text:'' }
 
 const MemoPad = () => {
@@ -10,13 +10,13 @@ const MemoPad = () => {
     const NOTEBOOK_NAME = 'DIFF_ENGINE_NOTEBOOK'
     const [localState,setLocalState] = useState({
         large:false,
-        text:''
+        text:'',
+        minimize:true,
     })
 
-    const {large,text} = localState
+    const {large,text,minimize} = localState
     const { openMemo,setOpenMemo,darkmode } = useContext(ViewContext)
     const savedNoteBook = localStorage.getItem(NOTEBOOK_NAME)
-    // const textAreaValue = JSON.parse(savedNoteBook).text
 
     const textHandler = (e) => {
         e.preventDefault()
@@ -37,32 +37,33 @@ const MemoPad = () => {
 
     return (
         <MemoOverlay>
-            <MemoContainer large={large} darkmode={darkmode}>
+            <MemoContainer large={large} darkmode={darkmode} minimize={minimize}>
                 <Button 
                     style={{
                         transform:'scale(.3)',
                         right:'-20px',
                         top:'-20px'
                     }}
-                    onClick={() => setOpenMemo(!openMemo)}
-                    text={CloseX()}
+                    onClick={() => setLocalState({...localState, minimize:!minimize})}
+                    text={minimize ? PencilNote() : CloseX()}
                 />
 
-                <Button 
-                    style={{
-                        transform:'scale(.3)',
-                        right:'10px',
-                        top:'-20px'
-                    }}
-                    onClick={() => setLocalState({...localState, large:!large})}
-                    text={large ? InArrows() : OutArrows()}
-                />
-                {/* {CloseX({width:'20px'})} */}
-                <textarea
-                    value={text}
-                    name='text'
-                    onChange={textHandler}
-                />
+                {!minimize && <>
+                    <Button 
+                        style={{
+                            transform:'scale(.3)',
+                            right:'10px',
+                            top:'-20px'
+                        }}
+                        onClick={() => setLocalState({...localState, large:!large})}
+                        text={large ? InArrows() : OutArrows()}
+                    />
+                    <textarea
+                        value={text}
+                        name='text'
+                        onChange={textHandler}
+                    />
+                </>}
             </MemoContainer>
         </MemoOverlay>
     )

@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+export const OPEN_MEMO_NAME = "OPEN_MEMO"
 
 export const ViewContext = createContext({
     currentView:null, // --- Currently selected view
@@ -52,6 +53,11 @@ export const ViewProvider = ({ children }) => {
     const [zoom,setZoom] = useState(false)
     const [openMemo,setOpenMemo] = useState(false)
 
+    const memoOpener = (param) => {
+        setOpenMemo(param)
+        localStorage.setItem(OPEN_MEMO_NAME,param)
+    }
+
     const value = {
         currentView,setCurrentView,
         
@@ -76,7 +82,7 @@ export const ViewProvider = ({ children }) => {
 
         zoom,setZoom,
 
-        openMemo,setOpenMemo
+        openMemo,setOpenMemo,memoOpener
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>
