@@ -8,7 +8,8 @@ import {
     // beaker,
     CopyIcon,
     Scale,
-    Bolt
+    Bolt,
+    PencilNote
     // LockOpen,
     // LockClosed
  } from "../../SVG";
@@ -39,7 +40,9 @@ const KeyPad = (props) => {
 
         showPlotValues,setShowPlotValues,
 
-        setAlert
+        setAlert,
+
+        openMemo,memoOpener
     } = useContext(ViewContext)
 
     const {
@@ -173,6 +176,14 @@ const KeyPad = (props) => {
                 darkmode={darkmode}
                 text={'?'}
                 buttonClass={'help'}
+            />
+
+            <Button 
+                styles={{right:'90px',top:`${vp*2}px`}}
+                text={PencilNote()}
+                onClick={() => memoOpener(!openMemo)}
+                p={'Notebook'}
+                selected={openMemo}
             />
             
             <Button
