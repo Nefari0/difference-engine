@@ -42,8 +42,8 @@ function App() {
         <h1 onClick={() => setCurrentView(null)}>The Difference Engine</h1>
         {/* <ImageContainer><img src={pic} /></ImageContainer> */}
       </Header>
-      {openMemo && <MemoPad />}
       <Adapter>
+        {openMemo && <MemoPad />}
         <Graph />
       </Adapter>
     </AppContainer>

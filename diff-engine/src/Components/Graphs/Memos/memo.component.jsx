@@ -1,6 +1,6 @@
 import { useState,useContext,useEffect } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { MemoContainer,MemoOverlay } from "./memo.styles";
+import { MemoContainer } from "./memo.styles";
 import Button from "../KeyPad/Button";
 import { CloseX,InArrows,OutArrows,PencilNote } from "../SVG";
 const defaultNotebook = { text:'' }
@@ -36,7 +36,6 @@ const MemoPad = () => {
     },[])
 
     return (
-        <MemoOverlay>
             <MemoContainer large={large} darkmode={darkmode} minimize={minimize}>
                 <Button 
                     style={{
@@ -65,7 +64,6 @@ const MemoPad = () => {
                     />
                 </>}
             </MemoContainer>
-        </MemoOverlay>
     )
 }
 // (${({viewScale}) => viewScale});

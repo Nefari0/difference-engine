@@ -3,16 +3,6 @@ import { backgroundColors } from "../global.styles";
 import { widthParameters } from "../global.styles";
 // import { basicDark,basicLight } from "../global.styles";
 const { enclosureWidth,enclosurePadding } = widthParameters
-export const MemoOverlay = styled.section`
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    position:fixed;
-    z-index:1;
-    pointer-events: none;
-`
 
 const dark = css`
     background-color:${backgroundColors.lightDark};
@@ -26,21 +16,21 @@ const light = css`
 const minimized = css`
     height:25px;
     width:25px;
-    position:sticky;
-    top:90%;
-    right:80%;
+    border:none;
+    background:none;
+    top:0px;
+    left:100%;
 `
-
+// width:${(enclosureWidth)*.5}px;
+// padding:${enclosurePadding*.5}px;
 export const MemoContainer = styled.section`
     ${({darkmode}) => darkmode ? dark : light}
-    width:${(enclosureWidth)*.5}px;
-    padding:${enclosurePadding*.5}px;
     height:${({large})=>large ? 240 : 100}px;
     top:${({large}) => large ? 10 : 50}px;
     ${({minimize}) => minimize && minimized}
     z-index:11;
     pointer-events: auto;
-    position:fixed;
+    position:sticky;
     transition: all 100ms;
     border-radius:5px;
 
