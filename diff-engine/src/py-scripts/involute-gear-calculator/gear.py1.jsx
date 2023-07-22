@@ -1,4 +1,5 @@
 import { MotorGen } from '../motor-rigging/motor-rig'
+import { create_mesh } from '../mesh-generator/create_mesh.py'
 export const Py1 = (state) => {
     const { mathFunc,blenderCoords,degrees,createMotor } = state
     var gearScript = '# --- build_a_gear.py --- #'+
@@ -25,23 +26,7 @@ export const Py1 = (state) => {
     `\n# Create empty as parent element` +
     `\nbpy.ops.object.empty_add(type='ARROWS', location=(0, 0, 0))` +
     `\nbpy.data.objects['Empty'].name = gear_name` +
-    `\n` + 
-    '\ndef createMeshFromData(name, origin, verts, edges, faces):' +
-    '\n    # Create mesh and object' +
-    `\n    me = bpy.data.meshes.new(name+'Mesh')` +
-    '\n    ob = bpy.data.objects.new(name, me)' +
-    '\n    ob.location = origin' +
-    '\n    ob.show_name = False' +
-    '\n    # Link object to scene and make active' +
-    '\n    bpy.context.collection.objects.link(ob)' +
-    '\n    ob.select_set(True)' +
-    `\n` + 
-    '\n# Create mesh from given verts, faces.' +
-    '\n    me.from_pydata(verts, edges, faces)' +
-    `\n` + 
-    '\n# Update mesh with new data' +
-    '\n    me.update()' +
-    `\n` + 
+    `${create_mesh('profile_name', '[0, 0, 0]', 'verts1', 'edges1', '[]' )}` +
     `\nverts1 = ${blenderCoords}` +
     `\n` + 
     '\nedges1 = [[len(verts1) - 1, 0]]' +
