@@ -1,4 +1,4 @@
-import { MotorGen } from '../motor-rigging/motor-rig'
+import { motor_gen } from '../motor-rigging/motor-rig'
 import { create_mesh } from '../mesh-generator/create_mesh.py'
 export const Py1 = (state) => {
     const { mathFunc,blenderCoords,degrees,createMotor } = state
@@ -93,7 +93,7 @@ export const Py1 = (state) => {
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.ops.object.join()` +
     `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]` +
-    `${MotorGen(`profile_name`,'gear_name',createMotor)}` +
+    `${motor_gen(`profile_name`,'gear_name',createMotor)}` +
     `\nbpy.data.objects[profile_name].select_set(True)`
     // '\n`
     // `\nbpy.ops.object.editmode_toggle()`

@@ -1,4 +1,4 @@
-export const MotorGen = (name,child,motor) => {
+export const motor_gen = (name,child,motor) => {
     const motorScript = `#--- motor_generator --- #`+
     `\nimport bpy`+
     `\nfrom math import radians` +

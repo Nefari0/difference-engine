@@ -1,3 +1,4 @@
+import { motor_gen } from "../../../../../py-scripts/motor-rigging/motor-rig";
 import { backButton,uturnArrow,zoomIn,zoomOut } from "../../../SVG";
 import { KeyBox } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
@@ -246,6 +247,15 @@ const CogKeys = (props) => {
             >
                 Download Blender
             </a>
+
+            <a
+                onClick={() => copyVal(motor_gen('"Cube"',null,true),'alert','Python script copied to clipboard')}
+                style={{
+                    position:'absolute',
+                    bottom:'-170px',
+                    right:'20px'
+                }}
+            >motor rigging</a>
 
         </KeyBox>
     )
