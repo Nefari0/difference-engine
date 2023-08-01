@@ -1,6 +1,6 @@
-import { motor_gen } from '../motor-rigging/motor-rig'
+import { MotorGen } from '../motor-rigging/motor-rig'
 import { create_mesh } from '../mesh-generator/create_mesh.py'
-export const Py1 = (state) => {
+export const internalInvolute = (state) => {
     const { mathFunc,blenderCoords,degrees,createMotor } = state
     var gearScript = '# --- build_a_gear.py --- #'+
     '\nimport bpy'+
@@ -26,8 +26,6 @@ export const Py1 = (state) => {
     `\n# Create empty as parent element` +
     `\nbpy.ops.object.empty_add(type='ARROWS', location=(0, 0, 0))` +
     `\nbpy.data.objects['Empty'].name = gear_name` +
-
-    // `\n# CREATE MESH ` +
     `${create_mesh('profile_name', '[0, 0, 0]', 'verts1', 'edges1', '[]' )}` +
     `\nverts1 = ${blenderCoords}` +
     `\n` + 
@@ -36,7 +34,6 @@ export const Py1 = (state) => {
     '\n    edges1.append( [i, i+1] )' +
     `\ndel edges1[0]` +
     `\n` + 
-    // `\n# CREATE MESH ` +
     `\n` + 
     `\n# Reference circle` +
     `\nbpy.ops.mesh.primitive_circle_add(radius=z/2,enter_editmode=False, location=(0, 0, 0))` +
@@ -93,7 +90,7 @@ export const Py1 = (state) => {
     `\nbpy.data.objects[profile_name].select_set(True)` +
     `\nbpy.ops.object.join()` +
     `\nbpy.data.objects[profile_name+'.001'].name = profile_name.split('.')[0]` +
-    `${motor_gen(`profile_name`,'gear_name',createMotor)}` +
+    `${MotorGen(`profile_name`,'gear_name',createMotor)}` +
     `\nbpy.data.objects[profile_name].select_set(True)`
     // '\n`
     // `\nbpy.ops.object.editmode_toggle()`
