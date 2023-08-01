@@ -253,7 +253,8 @@ const CogKeys = (props) => {
                 style={{
                     position:'absolute',
                     bottom:'-170px',
-                    right:'20px'
+                    right:'20px',
+                    cursor:'pointer'
                 }}
             >motor rigging</a>
 
