@@ -249,7 +249,7 @@ const CogKeys = (props) => {
             </a>
 
             <a
-                onClick={() => copyVal(motor_gen('"Cube"',null,true),'alert','Python script copied to clipboard')}
+                onClick={() => copyVal(motor_gen('Name',null,true),'alert','Python script copied to clipboard')}
                 style={{
                     position:'absolute',
                     bottom:'-170px',

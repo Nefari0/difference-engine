@@ -6,11 +6,13 @@ export const motor_gen = (name,child,motor) => {
     `\n# location for added objects` +
     `\nmy_cursor_location = bpy.context.scene.cursor.location`+
     `\n` +
-    `\n# object name variables` +
-    // `\nAxle = "axle"` +
+    `\n#----------------------------------------------------------------------------------------` +
+    `\n#        object name variables` +
+    `\n#       IF YOU NEED TO CHANGE THE "NAME" VALUES TO NAME OF OBJECT YOU WISH TO RIG, WRAP THE NAME IN QUOTATION MARKS` +
+    `\n#----------------------------------------------------------------------------------------` +
     `\nAxle = ${name}+"_axle"` +
     `\nHinge = ${name}+"_hinge"`+
-    `\nMotor = "motor"`+
+    `\nMotor = ${name}+"_motor"`+
     `\nMain = ${name}`+
     `\n`+
     `\n# motor rotation`+
