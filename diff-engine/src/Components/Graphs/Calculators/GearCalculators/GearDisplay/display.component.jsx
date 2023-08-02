@@ -33,8 +33,8 @@ const CogDisplay = ({state}) => {
             backgroundColor: `${darkmode ? 'yellow' : 'red'}`,
             position: "absolute",
             transition: "all 1000ms",
-            width: "3px",
-            height: "3px",
+            width: `${zoom ? 1 : 3}px`,
+            height: `${zoom ? 1 : 3}px`,
             borderRadius:'50%'
           };
         return <p style={locations} key={i}></p>;
