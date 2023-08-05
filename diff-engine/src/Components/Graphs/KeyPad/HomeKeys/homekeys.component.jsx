@@ -224,6 +224,22 @@ const KeyPad = (props) => {
                 buttonClass={'large'}
             />
 
+            <i
+                style={{
+                    position:'absolute',
+                    bottom:'-100px',
+                    fontSize:'20px',
+                    color:`${darkmode ? '#fff' : '#555'}`,
+                    right:'15px',
+                    cursor: 'pointer'
+                    // color:'#EA7600',
+                    // backgroundColor:'#236192'
+                }}
+                onClick={() => setCurrentView('blender')}
+            >
+                Blender tools
+            </i>
+            
             {/* <Button
                 buttonClass={'all_clear'}
                 text={'AC'}

@@ -16,6 +16,7 @@ import HomeKeys from './HomeKeys/homekeys.component'
 import Converters from "../Calculators/Converters/converters.keys";
 import PhysicsKeys from "../Calculators/Physics/physics.keys";
 import LeverageKeys from "../Calculators/Physics/Leverage/leverage.keys";
+import BlenderScripts from "../Blender/blender.keys";
 
 const KeyModule = (props) => {
 
@@ -48,6 +49,8 @@ const KeyModule = (props) => {
                 returnPlots={returnPlots}
                 findDerivative={findDerivative}
             />}
+
+            {currentView == 'blender' && <BlenderScripts/>}
 
 
             {currentView === 'standard' && 
