@@ -6,11 +6,18 @@ import { backButton } from "../SVG";
 import { BlenderKeys } from "./blender.styles";
 import { motor_gen } from "../../../py-scripts/motor-rigging/motor-rig";
 import { create_mesh } from "../../../py-scripts/mesh-generator/create_mesh.py";
+import { studio_setup } from "../../../py-scripts/backdrop-generator/backdrop.py";
+
+const alertMessage = 'code has been copied to the clipboard'
 
 const BlenderScripts = () => {
-    const { setCurrentView } = useContext(ViewContext)
+    const { setCurrentView,darkmode,alert,setAlert } = useContext(ViewContext)
+    const copyVal = (val,name,message) => {
+        navigator.clipboard.writeText(val)
+        setAlert(message)
+    }
     return (
-        <BlenderKeys>
+        <BlenderKeys darkmode={darkmode}>
             <Button
                 styles={{
                     right:'0px'
@@ -28,6 +35,12 @@ const BlenderScripts = () => {
             
             >
                 create mesh
+            </a>
+
+            <a
+                onClick={() => copyVal(studio_setup(),null,alertMessage)}
+            >
+                studio setup
             </a>
         </BlenderKeys>
     )

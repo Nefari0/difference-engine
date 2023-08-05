@@ -11,6 +11,8 @@ export const BlenderKeys = styled(KeyBox)`
         font-size:20px;
         left:0px;
         margin:8px;
+        color:${({darkmode}) => darkmode ? '#fff' : '#555'};
+        cursor:pointer;
     }
 `
 
