@@ -14,11 +14,9 @@ export const BlenderKeys = styled(KeyBox)`
         color:${({darkmode}) => darkmode ? '#fff' : '#555'};
         cursor:pointer;
     }
-`
 
-// export const Blendera = styled.a`
-//     position:relative;
-//     font-size:20px;
-//     left:0px;
-//     margin:8px;
-// `
+    form {
+        height:300px;
+        width:300px;
+    }
+`
