@@ -31,6 +31,7 @@ const InputField = (props) => {
         mathRendering,
         executionMethod,
         iStyle,
+        placeholder,
         ...otherProps
     } = props
     const CustomInput = getInputClass(inputClass);
@@ -49,6 +50,7 @@ const InputField = (props) => {
                 {...otherProps}
                 value={value}
                 name={`${name}`}
+                placeholder={placeholder}
             />
         </InputWrapper>
     )
