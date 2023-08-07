@@ -50,7 +50,12 @@ const KeyModule = (props) => {
                 findDerivative={findDerivative}
             />}
 
-            {currentView == 'blender' && <BlenderScripts/>}
+            {currentView == 'blender' && 
+                <BlenderScripts
+                    state={state}
+                    setState={setState}
+                    close={close}
+            />}
 
 
             {currentView === 'standard' && 
