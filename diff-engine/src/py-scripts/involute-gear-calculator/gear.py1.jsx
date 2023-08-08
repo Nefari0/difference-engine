@@ -28,18 +28,19 @@ export const Py1 = (state) => {
     `\nbpy.data.objects['Empty'].name = gear_name` +
 
     // `\n# CREATE MESH ` +
-    `${create_mesh('profile_name', '[0, 0, 0]', 'verts1', 'edges1', '[]' )}` +
     `\nverts1 = ${blenderCoords}` +
+    `${create_mesh('profile_name', '[0, 0, 0]', 'verts1', 'edges1', '[]' )}` +
     `\n` + 
-    '\nedges1 = [[len(verts1) - 1, 0]]' +
-    '\nfor i in range( 0, len(verts1)-1):' +
-    '\n    edges1.append( [i, i+1] )' +
-    `\ndel edges1[0]` +
-    `\n` + 
+    // '\nedges1 = [[len(verts1) - 1, 0]]' +
+    // '\nfor i in range( 0, len(verts1)-1):' +
+    // '\n    edges1.append( [i, i+1] )' +
+    // `\ndel edges1[0]` +
+    // `\n` + 
     // `\n# CREATE MESH ` +
     `\n` + 
     `\n# Reference circle` +
-    `\nbpy.ops.mesh.primitive_circle_add(radius=z/2,enter_editmode=False, location=(0, 0, 0))` +
+    // `\nbpy.ops.mesh.primitive_circle_add(radius=z/2,enter_editmode=False, location=(0, 0, 0))` +
+    `\nbpy.ops.mesh.primitive_circle_add(vertices=64, radius=z/2, enter_editmode=False, align='WORLD', location=(0, 0, 0), scale=(1, 1, 1))` +
     `\nbpy.data.objects['Circle'].name = ref_cir_name` +
     `\nbpy.ops.object.select_all(action='DESELECT')` +
     `\n` + 

@@ -18,7 +18,11 @@ export const create_mesh = (name,origin,verts,edges,faces) => {
     `\n` + 
     '\n# Update mesh with new data' +
     '\n    me.update()' +
-    `\n`
+    `\n` +
+    `\nedges1 = [[len(verts1) - 1, 0]]` +
+    `\nfor i in range( 0, len(verts1)-1):` +
+    `\n    edges1.append( [i, i+1] )`+
+    `\ndel edges1[0]`
 
     return (
         script
