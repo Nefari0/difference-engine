@@ -1,22 +1,24 @@
 import { useContext } from "react"
 import { ViewContext } from "../../../Context/view.context"
-import { ItemInfo,Blendering } from "./item.styles"
+import { Blendering } from "./item.styles"
 
 const BlenderLink = (props) => {
 
     const { 
         displayKeymap,
-        setDisplayKeymap, 
         darkmode
     } = useContext(ViewContext)
-    const { description,title } = props
+
+    const { description,title,...otherProps  } = props
+    
     return (
         <Blendering
             darkmode={darkmode}
             displayKeymap={displayKeymap}
+            {...otherProps}
         >
             <a>{title}</a>
-            <ItemInfo>{description}</ItemInfo>
+            <p>{description}</p>
         </Blendering>
     )
 }
