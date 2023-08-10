@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { messageBox } from "../../KeyPad/input.styles";
 
 const ashrink = css`
-    // font-size:10px;
     margin-bottom:50px;
     transition: all 1s ease-out;
 `
@@ -10,7 +9,7 @@ const ashrink = css`
 const divShrink = css`
     margin-bottom:30px;
     transition: all 1s ease-out;
-    min-height:70px;
+    min-height:100px;
 `
 
 // font-size:${({displayKeymap}) => displayKeymap ? '10px' : '20px'};
@@ -20,14 +19,17 @@ export const Blendering = styled.div`
     position:relative;
     // background-color:blue;
     transition: all 1s ease-out;
-    display:flex;
-    flex-direction:column;
     // justify-content: space-between;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: stretch;
     a {
         font-size:20px;
         position:relative;
         left:0px;
-        margin:8px;
 
         cursor:pointer;
         transition: all 1s ease-out;
@@ -36,34 +38,15 @@ export const Blendering = styled.div`
         ${({displayKeymap}) => displayKeymap && ashrink}
     }
     p {
-        // max-width:200px;
         ${messageBox}
-        // position:absolute;
         position:relative;
-        // right:100px;
-        // top:0px;
-        // margin:0px;
-        // min-width:100px;
-        // min-height:20px;
-        // background-color:blue;
+        top:-50px;
+        margin-bottom:auto;
+        transform-origin: top left;
         max-width:50%;
         display:${({displayKeymap}) => !displayKeymap && 'none'};
+        font-size:10px;
     }
     
     ${({displayKeymap}) => displayKeymap && divShrink}
-
-    `
-
-export const BlenderLink = styled.a`
-
-`
-
-// ${messageBox}
-export const ItemInfo = styled.p`
-    // position:relative;
-    // margin:0px;
-    // top:20px;
-    // right:0px;
-    // position:absolute;
-    // background-color:yellow;
 `
