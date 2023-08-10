@@ -2,10 +2,9 @@ import { useState } from "react"
 import Button from "../KeyPad/Button"
 import InputField from "../KeyPad/InputField"
 
-const MotorKeys = ({copyVal,motor_gen,alertMessage}) => {
+const RenameKeys = ({copyVal,rename_objects,alertMessage}) => {
 
     const [objectName,setObjectName] = useState('')
-    const pyName = '"' + objectName + '"'
 
     return (
         <div style={{
@@ -29,10 +28,10 @@ const MotorKeys = ({copyVal,motor_gen,alertMessage}) => {
                     fontSize:'20px'
                 }}
                 buttonClass={'large'}
-                onClick={() => copyVal(motor_gen(pyName,null,true),null,alertMessage)}
+                onClick={() => copyVal(rename_objects(objectName),null,alertMessage)}
             />
         </div>
     )
 }
 
-export default MotorKeys
+export default RenameKeys

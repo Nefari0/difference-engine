@@ -6,15 +6,6 @@ export const BlenderKeys = styled(KeyBox)`
     flex-direction:column;
     text-align:left;
 
-    a {
-        position:relative;
-        font-size:20px;
-        left:0px;
-        margin:8px;
-        color:${({darkmode}) => darkmode ? '#fff' : '#555'};
-        cursor:pointer;
-    }
-
     form {
         height:300px;
         width:300px;
