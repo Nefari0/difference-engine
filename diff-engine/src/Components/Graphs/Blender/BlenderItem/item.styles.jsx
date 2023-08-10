@@ -9,7 +9,7 @@ const ashrink = css`
 const divShrink = css`
     margin-bottom:30px;
     transition: all 1s ease-out;
-    min-height:100px;
+    min-height:70px;
 `
 
 // font-size:${({displayKeymap}) => displayKeymap ? '10px' : '20px'};
