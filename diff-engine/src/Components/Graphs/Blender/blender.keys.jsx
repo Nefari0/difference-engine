@@ -4,6 +4,7 @@ import Button from "../KeyPad/Button";
 import { backButton,uturnArrow } from "../SVG";
 import { BlenderKeys } from "./blender.styles";
 import MotorKeys from "./motor.keys";
+import RenameKeys from "./rename.keys";
 import { motor_gen } from "../../../py-scripts/motor-rigging/motor-rig";
 import { create_mesh } from "../../../py-scripts/mesh-generator/create_mesh.py";
 import { studio_setup } from "../../../py-scripts/backdrop-generator/backdrop.py";
@@ -84,10 +85,19 @@ const BlenderScripts = (props) => {
                 </>
             }
 
-            {selectedScript === 'motors' && 
+            {selectedScript === 'motors' &&
                 <MotorKeys 
+                    functionParameters={{child:null,motor:true}}
                     copyVal={copyVal} 
                     motor_gen={motor_gen} 
+                    alertMessage={alertMessage}
+            />}
+
+            {selectedScript === 'rename' &&
+                <RenameKeys
+                    functionParameters={{child:null,motor:true}}
+                    copyVal={copyVal} 
+                    rename_objects={rename_objects}
                     alertMessage={alertMessage}
             />}
             
