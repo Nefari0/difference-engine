@@ -5,7 +5,7 @@ import InputField from "../KeyPad/InputField"
 const MotorKeys = ({copyVal,motor_gen,alertMessage}) => {
 
     const [objectName,setObjectName] = useState('')
-    const pyString = '"' + objectName + '"'
+    const pyName = '"' + objectName + '"'
 
     return (
         <div style={{
@@ -29,7 +29,7 @@ const MotorKeys = ({copyVal,motor_gen,alertMessage}) => {
                     fontSize:'20px'
                 }}
                 buttonClass={'large'}
-                onClick={() => copyVal(motor_gen(pyString,null,true),null,alertMessage)}
+                onClick={() => copyVal(motor_gen(pyName,null,true),null,alertMessage)}
             />
         </div>
     )
