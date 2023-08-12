@@ -22,7 +22,8 @@ const MemoPad = () => {
         e.preventDefault()
         const {name,value} = e.target
         setLocalState({...localState,[name]:value})
-        localStorage.setItem(NOTEBOOK_NAME,localState.text)
+        localStorage.setItem(NOTEBOOK_NAME,value)
+        console.log(localStorage.DIFF_ENGINE_NOTEBOOK)
     }
 
     useEffect(() => {
