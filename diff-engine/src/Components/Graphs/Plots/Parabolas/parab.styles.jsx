@@ -8,10 +8,11 @@ const {
 
 export const ParabOrigin = styled.div`
     position:absolute;
-    left:120px;
-    bottom:10px;
-    height:10px;
-    width:10px;
+    left:245px;
+    bottom:-3px;
+    // height:10px;
+    // width:10px;
+    background-color:purple;
 `
 
 export const ParabLegend = styled.div`
