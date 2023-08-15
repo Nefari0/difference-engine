@@ -25,7 +25,7 @@ const PlotKeys = (props) => {
                 onClick={() => setCurrentView('parabolas')}
                 text={`\ax^2`}
                 buttonType={'image'}
-                p={'Quadradics'}
+                p={'Quadric Surface'}
             />
 
             {/* ELLIPSE - Currently not functional */}

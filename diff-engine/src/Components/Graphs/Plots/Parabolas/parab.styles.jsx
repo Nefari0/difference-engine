@@ -10,8 +10,6 @@ export const ParabOrigin = styled.div`
     position:absolute;
     left:245px;
     bottom:-3px;
-    // height:10px;
-    // width:10px;
     background-color:purple;
 `
 
