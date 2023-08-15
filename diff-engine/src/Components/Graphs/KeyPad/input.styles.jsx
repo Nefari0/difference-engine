@@ -4,13 +4,10 @@ import { backgroundColors } from "../global.styles";
 const {
     paper,
 
-    light,
     midLight,
     darkLight,
 
     lightDark,
-    midDark,
-    dark,
     red,blue
 } = backgroundColors
 
