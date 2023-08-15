@@ -104,9 +104,11 @@ const lightsOn = css`background-color:${midLight};color:#333;`
 const selectedButton = css`
     border: 4px solid ${blue};
 `
+
+export const baseButtonWidth = 75
 export const BaseButton = styled.button`
     position:absolute;
-    width:75px;
+    width:${baseButtonWidth}px;
     height:75px;
     border-radius:10px;
     overflow:hidden;
