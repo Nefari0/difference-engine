@@ -91,8 +91,9 @@ export const ParamInput = styled(BaseInput)`
     width:100px;
 `
 
+export const displayScreenY = 505 // Position of DisplayScreen component on y axis
 export const DisplayScreen = styled(BaseInput )`
-    bottom:-505px;
+    bottom:-${displayScreenY}px;
     height:60px;
     width:500px;
     left:-6px;

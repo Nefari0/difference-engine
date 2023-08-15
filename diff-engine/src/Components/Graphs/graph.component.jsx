@@ -9,6 +9,8 @@ import { EscapeSheild } from "./KeyPad/KeyInformation/keymap.styles";
 import AboutPage from "./Informaton/About/about.component";
 import DisplayModule from "./Display/display.component";
 import KeyModule from "./KeyPad/keypad.component";
+import Button from "./KeyPad/Button";
+import { displayScreenY } from "./KeyPad/input.styles";
 
 import {
   // evaluate,
@@ -326,6 +328,36 @@ export default function Graph() {
     return (polars === true ? polarCoords : cartCoords)
   }
 
+  const pasteFromClipboard = (e) => {
+    e.preventDefault()
+    
+    try {
+
+        navigator.clipboard.readText()
+        .then(text => {
+                // --- verify that copied items are integers or floats in string format --- //
+                try {
+                    if (typeof(text) === 'string') {
+                        
+                            if (text.split('').length <= 30) {
+                                setState({
+                                    ...state,
+                                    mathFunc:mathFunc+text
+                                })
+                            
+                        } else {execute(e,'alert','The value you entered is too long. Enter a value that is less than 30 charecters long')}
+                    } else {execute(e,'alert','Invalid input type for this calculation')}
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            .catch(err => {
+                execute(e,'alert','Failed to read clipboard contents: '+ err);
+            });
+    } catch (error) {execute(e,'alert',"Sorry, this function might not be compatible with the browser you're using",error)}
+
+  }
+
   return (
     <Enclosure
       viewScale={viewScale}
@@ -364,6 +396,7 @@ export default function Graph() {
         setState={setState}
         execute={execute}
         returnPlots={returnPlots}
+        pasteFromClipboard={pasteFromClipboard}
       />
 
       {/* ---------------------------------------- */}
@@ -375,7 +408,9 @@ export default function Graph() {
       {displayKeymap && <EscapeSheild onClick={() => setDisplayKeymap(false)}/>}
 
       {/* MAIN USER INPUT */}
-      {displayInput && <InputField
+      {displayInput && 
+      <>
+        <InputField
           darkmode={darkmode}
           type='text'
           onChange={inputHandler}
@@ -383,7 +418,23 @@ export default function Graph() {
           name="mathFunc"
           inputClass={'large'}
           executionMethod={polars ? polarVector : linearVector}
-      />}
+        />
+      <Button
+        buttonClass={'tiny'}
+        text={'append'}
+        p={'Paste from clipboard'}
+        onClick={(e) => pasteFromClipboard(e)}
+        style={{
+          top:`${displayScreenY+23}px`,
+          // zIndex:'10',
+          zIndex:'1010',
+          right:'13px',
+        }}
+      />
+      </>
+      }
+
+
 
       <KeyModule
           state={state}
