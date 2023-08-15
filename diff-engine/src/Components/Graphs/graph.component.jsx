@@ -198,7 +198,7 @@ export default function Graph() {
   // ---- Linear ---- //
   const linearVector = async (mathFunctionParam,otherPlots,e) => {
 
-    const mathFunc = mathFunctionParam ? mathFunctionParam : mathFunc
+    const mathFunction = mathFunctionParam ? mathFunctionParam : mathFunc
 
     if(e) {e.preventDefault()}
     var func = []
@@ -214,7 +214,7 @@ export default function Graph() {
         par.set('X',i)
         par.set('Y',i)
         par.set('U',i)
-        func.push(par.evaluate(mathFunc))
+        func.push(par.evaluate(mathFunction))
       });
 
     } catch (err) {
@@ -229,7 +229,7 @@ export default function Graph() {
 
     // --- Try finding derivative --- //
     try {
-      deriv = derivative((mathFunc), 'x').toString()
+      deriv = derivative((mathFunction), 'x').toString()
     } catch (error) {
       return
     }
@@ -419,23 +419,20 @@ export default function Graph() {
           inputClass={'large'}
           executionMethod={polars ? polarVector : linearVector}
         />
-      <Button
-        buttonClass={'tiny'}
-        text={'append'}
-        p={'Paste from clipboard'}
-        onClick={(e) => pasteFromClipboard(e)}
-        style={{
-          top:`${displayScreenY+23}px`,
-          // zIndex:'10',
-          zIndex:'1010',
-          right:'13px',
-        }}
-      />
+        <Button
+          buttonClass={'tiny'}
+          text={'append'}
+          p={'Paste from clipboard'}
+          onClick={(e) => pasteFromClipboard(e)}
+          style={{
+            top:`${displayScreenY+23}px`,
+            zIndex:'1010',
+            right:'13px',
+          }}
+        />
       </>
       }
-
-
-
+      
       <KeyModule
           state={state}
           setState={setState}
