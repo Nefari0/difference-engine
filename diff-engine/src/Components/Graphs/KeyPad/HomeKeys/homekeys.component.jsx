@@ -12,7 +12,7 @@ import {
     PencilNote
     // LockOpen,
     // LockClosed
- } from "../../SVG";
+} from "../../SVG";
 
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
@@ -21,7 +21,13 @@ import Button from "../Button";
 // --- kaytex --- //
 import 'katex/dist/katex.min.css';
 
+// --- styles --- //
+import { backgroundColors } from "../../global.styles";
+const { red,white } = backgroundColors
+
 const vp = 80 // -- Vertical Position
+const largeButtonWidth = 125
+const allClearWidthButton = largeButtonWidth/2
 
 const KeyPad = (props) => {
 
@@ -195,7 +201,7 @@ const KeyPad = (props) => {
             />
 
             <Button
-                style={{left:'0px',width:'125px',zIndex:'3',fontSize:'16px'}}
+                style={{left:'0px',width:largeButtonWidth,zIndex:'3',fontSize:'16px'}}
                 onClick={() => linearVector(mathFunc)}
                 darkmode={darkmode}
                 p={'Execute cartesian coordinates'}
@@ -206,7 +212,7 @@ const KeyPad = (props) => {
 
             <Button
                 darkmode={darkmode}
-                style={{top:'80px',left:'0px',zIndex:'2',width:'125px',fontSize:'16px'}}
+                style={{top:'80px',left:'0px',zIndex:'2',width:largeButtonWidth,fontSize:'16px'}}
                 onClick={() => polarVector(mathFunc)}
                 p={'Execute polar coordinates'}
                 text={'polar'}
@@ -216,12 +222,32 @@ const KeyPad = (props) => {
 
             <Button
                 darkmode={darkmode}
-                style={{top:'160px',left:'0px',zIndex:'1',width:'125px',fontSize:'16px'}}
+                style={{top:'160px',left:'0px',zIndex:'1',width:largeButtonWidth,fontSize:'16px'}}
                 onClick={() => findDerivative(mathFunc)}
                 p={'Find derivative'}
                 text={'derivative'}
                 buttonType={'textage'}
                 buttonClass={'large'}
+            />
+
+            <Button
+                buttonClass={'tiny'}
+                text={'AC'}
+                // style={{color:'blue',width:'125px'}}
+                // buttonType={'textage'}
+                p={'All Clear'}
+                // onClick={(e) => execute(e,'mathFunc','')}
+                onClick={() => setState({...state,mathFunc:''})}
+                style={{
+                    // left:'0px',
+                    left:`${largeButtonWidth/4}px`,
+                    // bottom:'-115px',
+                    bottom:'-100px',
+                    height:'30px',
+                    backgroundColor:red,
+                    color:white,
+                    width:allClearWidthButton
+                }}
             />
 
             <i
@@ -240,15 +266,6 @@ const KeyPad = (props) => {
                 Blender tools
             </i>
             
-            {/* <Button
-                buttonClass={'all_clear'}
-                text={'AC'}
-                styles={{color:'blue'}}
-                // buttonType={'i'}
-                p={'All Clear'}
-                onClick={(e) => execute(e,'mathFunc','')}
-                style={{left:'0px',bottom:'-115px'}}
-            /> */}
 
         </KeyBox>
     )

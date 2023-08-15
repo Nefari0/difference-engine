@@ -4,9 +4,10 @@ import Button from "../../../../KeyPad/Button";
 const RotationController = ({state,setState}) => {
     const { leverRotation } = state
     const rotations = [-10,-15,-20,-30]
-    const rotationMap = rotations.map(el => {
+    const rotationMap = rotations.map((el,i) => {
         return (
             <Button
+                key={i}
                 text={`${Math.abs(-el)}^\\circ`} 
                 buttonClass={'tiny'}
                 buttonType={'image'}

@@ -4,13 +4,10 @@ import { backgroundColors } from "../global.styles";
 const {
     paper,
 
-    light,
     midLight,
     darkLight,
 
     lightDark,
-    midDark,
-    dark,
     red,blue
 } = backgroundColors
 
@@ -91,8 +88,9 @@ export const ParamInput = styled(BaseInput)`
     width:100px;
 `
 
+export const displayScreenY = 505 // Position of DisplayScreen component on y axis
 export const DisplayScreen = styled(BaseInput )`
-    bottom:-505px;
+    bottom:-${displayScreenY}px;
     height:60px;
     width:500px;
     left:-6px;
@@ -103,9 +101,11 @@ const lightsOn = css`background-color:${midLight};color:#333;`
 const selectedButton = css`
     border: 4px solid ${blue};
 `
+
+export const baseButtonWidth = 75
 export const BaseButton = styled.button`
     position:absolute;
-    width:75px;
+    width:${baseButtonWidth}px;
     height:75px;
     border-radius:10px;
     overflow:hidden;

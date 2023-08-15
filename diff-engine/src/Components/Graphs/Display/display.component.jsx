@@ -30,6 +30,7 @@ const DisplayModule = (props) => {
         state,
         setState,
         execute,
+        pasteFromClipboard
     } = props
 
     const {
@@ -125,6 +126,7 @@ const DisplayModule = (props) => {
                     state={state}
                     setState={setState}
                     execute={execute}
+                    pasteFromClipboard={pasteFromClipboard}
                 />}
 
                 {/* DISPLAY FRACTION CALCULATOR */}
