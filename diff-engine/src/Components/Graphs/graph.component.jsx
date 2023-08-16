@@ -66,7 +66,9 @@ export default function Graph() {
 
     // isLoading,setIsLoading
 
-    alert,setAlert
+    alert,setAlert,
+
+    openPlayer,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -448,7 +450,7 @@ export default function Graph() {
           returnPlots={returnPlots}
       />
 
-      <Player/>
+      {openPlayer && <Player/>}
 
     </Enclosure>
   );
