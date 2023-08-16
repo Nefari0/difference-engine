@@ -11,6 +11,7 @@ import DisplayModule from "./Display/display.component";
 import KeyModule from "./KeyPad/keypad.component";
 import Button from "./KeyPad/Button";
 import { displayScreenY } from "./KeyPad/input.styles";
+import Player from "../VideoPlayer/player.component";
 
 import {
   // evaluate,
@@ -65,7 +66,9 @@ export default function Graph() {
 
     // isLoading,setIsLoading
 
-    alert,setAlert
+    alert,setAlert,
+
+    openPlayer,
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -446,6 +449,8 @@ export default function Graph() {
           formatFunction={formatFunction}
           returnPlots={returnPlots}
       />
+
+      {openPlayer && <Player/>}
 
     </Enclosure>
   );
