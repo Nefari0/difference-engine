@@ -1,18 +1,23 @@
 // Enter number of teeth
+import { useContext } from "react";
+import { ViewContext } from "../../../../Context/view.context";
 import Button from "../../../KeyPad/Button";
 
-const iStyle = {
-    width:'300px',
-    height:'50px',
-    // backgroundColor:'blue',
-    fontSize:'30px',
-    position:'absolute',
-    marginLeft:'100px'
-}
+const video_url = 'https://vimeo.com/852046580'
+// const iStyle = {
+//     width:'300px',
+//     height:'50px',
+//     // backgroundColor:'blue',
+//     fontSize:'30px',
+//     position:'absolute',
+//     marginLeft:'100px'
+// }
 
 const Step1 = (props) => {
 
     const { gears } = props
+
+    const { openPlayer,setOpenPlayer } = useContext(ViewContext)
 
     return (
         <div>
@@ -25,7 +30,19 @@ const Step1 = (props) => {
                 }}
                 text={'NEXT'}
                 buttonClass={'large'}
-            />
+                />
+                <i
+                    style={{
+                        position:'absolute',
+                        top:'200px',
+                        left:'0px',
+                        // color:'blue',
+                        fontSize:'20px'
+                    }}
+                    onClick={() => setOpenPlayer(video_url)}
+                >
+                    gears built with this calculator
+                </i>
         </div>
     )
 }
