@@ -37,7 +37,8 @@ const Step1 = (props) => {
                         top:'200px',
                         left:'0px',
                         // color:'blue',
-                        fontSize:'20px'
+                        fontSize:'20px',
+                        cursor:'pointer'
                     }}
                     onClick={() => setOpenPlayer(video_url)}
                 >
