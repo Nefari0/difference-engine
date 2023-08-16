@@ -11,6 +11,7 @@ import DisplayModule from "./Display/display.component";
 import KeyModule from "./KeyPad/keypad.component";
 import Button from "./KeyPad/Button";
 import { displayScreenY } from "./KeyPad/input.styles";
+import Player from "../VideoPlayer/player.component";
 
 import {
   // evaluate,
@@ -446,6 +447,8 @@ export default function Graph() {
           formatFunction={formatFunction}
           returnPlots={returnPlots}
       />
+
+      <Player/>
 
     </Enclosure>
   );
