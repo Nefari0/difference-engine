@@ -29,9 +29,9 @@ export const PlayerHeader = styled.header`
     // background-color:#000;
     background-color:rgba(0, 0, 0, .4);
     display: flex;
-	flex-direction: row;
+    flex-direction: row-reverse;
 	flex-wrap: nowrap;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	align-content: center;
 

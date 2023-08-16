@@ -14,6 +14,7 @@ const Player = () => {
     return (
         <PlayerContainer>
             <PlayerHeader style={{width:`${playerWidth}px`}}>
+                {/* {navigator.online === false && <h2 style={{color:'#fff',fontWeight:'200'}}>you are offline</h2>} */}
                 <Button 
                     text={CloseX()}
                     onClick={() => setOpenPlayer(null)}
