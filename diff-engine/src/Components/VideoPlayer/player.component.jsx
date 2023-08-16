@@ -10,11 +10,11 @@ const playerWidth=298
 const playerHeight=191
 
 const Player = () => {
-    const { openPlayer,setOpenPlayer } = useContext(ViewContext)
+    const { openPlayer,setOpenPlayer,isOnline } = useContext(ViewContext)
     return (
         <PlayerContainer>
             <PlayerHeader style={{width:`${playerWidth}px`}}>
-                {/* {navigator.online === false && <h2 style={{color:'#fff',fontWeight:'200'}}>you are offline</h2>} */}
+                {isOnline === false && <h2 style={{color:'#fff',fontWeight:'200'}}>you are offline</h2>}
                 <Button 
                     text={CloseX()}
                     onClick={() => setOpenPlayer(null)}
