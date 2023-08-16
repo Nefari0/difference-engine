@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ViewContext } from "../Context/view.context";
 import { PlayerContainer,PlayerHeader } from "./player.styles";
 import './player.css'
 import ReactPlayer from "react-player";
@@ -8,18 +10,19 @@ const playerWidth=298
 const playerHeight=191
 
 const Player = () => {
-    const video_url = 'https://vimeo.com/852046580'
+    const { openPlayer,setOpenPlayer } = useContext(ViewContext)
     return (
         <PlayerContainer>
             <PlayerHeader style={{width:`${playerWidth}px`}}>
                 <Button 
                     text={CloseX()}
+                    onClick={() => setOpenPlayer(null)}
                 />
             </PlayerHeader>
             
             <ReactPlayer
                 className='react-player'
-                url={video_url}
+                url={openPlayer}
                 width={`${playerWidth}px`}
                 height={`${playerHeight}px`}
                 controls={true}
