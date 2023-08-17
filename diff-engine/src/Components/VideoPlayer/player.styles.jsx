@@ -1,17 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-// const playerWidth='298px'
-// const playerHeight='191px'
-
-// height:${playerHeight}px;
-// width:${playerWidth}px;
-export const PlayerContainer = styled.div`
-    // background-color:blue;
+export const PlayerContainer = styled.section`
     z-index:100000000;
-    // margin:auto;
-    // position:fixed;
     position:absolute;
-    // bottom:0px;
     width:100%;
     height:50%;
     display: flex;
@@ -22,14 +13,10 @@ export const PlayerContainer = styled.div`
 `
 
 export const PlayerHeader = styled.header`
-    // background-color:yellow;
     height:50px;
     margin:0px;
-    // opacity:.4;
-    // background-color:#000;
     background-color:rgba(0, 0, 0, .4);
     display: flex;
-    flex-direction: row-reverse;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: center;
@@ -39,5 +26,19 @@ export const PlayerHeader = styled.header`
         transform:scale(.6);
         position:relative;
         margin:-13px;
+    }
+
+    h2 {
+        color:#fff;
+        font-weight:200;
+        width:90%;
+    }
+`
+
+export const VideoPlaceholder = styled.div`
+    background-color:rgba(0, 0, 0, .4);
+
+    h1 {
+        color:#fff;
     }
 `

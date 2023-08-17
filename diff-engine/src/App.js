@@ -1,5 +1,6 @@
 import Graph from './Components/Graphs/graph.component';
 import { AppContainer,Adapter,Header,ImageContainer } from './App.styles';
+import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import MemoPad from './Components/Graphs/Memos/memo.component';
 // import pic from './Components/admin_photo1.jpg'
@@ -14,19 +15,33 @@ function App() {
 
     darkmode,
 
-    openMemo,setOpenMemo
+    openMemo,setOpenMemo,
+
+    isOnline,setIsOnline
   } = useContext(ViewContext)
 
+  const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
   const OPEN_MEMO = localStorage.getItem(OPEN_MEMO_NAME)
   // const boolState = () => {return(OPEN_MEMO === 'true' ? true : false)}
 
   useEffect(() => {
+
+    window.addEventListener('online', setOnline);
+    window.addEventListener('offline', setOffline);
+    setIsOnline(online)
+
     try {
       if(!OPEN_MEMO) {
         localStorage.setItem(OPEN_MEMO_NAME,false)
       } else {setOpenMemo(OPEN_MEMO === 'true')}
     } catch (error) {return}
-  },[])
+
+    return () => {
+      window.removeEventListener('online', setOnline);
+      window.removeEventListener('offline', setOffline);
+    };
+
+  },[online])
 
   // console.log('when app is loaded, it should display appUpdate as a boolean value',appUpdate)
 
