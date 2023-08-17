@@ -17,7 +17,10 @@ const Step1 = (props) => {
 
     const { gears } = props
 
-    const { openPlayer,setOpenPlayer } = useContext(ViewContext)
+    const { 
+        setOpenPlayer,
+        isOnline 
+    } = useContext(ViewContext)
 
     return (
         <div>
@@ -31,19 +34,18 @@ const Step1 = (props) => {
                 text={'NEXT'}
                 buttonClass={'large'}
                 />
-                <i
+                {isOnline && <i
                     style={{
                         position:'absolute',
                         top:'200px',
                         left:'0px',
-                        // color:'blue',
                         fontSize:'20px',
                         cursor:'pointer'
                     }}
                     onClick={() => setOpenPlayer(video_url)}
                 >
                     gears built with this calculator
-                </i>
+                </i>}
         </div>
     )
 }
