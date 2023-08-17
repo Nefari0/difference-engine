@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ViewContext } from "../Context/view.context";
-import { PlayerContainer,PlayerHeader } from "./player.styles";
+import { PlayerContainer,PlayerHeader,VideoPlaceholder } from "./player.styles";
 import './player.css'
 import ReactPlayer from "react-player";
 import { CloseX } from "../Graphs/SVG";
@@ -13,14 +13,16 @@ const Player = () => {
     const { openPlayer,setOpenPlayer,isOnline } = useContext(ViewContext)
     return (
         <PlayerContainer>
+            
             <PlayerHeader style={{width:`${playerWidth}px`}}>
-                {isOnline === false && <h2 style={{color:'#fff',fontWeight:'200'}}>you are offline</h2>}
+                <h2>{isOnline === false && `you are offline`}</h2>
                 <Button 
                     text={CloseX()}
                     onClick={() => setOpenPlayer(null)}
                 />
             </PlayerHeader>
             
+            {isOnline ? 
             <ReactPlayer
                 className='react-player'
                 url={openPlayer}
@@ -28,6 +30,11 @@ const Player = () => {
                 height={`${playerHeight}px`}
                 controls={true}
             />
+            :
+            <VideoPlaceholder style={{height:playerHeight,width:playerWidth}}>
+                <h1>video not available</h1>
+            </VideoPlaceholder>
+            }
         </PlayerContainer>
     )
 }
