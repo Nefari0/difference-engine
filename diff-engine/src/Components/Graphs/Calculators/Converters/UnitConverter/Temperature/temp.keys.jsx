@@ -2,7 +2,7 @@ import Button from "../../../../KeyPad/Button"
 
 const vp = 80 // -- Vertical Position
 
-const TemperatureKeys = ({execute}) => {
+const TemperatureKeys = ({execute,units}) => {
 
     return (
         <>
@@ -13,6 +13,7 @@ const TemperatureKeys = ({execute}) => {
                 text={'C'}
                 p={'celsius'}
                 buttonClass={'operator'}
+                selected={units === 'celsius'}
             />
 
             <Button
@@ -21,6 +22,7 @@ const TemperatureKeys = ({execute}) => {
                 text={'F'}
                 p={'fahrenheit'}
                 buttonClass={'operator'}
+                selected={units === 'fahrenheit'}
             />
 
         </>

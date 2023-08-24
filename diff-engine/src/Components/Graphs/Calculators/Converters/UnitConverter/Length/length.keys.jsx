@@ -5,7 +5,7 @@ const vp = 80 // -- Vertical Position
 
 const LengthKeys = (props) => {
 
-    const { execute,close } = props
+    const { execute,close,units } = props
 
     return (
         <div>
@@ -15,6 +15,7 @@ const LengthKeys = (props) => {
                 text={'mm'}
                 p={'Millimeter'}
                 buttonClass={'operator'}
+                selected={units === 'mm'}
             />
 
             <Button
@@ -23,6 +24,7 @@ const LengthKeys = (props) => {
                 text={'in'}
                 p={'Inches'}
                 buttonClass={'operator'}
+                selected={units === 'in'}
             />
 
             <Button
@@ -31,6 +33,7 @@ const LengthKeys = (props) => {
                 text={'ft'}
                 p={'Feet'}
                 buttonClass={'operator'}
+                selected={units === 'ft'}
             />
 
             <Button
@@ -39,6 +42,7 @@ const LengthKeys = (props) => {
                 text={'cm'}
                 p={'Centimeter'}
                 buttonClass={'operator'}
+                selected={units === 'cm'}
             />
 
         </div>

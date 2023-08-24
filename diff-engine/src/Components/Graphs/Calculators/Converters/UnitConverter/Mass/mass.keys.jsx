@@ -4,7 +4,7 @@ const vp = 80 // -- Vertical Position
 
 const MassKeys = (props) => {
     
-    const { execute } = props
+    const { execute,units } = props
 
     return (
         <>
@@ -14,6 +14,7 @@ const MassKeys = (props) => {
                 text={'gm'}
                 p={'Gram'}
                 buttonClass={'operator'}
+                selected={units === 'gm'}
             />
 
             <Button
@@ -22,6 +23,7 @@ const MassKeys = (props) => {
                 text={'oz'}
                 p={'Ounce'}
                 buttonClass={'operator'}
+                selected={units === 'oz'}
             />
 
             <Button
@@ -30,6 +32,7 @@ const MassKeys = (props) => {
                 text={'lb'}
                 p={'Pound'}
                 buttonClass={'operator'}
+                selected={units === 'lb'}
             />
 
             <Button
@@ -38,6 +41,7 @@ const MassKeys = (props) => {
                 text={'ct'}
                 p={'Carat'}
                 buttonClass={'operator'}
+                selected={units === 'ct'}
             />
 
         </>

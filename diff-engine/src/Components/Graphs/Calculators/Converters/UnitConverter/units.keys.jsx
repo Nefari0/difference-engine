@@ -24,7 +24,8 @@ const UnitsKeys = (props) => {
     const {
         setDisplayKeymap,
         displayKeymap,
-        setCurrentView
+        setCurrentView,
+        currentView
     } = useContext(ViewContext)
 
     useEffect(() => {
@@ -86,26 +87,29 @@ const UnitsKeys = (props) => {
                 setState={setState}
             />
 
-            {unitType === 'Length' && <LengthKeys execute={execute}/>}
-            {unitType === 'Mass' && <MassKeys execute={execute}/>}
-            {unitType === "Temperature" && <TemperatureKeys execute={execute} />}
+            {unitType === 'Length' && <LengthKeys execute={execute} {...state} />}
+            {unitType === 'Mass' && <MassKeys execute={execute} {...state}/>}
+            {unitType === "Temperature" && <TemperatureKeys execute={execute} {...state}/>}
 
             <Button
                 style={{right:'160px'}}
                 onClick={(e) => execute(e,'unitType','Mass')}
                 text={'Mass'}
+                selected={unitType === 'Mass'}
             />
 
             <Button
                 style={{right:'160px',top:`${vp}px`}}
                 onClick={(e) => execute(e,'unitType','Length')}
                 text={'Length'}
+                selected={unitType === 'Length'}
             />
 
             <Button
                 style={{right:'160px',top:`${vp*2}px`}}
                 onClick={(e) => execute(e,'unitType','Temperature')}
                 text={'Temp'}
+                selected={unitType === 'Temperature'}
             />
 
             <Button
