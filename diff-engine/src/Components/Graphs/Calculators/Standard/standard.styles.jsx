@@ -16,9 +16,9 @@ const {
 export const Standard = styled.div`
     position:absolute;
     font-size:20px;
-    bottom:40px;
-    width:90%;
-    height:10%;
+    bottom:0px;
+    width:100%;
+    height:15%;
     background-color:${({darkmode}) =>darkmode ? dark : paper};
     color:${({darkmode}) => darkmode ? '#fff' : '#333'};
     z-index:1;
@@ -27,10 +27,9 @@ export const Standard = styled.div`
 `
 
 export const History = styled(Standard)`
-    width:90%;
+    width:100%;
     height:75%;
-    top:10px;
-    left:30px;
+    top:0px;
     display:flex;
     flex-direction:column;
     overflow:scroll;
