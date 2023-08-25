@@ -1,19 +1,21 @@
 import { useEffect,useState,useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
-import { KeyBox,AllClearButton,InfoMessage } from "../../../KeyPad/input.styles";
+import { KeyBox,InfoMessage } from "../../../KeyPad/input.styles";
 import Button from "../../../KeyPad/Button";
-import { backButton, uturnArrow } from "../../../SVG";
+import { uturnArrow } from "../../../SVG";
 import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 import { GuideText } from "./percent.styles";
 
 const PercentKeys = (props) => {
 
     const { 
-        close,
+        // close,
         setState,
         state,
         execute
         } = props
+
+    const { findPercentValue } = state
 
     const {
         setDisplayKeymap,
@@ -79,6 +81,7 @@ const PercentKeys = (props) => {
                 text={"total value"}
                 p={'edit total value'}
                 onClick={(e) => setTextFieldSelection("totalValue")}
+                selected={textFieldSelection === 'totalValue'}
             />
 
             <Button
@@ -87,6 +90,7 @@ const PercentKeys = (props) => {
                 text={"partial value"}
                 p={'edit partial value'}
                 onClick={(e) => setTextFieldSelection("partialValue")}
+                selected={textFieldSelection === 'partialValue'}
             />
 
             {/* SELECT TYPE OF COMPUTATION */}
@@ -104,6 +108,7 @@ const PercentKeys = (props) => {
                 p={'select to find value of percentage'}
                 buttonClass={'large'}
                 onClick={(e) => execute(e,"findPercentValue","percent")}
+                selected={findPercentValue === "percent"}
             />
 
             <Button
@@ -112,6 +117,7 @@ const PercentKeys = (props) => {
                 p={'select to find percentage of value'}
                 buttonClass={'large'}
                 onClick={(e) => execute(e,"findPercentValue","value")}
+                selected={findPercentValue === "value"}
             />
 
             <Button
