@@ -27,7 +27,6 @@ const { red,white } = backgroundColors
 
 const vp = 80 // -- Vertical Position
 const largeButtonWidth = 125
-const allClearWidthButton = largeButtonWidth/2
 
 const KeyPad = (props) => {
 
@@ -231,22 +230,15 @@ const KeyPad = (props) => {
             />
 
             <Button
-                buttonClass={'tiny'}
                 text={'AC'}
-                // style={{color:'blue',width:'125px'}}
-                // buttonType={'textage'}
                 p={'All Clear'}
-                // onClick={(e) => execute(e,'mathFunc','')}
                 onClick={() => setState({...state,mathFunc:''})}
                 style={{
-                    // left:'0px',
-                    left:`${largeButtonWidth/4}px`,
-                    // bottom:'-115px',
-                    bottom:'-100px',
-                    height:'30px',
+                    top:'240px',
+                    left:'0px',
                     backgroundColor:red,
                     color:white,
-                    width:allClearWidthButton
+                    width:largeButtonWidth
                 }}
             />
 
