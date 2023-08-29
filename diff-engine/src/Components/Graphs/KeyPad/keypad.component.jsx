@@ -17,6 +17,7 @@ import Converters from "../Calculators/Converters/converters.keys";
 import PhysicsKeys from "../Calculators/Physics/physics.keys";
 import LeverageKeys from "../Calculators/Physics/Leverage/leverage.keys";
 import BlenderScripts from "../Blender/blender.keys";
+import { GraphKeys } from "./GraphKeyPad/graphkeys.component";
 
 const KeyModule = (props) => {
 
@@ -37,7 +38,7 @@ const KeyModule = (props) => {
 
     return (
         <div>
-
+            <GraphKeys />
             {!currentView && 
             <HomeKeys
                 formatFunction={formatFunction}
