@@ -1,17 +1,28 @@
 import { Toolbar } from "./graph-tools.styles";
-import { CopyIcon } from "../../SVG";
+import { CopyIcon,MathVariable } from "../../SVG";
 import Button from "../Button";
 
-const ToolPanel = () => {
+const iconStyles = {
+    width:'40px'
+}
+
+const ToolPanel = (props) => {
+
+    const { copy } = props
 
     return (
         <Toolbar>
             <Button
-                text={CopyIcon({width:'40px'})}
+                text={CopyIcon(iconStyles)}
                 buttonClass={'translucent'}
                 p={'text'}
+                onClick={() => copy()}
             />
-            {/* <Button /> */}
+            <Button
+                text={MathVariable(iconStyles)}
+                buttonClass={'translucent'}
+                p={'show values'}
+            />
         </Toolbar>
     )
 }

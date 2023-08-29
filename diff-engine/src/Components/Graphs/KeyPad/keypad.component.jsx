@@ -34,11 +34,22 @@ const KeyModule = (props) => {
         findDerivative
     } = props
 
-    const { currentView } = useContext(ViewContext)
+    const { currentView,setAlert } = useContext(ViewContext)
+
+    const copy = () => {
+        if (returnPlots()[0]) {
+          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+        } else {
+          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
+        }
+    }
 
     return (
         <div>
-            <GraphKeys />
+            <GraphKeys
+                copy={copy}
+            />
             {!currentView && 
             <HomeKeys
                 formatFunction={formatFunction}

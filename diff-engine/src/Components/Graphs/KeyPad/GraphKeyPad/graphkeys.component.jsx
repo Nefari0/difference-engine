@@ -1,13 +1,14 @@
 import { GraphKeyPad } from "./graphkeys.styles"
 import ToolPanel from "../GraphingToolPanel/graph-tools.component"
-import Button from "../Button"
+// import Button from "../Button"
 
-export const GraphKeys = () => {
+export const GraphKeys = (props) => {
+
+    const { copy } = props
     
     return (
         <GraphKeyPad>
-            {/* <p>text</p> */}
-            <ToolPanel />      
+            <ToolPanel copy={copy} />      
         </GraphKeyPad>
     )
 }
