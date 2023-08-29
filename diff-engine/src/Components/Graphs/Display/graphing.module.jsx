@@ -8,6 +8,7 @@ import VectorMap from "./Plotting/plots.component";
 // import EllipseDisplay from "../Plots/Ellipses/ellipse.keys";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import CircleGraph from "./PolarDisplay/overlay.component";
+import ToolPanel from "../GraphingToolPanel/graph-tools.component";
 
 const GraphingModule = (props) => {
 
@@ -40,6 +41,8 @@ const GraphingModule = (props) => {
             nonPolarOrigin={nonPolarOrigin}
             polarOrigin={polarOrigin}
         >
+            {/* TOOL PANEL */}
+            <ToolPanel />
 
             {/* BASIC PLOTS */}
             <VectorMap 
