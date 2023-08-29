@@ -43,9 +43,9 @@ const KeyPad = (props) => {
 
         // scrollBar
 
-        showPlotValues,setShowPlotValues,
+        // showPlotValues,setShowPlotValues,
 
-        setAlert,
+        // setAlert,
 
         openMemo,memoOpener
     } = useContext(ViewContext)
@@ -54,12 +54,12 @@ const KeyPad = (props) => {
         linearVector,
         polarVector,
         state,
-        returnPlots,
+        // returnPlots,
         setState,
         findDerivative
     } = props
 
-    const { mathFunc,degrees,polars } = state
+    const { mathFunc,degrees } = state
 
     // const copy = () => {
     //     if (returnPlots()[0]) {

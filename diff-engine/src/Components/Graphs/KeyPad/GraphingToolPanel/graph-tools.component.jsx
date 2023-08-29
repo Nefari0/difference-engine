@@ -19,13 +19,15 @@ const ToolPanel = (props) => {
             <Button
                 text={CopyIcon(iconStyles)}
                 buttonClass={'translucent'}
-                p={'text'}
+                p={'Copy coordinates'}
                 onClick={() => copy()}
+                styles={{zIndex:'1'}}
             />
             <Button
                 text={MathVariable(iconStyles)}
                 buttonClass={'translucent'}
-                p={'show values'}
+                p={'Show values'}
+                styles={{zIndex:'0'}}
                 onClick={() => setShowPlotValues(!showPlotValues)}
             />
         </Toolbar>

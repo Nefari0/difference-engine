@@ -3,11 +3,7 @@ import styled from "styled-components";
 export const Toolbar = styled.section`
     width:60px;
     height:500px;
-    // height:200px;
-    // background-color:blue;
-    // position:relative;
     position:absolute;
-    // bottom:40px;
     z-index:1;
     display:flex;
     flex-direction:column;
