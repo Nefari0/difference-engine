@@ -8,7 +8,7 @@ import VectorMap from "./Plotting/plots.component";
 // import EllipseDisplay from "../Plots/Ellipses/ellipse.keys";
 // import Ellipse from "../Plots/Ellipses/ellipse.keys";
 import CircleGraph from "./PolarDisplay/overlay.component";
-import ToolPanel from "../GraphingToolPanel/graph-tools.component";
+import ToolPanel from "../KeyPad/GraphingToolPanel/graph-tools.component";
 
 const GraphingModule = (props) => {
 
