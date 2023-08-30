@@ -17,6 +17,7 @@ import Converters from "../Calculators/Converters/converters.keys";
 import PhysicsKeys from "../Calculators/Physics/physics.keys";
 import LeverageKeys from "../Calculators/Physics/Leverage/leverage.keys";
 import BlenderScripts from "../Blender/blender.keys";
+import { GraphKeys } from "./GraphKeyPad/graphkeys.component";
 
 const KeyModule = (props) => {
 
@@ -33,11 +34,23 @@ const KeyModule = (props) => {
         findDerivative
     } = props
 
-    const { currentView } = useContext(ViewContext)
+    const { currentView,setAlert } = useContext(ViewContext)
+
+    const copy = () => {
+        if (returnPlots()[0]) {
+          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+        } else {
+          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
+        }
+    }
 
     return (
         <div>
-
+            <GraphKeys
+                copy={copy}
+                state={state}
+            />
             {!currentView && 
             <HomeKeys
                 formatFunction={formatFunction}

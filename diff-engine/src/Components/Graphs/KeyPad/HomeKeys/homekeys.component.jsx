@@ -43,9 +43,9 @@ const KeyPad = (props) => {
 
         // scrollBar
 
-        showPlotValues,setShowPlotValues,
+        // showPlotValues,setShowPlotValues,
 
-        setAlert,
+        // setAlert,
 
         openMemo,memoOpener
     } = useContext(ViewContext)
@@ -54,21 +54,21 @@ const KeyPad = (props) => {
         linearVector,
         polarVector,
         state,
-        returnPlots,
+        // returnPlots,
         setState,
         findDerivative
     } = props
 
-    const { mathFunc,degrees,polars } = state
+    const { mathFunc,degrees } = state
 
-    const copy = () => {
-        if (returnPlots()[0]) {
-          navigator.clipboard.writeText(JSON.stringify(returnPlots()))
-          setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
-        } else {
-          setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
-        }
-    }
+    // const copy = () => {
+    //     if (returnPlots()[0]) {
+    //       navigator.clipboard.writeText(JSON.stringify(returnPlots()))
+    //       setState({...state,noticeContent:"X and Y coordinates copied to clipboard"})
+    //     } else {
+    //       setAlert(`There are no coordinates yet. Please run the calculation by pressing the "Cartesian" or "Polar" button below`)
+    //     }
+    // }
 
     return (
         <KeyBox
@@ -76,7 +76,7 @@ const KeyPad = (props) => {
             darkmode={darkmode}
         >
 
-            {!currentView &&
+            {/* {!currentView &&
                 <Button
                     p={'copy coordinates'}
                     styles={{
@@ -91,9 +91,9 @@ const KeyPad = (props) => {
                     onClick={() => copy()}
                     text={CopyIcon()}
                 />
-            }
+            } */}
 
-            {!currentView && !polars &&
+            {/* {!currentView && !polars &&
                 <Button
                     p={'Show coordinate values'}
                     styles={{
@@ -108,7 +108,7 @@ const KeyPad = (props) => {
                     onClick={() => setShowPlotValues(!showPlotValues)}
                     text={'values'}
                 />
-            }
+            } */}
             
 
             <Button

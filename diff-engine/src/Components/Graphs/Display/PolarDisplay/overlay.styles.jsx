@@ -11,6 +11,7 @@ export const CircleOverlay = styled.div`
     top:-206px;
     transition: all 1000ms;
     color:${({darkmode}) => darkmode ? '#fff' : '#333'};
+    pointer-events:none;
 
     i {
         position:absolute;
