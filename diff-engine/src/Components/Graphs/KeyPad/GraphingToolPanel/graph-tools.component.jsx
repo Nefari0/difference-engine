@@ -10,26 +10,28 @@ const iconStyles = {
 
 const ToolPanel = (props) => {
 
-    const { copy } = props
-
-    const { showPlotValues,setShowPlotValues, } = useContext(ViewContext)
+    const { copy,state } = props
+    const  { polars } = state
+    const { currentView,showPlotValues,setShowPlotValues, } = useContext(ViewContext)
 
     return (
         <Toolbar>
+            {!currentView &&
             <Button
                 text={CopyIcon(iconStyles)}
                 buttonClass={'translucent'}
                 p={'Copy coordinates'}
                 onClick={() => copy()}
                 styles={{zIndex:'1'}}
-            />
+            />}
+            {!currentView && !polars &&
             <Button
                 text={MathVariable(iconStyles)}
                 buttonClass={'translucent'}
                 p={'Show values'}
                 styles={{zIndex:'0'}}
                 onClick={() => setShowPlotValues(!showPlotValues)}
-            />
+            />}
         </Toolbar>
     )
 }

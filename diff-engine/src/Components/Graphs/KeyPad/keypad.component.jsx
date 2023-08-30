@@ -49,6 +49,7 @@ const KeyModule = (props) => {
         <div>
             <GraphKeys
                 copy={copy}
+                state={state}
             />
             {!currentView && 
             <HomeKeys
