@@ -37,6 +37,5 @@ export const History = styled(Standard)`
 `
 
 export const HistoryItem = styled.i`
-    ${({darkmode}) =>console.log(darkmode)}
     border-bottom: solid ${({darkmode}) => darkmode ? '#fff' : '#555' };
 `
