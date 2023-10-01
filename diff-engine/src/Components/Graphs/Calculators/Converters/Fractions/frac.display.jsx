@@ -3,7 +3,7 @@ import { useContext,useEffect } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 
 // import { FracDisplay } from "./frac.styles"
-import { FracDisplay } from './frac.styles'
+import { FracDisplay,ErrorText } from './frac.styles'
 
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
@@ -13,6 +13,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 const FractionCalc = (props) => {
 
     const { state,input } = props
+    const { mathFunc } = state
 
     const { darkmode,setScrollBar } = useContext(ViewContext)
     
@@ -35,10 +36,14 @@ const FractionCalc = (props) => {
         return [number/gcd, denomin/gcd];
       }
 
+      const condition = mathFunc.split('')[0] === '.'
+
     return (
         <FracDisplay darkmode={darkmode}>
             <h1>Decimal to Fraction</h1>
-            <p><InlineMath math={frac} /></p>
+            { mathFunc.split('')[0] === '.' ? // Force users to include decimal point
+            <p><InlineMath math={mathFunc + `\\approx` + frac} /></p> : <ErrorText>must include decimal point</ErrorText>
+            }
         </FracDisplay>
     )
 }

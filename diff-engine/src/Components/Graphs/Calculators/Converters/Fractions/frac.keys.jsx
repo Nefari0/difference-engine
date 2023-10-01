@@ -11,6 +11,7 @@ const FractionKeys = (props) => {
         state,
         setState,
     } = props
+    const { mathFunc } = state
 
     const { setCurrentView } = useContext(ViewContext)
 
@@ -26,10 +27,18 @@ const FractionKeys = (props) => {
     return (
         <KeyBox>
 
+            {mathFunc.split('')[0] === '.' ? // Force users to include decimal point 
             <NumberPad
                 state={state}
                 setState={setState}
             />
+            :
+            <Button
+                onClick={() => setState({...state,mathFunc:'.'})}
+                styles={{fontSize:'30px',left:'0'}}
+                text={'.'}
+            />
+            }
 
             <Button 
                 onClick={() => setCurrentView('converters')}

@@ -51,7 +51,7 @@ const DisplayModule = (props) => {
         scrollSnap,
         setScrollSnap,
         isLoading,
-        setAlert,
+        // setAlert,
     } = useContext(ViewContext)
 
     useEffect(() => {setScrollSnap(false)},[])
@@ -79,7 +79,7 @@ const DisplayModule = (props) => {
                 {/* GRID CELLS */}
                 {!polars && mappedTiles}
                 {/* NUMBER LINES */}
-                {!polars &&
+                {!polars && cartCoords.length > 0 &&
                     <div>
                         <NumberLine parameters={vNumParams} darkmode={darkmode} />
                         <NumberLine parameters={hNumParams} darkmode={darkmode} />

@@ -28,7 +28,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
     }
 
     const mappedHistory = history.map((el,i) => {
-        return <HistoryItem key={i} onClick={(e) => execute(e,'mathFunc',el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
+        return <HistoryItem key={i} darkmode={darkmode} onClick={(e) => execute(e,'mathFunc',el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
     })
 
     return(

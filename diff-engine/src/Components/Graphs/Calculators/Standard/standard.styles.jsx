@@ -33,8 +33,9 @@ export const History = styled(Standard)`
     display:flex;
     flex-direction:column;
     overflow:scroll;
+    text-align:left;
 `
 
 export const HistoryItem = styled.i`
-    border:solid #555;
+    border-bottom: solid ${({darkmode}) => darkmode ? '#fff' : '#555' };
 `
