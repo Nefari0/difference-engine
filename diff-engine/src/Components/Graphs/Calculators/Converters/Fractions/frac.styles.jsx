@@ -2,6 +2,7 @@ import styled from "styled-components";
 // import { backgroundColors } from "../global.styles";
 // import { backgroundColors } from "../../global.styles";
 import { backgroundColors } from "../../../global.styles";
+import { errorIndicator } from "../../../global.styles";
 
 const { paper,dark } = backgroundColors
 
@@ -34,4 +35,8 @@ export const FracDisplay = styled.section`
     p {
         font-size:40px;
     }   
+`
+
+export const ErrorText = styled.p`
+    ${errorIndicator}
 `
