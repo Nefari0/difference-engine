@@ -24,13 +24,10 @@ const FractionKeys = (props) => {
         })
     },[])
 
-    const isThereADecimalPoint = mathFunc.split('')[0] === '.'
-    console.log(isThereADecimalPoint)
-
     return (
         <KeyBox>
 
-            {isThereADecimalPoint ? 
+            {mathFunc.split('')[0] === '.' ? // Force users to include decimal point 
             <NumberPad
                 state={state}
                 setState={setState}
