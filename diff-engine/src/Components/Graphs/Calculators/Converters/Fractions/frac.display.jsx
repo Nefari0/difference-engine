@@ -13,6 +13,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 const FractionCalc = (props) => {
 
     const { state,input } = props
+    const { mathFunc } = state
 
     const { darkmode,setScrollBar } = useContext(ViewContext)
     
@@ -38,7 +39,7 @@ const FractionCalc = (props) => {
     return (
         <FracDisplay darkmode={darkmode}>
             <h1>Decimal to Fraction</h1>
-            <p><InlineMath math={frac} /></p>
+            <p><InlineMath math={mathFunc + `\\approx` + frac} /></p>
         </FracDisplay>
     )
 }
