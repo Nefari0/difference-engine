@@ -11,6 +11,7 @@ const FractionKeys = (props) => {
         state,
         setState,
     } = props
+    const { mathFunc } = state
 
     const { setCurrentView } = useContext(ViewContext)
 
@@ -23,13 +24,24 @@ const FractionKeys = (props) => {
         })
     },[])
 
+    const isThereADecimalPoint = mathFunc.split('')[0] === '.'
+    console.log(isThereADecimalPoint)
+
     return (
         <KeyBox>
 
+            {isThereADecimalPoint ? 
             <NumberPad
                 state={state}
                 setState={setState}
             />
+            :
+            <Button
+                onClick={() => setState({...state,mathFunc:'.'})}
+                styles={{fontSize:'30px',left:'0'}}
+                text={'.'}
+            />
+            }
 
             <Button 
                 onClick={() => setCurrentView('converters')}
