@@ -14,7 +14,7 @@ const clearHistButton = {
 
 const StandarMathDisplay = ({state,execute,setState}) => {
 
-    const { calculation,history } = state
+    const { calculation,history,mathFunc } = state
     const { darkmode,setScrollBar } = useContext(ViewContext)
 
     useEffect(() => {setScrollBar(false)},[])
@@ -28,7 +28,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
     }
 
     const mappedHistory = history.map((el,i) => {
-        return <HistoryItem key={i} darkmode={darkmode} onClick={(e) => execute(e,'mathFunc',el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
+        return <HistoryItem key={i} darkmode={darkmode} onClick={(e) => execute(e,'mathFunc',mathFunc+el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
     })
 
     return(
