@@ -4,7 +4,7 @@ import { CoordinatePair } from "./plots.styles";
 
 const VectorMap = (props) => {
 
-    const { darkmode,showPlotValues } = useContext(ViewContext)
+    const { darkmode,showPlotValues,setAlert } = useContext(ViewContext)
 
     const { 
         returnPlots,
@@ -27,12 +27,19 @@ const VectorMap = (props) => {
     }
 
     const truncateValues = (x,y) => {
-        const yValue = y
-        const xValue = (x-5)
-        const truncateX = xValue.toString().substring(0,5)
-        const truncateY = yValue.toString().substring(0,5)
+        try {
+            const yValue = y
+            const xValue = (x-5)
+            const truncateX = xValue.toString().substring(0,5)
+            const truncateY = yValue.toString().substring(0,5)
 
-        return ('X '+truncateX+' '+'Y '+truncateY)
+            return ('X '+truncateX+' '+'Y '+truncateY)
+
+        } catch (err) {
+
+            return (null)
+            
+        }
     }
 
     const mappedPlots = returnPlots().map((el,i) => {
