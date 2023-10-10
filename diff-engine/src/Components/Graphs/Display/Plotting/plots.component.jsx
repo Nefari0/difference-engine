@@ -37,7 +37,7 @@ const VectorMap = (props) => {
 
         } catch (err) {
 
-            return (null)
+            return (null) // Return nothing if values are not found
             
         }
     }
