@@ -102,6 +102,17 @@ const selectedButton = css`
     border: 4px solid ${blue};
 `
 
+const errorButton = css`
+    border: 8px solid ${red};
+    animation: blinker 1s linear infinite;
+            
+    @keyframes blinker {
+        50% {
+        opacity: .5;
+        }
+    }
+`
+
 export const baseButtonWidth = 75
 export const BaseButton = styled.button`
     position:absolute;
@@ -112,7 +123,7 @@ export const BaseButton = styled.button`
     z-index:0;
     border: 1px solid #c4c4c4;
     ${({selected}) => selected && selectedButton}
-
+    ${({error}) => error && errorButton}
     ${({darkmode}) => darkmode ? LightsOff : lightsOn}
 
     background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
