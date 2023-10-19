@@ -36,12 +36,12 @@ export const DarkmodeButton = styled(Zoom)`
     width:100px;
 `
 
-export const ActivateScrollingButton = styled(Zoom)`
-    left:105px;
-    width:100px;
-    color:${white};
-    background-color:${({scrollBar}) => !scrollBar ? red : blue};
-`
+// export const ActivateScrollingButton = styled(Zoom)`
+//     left:105px;
+//     width:100px;
+//     color:${white};
+//     background-color:${({scrollBar}) => !scrollBar ? red : blue};
+// `
 
 export const ViewSettingsPanel = styled.div`
     position:absolute;

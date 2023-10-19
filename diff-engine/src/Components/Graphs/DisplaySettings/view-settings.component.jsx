@@ -3,16 +3,16 @@ import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
 
 import {
-  ZoomInButton,
+  // ZoomInButton,
   ZoomOutButton,
   ViewSettingsPanel,
   ResetViewButton,
-  ArrowButton,
+  // ArrowButton,
   Zoom,
   AboutButton,
   DarkmodeButton,
   ResetViewMessage,
-  ActivateScrollingButton
+  // ActivateScrollingButton
 } from "./view-settings.styles";
 
 import {
@@ -111,12 +111,12 @@ const ViewSettings = (props) => {
           about
         </AboutButton>
 
-        <ActivateScrollingButton
+        {/* <ActivateScrollingButton
           onClick={() => setScrollBar(!scrollBar)}
           scrollBar={scrollBar}
         >
           scrolling {scrollBar ? 'on' : 'off'}
-        </ActivateScrollingButton>
+        </ActivateScrollingButton> */}
 
         <ResetViewMessage
           visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
