@@ -11,13 +11,11 @@ import { OPEN_MEMO_NAME } from './Components/Context/view.context';
 function App() {
 
   const { 
-    setCurrentView,
-
     darkmode,
 
     openMemo,setOpenMemo,
 
-    isOnline,setIsOnline
+    setIsOnline
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
@@ -54,7 +52,7 @@ function App() {
     <AppContainer darkmode={darkmode}>
       <Header darkmode={darkmode}>
         <Nav />
-        <h1 onClick={() => setCurrentView(null)}>The Difference Engine</h1>
+        <h1>The Difference Engine</h1>
         {/* <ImageContainer><img src={pic} /></ImageContainer> */}
       </Header>
       <Adapter>
