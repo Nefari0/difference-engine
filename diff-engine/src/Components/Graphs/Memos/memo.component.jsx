@@ -15,7 +15,7 @@ const MemoPad = () => {
     })
 
     const {large,text,minimize} = localState
-    const { openMemo,setOpenMemo,darkmode } = useContext(ViewContext)
+    const { darkmode } = useContext(ViewContext)
     const savedNoteBook = localStorage.getItem(NOTEBOOK_NAME)
 
     const textHandler = (e) => {
@@ -23,13 +23,12 @@ const MemoPad = () => {
         const {name,value} = e.target
         setLocalState({...localState,[name]:value})
         localStorage.setItem(NOTEBOOK_NAME,value)
-        console.log(localStorage.DIFF_ENGINE_NOTEBOOK)
     }
 
     useEffect(() => {
         try {
             if (!savedNoteBook) {
-                localStorage.setItem(NOTEBOOK_NAME,JSON.stringify(defaultNotebook))
+                localStorage.setItem(NOTEBOOK_NAME,defaultNotebook)
             } else {
                 setLocalState({...localState, text:savedNoteBook})
             }
