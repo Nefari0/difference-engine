@@ -34,7 +34,7 @@ const ToolPanel = (props) => {
                 text={OutArrows(iconStyles)}
                 buttonClass={'translucent'}
                 styles={{zIndex:'1'}}
-                p={`Scrolling ${scrollBar ? 'on' : 'off'}`}
+                p={`Scrolling ${scrollBar ? 'ON' : 'OFF'}`}
                 onClick={() => setScrollBar(!scrollBar)}
                 scrollBar={scrollBar}
                 selected={scrollBar}
@@ -45,9 +45,10 @@ const ToolPanel = (props) => {
             <Button
                 text={MathVariable(iconStyles)}
                 buttonClass={'translucent'}
-                p={'Show values'}
+                p={`Show values ${showPlotValues ? "ON" : "OFF"}`}
                 styles={{zIndex:'0'}}
                 onClick={() => setShowPlotValues(!showPlotValues)}
+                selected={showPlotValues}
             />}
         </Toolbar>
     )
