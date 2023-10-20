@@ -1,29 +1,46 @@
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { Toolbar } from "./graph-tools.styles";
-import { CopyIcon,MathVariable } from "../../SVG";
+import { CopyIcon,MathVariable,OutArrows } from "../../SVG";
 import Button from "../Button";
 
 const iconStyles = {
-    width:'40px'
+    width:'30px'
 }
 
 const ToolPanel = (props) => {
 
     const { copy,state } = props
     const  { polars } = state
-    const { currentView,showPlotValues,setShowPlotValues, } = useContext(ViewContext)
+    const { 
+        currentView,
+        showPlotValues,
+        setShowPlotValues,
+        scrollBar,setScrollBar
+    } = useContext(ViewContext)
 
     return (
         <Toolbar>
             {!currentView &&
+            <>
             <Button
                 text={CopyIcon(iconStyles)}
                 buttonClass={'translucent'}
+                styles={{zIndex:'2',}}
                 p={'Copy coordinates'}
                 onClick={() => copy()}
+            />
+            <Button 
+                text={OutArrows(iconStyles)}
+                buttonClass={'translucent'}
                 styles={{zIndex:'1'}}
-            />}
+                p={`Scrolling ${scrollBar ? 'on' : 'off'}`}
+                onClick={() => setScrollBar(!scrollBar)}
+                scrollBar={scrollBar}
+                selected={scrollBar}
+            />
+            </>
+            }
             {!currentView && !polars &&
             <Button
                 text={MathVariable(iconStyles)}
