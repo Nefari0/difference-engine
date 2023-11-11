@@ -12,6 +12,7 @@ import {
   AboutButton,
   DarkmodeButton,
   ResetViewMessage,
+  ScreenLockButton
   // ActivateScrollingButton
 } from "./view-settings.styles";
 
@@ -44,7 +45,8 @@ const ViewSettings = (props) => {
 
       darkmode,setDarkMode,
 
-      scrollBar,setScrollBar
+      // scrollBar,setScrollBar
+      setScrollLock,scrollLock
 
     } = useContext(ViewContext)
 
@@ -110,6 +112,13 @@ const ViewSettings = (props) => {
         >
           about
         </AboutButton>
+
+        <ScreenLockButton
+          onClick={() => setScrollLock(!scrollLock)}
+          scrollLock={scrollLock}
+        >
+          {`${scrollLock? 'locked' : 'unlocked'}`}
+        </ScreenLockButton>
 
         {/* <ActivateScrollingButton
           onClick={() => setScrollBar(!scrollBar)}
