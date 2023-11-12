@@ -40,6 +40,8 @@ export const ViewContext = createContext({
     openPlayer:null,setOpenPlayer:() => null,
 
     isOnline:null,setIsOnline:() => null,
+
+    scrollLock:null,setScrollLock:() => null,
 })
 
 export const ViewProvider = ({ children }) => {
@@ -58,6 +60,7 @@ export const ViewProvider = ({ children }) => {
     const [openMemo,setOpenMemo] = useState(false)
     const [openPlayer,setOpenPlayer] = useState(null)
     const [isOnline,setIsOnline] = useState(null)
+    const [scrollLock,setScrollLock] = useState(null)
 
     const memoOpener = (param) => {
         setOpenMemo(param)
@@ -93,6 +96,8 @@ export const ViewProvider = ({ children }) => {
         openPlayer,setOpenPlayer,
 
         isOnline,setIsOnline,
+
+        scrollLock,setScrollLock
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

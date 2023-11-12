@@ -26,7 +26,7 @@ export const ResetViewButton = styled(ZoomOutButton)`
 `
 
 export const AboutButton = styled(Zoom)`
-    left:0%;
+    left:0px;
     // top:50px;
     width:100px;
 `

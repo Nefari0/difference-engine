@@ -1,6 +1,7 @@
 import { useState,useContext,useEffect } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
+import { backgroundColors } from "../global.styles";
 
 import {
   // ZoomInButton,
@@ -25,6 +26,8 @@ import {
   resetSize,
 } from "./viewLogic";
 
+const { blue,red } = backgroundColors
+
 const resetViewMessageText = 'If this app does not fit on your display, please click the "reset view" button.'
 
 const ViewSettings = (props) => {
@@ -44,7 +47,8 @@ const ViewSettings = (props) => {
 
       darkmode,setDarkMode,
 
-      scrollBar,setScrollBar
+      // scrollBar,setScrollBar
+      setScrollLock,scrollLock
 
     } = useContext(ViewContext)
 
@@ -110,6 +114,19 @@ const ViewSettings = (props) => {
         >
           about
         </AboutButton>
+
+        <Button 
+          style={{left:'105px',
+          height:'30px',
+          width:'100px',
+          backgroundColor:`${scrollLock ? red : blue}`,
+          fontSize:'12px',
+          letterSpacing:'1px'
+        }}
+          onClick={() => setScrollLock(!scrollLock)}
+          text={scrollLock ? 'locked' : 'unlocked '}
+          p={`scroll lock ${scrollLock? 'on' : 'off'}`}
+        />
 
         {/* <ActivateScrollingButton
           onClick={() => setScrollBar(!scrollBar)}
