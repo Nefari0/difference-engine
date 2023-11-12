@@ -31,13 +31,6 @@ export const AboutButton = styled(Zoom)`
     width:100px;
 `
 
-export const ScreenLockButton = styled(Zoom)`
-    left:105px;
-    width:100px;
-    color:${white};
-    background-color:${({scrollLock}) => scrollLock ? red : blue};
-`
-
 export const DarkmodeButton = styled(Zoom)`
     right:205px;
     width:100px;
