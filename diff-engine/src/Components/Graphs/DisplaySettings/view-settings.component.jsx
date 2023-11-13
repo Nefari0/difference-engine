@@ -120,8 +120,9 @@ const ViewSettings = (props) => {
           height:'30px',
           width:'100px',
           backgroundColor:`${scrollLock ? red : blue}`,
+          color:'#fff',
           fontSize:'12px',
-          letterSpacing:'1px'
+          letterSpacing:'1px',
         }}
           onClick={() => setScrollLock(!scrollLock)}
           text={scrollLock ? 'locked' : 'unlocked '}
