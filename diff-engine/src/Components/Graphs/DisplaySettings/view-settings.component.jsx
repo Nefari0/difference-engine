@@ -52,19 +52,24 @@ const ViewSettings = (props) => {
 
     } = useContext(ViewContext)
 
-    useEffect(() => {checkIfDarkmodeIsOn()},[])
+    useEffect(() => {getSavedViewqSettings()},[])
 
-    const checkIfDarkmodeIsOn = () => {
+    // --- Updates state to settings saved in the browser (if applicable)
+    const getSavedViewqSettings = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
+        const viewLock = localStorage.getItem('VIEW_LOCK')
         if (savedMode) {setDarkMode(JSON.parse(savedMode))}
+        if (viewLock) {setScrollLock(JSON.parse(viewLock))}
 
       } catch (error) {return}
     }
 
-    const settingDarkmode = () => {
-      localStorage.setItem('DARKMODE',!darkmode)
-      setDarkMode(!darkmode)
+    // --- This changes the settings saved in the browser, and updates state to those settings on useEffect
+    // --- Prop should be string. val is the current state/context item. setFunction updates the current state/context item
+    const saveSettingts = (prop,val,setFunction) => {
+      localStorage.setItem(`${prop}`,!val)
+      setFunction(!val)
     }
 
     return (
@@ -91,7 +96,7 @@ const ViewSettings = (props) => {
         </ResetViewButton>
 
         <DarkmodeButton
-          onClick={() => settingDarkmode(!darkmode)}
+          onClick={() => saveSettingts('DARKMODE',darkmode,setDarkMode)}
         >
           {!darkmode ? 'dark mode' : 'light mode'}
         </DarkmodeButton>
@@ -124,7 +129,7 @@ const ViewSettings = (props) => {
           fontSize:'12px',
           letterSpacing:'1px',
         }}
-          onClick={() => setScrollLock(!scrollLock)}
+          onClick={() => saveSettingts(`VIEW_LOCK`,scrollLock,setScrollLock)}
           text={scrollLock ? 'locked' : 'unlocked '}
           p={`scroll lock ${scrollLock? 'on' : 'off'}`}
         />
