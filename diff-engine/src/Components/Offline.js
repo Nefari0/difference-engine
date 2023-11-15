@@ -1,12 +1,12 @@
 import { useContext,useEffect } from 'react';
-import { useBooleanState, usePrevious } from 'webrix/hooks';
+import { useBooleanState } from 'webrix/hooks';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { ViewContext } from './Context/view.context';
 
 export default function Offline({ children }) {
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
-  const { scrollLock,setScrollLock } = useContext(ViewContext)
-    const previousOnline = usePrevious(online);
+  const { scrollLock } = useContext(ViewContext)
+    // const previousOnline = usePrevious(online);
 
     if (scrollLock) {
       disableBodyScroll(document.body)

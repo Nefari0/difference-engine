@@ -3,7 +3,7 @@ import { TinyButton } from "../KeyPad/input.styles"
 import { backgroundColors } from "../global.styles"
 // import { basicDark,basicLight } from "../global.styles"
 
-const { paper,red,white,blue } = backgroundColors
+const { paper } = backgroundColors
 
 export const Zoom = styled(TinyButton)`
     right:20px;

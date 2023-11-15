@@ -52,10 +52,10 @@ const ViewSettings = (props) => {
 
     } = useContext(ViewContext)
 
-    useEffect(() => {getSavedViewqSettings()},[])
+    useEffect(() => {getSavedViewSettings()},[])
 
     // --- Updates state to settings saved in the browser (if applicable)
-    const getSavedViewqSettings = () => {
+    const getSavedViewSettings = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
         const viewLock = localStorage.getItem('VIEW_LOCK')
