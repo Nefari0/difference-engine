@@ -12,7 +12,7 @@ const PercentKeys = (props) => {
         // close,
         setState,
         state,
-        execute
+        execute,
         } = props
 
     const { findPercentValue } = state
@@ -87,7 +87,7 @@ const PercentKeys = (props) => {
             <Button
                 style={{right:'90px',top:'110px',zIndex:'1'}}
                 buttonClass={'large'}
-                text={"partial value"}
+                text={`${findPercentValue === 'percent' ? 'percent':'partial'} value`}
                 p={'edit partial value'}
                 onClick={(e) => setTextFieldSelection("partialValue")}
                 selected={textFieldSelection === 'partialValue'}

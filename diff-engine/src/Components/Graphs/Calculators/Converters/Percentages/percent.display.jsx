@@ -29,7 +29,7 @@ const PercentDisplay = ({state}) => {
             <PercentDisplayTable darkmode={darkmode}>
                 <thead>
                     <tr><th id={'totalValue'}>total value</th><th>{returnZeros(totalValue)}</th></tr>
-                    <tr><td id={'partialValue'}>partial value</td><td>{returnZeros(partialValue)}</td></tr>
+                    <tr><td id={'partialValue'}>{`${findPercentValue === 'percent' ? 'percent' : 'partial'}`} value</td><td>{returnZeros(partialValue)}</td></tr>
                 </thead>
                 <tbody>
                     {findPercentValue === 'percent' &&
