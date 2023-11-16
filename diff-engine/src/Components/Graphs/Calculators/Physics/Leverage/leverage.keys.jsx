@@ -79,6 +79,7 @@ const LeverageKeys = (props) => {
                     text={`d_e = ${d_e}`}
                     p={`Distance of input to fulcrum`}
                     selected={textFieldSelection === 'd_e'}
+                    error={parseFloat(d_e) === 0 || d_e.length < 1 || isNaN(d_e.split('')[0]) && isNaN(d_e.split('')[1])}
                 />
 
                 <Button
@@ -87,8 +88,9 @@ const LeverageKeys = (props) => {
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('leverTotalLength')}
                     text={`d_e+d_r = ${leverTotalLength}`}
-                    p={`Total length of leverbar`}
+                    p={`Total length of leverbar ${leverTotalLength <= parseFloat(d_e) && 'NOTE: this value must be greater than d_e'}`}
                     selected={textFieldSelection === 'leverTotalLength'}
+                    error={parseFloat(leverTotalLength) <= parseFloat(d_e)}
                 />
             </ValueButtonPad>
 
