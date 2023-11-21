@@ -16,6 +16,7 @@ import HomeKeys from './HomeKeys/homekeys.component'
 import Converters from "../Calculators/Converters/converters.keys";
 import PhysicsKeys from "../Calculators/Physics/physics.keys";
 import LeverageKeys from "../Calculators/Physics/Leverage/leverage.keys";
+import RelativityKeyPad from "../Calculators/Physics/Relativity/relative.keys";
 import BlenderScripts from "../Blender/blender.keys";
 import { GraphKeys } from "./GraphKeyPad/graphkeys.component";
 
@@ -188,6 +189,14 @@ const KeyModule = (props) => {
 
             {currentView === 'leverage' &&
                 <LeverageKeys
+                    state={state}
+                    setState={setState}
+                    close={close}
+                />
+            }
+
+            {currentView === 'relativity' &&
+                <RelativityKeyPad 
                     state={state}
                     setState={setState}
                     close={close}

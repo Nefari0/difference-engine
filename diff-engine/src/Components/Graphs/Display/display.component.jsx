@@ -8,6 +8,7 @@ import Units from "../Calculators/Converters/UnitConverter/units.display"
 import PercentDisplay from "../Calculators/Converters/Percentages/percent.display"
 import GraphingModule from "./graphing.module"
 import LeverageDisplay from "../Calculators/Physics/Leverage/LeverageDisplay/leverage.main"
+import RelativePhysicsDisplay from "../Calculators/Physics/Relativity/relative.display"
 import { 
     OriginContainer,
     ViewPort,
@@ -147,6 +148,12 @@ const DisplayModule = (props) => {
                         state={state}
                         setState={setState}
                     />
+                }
+
+                {/* RELATIVE PHYISICS */}
+                {
+                    currentView === 'relativity' && 
+                    <RelativePhysicsDisplay/>
                 }
                 
             </OriginContainer>
