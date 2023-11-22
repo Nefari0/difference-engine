@@ -42,7 +42,10 @@ const RelativityKeyPad = (props) => {
                 <BlockMath math={'v = \\text{velocity (in miles per second)}'}/>
                 <BlockMath math={`L = \\text{length of object}`} />
                 <p>The time dilation equation determines how much time (in seconds) passes for stationary observers relative to observers in motion</p>
-                <p>The length contraction equation determines how much shorter an object in motion appears to stationary observers</p>
+                <p>
+                    The length contraction equation determines how much shorter an object in motion appears to stationary observers.
+                    The length visual displays the percentage an object's length will appear to decrease given it's velocity.
+                </p>
             </RelativityInfo>}
             
             <NumberPad 

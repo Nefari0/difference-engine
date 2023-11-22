@@ -124,4 +124,5 @@ export const RelativityInfo = styled.div`
     font-size:10px;
     max-width:280px;
     transform-origin:5px 20px;
+    z-index:10000; 
 `
