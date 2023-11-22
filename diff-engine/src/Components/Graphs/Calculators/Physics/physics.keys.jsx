@@ -9,6 +9,7 @@ const PhysicsKeys = (props) => {
     const { setState,state,close } = props
     // const degrees = 10
     const leverage = '\\frac{F}{R} '
+    const relativity = `\\Delta t^{\\prime}`
 
     const { setCurrentView,setDisplayKeymap } = useContext(ViewContext)
 
@@ -35,6 +36,14 @@ const PhysicsKeys = (props) => {
                 onClick={() => setCurrentView('leverage')}
                 text={leverage}
                 p={'Leverage'}
+                buttonType={'image'}
+            />
+
+            <Button
+                style={{left:'0px',top:'80px',fontSize:'26px'}}
+                onClick={() => setCurrentView('relativity')}
+                text={relativity}
+                p={'Relativity'}
                 buttonType={'image'}
             />
 
