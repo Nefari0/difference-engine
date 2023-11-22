@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { backgroundColors } from "../../../global.styles";
+import { errorIndicator,backgroundColors } from "../../../global.styles";
 
 const { paper,dark,darkLight,lightDark } = backgroundColors
 
@@ -102,3 +102,5 @@ export const Wedge = styled.span`
     border-right: 10px solid transparent;
     border-top: 20px solid ${lightDark};
 `
+
+export const Error = styled.strong`${errorIndicator}`

@@ -4,7 +4,8 @@ import {
     MovingLength,
     RelativityContainer,
     StationaryLength,
-    Wedge
+    Wedge,
+    Error
  } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
 import { InlineMath,BlockMath } from "react-katex";
@@ -50,7 +51,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             {observerVelocity < c ? 
                 <BlockMath math={displayEquation} />
                 : 
-                'oberserver must be slower than the speed of light'
+                <Error>oberserver must be slower than the speed of light</Error>
             }
 
             <strong style={{position:'relative'}}>Length Contraction:</strong>
