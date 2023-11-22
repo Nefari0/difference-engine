@@ -4,8 +4,10 @@ import { KeyBox } from "../../../KeyPad/input.styles";
 import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 import Button from "../../../KeyPad/Button";
 import { uturnArrow} from "../../../SVG";
-import { ValueButtonPad,Label } from "./relative.styles";
+import { ValueButtonPad,Label,RelativityInfo } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
+// import { InfoMessage } from "../../../KeyPad/input.styles";
+import { BlockMath } from "react-katex";
 
 const RelativityKeyPad = (props) => {
 
@@ -21,7 +23,8 @@ const RelativityKeyPad = (props) => {
     const {
         setCurrentView,
         setDisplayKeymap,
-        darkmode
+        darkmode,
+        displayKeymap
     } = useContext(ViewContext)
 
     // Velocity error
@@ -32,6 +35,15 @@ const RelativityKeyPad = (props) => {
 
     return (
         <KeyBox>
+
+            {displayKeymap && <RelativityInfo>
+                <BlockMath math={`c = \\text{speed of light in miles per second}`} />
+                <BlockMath math={`\\Delta(t) = \\text{time interval (in seconds)}`} />
+                <BlockMath math={'v = \\text{velocity (in miles per second)}'}/>
+                <BlockMath math={`L = \\text{length of object}`} />
+                <p>The time dilation equation determines how much time (in seconds) passes for stationary observers relative to observers in motion</p>
+                <p>The length contraction equation determines how much shorter an object in motion appears to stationary observers</p>
+            </RelativityInfo>}
             
             <NumberPad 
                 state={state}

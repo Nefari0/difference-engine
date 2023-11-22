@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { errorIndicator,backgroundColors } from "../../../global.styles";
+import { messageBox } from "../../../KeyPad/input.styles";
 
 const { paper,dark,darkLight,lightDark } = backgroundColors
 
@@ -16,6 +17,7 @@ export const RelativityContainer = styled.section`
     border: solid 1px;
     border-radius:5px;
     z-index:1;
+    text-align:left;
 
     display:flex;
     flex-direction:column;
@@ -49,12 +51,15 @@ export const StationaryLength = styled.div`
     transition: all 1000ms;
     border-bottom:dashed 2px blue;
     width:${({L}) => L*lengthMultiplier}px;
+    height:20px;
     margin-left:50px;
     position:relative;
+    // background-color:blue;
+    margin-bottom:10px;
 
     p {
         font-size:12px;
-        font-weight:600;
+        font-weight:800;
         letter-spacing:1px;
         color:blue;
         right:0px;
@@ -69,6 +74,8 @@ export const StationaryLength = styled.div`
         bottom:20px;
         right:-40px;
         width:50px;
+        font-size:12px;
+        letter-spacing:1px;
     }
 `
 
@@ -95,7 +102,7 @@ export const MovingLength = styled(StationaryLength)`
 export const Wedge = styled.span`
     position:absolute;
     right:-10px;
-    top:20px;
+    top:0px;
     width: 0; 
     height: 0; 
     border-left: 10px solid transparent;
@@ -104,3 +111,17 @@ export const Wedge = styled.span`
 `
 
 export const Error = styled.strong`${errorIndicator}`
+
+export const RelativityInfo = styled.div`
+    ${messageBox}
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    top:-450px;
+    left:5px;
+    border-radius:20px 20px 20px 20px;
+    font-size:10px;
+    max-width:280px;
+    transform-origin:5px 20px;
+`

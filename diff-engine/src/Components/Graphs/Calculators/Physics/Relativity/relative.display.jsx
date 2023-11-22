@@ -32,31 +32,34 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
     const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval)
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
-    const displayEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
+    const timeDilationEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
 
     // --- LENGTH CONTRACTION --- //
     const L = 1 // Stationary object length
     const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) // Moving object length
+    const lengthContractionEquation = `L = L_0\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
     
     useCallback(() => {setState({...state,displayInput:false})},[state,setState])
 
     return(
         <RelativityContainer darkmode={darkmode}>
 
-            <h1 style={{backgroundColor:'',margin:'0px'}}>Special relativity</h1>
+            <h1 style={{backgroundColor:'',margin:'0px',textAlign:'center'}}>Special relativity</h1>
 
             {/* TIME DILATION */}
             {/* <InlineMath math={`c = ${c + timeDilationSpeed}`} /> */}
             <strong style={{position:'relative'}}>Time Dilation:</strong>
 
             {observerVelocity < c ? 
-                <BlockMath math={displayEquation} />
+                <BlockMath math={timeDilationEquation} />
                 : 
                 <Error>oberserver must be slower than the speed of light</Error>
             }
 
             {/* LENGTH CONTRACTION */}
             <strong style={{position:'relative'}}>Length Contraction:</strong>
+
+            <BlockMath math={lengthContractionEquation} />
 
             <StationaryLength L={L}>
                 <p>stationary object length</p>
