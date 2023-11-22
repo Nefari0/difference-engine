@@ -132,6 +132,10 @@ export default function Graph() {
     d_e:'2', // Distance between effort and fulcrum
     leverRotation:-20,
 
+    // --- Relativity --- //
+    timeInterval:'',
+    observerVelocity:'',
+    timeDilationSpeed:'mps',
   
   });
   const {

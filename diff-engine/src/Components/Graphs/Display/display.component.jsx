@@ -153,7 +153,10 @@ const DisplayModule = (props) => {
                 {/* RELATIVE PHYISICS */}
                 {
                     currentView === 'relativity' && 
-                    <RelativePhysicsDisplay/>
+                    <RelativePhysicsDisplay
+                        state={state}
+                        setState={setState}
+                    />
                 }
                 
             </OriginContainer>

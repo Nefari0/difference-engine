@@ -99,7 +99,7 @@ const LightsOff = css`background-color:${lightDark};color:#fff; `
 const lightsOn = css`background-color:${midLight};color:#333;`
 
 const selectedButton = css`
-    border: 4px solid ${blue};
+    border: 4px solid ${blue}; 
 `
 
 const errorButton = css`
@@ -122,10 +122,10 @@ export const BaseButton = styled.button`
     overflow:hidden;
     z-index:0;
     border: 1px solid #c4c4c4;
-    ${({selected}) => selected && selectedButton}
     ${({error}) => error && errorButton}
     ${({darkmode}) => darkmode ? LightsOff : lightsOn}
-
+    ${({selected}) => selected && selectedButton}
+    
     background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
     text-shadow: 0 1px rgba(255,255,255,.4);
