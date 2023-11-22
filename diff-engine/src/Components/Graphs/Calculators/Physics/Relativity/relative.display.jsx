@@ -45,6 +45,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
 
             <h1 style={{backgroundColor:'',margin:'0px'}}>Special relativity</h1>
 
+            {/* TIME DILATION */}
             {/* <InlineMath math={`c = ${c + timeDilationSpeed}`} /> */}
             <strong style={{position:'relative'}}>Time Dilation:</strong>
 
@@ -54,6 +55,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
                 <Error>oberserver must be slower than the speed of light</Error>
             }
 
+            {/* LENGTH CONTRACTION */}
             <strong style={{position:'relative'}}>Length Contraction:</strong>
 
             <StationaryLength L={L}>
