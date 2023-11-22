@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { backgroundColors } from "../../../global.styles";
 
 const { paper,dark } = backgroundColors
@@ -40,4 +40,46 @@ export const Label = styled.p`
     top:-10px;
     width:100%;
     position:absolute;
+`
+
+// Length Contraction //
+export const lengthMultiplier = 400
+export const StationaryLength = styled.div`
+    transition: all 1000ms;
+    border-bottom:dashed 2px red;
+    width:${({L}) => L*lengthMultiplier}px;
+    margin-left:50px;
+    position:relative;
+
+    p {
+        font-weight:600;
+        letter-spacing:1px;
+        color:red;
+        right:0px;
+        width:250px;
+        // background-color:green;
+        // transform-origin: 50px 50px;
+        // position:absolute;
+        position:relative;
+    }
+`
+
+const movingLengthColor = (darkmode) => {
+    return (
+        css`
+        border-bottom:dashed 2px ${!darkmode ? 'orange' : 'yellow'};
+       
+        p { color:${!darkmode ? 'orange' : 'yellow'};}
+    `
+    )
+}
+export const MovingLength = styled(StationaryLength)`
+    transition: all 1000ms;
+    width:${({lengthContraction}) => lengthContraction*lengthMultiplier}px;
+    ${({darkmode}) => movingLengthColor(darkmode)}
+
+    p {
+        right:0px;
+        position:relative;
+    }
 `

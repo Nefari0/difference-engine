@@ -1,6 +1,11 @@
 import { useCallback, useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
-import { RelativityContainer } from "./relative.styles";
+import { 
+    MovingLength,
+    RelativityContainer,
+    StationaryLength,
+    lengthMultiplier
+ } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
 import { InlineMath,BlockMath } from "react-katex";
 
@@ -22,21 +27,15 @@ const RelativePhysicsDisplay = ({state,setState}) => {
 
     const isNumber = (param) => {return (param !== 'NaN' ? '='+param: '')} // -- Force a numerical value
 
-    // useEffect(() => {setState({...state,displayInput:false})},[])
     // --- TIME DILATION --- //
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
-    // const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity))/(parseFloat(c)))))
     const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval)
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
     const displayEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
 
     // --- LENGTH CONTRACTION --- //
     const L = 1
-    // const lengthContraction = L * Math.sqrt(-1* (parseFloat(observerVelocity)**2/parseFloat(c)**2))
-    // const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) // --- working model
     const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) 
-
-    console.log(lengthContraction)
     
     useCallback(() => {setState({...state,displayInput:false})},[state,setState])
 
@@ -50,6 +49,22 @@ const RelativePhysicsDisplay = ({state,setState}) => {
                 : 
                 'oberserver must be slower than the speed of light'
             }
+
+            <StationaryLength L={L}>
+                <p>
+                    stationary length
+                    {'='+L.toString().substring(0,5)}
+                </p>
+            </StationaryLength>
+            <MovingLength
+                lengthContraction={lengthContraction}
+                darkmode={darkmode}
+            >
+                <p>
+                    moving length 
+                    {'='+lengthContraction.toString().substring(0,5)}
+                </p>    
+            </MovingLength>
 
         </RelativityContainer>
     )
