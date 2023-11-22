@@ -43,7 +43,7 @@ export const Label = styled.p`
 `
 
 // Length Contraction //
-export const lengthMultiplier = 400
+export const lengthMultiplier = 400 // Adding pixels so object lengths can display on the screen.
 export const StationaryLength = styled.div`
     transition: all 1000ms;
     border-bottom:dashed 2px red;
@@ -64,13 +64,13 @@ export const StationaryLength = styled.div`
     }
 `
 
-const movingLengthColor = (darkmode) => {
+const movingLengthColor = (darkmode) => { // Change color for better visibility between darkmode/lightmode.
     return (
-        css`
-        border-bottom:dashed 2px ${!darkmode ? 'orange' : 'yellow'};
-       
-        p { color:${!darkmode ? 'orange' : 'yellow'};}
-    `
+        css
+        `
+            border-bottom:dashed 2px ${!darkmode ? 'orange' : 'yellow'};
+            p { color:${!darkmode ? 'orange' : 'yellow'};}
+        `
     )
 }
 export const MovingLength = styled(StationaryLength)`
