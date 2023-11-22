@@ -1,10 +1,8 @@
-import { useContext,useEffect } from "react";
+import { useCallback, useContext } from "react";
 import { ViewContext } from "../../../../Context/view.context";
 import { RelativityContainer } from "./relative.styles";
-import CustomMath from "../../../KeyPad/CostomMath";
 import { coeffs } from "../../../coefficients";
-import { InlineMath } from "react-katex";
-// import { InlineMath } from "react-katex";
+import { InlineMath,BlockMath } from "react-katex";
 
 const RelativePhysicsDisplay = ({state,setState}) => {
 
@@ -20,16 +18,17 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     } = state
 
     const { c_1,c_2 } = coeffs
-    const c = (timeDilationSpeed === 'fps' ? c_2 : c_1)
+    const c = (timeDilationSpeed === 'mps' ? c_2 : c_1)
 
-    const isNumber = (param) => {return (param != 'NaN' ? '='+param: '')} // -- Force a numerical value
+    const isNumber = (param) => {return (param !== 'NaN' ? '='+param: '')} // -- Force a numerical value
 
-    useEffect(() => {setState({...state,displayInput:false})},[])
+    // useEffect(() => {setState({...state,displayInput:false})},[])
+    useCallback(() => {setState({...state,displayInput:false})},[state,setState])
 
-    // time_dilation = (t)/(np.sqrt(1 - (v**2/c**2)))
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
+    // const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity))/(parseFloat(c)))))
     const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval)
-    const denominator = `\\sqrt{1-${observerVelocity.length === 0 ? 'v' : observerVelocity}^2/c^2}`
+    const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
     const displayEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
 
     return(
@@ -38,7 +37,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             <InlineMath math={`c = ${c + timeDilationSpeed}`} />
 
             {observerVelocity < c ? 
-                <CustomMath>{displayEquation}</CustomMath>
+                <BlockMath math={displayEquation} />
                 : 
                 'oberserver must be slower than the speed of light'
             }

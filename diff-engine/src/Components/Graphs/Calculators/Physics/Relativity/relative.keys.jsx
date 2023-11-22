@@ -13,7 +13,7 @@ const RelativityKeyPad = (props) => {
     const { state,setState } = props
     const { timeDilationSpeed } = state
     const { c_2,c_1 } = coeffs
-    const c = (timeDilationSpeed === 'fps' ? c_2 : c_1)
+    const c = (timeDilationSpeed === 'mps' ? c_2 : c_1)
     const { observerVelocity,timeInterval } = state
 
     const [textFieldSelection,setTextFieldSelection] = useState('observerVelocity')
@@ -25,10 +25,10 @@ const RelativityKeyPad = (props) => {
     } = useContext(ViewContext)
 
     // Velocity error
-    function vError() { return (observerVelocity.length <= 0 || parseFloat(observerVelocity) <= 0 || observerVelocity >= c && true ) }
+    function vError() { return ((observerVelocity.length <= 0 || parseFloat(observerVelocity) <= 0 || observerVelocity >= c) && true ) }
 
     // Time interval error
-    function tError() { return (timeInterval.length <= 0 || parseFloat(timeInterval) <= 0 && true)}
+    function tError() { return ((timeInterval.length <= 0 || parseFloat(timeInterval) <= 0 )&& true)}
 
     return (
         <KeyBox>
@@ -68,7 +68,6 @@ const RelativityKeyPad = (props) => {
                     error={vError()}
                 />
 
-                
                 <Button
                     styles={{right:'',zIndex:'3',fontSize:'22px',top:'120px',width:'150px'}}
                     buttonType={'image'}
