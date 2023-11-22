@@ -24,7 +24,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     } = state
 
     const { c_1,c_2 } = coeffs
-    const c = (timeDilationSpeed === 'mps' ? c_2 : c_1)
+    const c = (timeDilationSpeed === 'mps' ? c_2 : c_1) // Speed of light unit
 
     const isNumber = (param) => {return (param !== 'NaN' ? '='+param: '')} // -- Force a numerical value
 
@@ -35,8 +35,8 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     const displayEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
 
     // --- LENGTH CONTRACTION --- //
-    const L = 1
-    const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) 
+    const L = 1 // Stationary object length
+    const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) // Moving object length
     
     useCallback(() => {setState({...state,displayInput:false})},[state,setState])
 
