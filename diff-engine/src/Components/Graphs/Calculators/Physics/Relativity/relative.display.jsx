@@ -23,13 +23,22 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     const isNumber = (param) => {return (param !== 'NaN' ? '='+param: '')} // -- Force a numerical value
 
     // useEffect(() => {setState({...state,displayInput:false})},[])
-    useCallback(() => {setState({...state,displayInput:false})},[state,setState])
-
+    // --- TIME DILATION --- //
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
     // const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity))/(parseFloat(c)))))
     const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval)
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
     const displayEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
+
+    // --- LENGTH CONTRACTION --- //
+    const L = 1
+    // const lengthContraction = L * Math.sqrt(-1* (parseFloat(observerVelocity)**2/parseFloat(c)**2))
+    // const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) // --- working model
+    const lengthContraction = L*Math.sqrt(1-(parseFloat(observerVelocity)**2)/parseFloat(c)**2) 
+
+    console.log(lengthContraction)
+    
+    useCallback(() => {setState({...state,displayInput:false})},[state,setState])
 
     return(
         <RelativityContainer darkmode={darkmode}>
