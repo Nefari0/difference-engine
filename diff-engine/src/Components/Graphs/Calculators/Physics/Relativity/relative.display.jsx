@@ -4,7 +4,7 @@ import {
     MovingLength,
     RelativityContainer,
     StationaryLength,
-    lengthMultiplier
+    Wedge
  } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
 import { InlineMath,BlockMath } from "react-katex";
@@ -42,7 +42,10 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     return(
         <RelativityContainer darkmode={darkmode}>
 
-            <InlineMath math={`c = ${c + timeDilationSpeed}`} />
+            <h1 style={{backgroundColor:'',margin:'0px'}}>Special relativity</h1>
+
+            {/* <InlineMath math={`c = ${c + timeDilationSpeed}`} /> */}
+            <strong style={{position:'relative'}}>Time Dilation:</strong>
 
             {observerVelocity < c ? 
                 <BlockMath math={displayEquation} />
@@ -50,20 +53,22 @@ const RelativePhysicsDisplay = ({state,setState}) => {
                 'oberserver must be slower than the speed of light'
             }
 
+            <strong style={{position:'relative'}}>Length Contraction:</strong>
+
             <StationaryLength L={L}>
-                <p>
-                    stationary length
-                    {'='+L.toString().substring(0,5)}
-                </p>
+                <p>stationary object length</p>
+                <Wedge darkmode={darkmode}>
+                </Wedge>    
+                <i>{L.toString().substring(0,5)}</i>
             </StationaryLength>
             <MovingLength
                 lengthContraction={lengthContraction}
                 darkmode={darkmode}
             >
-                <p>
-                    moving length 
-                    {'='+lengthContraction.toString().substring(0,5)}
-                </p>    
+                <p>moving object length </p>    
+                <Wedge darkmode={darkmode}>
+                </Wedge>
+                <i>{!isNaN(lengthContraction) ? lengthContraction.toString().substring(0,5) : L}</i>
             </MovingLength>
 
         </RelativityContainer>

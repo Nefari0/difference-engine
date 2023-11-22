@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../../../global.styles";
 
-const { paper,dark } = backgroundColors
+const { paper,dark,darkLight,lightDark } = backgroundColors
+
 export const widthOfLeverBar = 400; // --- In pixels
 
 export const RelativityContainer = styled.section`
@@ -46,21 +47,28 @@ export const Label = styled.p`
 export const lengthMultiplier = 400 // Adding pixels so object lengths can display on the screen.
 export const StationaryLength = styled.div`
     transition: all 1000ms;
-    border-bottom:dashed 2px red;
+    border-bottom:dashed 2px blue;
     width:${({L}) => L*lengthMultiplier}px;
     margin-left:50px;
     position:relative;
 
     p {
+        font-size:12px;
         font-weight:600;
         letter-spacing:1px;
-        color:red;
+        color:blue;
         right:0px;
+        top:-40px;
         width:250px;
-        // background-color:green;
-        // transform-origin: 50px 50px;
-        // position:absolute;
+        height:16px;
         position:relative;
+    }
+
+    i {
+        position:absolute;
+        bottom:20px;
+        right:-40px;
+        width:50px;
     }
 `
 
@@ -75,11 +83,22 @@ const movingLengthColor = (darkmode) => { // Change color for better visibility 
 }
 export const MovingLength = styled(StationaryLength)`
     transition: all 1000ms;
-    width:${({lengthContraction}) => lengthContraction*lengthMultiplier}px;
+    width:${({lengthContraction}) => isNaN(lengthContraction) ? lengthMultiplier : lengthContraction*lengthMultiplier}px;
     ${({darkmode}) => movingLengthColor(darkmode)}
 
     p {
         right:0px;
         position:relative;
     }
+`
+
+export const Wedge = styled.span`
+    position:absolute;
+    right:-10px;
+    top:20px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid ${lightDark};
 `
