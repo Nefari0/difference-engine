@@ -37,6 +37,12 @@ export const RelativityContainer = styled.section`
     }
 `
 
+export const SolutionText = styled.i`
+    padding:5px;
+    width:100%;
+    text-align:center;
+`
+
 export const ValueButtonPad = styled.div`
     position:absolute;
     width:150px;
@@ -62,8 +68,6 @@ export const StationaryLength = styled.div`
     height:50px;
     margin-left:50px;
     position:relative;
-    // background-color:blue;
-    margin-top:5px; 
 
     p {
         font-size:16px;

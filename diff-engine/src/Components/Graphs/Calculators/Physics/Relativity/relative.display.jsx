@@ -5,10 +5,11 @@ import {
     RelativityContainer,
     StationaryLength,
     Wedge,
-    Error
+    Error,
+    SolutionText
  } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
-import { InlineMath,BlockMath } from "react-katex";
+import { BlockMath } from "react-katex";
 
 const RelativePhysicsDisplay = ({state,setState}) => {
 
@@ -50,18 +51,19 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             <strong style={{position:'relative'}}>Time Dilation:</strong>
 
             {observerVelocity < c ? 
-                <>
-                    <BlockMath math={timeDilationEquation} />
-                    {!isNaN(timeDilation) && <i style={{padding:'10px',backgroundColor:'',fontSize:'',width:'100%',textAlign:'center'}}>{isNumber(timeDilation.toString())+' s'}</i>}
-                </>
-                : 
-                <Error>oberserver must be slower than the speed of light</Error>
+            <>
+                <BlockMath math={timeDilationEquation} />
+                {!isNaN(timeDilation) && <SolutionText>{isNumber(timeDilation.toString())+' s'}</SolutionText>}
+            </>
+            : 
+            <Error>oberserver must be slower than the speed of light</Error>
             }
 
             {/* LENGTH CONTRACTION */}
             <strong style={{position:'relative'}}>Length Contraction:</strong>
 
             <BlockMath math={lengthContractionEquation} />
+            {!isNaN(lengthContraction) && <SolutionText>{isNumber(lengthContraction.toString())+' s'}</SolutionText>}
 
             <StationaryLength L={L}>
                 <p>stationary object length</p>
