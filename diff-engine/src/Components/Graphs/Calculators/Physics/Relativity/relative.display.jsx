@@ -63,7 +63,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             <strong style={{position:'relative'}}>Length Contraction:</strong>
 
             <BlockMath math={lengthContractionEquation} />
-            {!isNaN(lengthContraction) && <SolutionText>{isNumber(lengthContraction.toString())+' s'}</SolutionText>}
+            {!isNaN(lengthContraction) && <SolutionText>{isNumber(lengthContraction.toString())}</SolutionText>}
 
             <StationaryLength L={L}>
                 <p>stationary object length</p>
