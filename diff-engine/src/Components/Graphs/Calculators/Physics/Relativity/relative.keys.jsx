@@ -73,7 +73,7 @@ const RelativityKeyPad = (props) => {
                 <Label>edit values</Label>
 
                 <Button
-                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px',width:'150px'}}
+                    styles={{zIndex:'3',fontSize:'22px',width:'150px',top:'120px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('observerVelocity')}
@@ -84,7 +84,7 @@ const RelativityKeyPad = (props) => {
                 />
 
                 <Button
-                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'120px',width:'150px'}}
+                    styles={{top:'40px',zIndex:'3',fontSize:'22px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('timeInterval')}

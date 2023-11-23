@@ -73,7 +73,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
                 lengthContraction={lengthContraction}
                 darkmode={darkmode}
             >
-                <p>moving object length </p>    
+                <p>moving object length</p>
                 <Wedge darkmode={darkmode}/>
                 <i>{(!isNaN(lengthContraction) ? lengthContraction.toString().substring(0,5) : L)*100+'%'}</i>
             </MovingLength>

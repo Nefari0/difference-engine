@@ -32,7 +32,7 @@ export const RelativityContainer = styled.section`
         // opacity:.8;
         width:400px;
         border-bottom:solid 1px;
-        font-size:12px;
+        font-size:16px;
         letter-spacing:1px;
     }
 `
@@ -57,21 +57,21 @@ export const Label = styled.p`
 export const lengthMultiplier = 400 // Adding pixels so object lengths can display on the screen.
 export const StationaryLength = styled.div`
     transition: all 1000ms;
-    border-bottom:dashed 2px blue;
+    border-bottom:dashed 3px blue;
     width:${({L}) => L*lengthMultiplier}px;
     height:50px;
     margin-left:50px;
     position:relative;
     // background-color:blue;
-    margin-top:10px; 
+    margin-top:5px; 
 
     p {
-        font-size:12px;
-        font-weight:800;
+        font-size:16px;
+        font-weight:600;
         letter-spacing:1px;
         color:blue;
         right:0px;
-        bottom:-50px;
+        bottom:-35px;
         width:250px;
         height:16px;
         position:relative;
@@ -82,28 +82,20 @@ export const StationaryLength = styled.div`
         bottom:20px;
         right:-40px;
         width:50px;
-        font-size:12px;
+        font-size:14px;
         letter-spacing:1px;
     }
 `
 
-const movingLengthColor = (darkmode) => { // Change color for better visibility between darkmode/lightmode.
-    return (
-        css
-        `
-            border-bottom:dashed 2px ${!darkmode ? 'orange' : 'yellow'};
-            p { color:${!darkmode ? 'orange' : 'yellow'};}
-        `
-    )
-}
 export const MovingLength = styled(StationaryLength)`
     transition: all 1000ms;
     width:${({lengthContraction}) => isNaN(lengthContraction) ? lengthMultiplier : lengthContraction*lengthMultiplier}px;
-    ${({darkmode}) => movingLengthColor(darkmode)}
+    border-bottom:dashed 3px orange;
 
     p {
         right:0px;
         position:relative;
+        color:orange;
     }
 `
 
@@ -119,7 +111,11 @@ export const Wedge = styled.span`
     border-top: 20px solid ${lightDark};
 `
 
-export const Error = styled.strong`${errorIndicator}`
+export const Error = styled.i`
+    ${errorIndicator}
+    margin:5px;
+    text-align:center;
+`
 
 export const RelativityInfo = styled.div`
     ${messageBox}
