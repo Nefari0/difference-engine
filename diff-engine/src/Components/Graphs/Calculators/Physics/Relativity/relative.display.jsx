@@ -26,13 +26,13 @@ const RelativePhysicsDisplay = ({state,setState}) => {
     const { c_1,c_2 } = coeffs
     const c = (timeDilationSpeed === 'mps' ? c_2 : c_1) // Speed of light unit
 
-    const isNumber = (param) => {return (param !== 'NaN' ? '='+param: '')} // -- Force a numerical value
+    const isNumber = (param) => {return (param !== 'NaN' ? '= '+param: '')} // -- Force a numerical value
 
     // --- TIME DILATION --- //
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
     const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval+'\\text{ s}')
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
-    const timeDilationEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))+'\\text{ s}'}`
+    const timeDilationEquation = `\\frac{${numerator}}{${denominator})}`
 
     // --- LENGTH CONTRACTION --- //
     const L = 1 // Stationary object length
@@ -47,11 +47,13 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             <h1 style={{backgroundColor:'',margin:'0px',textAlign:'center'}}>Special relativity</h1>
 
             {/* TIME DILATION */}
-            {/* <InlineMath math={`c = ${c + timeDilationSpeed}`} /> */}
             <strong style={{position:'relative'}}>Time Dilation:</strong>
 
             {observerVelocity < c ? 
-                <BlockMath math={timeDilationEquation} />
+                <>
+                    <BlockMath math={timeDilationEquation} />
+                    {!isNaN(timeDilation) && <i style={{padding:'10px',backgroundColor:'',fontSize:'',width:'100%',textAlign:'center'}}>{isNumber(timeDilation.toString())+' s'}</i>}
+                </>
                 : 
                 <Error>oberserver must be slower than the speed of light</Error>
             }

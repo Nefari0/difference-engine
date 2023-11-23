@@ -21,7 +21,6 @@ export const RelativityContainer = styled.section`
 
     display:flex;
     flex-direction:column;
-    justify-content:space-around;
 
     p {
         font-size:20px;
@@ -60,11 +59,11 @@ export const StationaryLength = styled.div`
     transition: all 1000ms;
     border-bottom:dashed 2px blue;
     width:${({L}) => L*lengthMultiplier}px;
-    height:20px;
+    height:50px;
     margin-left:50px;
     position:relative;
     // background-color:blue;
-    margin-bottom:10px;
+    margin-top:10px; 
 
     p {
         font-size:12px;
@@ -72,7 +71,7 @@ export const StationaryLength = styled.div`
         letter-spacing:1px;
         color:blue;
         right:0px;
-        top:-40px;
+        bottom:-50px;
         width:250px;
         height:16px;
         position:relative;
@@ -111,7 +110,8 @@ export const MovingLength = styled(StationaryLength)`
 export const Wedge = styled.span`
     position:absolute;
     right:-10px;
-    top:0px;
+    // top:0px;
+    bottom:0px;
     width: 0; 
     height: 0; 
     border-left: 10px solid transparent;
