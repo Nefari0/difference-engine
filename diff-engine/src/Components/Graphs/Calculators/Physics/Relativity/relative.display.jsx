@@ -56,7 +56,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
                 {!isNaN(timeDilation) && <SolutionText>{isNumber(timeDilation.toString())+' s'}</SolutionText>}
             </>
             : 
-            <Error>oberserver must be slower than the speed of light</Error>
+            <Error>observer must be slower than the speed of light</Error>
             }
 
             {/* LENGTH CONTRACTION */}
