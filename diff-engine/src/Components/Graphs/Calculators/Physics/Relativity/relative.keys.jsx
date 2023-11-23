@@ -4,8 +4,10 @@ import { KeyBox } from "../../../KeyPad/input.styles";
 import { NumberPad } from "../../../KeyPad/NumberPad/nums.component";
 import Button from "../../../KeyPad/Button";
 import { uturnArrow} from "../../../SVG";
-import { ValueButtonPad,Label } from "./relative.styles";
+import { ValueButtonPad,Label,RelativityInfo } from "./relative.styles";
 import { coeffs } from "../../../coefficients";
+// import { InfoMessage } from "../../../KeyPad/input.styles";
+import { BlockMath } from "react-katex";
 
 const RelativityKeyPad = (props) => {
 
@@ -21,7 +23,8 @@ const RelativityKeyPad = (props) => {
     const {
         setCurrentView,
         setDisplayKeymap,
-        darkmode
+        darkmode,
+        displayKeymap
     } = useContext(ViewContext)
 
     // Velocity error
@@ -32,6 +35,18 @@ const RelativityKeyPad = (props) => {
 
     return (
         <KeyBox>
+
+            {displayKeymap && <RelativityInfo>
+                <BlockMath math={`c = \\text{speed of light in miles per second}`} />
+                <BlockMath math={`\\Delta(t) = \\text{time interval (in seconds)}`} />
+                <BlockMath math={'v = \\text{velocity (in miles per second)}'}/>
+                <p>The time dilation equation determines how much time (in seconds) passes for stationary observers relative to observers in motion</p>
+                <BlockMath math={`L = \\text{length of object}`} />
+                <p>
+                    The length contraction equation determines how much shorter an object in motion appears to stationary observers.
+                    The length visual displays the percentage an object's length will appear to decrease given it's velocity.
+                </p>
+            </RelativityInfo>}
             
             <NumberPad 
                 state={state}
@@ -58,18 +73,18 @@ const RelativityKeyPad = (props) => {
                 <Label>edit values</Label>
 
                 <Button
-                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px',width:'150px'}}
+                    styles={{zIndex:'3',fontSize:'22px',width:'150px',top:'120px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('observerVelocity')}
-                    text={`v = ${observerVelocity}`}
+                    text={`v = ${observerVelocity.toString().substring(0,6)}`}
                     p={'observer velocity (v)'}
                     selected={textFieldSelection === 'observerVelocity'}
                     error={vError()}
                 />
 
                 <Button
-                    styles={{right:'',zIndex:'3',fontSize:'22px',top:'120px',width:'150px'}}
+                    styles={{top:'40px',zIndex:'3',fontSize:'22px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('timeInterval')}
