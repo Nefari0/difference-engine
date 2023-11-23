@@ -30,9 +30,9 @@ const RelativePhysicsDisplay = ({state,setState}) => {
 
     // --- TIME DILATION --- //
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
-    const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval)
+    const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval+'\\text{ s}')
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
-    const timeDilationEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))}`
+    const timeDilationEquation = `\\frac{${numerator}}{${denominator}} ${isNumber(timeDilation.toString().substring(0,5))+'\\text{ s}'}`
 
     // --- LENGTH CONTRACTION --- //
     const L = 1 // Stationary object length
@@ -63,18 +63,17 @@ const RelativePhysicsDisplay = ({state,setState}) => {
 
             <StationaryLength L={L}>
                 <p>stationary object length</p>
-                <Wedge darkmode={darkmode}>
-                </Wedge>    
-                <i>{L.toString().substring(0,5)}</i>
+                <Wedge darkmode={darkmode}/>   
+                <i>{L.toString().substring(0,5)*100+'%'}</i>
             </StationaryLength>
+
             <MovingLength
                 lengthContraction={lengthContraction}
                 darkmode={darkmode}
             >
                 <p>moving object length </p>    
-                <Wedge darkmode={darkmode}>
-                </Wedge>
-                <i>{!isNaN(lengthContraction) ? lengthContraction.toString().substring(0,5) : L}</i>
+                <Wedge darkmode={darkmode}/>
+                <i>{(!isNaN(lengthContraction) ? lengthContraction.toString().substring(0,5) : L)*100+'%'}</i>
             </MovingLength>
 
         </RelativityContainer>

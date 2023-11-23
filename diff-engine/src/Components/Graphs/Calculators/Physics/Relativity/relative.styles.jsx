@@ -26,7 +26,16 @@ export const RelativityContainer = styled.section`
     p {
         font-size:20px;
         position:absolute;
-    }   
+    }
+
+    strong {
+        margin-left:50px;
+        // opacity:.8;
+        width:400px;
+        border-bottom:solid 1px;
+        font-size:12px;
+        letter-spacing:1px;
+    }
 `
 
 export const ValueButtonPad = styled.div`

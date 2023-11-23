@@ -40,8 +40,8 @@ const RelativityKeyPad = (props) => {
                 <BlockMath math={`c = \\text{speed of light in miles per second}`} />
                 <BlockMath math={`\\Delta(t) = \\text{time interval (in seconds)}`} />
                 <BlockMath math={'v = \\text{velocity (in miles per second)}'}/>
-                <BlockMath math={`L = \\text{length of object}`} />
                 <p>The time dilation equation determines how much time (in seconds) passes for stationary observers relative to observers in motion</p>
+                <BlockMath math={`L = \\text{length of object}`} />
                 <p>
                     The length contraction equation determines how much shorter an object in motion appears to stationary observers.
                     The length visual displays the percentage an object's length will appear to decrease given it's velocity.
@@ -77,7 +77,7 @@ const RelativityKeyPad = (props) => {
                     buttonType={'image'}
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('observerVelocity')}
-                    text={`v = ${observerVelocity}`}
+                    text={`v = ${observerVelocity.toString().substring(0,6)}`}
                     p={'observer velocity (v)'}
                     selected={textFieldSelection === 'observerVelocity'}
                     error={vError()}
