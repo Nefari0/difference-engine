@@ -31,9 +31,9 @@ const RelativePhysicsDisplay = ({state,setState}) => {
 
     // --- TIME DILATION --- //
     const timeDilation = (parseFloat(timeInterval))/(Math.sqrt(1-((parseFloat(observerVelocity)**2)/(parseFloat(c)**2))))
-    const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval+'\\text{ s}')
+    const numerator = (timeInterval.length === 0 ? '\\Delta(t)' : timeInterval+'\\text{ s}_0')
     const denominator = `\\sqrt{1- \\frac{${observerVelocity.length === 0 ? 'v' : observerVelocity}^2}{c^2}}`
-    const timeDilationEquation = `\\frac{${numerator}}{${denominator})}`
+    const timeDilationEquation = `s = \\frac{${numerator}}{${denominator})}`
 
     // --- LENGTH CONTRACTION --- //
     const L = 1 // Stationary object length
@@ -53,7 +53,7 @@ const RelativePhysicsDisplay = ({state,setState}) => {
             {observerVelocity < c ? 
             <>
                 <BlockMath math={timeDilationEquation} />
-                {!isNaN(timeDilation) && <SolutionText>{isNumber(timeDilation.toString())+' s'}</SolutionText>}
+                {!isNaN(timeDilation) && <SolutionText>{isNumber(timeDilation.toString())}</SolutionText>}
             </>
             : 
             <Error>observer must be slower than the speed of light</Error>
