@@ -58,9 +58,7 @@ const ViewSettings = (props) => {
     const getSavedViewSettings = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
-        const viewLock = localStorage.getItem('VIEW_LOCK')
         if (savedMode) {setDarkMode(JSON.parse(savedMode))}
-        if (viewLock) {setScrollLock(JSON.parse(viewLock))}
 
       } catch (error) {return}
     }
@@ -129,7 +127,7 @@ const ViewSettings = (props) => {
           fontSize:'12px',
           letterSpacing:'1px',
         }}
-          onClick={() => saveSettingts(`VIEW_LOCK`,scrollLock,setScrollLock)}
+          onClick={() => setScrollLock(!scrollLock)}
           text={scrollLock ? 'locked' : 'unlocked '}
           p={`scroll lock ${scrollLock? 'on' : 'off'}`}
         />
