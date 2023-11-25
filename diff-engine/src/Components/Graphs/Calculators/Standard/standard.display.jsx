@@ -1,9 +1,11 @@
+import { dataTypes } from "../../data-types"
 import { ViewContext } from "../../../Context/view.context"
 import { useContext,useEffect } from "react"
 import { Standard,History,HistoryItem } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
 import Button from "../../KeyPad/Button"
 
+const { DIFF_ENGINE_HISTORY } = dataTypes
 const clearHistButton = {
     position:'absolute',
     right:'0px',
@@ -16,8 +18,27 @@ const StandarMathDisplay = ({state,execute,setState}) => {
 
     const { calculation,history,mathFunc } = state
     const { darkmode,setScrollBar } = useContext(ViewContext)
+    const savedHistory = localStorage.getItem(DIFF_ENGINE_HISTORY)
 
-    useEffect(() => {setScrollBar(false)},[])
+    useEffect(() => {
+        setScrollBar(false)
+        var historyArray = []
+        try {
+            if (!savedHistory) {
+                localStorage.setItem(DIFF_ENGINE_HISTORY ,[])
+            } else {
+                historyArray = JSON.parse(savedHistory)
+            }
+        } catch (error) {
+            return(null)
+        }
+        setState({
+            ...state, 
+            history:historyArray,
+            mathFunc:``,
+            polars:false,
+        })
+    },[])
 
     const copy = () => {
         navigator.clipboard.writeText(calculation)
@@ -25,6 +46,11 @@ const StandarMathDisplay = ({state,execute,setState}) => {
             ...state,
             noticeContent:`${calculation} copied to clipboard`
         })
+    }
+
+    const clearHistory = (e) => {
+        localStorage.setItem(DIFF_ENGINE_HISTORY,[])
+        execute(e,'history',[])
     }
 
     const mappedHistory = history.map((el,i) => {
@@ -36,7 +62,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
             <History darkmode={darkmode}>
                 <Button
                     styles={clearHistButton}
-                    onClick={(e) => execute(e,'history',[])}
+                    onClick={(e) => clearHistory(e)}
                     text={'Clear history'}
                     buttonClass={'tiny'}
                 />
