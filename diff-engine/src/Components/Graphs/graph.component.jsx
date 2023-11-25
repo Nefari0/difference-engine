@@ -10,6 +10,7 @@ import AboutPage from "./Informaton/About/about.component";
 import DisplayModule from "./Display/display.component";
 import KeyModule from "./KeyPad/keypad.component";
 import Button from "./KeyPad/Button";
+import { dataTypes } from "./data-types";
 import { displayScreenY } from "./KeyPad/input.styles";
 import Player from "../VideoPlayer/player.component";
 
@@ -27,6 +28,7 @@ import { useEffect, useState, useContext } from "react";
 import { ViewContext } from "../Context/view.context";
 import { checkDeviceSize } from "./DisplaySettings/viewLogic";
 
+const { DIFF_ENGINE_HISTORY } = dataTypes
 const errorMessage = "There is an error preventing this operation from continuing. Please view the documentation to learn about proper syntax structuring."
 var par = parser()
 
@@ -266,7 +268,8 @@ export default function Graph() {
     e.preventDefault()
     try {
       const result = par.evaluate(smallestVal())
-      history.push([mathFunc,result])
+      history.push([mathFunc,result.toString()])
+      localStorage.setItem(DIFF_ENGINE_HISTORY,JSON.stringify(history))
       setState({
         ...state,
         calculation:result.toString(),

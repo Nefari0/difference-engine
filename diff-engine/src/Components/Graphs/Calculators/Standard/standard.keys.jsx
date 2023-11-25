@@ -27,14 +27,6 @@ const StandardKeys = (props) => {
         setDisplayKeymap
     } = useContext(ViewContext)
 
-    useEffect(() => {
-        setState({
-            ...state,
-            mathFunc:``,
-            polars:false,
-        })
-    },[])
-
     const execution = (e) => {
         calculate(e,mathFunc)
     }
