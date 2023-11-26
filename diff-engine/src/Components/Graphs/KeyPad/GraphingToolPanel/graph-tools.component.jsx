@@ -3,6 +3,7 @@ import { ViewContext } from "../../../Context/view.context";
 import { Toolbar } from "./graph-tools.styles";
 import { CopyIcon,MathVariable,OutArrows } from "../../SVG";
 import Button from "../Button";
+import MemoPad from "../../Memos/memo.component";
 
 const iconStyles = {
     width:'30px'
@@ -21,6 +22,7 @@ const ToolPanel = (props) => {
 
     return (
         <Toolbar>
+            <MemoPad />
             {!currentView &&
             <>
             <Button
