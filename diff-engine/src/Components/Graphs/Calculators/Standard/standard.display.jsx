@@ -7,7 +7,7 @@ import Button from "../../KeyPad/Button"
 
 const { DIFF_ENGINE_HISTORY } = dataTypes
 const clearHistButton = {
-    position:'absolute',
+    position:'fixed',
     right:'0px',
     top:'10px',
     zIndex:'1',
