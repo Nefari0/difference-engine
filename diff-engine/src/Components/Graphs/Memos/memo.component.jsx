@@ -9,13 +9,11 @@ const MemoPad = () => {
     
     const NOTEBOOK_NAME = 'DIFF_ENGINE_NOTEBOOK'
     const [localState,setLocalState] = useState({
-        large:false,
         text:'',
-        minimize:true,
     })
 
-    const {large,text,minimize} = localState
-    const { darkmode } = useContext(ViewContext)
+    const {text} = localState
+    const { darkmode,setOpenMemo } = useContext(ViewContext)
     const savedNoteBook = localStorage.getItem(NOTEBOOK_NAME)
 
     const textHandler = (e) => {
@@ -36,33 +34,24 @@ const MemoPad = () => {
     },[])
 
     return (
-            <MemoContainer large={large} darkmode={darkmode} minimize={minimize}>
+            <MemoContainer darkmode={darkmode}>
                 <Button 
-                    style={{
-                        transform:'scale(.3)',
-                        right:'-20px',
-                        top:'-20px'
+                    styles={{
+                        position:'relative',    
+                        width:'50px',
+                        height:'50px'
                     }}
-                    onClick={() => setLocalState({...localState, minimize:!minimize})}
-                    text={minimize ? PencilNote() : CloseX()}
+                    onClick={() => setOpenMemo(false)}
+                    text={CloseX()}
+                    buttonClass={'translucent'}
                 />
 
-                {!minimize && <>
-                    <Button 
-                        style={{
-                            transform:'scale(.3)',
-                            right:'10px',
-                            top:'-20px'
-                        }}
-                        onClick={() => setLocalState({...localState, large:!large})}
-                        text={large ? InArrows() : OutArrows()}
-                    />
-                    <textarea
-                        value={text}
-                        name='text'
-                        onChange={textHandler}
-                    />
-                </>}
+                <textarea
+                    value={text}
+                    name='text'
+                    onChange={textHandler}
+                />
+            
             </MemoContainer>
     )
 }

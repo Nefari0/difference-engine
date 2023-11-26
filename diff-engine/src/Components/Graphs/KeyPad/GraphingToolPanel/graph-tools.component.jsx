@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { ViewContext } from "../../../Context/view.context";
 import { Toolbar } from "./graph-tools.styles";
-import { CopyIcon,MathVariable,OutArrows } from "../../SVG";
+import { CopyIcon,MathVariable,OutArrows,PencilNote } from "../../SVG";
 import Button from "../Button";
-import MemoPad from "../../Memos/memo.component";
 
 const iconStyles = {
     width:'30px'
@@ -17,12 +16,12 @@ const ToolPanel = (props) => {
         currentView,
         showPlotValues,
         setShowPlotValues,
-        scrollBar,setScrollBar
+        scrollBar,setScrollBar,
+        openMemo,setOpenMemo
     } = useContext(ViewContext)
 
     return (
         <Toolbar>
-            <MemoPad />
             {!currentView &&
             <>
             <Button
@@ -52,6 +51,14 @@ const ToolPanel = (props) => {
                 onClick={() => setShowPlotValues(!showPlotValues)}
                 selected={showPlotValues}
             />}
+            
+            <Button
+                text={PencilNote({width:'35px'})}
+                buttonClass={'translucent'}
+                onClick={() => setOpenMemo(!openMemo)}
+                styles={{position:'absolute',bottom:'-90px'}}
+                selected={openMemo}
+            />
         </Toolbar>
     )
 }

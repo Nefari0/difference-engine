@@ -13,6 +13,7 @@ import Button from "./KeyPad/Button";
 import { dataTypes } from "./data-types";
 import { displayScreenY } from "./KeyPad/input.styles";
 import Player from "../VideoPlayer/player.component";
+import MemoPad from "./Memos/memo.component";
 
 import {
   // evaluate,
@@ -71,6 +72,8 @@ export default function Graph() {
     alert,setAlert,
 
     openPlayer,
+
+    openMemo
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -389,6 +392,8 @@ export default function Graph() {
       />
 
       {information && <Document/>}
+
+      {openMemo && <MemoPad />}
 
       {alert && <Alert
         state={state}
