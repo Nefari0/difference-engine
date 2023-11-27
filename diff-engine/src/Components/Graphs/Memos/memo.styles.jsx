@@ -1,9 +1,5 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../global.styles";
-import { widthParameters } from "../global.styles";
-// import { basicDark,basicLight } from "../global.styles";
-// const { enclosureWidth,enclosurePadding } = widthParameters
-import { BaseButton } from "../KeyPad/input.styles";
 
 const dark = css`
     background-color:${backgroundColors.lightDark};
@@ -34,7 +30,7 @@ export const MemoContainer = styled.section`
     transition: all 100ms;
     border-radius:5px;
     background:none;
-    background-color:rgba(0,0,0,0.6 );
+    background-color:rgba(0,0,0,0.7 );
     position:absolute;
     top:250px;
 
@@ -48,12 +44,13 @@ export const MemoContainer = styled.section`
     
     textarea {
         background:none;
-        color: white;
+        color:white;
         position:absolute;
         bottom:0px;
         width:100%;
         height:200px;
         transition: all 100ms;
+        font-size:20px;
     }
 
     button,
