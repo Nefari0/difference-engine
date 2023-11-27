@@ -73,10 +73,11 @@ const StandarMathDisplay = ({state,execute,setState}) => {
 
                 {calculation && <MathComponent tex={String.raw`${calculation}`} />}
 
+
                 <Button
                     text={'copy'}
                     buttonClass={'tiny'}
-                    styles={{right:'6px',top:'7px'}}
+                    styles={{right:'6px',top:'17px'}}
                     onClick={() => copy()}
                 />
 

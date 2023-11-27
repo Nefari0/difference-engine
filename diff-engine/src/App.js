@@ -28,12 +28,6 @@ function App() {
     window.addEventListener('offline', setOffline);
     setIsOnline(online)
 
-    try {
-      if(!OPEN_MEMO) {
-        localStorage.setItem(OPEN_MEMO_NAME,false)
-      } else {setOpenMemo(OPEN_MEMO === 'true')}
-    } catch (error) {return}
-
     return () => {
       window.removeEventListener('online', setOnline);
       window.removeEventListener('offline', setOffline);
@@ -56,7 +50,7 @@ function App() {
         {/* <ImageContainer><img src={pic} /></ImageContainer> */}
       </Header>
       <Adapter>
-        {openMemo && <MemoPad />}
+        {/* {openMemo && <MemoPad />} */}
         <Graph />
       </Adapter>
     </AppContainer>

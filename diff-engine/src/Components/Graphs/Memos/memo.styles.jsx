@@ -1,8 +1,5 @@
 import styled, { css } from "styled-components";
 import { backgroundColors } from "../global.styles";
-import { widthParameters } from "../global.styles";
-// import { basicDark,basicLight } from "../global.styles";
-const { enclosureWidth,enclosurePadding } = widthParameters
 
 const dark = css`
     background-color:${backgroundColors.lightDark};
@@ -14,32 +11,51 @@ const light = css`
 `
 
 const minimized = css`
-    height:25px;
-    width:25px;
-    border:none;
-    background:none;
-    top:0px;
-    left:100%;
+    height:100px;
+    textarea {
+        height:60px;
+    }
 `
-// width:${(enclosureWidth)*.5}px;
-// padding:${enclosurePadding*.5}px;
 export const MemoContainer = styled.section`
     ${({darkmode}) => darkmode ? dark : light}
     height:${({large})=>large ? 240 : 100}px;
     top:${({large}) => large ? 10 : 50}px;
     ${({minimize}) => minimize && minimized}
+    width:495px;
+    height:260px;
+    display:flex;
+    flex-direction:row-reverse;
     z-index:11;
-    pointer-events: auto;
-    position:sticky;
+    pointer-events: none;
     transition: all 100ms;
     border-radius:5px;
+    background:none;
+    background-color:rgba(0,0,0,0.7 );
+    position:absolute;
+    top:250px;
 
-    textarea {
-        position:relative;
-        top:30px;
-        width:95%;
-        height:${({large}) => large ? 200 : 60}px;
-        background-color:${backgroundColors.paper};
-        transition: all 100ms;
+    svg {
+        position:absolute;
+        left:0px;
+        top:0px;
+        height:50px;
+        width:50px;
     }
+    
+    textarea {
+        background:none;
+        color:white;
+        position:absolute;
+        bottom:0px;
+        width:100%;
+        height:200px;
+        transition: all 100ms;
+        font-size:20px;
+    }
+
+    button,
+    textarea {
+        pointer-events: auto;
+    }
+
 `

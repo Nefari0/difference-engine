@@ -4,18 +4,17 @@ import { backgroundColors } from "../../global.styles";
 const {
     paper,
 
-    light,
-    midLight,
-    darkLight,
+    // light,
+    // midLight,
+    // darkLight,
 
-    lightDark,
-    midDark,
+    // lightDark,
+    // midDark,
     dark
 } = backgroundColors
 
 export const Standard = styled.div`
     position:absolute;
-    font-size:20px;
     bottom:0px;
     width:100%;
     height:15%;
@@ -24,9 +23,11 @@ export const Standard = styled.div`
     z-index:1;
     border: solid 1px;
     border-radius:5px;
+    font-size:30px;
 `
-
+    
 export const History = styled(Standard)`
+    font-size:20px;
     width:100%;
     height:75%;
     top:0px;
