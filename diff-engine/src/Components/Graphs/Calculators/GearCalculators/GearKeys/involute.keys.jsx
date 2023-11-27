@@ -126,14 +126,14 @@ const CogKeys = (props) => {
             }} 
             darkmode={darkmode}
         >
-            <div>
-                <Button
-                    style={{top:'-55px',left:'2px',width:'50px'}}
-                    text={!zoom ? zoomIn() : zoomOut()}
-                    buttonClass={'tiny'}
-                    onClick={() => setZoom(!zoom)}
-                />
-            </div>
+            
+            <Button
+                style={{top:'-116px',left:'2px',width:'50px',height:'50px'}}
+                text={!zoom ? zoomIn() : zoomOut()}
+                buttonClass={'translucent'}
+                onClick={() => setZoom(!zoom)}
+            />
+            
 
             {!conditions && gearBuildingStep === 'step_2' && <AdjustmentPanel 
                 state={state}

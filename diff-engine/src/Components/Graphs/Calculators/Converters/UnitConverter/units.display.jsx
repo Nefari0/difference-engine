@@ -97,7 +97,7 @@ const Units = ({state,setState,pasteFromClipboard}) => {
             </UnitsDisplay>
             <Button
                 text={'paste'}
-                styles={{bottom:'0px',left:'0px',width:'75px'}}
+                styles={{bottom:'0px',right:'0px',width:'75px'}}
                 buttonClass={'tiny'}
                 onClick={(e) => pasteFromClipboard(e)}
             />
