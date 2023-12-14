@@ -15,10 +15,10 @@ import CustomMath from "../../../../KeyPad/CostomMath";
 
 const LeverageDisplay = (props) => {
     const { state } = props
-    const { F_e,d_e,leverTotalLength,leverRotation} = state
+    const { W,d_e,leverTotalLength,leverRotation} = state
     const d_r = parseFloat(leverTotalLength-d_e).toFixed(2)
     const { darkmode } = useContext(ViewContext)
-    const resistance = ((d_r/d_e) * F_e).toFixed(2)
+    const equilibrium = ((d_r/d_e) * W).toFixed(2)
     const totalPercentage = Math.abs(parseFloat((leverTotalLength)) / 100)
     const fulcrumDistance = Math.abs(parseFloat(d_e / totalPercentage))
 
@@ -56,15 +56,18 @@ const LeverageDisplay = (props) => {
 
             <h1>Force/Distance Multipliers</h1>
 
-            <InputForceValue>
-                <CustomMath >{`F_e = ${isNaN(F_e) ? '0':F_e}`}</CustomMath>
-            </InputForceValue>
 
             <OutputForceValue>
                 <CustomMath>
-                    {`F_r = ${isNaN(resistance) ? '0' : resistance}`}
+                    {`F = ${isNaN(equilibrium) ? '0' : equilibrium}`}
                 </CustomMath>
             </OutputForceValue>
+            
+            <InputForceValue>
+                <CustomMath >
+                    {`W = ${isNaN(W) ? '0':W}`}
+                </CustomMath>
+            </InputForceValue>
 
             <TotalLength condition={validate(leverTotalLength) === 'invalid'}>
                 total length = {leverTotalLength === "" ? 'Invalid value' : leverTotalLength}

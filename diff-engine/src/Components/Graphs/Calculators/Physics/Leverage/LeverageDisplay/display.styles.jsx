@@ -108,9 +108,9 @@ export const ValDisplay = styled.div`
 `
 
 export const InputForceValue = styled(ValDisplay)`
-    left:10px;
     border-radius:50%;
     border:solid;
+    left:390px;
 
     strong {
         margin:auto;
@@ -118,7 +118,7 @@ export const InputForceValue = styled(ValDisplay)`
 `
 
 export const OutputForceValue = styled(InputForceValue)`
-    left:390px;
+    left:10px;
 `
 
 export const Length = styled.i`
@@ -149,7 +149,6 @@ export const DistanceExchangeDisplay = styled.div`
         bottom:-30px;
         margin:0px;
         width:100%;
-        // background-color:blue;
     }
     
 `
