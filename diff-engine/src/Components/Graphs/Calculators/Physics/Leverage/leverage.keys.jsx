@@ -12,7 +12,7 @@ const LeverageKeys = (props) => {
 
     const { state,setState } = props
 
-    const { d_e,F_e,leverTotalLength } = state
+    const { d_e,W,leverTotalLength } = state
 
     const { 
         setCurrentView,
@@ -22,6 +22,11 @@ const LeverageKeys = (props) => {
     } = useContext(ViewContext)
 
     const [textFieldSelection,setTextFieldSelection] = useState('leverTotalLength')
+    function leverbarMessage() {
+        var mainText = 'Total length of leverbar'
+        var error = ' (NOTE: this value must be greater than d_e)'
+        return (leverTotalLength <= parseFloat(d_e) ? mainText+error : mainText)
+    }
 
     return (
         <KeyBox>
@@ -29,15 +34,15 @@ const LeverageKeys = (props) => {
             {displayKeymap && 
                 <>
                     <InfoMessage 
-                        style={{top:'-350px',left:'100px',borderRadius:'20px 0px 20px 20px'}}
+                        style={{top:'-350px',left:'130px',borderRadius:'0px 20px 20px 20px'}}
                     >
-                        <InlineMath>{'F_r'}</InlineMath> = output force (resistance)<br/> 
+                        <InlineMath>{'F'}</InlineMath> = Force required for equilibrium<br/> 
                     </InfoMessage>
 
                     <InfoMessage 
-                        style={{top:'-450px',left:'150px',borderRadius:'20px 20px 20px 0px'}}
+                        style={{top:'-450px',left:'220px',borderRadius:'20px 20px 0px 20px'}}
                     >
-                        <InlineMath>{'F_e'}</InlineMath> = input force (effort) <br/> 
+                        <InlineMath>{'W'}</InlineMath> = Total weight <br/> 
                     </InfoMessage>
                 </>
             }
@@ -65,10 +70,10 @@ const LeverageKeys = (props) => {
                     styles={{right:'',zIndex:'3',fontSize:'22px',top:'40px',width:'150px'}}
                     buttonType={'image'}
                     buttonClass={'large'}
-                    onClick={() => setTextFieldSelection('F_e')}
-                    text={`F_e = ${F_e}`}
-                    p={'Force appied (input)'}
-                    selected={textFieldSelection === 'F_e'}
+                    onClick={() => setTextFieldSelection('W')}
+                    text={`W = ${W}`}
+                    p={'Total weight'}
+                    selected={textFieldSelection === 'W'}
                 />
 
                 <Button
@@ -88,7 +93,7 @@ const LeverageKeys = (props) => {
                     buttonClass={'large'}
                     onClick={() => setTextFieldSelection('leverTotalLength')}
                     text={`d_e+d_r = ${leverTotalLength}`}
-                    p={`Total length of leverbar ${leverTotalLength <= parseFloat(d_e) && 'NOTE: this value must be greater than d_e'}`}
+                    p={leverbarMessage()}
                     selected={textFieldSelection === 'leverTotalLength'}
                     error={parseFloat(leverTotalLength) <= parseFloat(d_e)}
                 />
