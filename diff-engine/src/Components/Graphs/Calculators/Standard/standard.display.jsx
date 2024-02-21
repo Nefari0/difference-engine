@@ -1,10 +1,11 @@
 import { dataTypes } from "../../data-types"
 import { ViewContext } from "../../../Context/view.context"
 import { useContext,useEffect } from "react"
-import { Standard,History,HistoryItem } from "./standard.styles"
+import { Standard,History,HistoryItem,StandardToolbar } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
 import Button from "../../KeyPad/Button"
 import { useState } from "react"
+// import { StandardToolbar } from "./toolbar.styles"
 
 const { DIFF_ENGINE_HISTORY } = dataTypes
 const clearHistButton = {
@@ -13,12 +14,6 @@ const clearHistButton = {
     top:'10px',
     zIndex:'1',
     fontSize:'12px'
-}
-
-const toolBarBotton = {
-    height:'30px',
-    margin:'5px',
-    position:'relative',
 }
 
 const StandarMathDisplay = ({state,execute,setState}) => {
@@ -101,20 +96,12 @@ const StandarMathDisplay = ({state,execute,setState}) => {
 
             </Standard>
 
-            <div
-            style={{
-                height:'40px',
-                width:'100%',
-                bottom:'80px',
-                position:'absolute',
-                display:'flex'
-            }}>
+            <StandardToolbar>
                 <Button 
                     text={'factors'}
                     buttonClass={'translucent'}
                     selected={view === 'factors'}
                     onClick={() => setLocalState({...localState,view:'factors'})}
-                    styles={toolBarBotton}
                 />
 
                 <Button 
@@ -122,9 +109,8 @@ const StandarMathDisplay = ({state,execute,setState}) => {
                     buttonClass={'translucent'}
                     selected={view === 'history'}
                     onClick={() => setLocalState({...localState,view:'history'})}
-                    styles={toolBarBotton}
                 />
-            </div>
+            </StandardToolbar>
         </>
     )
 }

@@ -41,3 +41,17 @@ export const HistoryItem = styled.i`
     border-bottom: solid ${({darkmode}) => darkmode ? '#fff' : '#555' } 1px;
     padding:5px;
 `
+
+export const StandardToolbar = styled.div`
+    height:40px;
+    width:100%;
+    bottom:80px;
+    position:absolute;
+    display:flex;
+
+    button {
+        height:30px;
+        margin:5px;
+        position:relative;
+    }
+`
