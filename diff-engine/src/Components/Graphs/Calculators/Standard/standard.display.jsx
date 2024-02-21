@@ -4,6 +4,7 @@ import { useContext,useEffect } from "react"
 import { Standard,History,HistoryItem } from "./standard.styles"
 import { MathComponent } from "mathjax-react"
 import Button from "../../KeyPad/Button"
+import { useState } from "react"
 
 const { DIFF_ENGINE_HISTORY } = dataTypes
 const clearHistButton = {
@@ -14,8 +15,16 @@ const clearHistButton = {
     fontSize:'12px'
 }
 
+const toolBarBotton = {
+    height:'30px',
+    margin:'5px',
+    position:'relative',
+}
+
 const StandarMathDisplay = ({state,execute,setState}) => {
 
+    const [ localState, setLocalState ] = useState({view:'history'})
+    const { view } = localState
     const { calculation,history,mathFunc } = state
     const { darkmode,setScrollBar } = useContext(ViewContext)
     const savedHistory = localStorage.getItem(DIFF_ENGINE_HISTORY)
@@ -40,7 +49,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
         })
     },[])
 
-    const copy = () => {
+    function copy() {
         navigator.clipboard.writeText(calculation)
         setState({
             ...state,
@@ -48,14 +57,22 @@ const StandarMathDisplay = ({state,execute,setState}) => {
         })
     }
 
-    const clearHistory = (e) => {
+    function clearHistory(e) {
         localStorage.setItem(DIFF_ENGINE_HISTORY,[])
         execute(e,'history',[])
     }
 
+    const longestArrayLength = 5000000;
+    const factorInts = calculation < longestArrayLength ? Array.from(Array(parseInt(calculation)), (x, i) => i + 1).filter((el,i) => calculation % el === 0) : ['Value too large to compute']
+
+    const mappedIntegers = factorInts.map((el,i) => {
+        return <HistoryItem key={i} darkmode={darkmode} onClick={(e) => execute(e,'mathFunc',mathFunc+el[1].toString())}>{el}</HistoryItem>
+    })
+
     const mappedHistory = history.map((el,i) => {
         return <HistoryItem key={i} darkmode={darkmode} onClick={(e) => execute(e,'mathFunc',mathFunc+el[1].toString())}>{el[0] + ' = ' + el[1]}</HistoryItem>
     })
+
 
     return(
         <>
@@ -66,7 +83,8 @@ const StandarMathDisplay = ({state,execute,setState}) => {
                     text={'Clear history'}
                     buttonClass={'tiny'}
                 />
-                {mappedHistory}
+                {view === 'history' && mappedHistory}
+                {view === 'factors' && mappedIntegers}
             </History>
 
             <Standard darkmode={darkmode}>
@@ -82,6 +100,31 @@ const StandarMathDisplay = ({state,execute,setState}) => {
                 />
 
             </Standard>
+
+            <div
+            style={{
+                height:'40px',
+                width:'100%',
+                bottom:'80px',
+                position:'absolute',
+                display:'flex'
+            }}>
+                <Button 
+                    text={'factors'}
+                    buttonClass={'translucent'}
+                    selected={view === 'factors'}
+                    onClick={() => setLocalState({...localState,view:'factors'})}
+                    styles={toolBarBotton}
+                />
+
+                <Button 
+                    text={'history'}
+                    buttonClass={'translucent'}
+                    selected={view === 'history'}
+                    onClick={() => setLocalState({...localState,view:'history'})}
+                    styles={toolBarBotton}
+                />
+            </div>
         </>
     )
 }
