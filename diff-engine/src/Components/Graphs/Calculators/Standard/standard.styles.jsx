@@ -35,6 +35,13 @@ export const History = styled(Standard)`
     flex-direction:column;
     overflow:scroll;
     text-align:left;
+
+    aside {
+        height:100%;
+        width:70px;
+        right:0px;
+        position:absolute;
+    }
 `
 
 export const HistoryItem = styled.i`
@@ -48,6 +55,7 @@ export const StandardToolbar = styled.div`
     bottom:80px;
     position:absolute;
     display:flex;
+    background-color:${({darkmode}) =>darkmode ? dark : paper};
 
     button {
         height:30px;
