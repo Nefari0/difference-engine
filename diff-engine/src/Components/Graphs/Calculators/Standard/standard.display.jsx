@@ -65,7 +65,7 @@ const StandarMathDisplay = ({state,execute,setState}) => {
     function factorInts() {
         var longestArrayLength = 5000000;
         var base = calculation
-        if (calculation <= 1) {base = base*-1} 
+        if (calculation < 1) {base = base*-1} 
         return (base < longestArrayLength ? Array.from(Array(parseInt(base)), (x, i) => i + 1).filter((el,i) => base % el === 0) : ['Value cannot be factored'])
     }
 
