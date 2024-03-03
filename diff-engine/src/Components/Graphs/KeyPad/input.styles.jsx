@@ -8,13 +8,15 @@ const {
     darkLight,
 
     lightDark,
-    red,blue
+    red,blue,
+
+    transition
 } = backgroundColors
 
 export const messageBox = css`
     position:absolute;
     background-color:#fff;
-    transition: all 500ms;
+    ${transition}
     color:#555;
     display:inline;
     transform: scale(1.7);
@@ -33,8 +35,7 @@ export const messageBox = css`
 export const InfoMessage = styled.p`${messageBox}`
 
 const ButtonOverlay = css`
-
-        transition: all 500ms;
+        ${transition}
         overflow:visible;
         z-index:1000;
 
@@ -42,7 +43,6 @@ const ButtonOverlay = css`
 
         pointer-events: none;
         transform: scale(.6)
-
 `
 export const KeyBox = styled.div`
     position: relative;
@@ -51,7 +51,7 @@ export const KeyBox = styled.div`
     bottom:-512px;
     
     button {
-        transition: all 500ms;
+        ${transition}
     }
 
     i {
@@ -133,7 +133,7 @@ export const BaseButton = styled.button`
     p {
         position:absolute;
         font-weight:200;
-        transition: all 500ms;
+        ${transition}
         transform: scale(0);
         z-index:1;
     }

@@ -20,9 +20,13 @@ export const backgroundColors = {
     midDark:tier5,
     dark:tier6,
 
+    // Other colors
     blue:'#2e86c0',
     red:'#f0595f',
-    white:'#fff'
+    white:'#fff',
+
+    // Transition
+    transition:'transition: all 100ms;'
 }
 
 // --- Global app size parameters --- //
