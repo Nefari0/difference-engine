@@ -276,6 +276,7 @@ export default function Graph() {
       setState({
         ...state,
         calculation:result.toString(),
+        mathFunc:result.toString()
       })
       return
     } catch (err) {
