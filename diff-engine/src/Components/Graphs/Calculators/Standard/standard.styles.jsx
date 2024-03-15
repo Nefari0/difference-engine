@@ -38,9 +38,14 @@ export const History = styled(Standard)`
 
     aside {
         height:100%;
-        width:70px;
-        right:0px;
+        width:80px;
+        right:5px;
         position:absolute;
+
+        button {
+            position:relative;
+            margin:2px;
+        }
     }
 `
 

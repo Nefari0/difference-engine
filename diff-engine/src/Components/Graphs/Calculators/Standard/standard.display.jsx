@@ -8,13 +8,6 @@ import { useState } from "react"
 import { baseNumbers } from "./baseNumbers.data"
 
 const { DIFF_ENGINE_HISTORY } = dataTypes
-const clearHistButton = {
-    position:'fixed',
-    right:'0px',
-    top:'10px',
-    zIndex:'1',
-    fontSize:'12px'
-}
 
 const StandarMathDisplay = ({state,execute,setState}) => {
 
@@ -88,7 +81,6 @@ const StandarMathDisplay = ({state,execute,setState}) => {
          <Button
             key={i}
             text={`${el.type}`}
-            styles={{position:'relative',margin:'2px'}}
             buttonClass={'tiny'}
             selected={baseTypeSelected === el.type}
             buttonType={'textage'}
@@ -106,10 +98,10 @@ const StandarMathDisplay = ({state,execute,setState}) => {
                 <aside>
                 {view === 'history' && 
                 <Button
-                    styles={clearHistButton}
                     onClick={(e) => clearHistory(e)}
                     text={'Clear history'}
                     buttonClass={'tiny'}
+                    buttonType={'textage'}
                 />}
                 {
                     view === 'base' &&
