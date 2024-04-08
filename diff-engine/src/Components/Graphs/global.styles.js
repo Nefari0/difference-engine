@@ -34,6 +34,9 @@ const enclosureHeight = 900
 const enclosureWidth = 495
 const enclosurePadding = 10
 
+// --- Viewport dimensions --- //
+export const viewPortSize = 500
+
 // const widthPercent = (enclosureWidth+(enclosurePadding*2))/100
 
 export const widthParameters = {

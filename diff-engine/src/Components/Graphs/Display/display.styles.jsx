@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { backgroundColors } from "../global.styles"
+import { backgroundColors,viewPortSize } from "../global.styles"
 
 const {
     dark,
@@ -27,8 +27,8 @@ const hideScrollBar = css`
 export const ViewPort = styled.div`
     position: absolute;
     opacity:.8;
-    height: 500px;
-    width: 500px;
+    height: ${viewPortSize}px;
+    width: ${viewPortSize}px;
     background-color:${({darkmode}) => darkmode ? dark : paper};
     display: flex;
     flex-direction: column;

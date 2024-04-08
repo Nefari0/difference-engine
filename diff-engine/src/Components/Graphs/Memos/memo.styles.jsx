@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { backgroundColors } from "../global.styles";
+import { backgroundColors,viewPortSize } from "../global.styles";
 
 const dark = css`
     background-color:${backgroundColors.lightDark};
@@ -10,21 +10,13 @@ const light = css`
     border: solid 1px #555;
 `
 
-const minimized = css`
-    height:100px;
-    textarea {
-        height:60px;
-    }
-`
 export const MemoContainer = styled.section`
     ${({darkmode}) => darkmode ? dark : light}
-    height:${({large})=>large ? 240 : 100}px;
-    top:${({large}) => large ? 10 : 50}px;
-    ${({minimize}) => minimize && minimized}
-    width:495px;
-    height:260px;
+    width:${viewPortSize}px;
+    height:${viewPortSize}px;
     display:flex;
-    flex-direction:row-reverse;
+    flex-direction:column;
+    align-items:flex-end;
     z-index:11;
     pointer-events: none;
     transition: all 100ms;
@@ -32,7 +24,6 @@ export const MemoContainer = styled.section`
     background:none;
     background-color:rgba(0,0,0,0.7 );
     position:absolute;
-    top:250px;
 
     svg {
         position:absolute;
@@ -43,19 +34,23 @@ export const MemoContainer = styled.section`
     }
     
     textarea {
+        width:95%;
+        height:85%;
         background:none;
         color:white;
-        position:absolute;
-        bottom:0px;
-        width:100%;
-        height:200px;
         transition: all 100ms;
         font-size:20px;
+        margin:auto;
     }
 
     button,
     textarea {
         pointer-events: auto;
+    }
+
+    button {
+        float:right;
+        color:#fff;
     }
 
 `
