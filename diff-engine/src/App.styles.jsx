@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const {
     light,
-    midLight,
     darkLight,
 
     lightDark,
@@ -16,7 +15,7 @@ const {enclosureWidth,enclosurePadding} = widthParameters
 export const Header = styled.header`
     background-color:${({darkmode}) => !darkmode ? light:darkLight};
     width:100vw;
-    height:80px;
+    height:40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 
     display: flex;
@@ -89,4 +88,16 @@ export const Adapter = styled.section`
     @media (max-width:400px) {
         width:300px;
     }
+`
+
+export const Footer = styled.footer`
+    width:100vw;
+    height:80px;
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 `
