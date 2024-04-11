@@ -1,23 +1,24 @@
 import Graph from './Components/Graphs/graph.component';
-import { AppContainer,Adapter,Header,Footer } from './App.styles';
+import { AppContainer,Adapter,Header,Footer,SizeController } from './App.styles';
 import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
 import { useContext,useEffect } from 'react';
-import { OPEN_MEMO_NAME } from './Components/Context/view.context';
+import ViewController from './Components/Graphs/DisplaySettings/preferences.compoent';
 
 function App() {
 
   const { 
     darkmode,
 
-    openMemo,setOpenMemo,
+    setIsOnline,
 
-    setIsOnline
+    viewPrefs,
+
+    showTitle
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
-  // const OPEN_MEMO = localStorage.getItem(OPEN_MEMO_NAME)
   // const boolState = () => {return(OPEN_MEMO === 'true' ? true : false)}
 
   useEffect(() => {
@@ -41,13 +42,15 @@ function App() {
   return (
     <AppContainer darkmode={darkmode}>
 
-      <Header darkmode={darkmode}>
+      {showTitle && <Header darkmode={darkmode}>
         <h1>The Difference Engine</h1>
-      </Header>
+      </Header>}
 
-      <Adapter>
-        <Graph />
+      <Adapter >
+        {viewPrefs && <ViewController/>}
+        <Graph/>
       </Adapter>
+
 
       <Footer>
         <Nav />

@@ -73,7 +73,9 @@ export default function Graph() {
 
     openPlayer,
 
-    openMemo
+    openMemo,
+
+    viewScale,setViewScale
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -150,7 +152,6 @@ export default function Graph() {
     // alert,
     history,
     // --- Zoom in / out
-    viewScale,
     verticalAdjustment,
     polarCoords,
     cartCoords,
@@ -295,9 +296,9 @@ export default function Graph() {
     } // columns
     setState({
       ...state,
-      viewScale:checkDeviceSize(state,setState),
       matrix: matrix
     });
+    checkDeviceSize(viewScale,setViewScale)
   };
 
   const inputHandler = (e) => {

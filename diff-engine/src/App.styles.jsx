@@ -37,6 +37,7 @@ export const Header = styled.header`
 
         @media (max-width:550px) {
             font-size:20px;
+            margin-top:5px;
         }
     }
 `
@@ -48,7 +49,6 @@ export const ImageContainer = styled.div`
     width:25px;
     height:25px;
     border-radius:50%;
-    background-color:blue;
     overflow:hidden;
 
     img {
@@ -60,11 +60,20 @@ export const ImageContainer = styled.div`
     }
 `
 
+// --- For displaying small components at center of app --- //
+export const OverLay = styled.div`
+    width:100%;
+    height:50%;
+    position:absolute;
+    z-index:100;
+    display:flex;
+`
+
 export const AppContainer = styled.main`
-    position:relative;
+    position:absolute;
     text-align: center;
     width:100vw;
-    min-height:100vh;
+    height:100vh;
     display:flex;
     flex-direction:column;
     background-color:${({darkmode}) => darkmode ? lightDark : light};
@@ -79,7 +88,7 @@ export const Adapter = styled.section`
     margin:auto;
     margin-top:50px;
     width:${(enclosurePadding*2)+enclosureWidth}px;
-    height:700px;
+    height:1000px;
 
     @media (max-width:620px) {
         width:350px;
