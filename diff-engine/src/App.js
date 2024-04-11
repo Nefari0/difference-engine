@@ -1,23 +1,25 @@
 import Graph from './Components/Graphs/graph.component';
-import { AppContainer,Adapter,Header,Footer } from './App.styles';
+import { AppContainer,Adapter,Header,Footer,SizeController } from './App.styles';
 import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
 import { useContext,useEffect } from 'react';
-import { OPEN_MEMO_NAME } from './Components/Context/view.context';
+import ViewSettings from './Components/Graphs/DisplaySettings/view-settings.component';
+import { changeSize,resetSize } from './Components/Graphs/DisplaySettings/viewLogic';
 
 function App() {
 
   const { 
     darkmode,
 
-    openMemo,setOpenMemo,
+    // openMemo,setOpenMemo,
 
-    setIsOnline
+    setIsOnline,
+
+    viewScale,setViewScale
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
-  // const OPEN_MEMO = localStorage.getItem(OPEN_MEMO_NAME)
   // const boolState = () => {return(OPEN_MEMO === 'true' ? true : false)}
 
   useEffect(() => {
@@ -45,9 +47,15 @@ function App() {
         <h1>The Difference Engine</h1>
       </Header>
 
-      <Adapter>
-        <Graph />
+      <Adapter >
+        {/* <ViewSettings/> */}
+        <Graph/>
       </Adapter>
+
+      <SizeController>
+        <button onClick={(e) => changeSize(e,viewScale,.01,setViewScale)}>bigger</button>
+        <button onClick={(e) => changeSize(e,viewScale,-.01,setViewScale)}>smaller</button>
+      </SizeController>
 
       <Footer>
         <Nav />

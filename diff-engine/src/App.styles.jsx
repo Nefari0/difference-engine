@@ -48,7 +48,6 @@ export const ImageContainer = styled.div`
     width:25px;
     height:25px;
     border-radius:50%;
-    background-color:blue;
     overflow:hidden;
 
     img {
@@ -64,7 +63,7 @@ export const AppContainer = styled.main`
     position:relative;
     text-align: center;
     width:100vw;
-    min-height:100vh;
+    height:100vh;
     display:flex;
     flex-direction:column;
     background-color:${({darkmode}) => darkmode ? lightDark : light};
@@ -79,7 +78,7 @@ export const Adapter = styled.section`
     margin:auto;
     margin-top:50px;
     width:${(enclosurePadding*2)+enclosureWidth}px;
-    height:700px;
+    height:100px;
 
     @media (max-width:620px) {
         width:350px;
@@ -88,6 +87,13 @@ export const Adapter = styled.section`
     @media (max-width:400px) {
         width:300px;
     }
+`
+
+export const SizeController = styled.div`
+    position:absolute;
+    width:100px;
+    height:100px;
+    background-color:blue;
 `
 
 export const Footer = styled.footer`

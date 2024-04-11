@@ -32,11 +32,6 @@ const resetViewMessageText = 'If this app does not fit on your display, please c
 
 const ViewSettings = (props) => {
 
-    const { state,execute } = props
-
-    const { viewScale } = state
-
-    // const [openSettings,setOpenSettings] = useState(false)
     const [localState,setLocalState] = useState({
       hovered:false
     })
@@ -47,8 +42,9 @@ const ViewSettings = (props) => {
 
       darkmode,setDarkMode,
 
-      // scrollBar,setScrollBar
-      setScrollLock,scrollLock
+      setScrollLock,scrollLock,
+
+      viewScale,setViewScale,
 
     } = useContext(ViewContext)
 
@@ -73,7 +69,7 @@ const ViewSettings = (props) => {
     return (
         <ViewSettingsPanel>
 
-        <Zoom
+        {/* <Zoom
           viewScale={viewScale}
           onClick={(e) => changeSize(e,.01,state,execute)}
           >
@@ -85,10 +81,10 @@ const ViewSettings = (props) => {
           onClick={(e) => changeSize(e,-.01,state,execute)}
         >
           {zoomOut()}
-        </ZoomOutButton>
+        </ZoomOutButton> */}
 
         <ResetViewButton
-          onClick={(e) => resetSize(e,execute)}
+          onClick={() => resetSize(setViewScale)}
         >
           reset view
         </ResetViewButton>

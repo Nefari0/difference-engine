@@ -1,32 +1,22 @@
-import { widthParameters } from "../global.styles"
-
-const {
-  // enclosureHeight,
-  enclosureWidth,
-  enclosurePadding,
-  // maxWidth,
-  // widthPercent
-  setState,
-  state
-} = widthParameters
 const windowSize = window.innerWidth
 
 // --- For saving selected screen size preferences on device, though this might not be implemtented.
-export const checkDeviceSize = (state,setState) => {
+export const checkDeviceSize = (viewScale,setViewScale) => {
     const savedSize = localStorage.getItem('screenWidth')
     screenSizeExtraction(windowSize)
     try {
       if (savedSize === null) {
-        return (screenSizeExtraction())
+        return (setViewScale(screenSizeExtraction()))
       } else {
-        return (parseFloat(savedSize))
+        return (setViewScale(parseFloat(savedSize)))
       }
       } catch (err) {console.log('here the error',err)}
     const initVal = screenSizeExtraction(windowSize)
-    return (setState({...state,viewScale:initVal}))
+    return (setViewScale(initVal))
 }
 
 export const screenSizeExtraction = () => {
+  console.log('screen size extraction',windowSize)
     if (windowSize > 620) {
         return (parseFloat(1.0))
     } else if (windowSize < 620 && windowSize > 400) {
@@ -37,29 +27,19 @@ export const screenSizeExtraction = () => {
 }
 
 
-export const changeSize = (e,size,state,execute) => {
-
-    const { viewScale } = state
-
-    const maxWidth = (enclosureWidth+(enclosurePadding*4))*viewScale // Generated width
+export const changeSize = (e,viewScale,size,setViewScale) => {
     
     var newVal = () => {
 
       return (
-        execute(e,'viewScale',viewScale+size),
-        localStorage.setItem('screenWidth',viewScale)
+        setViewScale(viewScale+size),
+        localStorage.setItem('screenWidth',parseFloat(viewScale)+size)
       )
     }
-    
-    // return (viewScale >= .1 && viewScale <= 1.0 ? newVal() : null)
-    // --- Add width:
-    if (size-.01 === 0 && windowSize > maxWidth && viewScale < 1) {
-      newVal()
-      // --- Subtract width
-    } else if (size-.01 === -.02 && viewScale > .51) {
+
+    if (viewScale+size < 1 && viewScale+size > .5) {
       newVal()
     }
-    // return (size-.01 === 0 && viewScale < 1 || size-.01 === -.02 && viewScale >.51 ? newVal() : null)
 }
 
 export const verticalTranslation = (e,size,state,execute) => {
@@ -72,7 +52,7 @@ export const verticalTranslation = (e,size,state,execute) => {
   )
 }
 
-export const resetSize = (e,execute) => {
-  execute(e,'viewScale',.5)
+export const resetSize = (setViewScale) => {
+  setViewScale(.5)
   localStorage.setItem('screenWidth',.5)
 }
