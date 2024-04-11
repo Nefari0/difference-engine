@@ -37,6 +37,7 @@ export const Header = styled.header`
 
         @media (max-width:550px) {
             font-size:20px;
+            margin-top:5px;
         }
     }
 `
