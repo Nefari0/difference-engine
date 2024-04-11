@@ -59,8 +59,17 @@ export const ImageContainer = styled.div`
     }
 `
 
+// --- For displaying small components at center of app --- //
+export const OverLay = styled.div`
+    width:100%;
+    height:50%;
+    position:absolute;
+    z-index:100;
+    display:flex;
+`
+
 export const AppContainer = styled.main`
-    position:relative;
+    position:absolute;
     text-align: center;
     width:100vw;
     height:100vh;
@@ -78,7 +87,7 @@ export const Adapter = styled.section`
     margin:auto;
     margin-top:50px;
     width:${(enclosurePadding*2)+enclosureWidth}px;
-    height:100px;
+    height:1000px;
 
     @media (max-width:620px) {
         width:350px;
@@ -87,13 +96,6 @@ export const Adapter = styled.section`
     @media (max-width:400px) {
         width:300px;
     }
-`
-
-export const SizeController = styled.div`
-    position:absolute;
-    width:100px;
-    height:100px;
-    background-color:blue;
 `
 
 export const Footer = styled.footer`

@@ -16,7 +16,6 @@ export const checkDeviceSize = (viewScale,setViewScale) => {
 }
 
 export const screenSizeExtraction = () => {
-  console.log('screen size extraction',windowSize)
     if (windowSize > 620) {
         return (parseFloat(1.0))
     } else if (windowSize < 620 && windowSize > 400) {

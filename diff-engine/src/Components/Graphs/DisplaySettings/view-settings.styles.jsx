@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components"
 import { TinyButton } from "../KeyPad/input.styles"
-import { backgroundColors } from "../global.styles"
-// import { basicDark,basicLight } from "../global.styles"
+import { backgroundColors,basicDark,basicLight } from "../global.styles"
 
 const { paper } = backgroundColors
 
@@ -36,13 +35,6 @@ export const DarkmodeButton = styled(Zoom)`
     width:100px;
 `
 
-// export const ActivateScrollingButton = styled(Zoom)`
-//     left:105px;
-//     width:100px;
-//     color:${white};
-//     background-color:${({scrollBar}) => !scrollBar ? red : blue};
-// `
-
 export const ViewSettingsPanel = styled.div`
     position:absolute;
     top:-40px;
@@ -50,43 +42,22 @@ export const ViewSettingsPanel = styled.div`
     right:0px;
     height:30px;
 `
-const fadeOut = css`
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 2s 2s, opacity 2s linear;
-`
-export const ResetViewMessage = styled.div`
-& { position: absolute;
-    background-color:${backgroundColors.paper};
-    color:${backgroundColors.midDark};
-    width: 200px;
-    height: 100px;
-    border-radius: 5px;
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(165px) translateY(40px) rotate(0);
-    box-shadow:10px 5px 60px 10px rgba(36, 36, 36,.5);
-    z-index: 3;
-    font-size:12px;
 
-    ${({visited}) => visited && fadeOut}
-}
+export const ViewControlContainer = styled.div`
+    position:relative;
+    width:100px;
+    height:130px;
+    margin:auto;
+    display:flex;
+    flex-wrap:wrap;
+    z-index:1;
+    box-shadow:10px 5px 60px 10px rgba(36, 36, 36, 1);
+    padding:10px;
+    border-radius:10px;
+    ${({darkmode}) => darkmode ? basicDark : basicLight}
 
-&:after {
-    content: "";
-    position: absolute;
-    bottom: 135px;
-    width: 0;
-    height: 0;
-    border-bottom: 33px solid transparent;
-    border-left: 10px solid transparent;
-    border-right: solid 10px ${paper};
-    transform: translateX(36.2px) translateY(45px)  rotate(90deg);
-    z-index: 0;
-}
-
-    p {
-        font-weight:600;
+    button {
+        position:relative;
+        margin:5px;
     }
 `
-

@@ -4,19 +4,16 @@ import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
 import { useContext,useEffect } from 'react';
-import ViewSettings from './Components/Graphs/DisplaySettings/view-settings.component';
-import { changeSize,resetSize } from './Components/Graphs/DisplaySettings/viewLogic';
+import ViewController from './Components/Graphs/DisplaySettings/preferences.compoent';
 
 function App() {
 
   const { 
     darkmode,
 
-    // openMemo,setOpenMemo,
-
     setIsOnline,
 
-    viewScale,setViewScale
+    viewPrefs,
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
@@ -48,14 +45,10 @@ function App() {
       </Header>
 
       <Adapter >
-        {/* <ViewSettings/> */}
+        {viewPrefs && <ViewController/>}
         <Graph/>
       </Adapter>
 
-      <SizeController>
-        <button onClick={(e) => changeSize(e,viewScale,.01,setViewScale)}>bigger</button>
-        <button onClick={(e) => changeSize(e,viewScale,-.01,setViewScale)}>smaller</button>
-      </SizeController>
 
       <Footer>
         <Nav />
