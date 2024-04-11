@@ -11,11 +11,19 @@ const wideButton = {width:'95%',height:'25px'}
 
 const ViewController = () => {
 
+
+    
     const {
         viewPrefs,openViewPrefs,
         viewScale,setViewScale,
-        darkmode
+        darkmode,
+        showTitle,setShowTitle
     } = useContext(ViewContext)
+    
+    const saveSettings = (prop,val,setFunction) => {
+        localStorage.setItem(`${prop}`,!val)
+        setFunction(!val)
+    }
 
     return (
         <OverLay>
@@ -38,11 +46,18 @@ const ViewController = () => {
                 />
 
                 <Button
+                    onClick={() => saveSettings('SHOW_TITLE',showTitle,setShowTitle)}
+                    styles={wideButton}
+                    text={`${showTitle ? 'title on' : 'title off'}`}
+                />
+
+                <Button
                     onClick={() => openViewPrefs(!viewPrefs)}
                     styles={wideButton}
                     buttonClass={'tiny'}
                     text={'close'}
                 />
+
             </ViewControlContainer>
         </OverLay>
     )

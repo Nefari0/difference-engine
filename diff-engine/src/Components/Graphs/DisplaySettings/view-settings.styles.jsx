@@ -46,7 +46,7 @@ export const ViewSettingsPanel = styled.div`
 export const ViewControlContainer = styled.div`
     position:relative;
     width:100px;
-    height:130px;
+    min-height:130px;
     margin:auto;
     display:flex;
     flex-wrap:wrap;

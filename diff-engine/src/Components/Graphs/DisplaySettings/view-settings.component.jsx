@@ -21,7 +21,9 @@ const ViewSettings = (props) => {
 
       setScrollLock,scrollLock,
 
-      viewPrefs,openViewPrefs
+      viewPrefs,openViewPrefs,
+
+      setShowTitle
 
     } = useContext(ViewContext)
 
@@ -31,14 +33,16 @@ const ViewSettings = (props) => {
     const getSavedViewSettings = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
+        const showTitle = localStorage.getItem('SHOW_TITLE')
         if (savedMode) {setDarkMode(JSON.parse(savedMode))}
+        if (showTitle) {setShowTitle(JSON.parse(showTitle))}
 
       } catch (error) {return}
     }
 
     // --- This changes the settings saved in the browser, and updates state to those settings on useEffect
     // --- Prop should be string. val is the current state/context item. setFunction updates the current state/context item
-    const saveSettingts = (prop,val,setFunction) => {
+    const saveSettings = (prop,val,setFunction) => {
       localStorage.setItem(`${prop}`,!val)
       setFunction(!val)
     }
@@ -53,7 +57,7 @@ const ViewSettings = (props) => {
         </ResetViewButton>
 
         <DarkmodeButton
-          onClick={() => saveSettingts('DARKMODE',darkmode,setDarkMode)}
+          onClick={() => saveSettings('DARKMODE',darkmode,setDarkMode)}
         >
           {!darkmode ? 'dark mode' : 'light mode'}
         </DarkmodeButton>

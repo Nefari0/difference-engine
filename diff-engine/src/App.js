@@ -14,6 +14,8 @@ function App() {
     setIsOnline,
 
     viewPrefs,
+
+    showTitle
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
@@ -40,9 +42,9 @@ function App() {
   return (
     <AppContainer darkmode={darkmode}>
 
-      <Header darkmode={darkmode}>
+      {showTitle && <Header darkmode={darkmode}>
         <h1>The Difference Engine</h1>
-      </Header>
+      </Header>}
 
       <Adapter >
         {viewPrefs && <ViewController/>}

@@ -45,7 +45,9 @@ export const ViewContext = createContext({
 
     viewScale:null,setViewScale:() => null, // Changing size of app
 
-    viewPrefs:null,openViewPrefs:() => null // Changng view settings controller
+    viewPrefs:null,openViewPrefs:() => null, // Changng view settings controller
+
+    showTitle:null,setShowTitle:() => null
 })
 
 export const ViewProvider = ({ children }) => {
@@ -67,6 +69,7 @@ export const ViewProvider = ({ children }) => {
     const [scrollLock,setScrollLock] = useState(null)
     const [viewScale,setViewScale] = useState(1)
     const [viewPrefs,openViewPrefs] = useState(false)
+    const [showTitle,setShowTitle] = useState(true)
 
     const memoOpener = (param) => {
         setOpenMemo(param)
@@ -92,7 +95,6 @@ export const ViewProvider = ({ children }) => {
 
         showPlotValues,setShowPlotValues,
 
-
         alert,setAlert,
 
         zoom,setZoom,
@@ -107,7 +109,9 @@ export const ViewProvider = ({ children }) => {
 
         viewScale,setViewScale,
 
-        viewPrefs,openViewPrefs
+        viewPrefs,openViewPrefs,
+
+        showTitle,setShowTitle
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>
