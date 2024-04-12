@@ -49,13 +49,14 @@ const largeEnclosure = css`
     ${transformation}
 `
 
+const shadow = css`box-shadow: 0px 5px 20px -7px #000000;`
 export const Enclosure = styled.main`
     position:absolute;
     height:${enclosureHeight}px;
     width:${enclosureWidth}px;
     padding:${enclosurePadding}px;
     border-radius:10px;
-    box-shadow: 0px 5px 20px -7px #000000;
+    ${({fullscreen}) => !fullscreen && shadow}
     display:flex;
     flex-direction:column;
     // background-color:#B1BDC5;

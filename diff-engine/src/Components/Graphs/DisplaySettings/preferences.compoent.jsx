@@ -17,7 +17,7 @@ const ViewController = () => {
         viewPrefs,openViewPrefs,
         viewScale,setViewScale,
         darkmode,
-        showTitle,setShowTitle
+        fullscreen,setFullScreen
     } = useContext(ViewContext)
     
     const saveSettings = (prop,val,setFunction) => {
@@ -46,9 +46,9 @@ const ViewController = () => {
                 />
 
                 <Button
-                    onClick={() => saveSettings('SHOW_TITLE',showTitle,setShowTitle)}
+                    onClick={() => saveSettings('FULLSCREEN',fullscreen,setFullScreen)}
                     styles={wideButton}
-                    text={`${showTitle ? 'title on' : 'title off'}`}
+                    text={`${fullscreen ? 'fullscreen' : 'partial'}`}
                 />
 
                 <Button

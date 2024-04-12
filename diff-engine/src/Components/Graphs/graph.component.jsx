@@ -75,7 +75,9 @@ export default function Graph() {
 
     openMemo,
 
-    viewScale,setViewScale
+    viewScale,setViewScale,
+
+    fullscreen
   } = useContext(ViewContext)
 
   const location = window.location.pathname.split('/') // This is for linking to a specific calculator feature
@@ -379,6 +381,7 @@ export default function Graph() {
       displayKeymap={displayKeymap}
       darkmode={darkmode}
       verticalAdjustment={verticalAdjustment}
+      fullscreen={fullscreen}
     >
 
       {/* ---------------------------------------- */}

@@ -1,14 +1,12 @@
 import { backgroundColors } from "./Components/Graphs/global.styles";
 import { widthParameters } from "./Components/Graphs/global.styles";
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 const {
     light,
     darkLight,
-
-    lightDark,
-    // midDark,
-    // dark
+    midDark,
+    lightDark
 } = backgroundColors
 const {enclosureWidth,enclosurePadding} = widthParameters
 
@@ -67,8 +65,11 @@ export const OverLay = styled.div`
     position:absolute;
     z-index:100;
     display:flex;
+    pointer-events:none;
 `
 
+const defaultDisplay = css`background-color:${({darkmode}) => darkmode ? lightDark : light};`
+const full = css`background-color:${({darkmode}) => darkmode ? midDark : darkLight};`
 export const AppContainer = styled.main`
     position:absolute;
     text-align: center;
@@ -76,7 +77,8 @@ export const AppContainer = styled.main`
     height:100vh;
     display:flex;
     flex-direction:column;
-    background-color:${({darkmode}) => darkmode ? lightDark : light};
+    ${defaultDisplay}
+    ${({fullscreen}) => fullscreen && full}
 
     @media (max-height:1080px) {
         height:1090px;

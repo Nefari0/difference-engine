@@ -15,7 +15,7 @@ function App() {
 
     viewPrefs,
 
-    showTitle
+    fullscreen
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
@@ -40,9 +40,9 @@ function App() {
   // }
 
   return (
-    <AppContainer darkmode={darkmode}>
+    <AppContainer darkmode={darkmode} fullscreen={fullscreen}>
 
-      {showTitle && <Header darkmode={darkmode}>
+      {!fullscreen && <Header darkmode={darkmode}>
         <h1>The Difference Engine</h1>
       </Header>}
 

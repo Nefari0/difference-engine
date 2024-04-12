@@ -47,7 +47,7 @@ export const ViewContext = createContext({
 
     viewPrefs:null,openViewPrefs:() => null, // Changng view settings controller
 
-    showTitle:null,setShowTitle:() => null
+    fullscreen:null,setFullScreen:() => null
 })
 
 export const ViewProvider = ({ children }) => {
@@ -69,7 +69,7 @@ export const ViewProvider = ({ children }) => {
     const [scrollLock,setScrollLock] = useState(null)
     const [viewScale,setViewScale] = useState(1)
     const [viewPrefs,openViewPrefs] = useState(false)
-    const [showTitle,setShowTitle] = useState(true)
+    const [fullscreen,setFullScreen] = useState(false)
 
     const memoOpener = (param) => {
         setOpenMemo(param)
@@ -111,7 +111,8 @@ export const ViewProvider = ({ children }) => {
 
         viewPrefs,openViewPrefs,
 
-        showTitle,setShowTitle
+        fullscreen,setFullScreen
+
     };
     
     return <ViewContext.Provider value={value}>{children}</ViewContext.Provider>

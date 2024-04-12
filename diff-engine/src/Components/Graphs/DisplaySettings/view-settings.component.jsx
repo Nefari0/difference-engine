@@ -23,7 +23,7 @@ const ViewSettings = (props) => {
 
       viewPrefs,openViewPrefs,
 
-      setShowTitle
+      fullscreen,setFullScreen
 
     } = useContext(ViewContext)
 
@@ -33,9 +33,9 @@ const ViewSettings = (props) => {
     const getSavedViewSettings = () => {
       try {
         const savedMode = localStorage.getItem('DARKMODE')
-        const showTitle = localStorage.getItem('SHOW_TITLE')
+        const fullscreen = localStorage.getItem('FULLSCREEN')
         if (savedMode) {setDarkMode(JSON.parse(savedMode))}
-        if (showTitle) {setShowTitle(JSON.parse(showTitle))}
+        if (fullscreen) {setFullScreen(JSON.parse(fullscreen))}
 
       } catch (error) {return}
     }

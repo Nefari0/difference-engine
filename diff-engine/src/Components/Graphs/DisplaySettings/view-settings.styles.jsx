@@ -54,6 +54,8 @@ export const ViewControlContainer = styled.div`
     box-shadow:10px 5px 60px 10px rgba(36, 36, 36, 1);
     padding:10px;
     border-radius:10px;
+    pointer-events:auto ;
+
     ${({darkmode}) => darkmode ? basicDark : basicLight}
 
     button {
