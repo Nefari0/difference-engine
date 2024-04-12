@@ -1,39 +1,17 @@
 import styled, { css } from "styled-components"
 import { TinyButton } from "../KeyPad/input.styles"
-import { backgroundColors,basicDark,basicLight } from "../global.styles"
-
-const { paper } = backgroundColors
+import { basicDark,basicLight } from "../global.styles"
 
 export const Zoom = styled(TinyButton)`
-    right:20px;
-    width:30px;
     height:30px;
     zIndex:2;
 `
 
-export const ZoomOutButton = styled(Zoom)`
-    right:60px;
-`
+export const ResetViewButton = styled(Zoom)`width:100px;`
 
-export const ArrowButton = styled(Zoom)`
-    right:105px;
-`
+export const AboutButton = styled(Zoom)`width:100px;`
 
-export const ResetViewButton = styled(ZoomOutButton)`
-    right:100px;
-    width:100px;
-`
-
-export const AboutButton = styled(Zoom)`
-    left:0px;
-    // top:50px;
-    width:100px;
-`
-
-export const DarkmodeButton = styled(Zoom)`
-    right:205px;
-    width:100px;
-`
+export const DarkmodeButton = styled(Zoom)`width:100px;`
 
 export const ViewSettingsPanel = styled.div`
     position:absolute;
@@ -41,6 +19,11 @@ export const ViewSettingsPanel = styled.div`
     width:100%;
     right:0px;
     height:30px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    
+    button {position:relative;}
 `
 
 export const ViewControlContainer = styled.div`

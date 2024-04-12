@@ -19,8 +19,6 @@ const ViewSettings = (props) => {
 
       darkmode,setDarkMode,
 
-      setScrollLock,scrollLock,
-
       viewPrefs,openViewPrefs,
 
       fullscreen,setFullScreen
@@ -47,8 +45,16 @@ const ViewSettings = (props) => {
       setFunction(!val)
     }
 
+    const goFullScreen = () => {
+      saveSettings('FULLSCREEN',fullscreen,setFullScreen)
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+    }
+
     return (
-        <ViewSettingsPanel>
+      <ViewSettingsPanel>
 
         <ResetViewButton
           onClick={() => openViewPrefs(!viewPrefs)}
@@ -71,17 +77,17 @@ const ViewSettings = (props) => {
 
         {/* --- SCROLLING LOCK --- */}
         <Button 
-          style={{left:'105px',
+          style={{
           height:'30px',
-          width:'100px',
-          backgroundColor:`${scrollLock ? red : blue}`,
+          width:'130px',
+          backgroundColor:`${fullscreen ? red : blue}`,
           color:'#fff',
           fontSize:'12px',
           letterSpacing:'1px',
         }}
-          onClick={() => setScrollLock(!scrollLock)}
-          text={scrollLock ? 'locked' : 'unlocked '}
-          p={`scroll lock ${scrollLock? 'on' : 'off'}`}
+          onClick={() => goFullScreen()}
+          text={fullscreen ? 'fullscreen on' : 'fullscreen off '}
+          p={`fullscreen ${fullscreen? 'on' : 'off'}`}
         />
 
       </ViewSettingsPanel>

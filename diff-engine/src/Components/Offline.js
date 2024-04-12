@@ -5,10 +5,10 @@ import { ViewContext } from './Context/view.context';
 
 export default function Offline({ children }) {
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
-  const { scrollLock } = useContext(ViewContext)
+  const { fullscreen } = useContext(ViewContext)
     // const previousOnline = usePrevious(online);
 
-    if (scrollLock) {
+    if (fullscreen) {
       disableBodyScroll(document.body)
     } else {
       enableBodyScroll(document.body)

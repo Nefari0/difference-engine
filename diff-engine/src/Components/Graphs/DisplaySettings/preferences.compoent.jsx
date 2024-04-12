@@ -10,20 +10,12 @@ const zoomButton = {width:'40px',height:'40px'}
 const wideButton = {width:'95%',height:'25px'}
 
 const ViewController = () => {
-
-
     
     const {
         viewPrefs,openViewPrefs,
         viewScale,setViewScale,
         darkmode,
-        fullscreen,setFullScreen
     } = useContext(ViewContext)
-    
-    const saveSettings = (prop,val,setFunction) => {
-        localStorage.setItem(`${prop}`,!val)
-        setFunction(!val)
-    }
 
     return (
         <OverLay>
@@ -43,12 +35,6 @@ const ViewController = () => {
                     styles={wideButton}
                     buttonClass={'tiny'}
                     text={'reset size'}
-                />
-
-                <Button
-                    onClick={() => saveSettings('FULLSCREEN',fullscreen,setFullScreen)}
-                    styles={wideButton}
-                    text={`${fullscreen ? 'fullscreen' : 'partial'}`}
                 />
 
                 <Button
