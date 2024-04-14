@@ -80,14 +80,13 @@ const ViewSettings = (props) => {
           style={{
           height:'30px',
           width:'130px',
-          backgroundColor:`${fullscreen ? red : blue}`,
-          color:'#fff',
           fontSize:'12px',
           letterSpacing:'1px',
         }}
           onClick={() => goFullScreen()}
           text={fullscreen ? 'fullscreen on' : 'fullscreen off '}
           p={`fullscreen ${fullscreen? 'on' : 'off'}`}
+          selected={fullscreen}
         />
 
       </ViewSettingsPanel>
