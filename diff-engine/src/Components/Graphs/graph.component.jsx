@@ -300,7 +300,7 @@ export default function Graph() {
       ...state,
       matrix: matrix
     });
-    checkDeviceSize(viewScale,setViewScale)
+    checkDeviceSize(setViewScale)
   };
 
   const inputHandler = (e) => {

@@ -15,7 +15,8 @@ function App() {
 
     viewPrefs,
 
-    fullscreen
+    fullscreen,
+
   } = useContext(ViewContext)
 
   const { value: online, setFalse: setOffline, setTrue: setOnline } = useBooleanState(navigator.onLine);
