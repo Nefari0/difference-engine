@@ -99,6 +99,10 @@ export const Adapter = styled.section`
     @media (max-width:400px) {
         width:300px;
     }
+
+    @media (max-width:300px) {
+        width:280px;
+    }
 `
 
 export const Footer = styled.footer`

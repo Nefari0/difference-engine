@@ -3,53 +3,35 @@ import { backgroundColors,widthParameters } from "./global.styles";
 
 // const { dark,light,paper } = backgroundColors
 const {
-    paper,
+    // paper,
 
-    light,
-    midLight,
+    // light,
+    // midLight,
     darkLight,
 
-    lightDark,
+    // lightDark,
     midDark,
-    dark
+    // dark
 } = backgroundColors
 
 const {
     enclosurePadding,
     enclosureHeight,
     enclosureWidth,
-    maxWidth,
-    widthPercent
 } = widthParameters
 
-// --- App dimension parameters --- //
+// --- App dimension parameters (These values may change) --- //
 // enclosureHeight = 900
 // enclosureWidth = 495
 // enclosurePadding = 10
-// widthPercent = (enclosureWidth+(enclosurePadding*2))/100
-// maxWidth = window.innerWidth+enclosurePadding/widthPercent
-
 // original scale sizes: .5, .7, 1
 
-const transformation = css`
-    transform: scale(${({viewScale}) => viewScale});
-`
-
-const smallEnclosure = css`
-    left:-36%;
-    ${transformation}
-`
-
-const mediumEnclosure = css`
-    ${transformation}
-    left:-24%;
-`
-
-const largeEnclosure = css`
-    ${transformation}
-`
-
+const transformation = css`transform: scale(${({viewScale}) => viewScale});`
 const shadow = css`box-shadow: 0px 5px 20px -7px #000000;`
+const xSmallEnclosure = css`left:-42%;`
+const smallEnclosure = css`left:-36%;`
+const mediumEnclosure = css`left:-24%;`
+
 export const Enclosure = styled.main`
     position:absolute;
     height:${enclosureHeight}px;
@@ -71,9 +53,10 @@ export const Enclosure = styled.main`
     // right:0px;
     // top:-100px;
 
-    @media (min-width:621px) {${largeEnclosure}}
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}
+    @media (max-width:300px) {${xSmallEnclosure}}
+    ${transformation}
     
     h1 {
         font-family: 'Silkscreen', cursive;
