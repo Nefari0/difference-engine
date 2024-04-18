@@ -4,7 +4,7 @@ import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
 import { useContext,useEffect } from 'react';
-import ViewController from './Components/Graphs/DisplaySettings/preferences.compoent';
+import ViewController from './Components/Graphs/DisplaySettings/preferences.component';
 
 function App() {
 

@@ -1,4 +1,4 @@
-import { useContext,useEffect } from "react";
+import { useContext,useEffect,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
 import { backgroundColors } from "../global.styles";
@@ -8,9 +8,12 @@ import {
   ResetViewButton,
   AboutButton,
   DarkmodeButton,
+  ResetViewMessage
 } from "./view-settings.styles";
 
 const { blue,red } = backgroundColors
+
+const resetViewMessageText = 'If this app does not fit on your device, you can adjust the size in the preferences menu'
 
 const ViewSettings = (props) => {
 
@@ -24,8 +27,12 @@ const ViewSettings = (props) => {
       fullscreen,setFullScreen
 
     } = useContext(ViewContext)
-
+    
+    const [localState,setLocalState] = useState({
+      display:true
+    })
     useEffect(() => {getSavedViewSettings()},[])
+
 
     // --- Updates state to settings saved in the browser (if applicable)
     const getSavedViewSettings = () => {
@@ -88,6 +95,20 @@ const ViewSettings = (props) => {
           p={`fullscreen ${fullscreen? 'on' : 'off'}`}
           selected={fullscreen}
         />
+
+        <ResetViewMessage
+          visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
+          darkmode={darkmode}
+        >
+          <p>{resetViewMessageText}</p>
+
+          <Button 
+            buttonClass={'tiny'}
+            style={{position:'relative',margin:'auto',height:'20px'}}
+            text={'got it!'}
+            onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
+          />
+        </ResetViewMessage>
 
       </ViewSettingsPanel>
     )
