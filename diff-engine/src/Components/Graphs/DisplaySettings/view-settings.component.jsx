@@ -1,7 +1,8 @@
 import { useContext,useEffect,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
-import { backgroundColors } from "../global.styles";
+import { widthParameters } from "../global.styles";
+// import { backgroundColors } from "../global.styles";
 
 import {
   ViewSettingsPanel,
@@ -11,9 +12,15 @@ import {
   ResetViewMessage
 } from "./view-settings.styles";
 
-const { blue,red } = backgroundColors
-
-const resetViewMessageText = 'If this app does not fit on your device, you can adjust the size in the preferences menu'
+// const { blue,red } = backgroundColors
+// --- FITTING APP ONTO DEVICE --- //
+const resetViewMessageText = 'You might have to adjust the app size settings in the preference controller'
+const { enclosureWidth,enclosureHeight,enclosurePadding } = widthParameters
+const appHeightOnePercent = enclosureHeight/100
+const appWidthToHeightRate = (enclosureWidth+enclosurePadding)/appHeightOnePercent
+const heightPerent = window.innerHeight/100
+const deviceWidthToHeightRate = (window.innerWidth)/heightPerent
+const outOfRange = deviceWidthToHeightRate < appWidthToHeightRate
 
 const ViewSettings = (props) => {
 
@@ -24,13 +31,12 @@ const ViewSettings = (props) => {
 
       viewPrefs,openViewPrefs,
 
-      fullscreen,setFullScreen
+      fullscreen,setFullScreen,
+
+      viewScale
 
     } = useContext(ViewContext)
-    
-    const [localState,setLocalState] = useState({
-      display:true
-    })
+
     useEffect(() => {getSavedViewSettings()},[])
 
 
@@ -60,10 +66,16 @@ const ViewSettings = (props) => {
       });
     }
 
+    const goToSettings = () => {
+      openViewPrefs(!viewPrefs)
+      localStorage.setItem('NO_MESSAGE_PLEASE',true)
+    }
+
     return (
       <ViewSettingsPanel>
 
         <ResetViewButton
+          selected={viewPrefs}
           onClick={() => openViewPrefs(!viewPrefs)}
         >
           preferences
@@ -96,19 +108,22 @@ const ViewSettings = (props) => {
           selected={fullscreen}
         />
 
-        <ResetViewMessage
-          visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
+        {!localStorage.getItem('NO_MESSAGE_PLEASE')&&<ResetViewMessage
+          // visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
+          visited={outOfRange}
           darkmode={darkmode}
         >
           <p>{resetViewMessageText}</p>
 
           <Button 
             buttonClass={'tiny'}
-            style={{position:'relative',margin:'auto',height:'20px'}}
-            text={'got it!'}
-            onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
+            style={{position:'relative',margin:'auto',height:'20px',width:'130px'}}
+            text={'go to preferences'}
+            // onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
+            onClick={() => openViewPrefs(!viewPrefs)}
+            // onClick={}
           />
-        </ResetViewMessage>
+        </ResetViewMessage>}
 
       </ViewSettingsPanel>
     )
