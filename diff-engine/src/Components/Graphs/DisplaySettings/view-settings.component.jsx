@@ -1,7 +1,7 @@
 import { useContext,useEffect,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
 import Button from "../KeyPad/Button";
-import { widthParameters } from "../global.styles";
+import { widthParameters } from "../../../global.styles";
 // import { backgroundColors } from "../global.styles";
 
 import {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 // import { backgroundColors } from "../global.styles";
 // import { backgroundColors } from "../../global.styles";
-import { backgroundColors } from "../../../global.styles";
-import { errorIndicator } from "../../../global.styles";
+import { backgroundColors } from "../../../../../global.styles";
+import { errorIndicator } from "../../../../../global.styles";
 
 const { paper,dark } = backgroundColors
 

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { backgroundColors, basicDark } from "../../../global.styles";
-import { basicLight } from "../../../global.styles";
+import { backgroundColors, basicDark } from "../../../../../global.styles";
+import { basicLight } from "../../../../../global.styles";
 
 const { dark } = backgroundColors
 const width = 400

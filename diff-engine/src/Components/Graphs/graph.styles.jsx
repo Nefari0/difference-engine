@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components";
-import { backgroundColors,widthParameters } from "./global.styles";
+import { backgroundColors,widthParameters } from "../../global.styles";
 
 // const { dark,light,paper } = backgroundColors
 const {

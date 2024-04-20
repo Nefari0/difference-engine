@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { basicDark,basicLight } from "../../global.styles";
+import { basicDark,basicLight } from "../../../../global.styles";
 
 const expansion = css`
 ${({darkmode}) => darkmode ? basicDark : basicLight}

@@ -1,4 +1,4 @@
-import { widthParameters } from "../global.styles"
+import { widthParameters } from "../../../global.styles"
 const { enclosureWidth } = widthParameters
 const totalWidth = enclosureWidth+30
 const onePercent = totalWidth/100

@@ -1,5 +1,5 @@
-import { backgroundColors } from "./Components/Graphs/global.styles";
-import { widthParameters } from "./Components/Graphs/global.styles";
+import { backgroundColors } from "./global.styles";
+import { widthParameters } from "./global.styles";
 import styled, {css} from "styled-components";
 
 const {

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { errorIndicator,backgroundColors } from "../../../global.styles";
+import { errorIndicator,backgroundColors } from "../../../../../global.styles";
 import { messageBox } from "../../../KeyPad/input.styles";
 
 const { paper,dark,darkLight,lightDark } = backgroundColors

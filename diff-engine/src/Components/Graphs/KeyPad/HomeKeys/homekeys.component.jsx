@@ -22,7 +22,7 @@ import Button from "../Button";
 import 'katex/dist/katex.min.css';
 
 // --- styles --- //
-import { backgroundColors } from "../../global.styles";
+import { backgroundColors } from "../../../../global.styles";
 const { red,white } = backgroundColors
 
 const vp = 80 // -- Vertical Position

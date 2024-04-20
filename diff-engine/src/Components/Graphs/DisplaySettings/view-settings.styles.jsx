@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 import { TinyButton } from "../KeyPad/input.styles"
-import { basicDark,basicLight,backgroundColors } from "../global.styles"
+import { basicDark,basicLight,backgroundColors } from "../../../global.styles"
 
 export const Zoom = styled(TinyButton)`
     height:30px;
