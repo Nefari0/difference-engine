@@ -1,6 +1,8 @@
 import { useContext,useEffect,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
+// import DeviceSelection from "./device-selection.component";
 import Button from "../KeyPad/Button";
+// import ViewController from "./preferences.component";
 import { widthParameters } from "../../../global.styles";
 // import { backgroundColors } from "../global.styles";
 
@@ -9,34 +11,41 @@ import {
   ResetViewButton,
   AboutButton,
   DarkmodeButton,
-  ResetViewMessage
+  ResetViewMessage,
+  // ViewControllerOverlay,
 } from "./view-settings.styles";
 
 // const { blue,red } = backgroundColors
 // --- FITTING APP ONTO DEVICE --- //
 const resetViewMessageText = 'You might have to adjust the app size settings in the preference controller'
-const { enclosureWidth,enclosureHeight,enclosurePadding } = widthParameters
-const appHeightOnePercent = enclosureHeight/100
+const { enclosureWidth,enclosureHeight,enclosurePadding,viewSettingsHeight } = widthParameters
+const appHeight = (enclosureHeight+enclosurePadding)
+const appHeightOnePercent = appHeight/100
 const appWidthToHeightRate = (enclosureWidth+enclosurePadding)/appHeightOnePercent
-const heightPerent = window.innerHeight/100
-const deviceWidthToHeightRate = (window.innerWidth)/heightPerent
+const windowHeightPercent = window.innerHeight/100
+const deviceWidthToHeightRate = (window.innerWidth)/windowHeightPercent
 const outOfRange = deviceWidthToHeightRate < appWidthToHeightRate
+// console.log('app',appWidthToHeightRate)
+// console.log('device',deviceWidthToHeightRate)
 
 const ViewSettings = (props) => {
-
-    const {
-      about,setAbout,
-
-      darkmode,setDarkMode,
-
-      viewPrefs,openViewPrefs,
-
-      fullscreen,setFullScreen,
-
-      viewScale
-
-    } = useContext(ViewContext)
-
+  
+  const {
+    about,setAbout,
+    
+    darkmode,setDarkMode,
+    
+    viewPrefs,openViewPrefs,
+    
+    fullscreen,setFullScreen,
+    
+    // viewScale
+    
+  } = useContext(ViewContext)
+  // console.log('app',appHeight)
+  // console.log('device',window.innerHeight)
+  // const deviceHeightToAppHeightRatio = enclosureHeight*viewScale
+  // console.log(deviceHeightToAppHeightRatio)
     useEffect(() => {getSavedViewSettings()},[])
 
 
@@ -66,10 +75,10 @@ const ViewSettings = (props) => {
       });
     }
 
-    const goToSettings = () => {
-      openViewPrefs(!viewPrefs)
-      localStorage.setItem('NO_MESSAGE_PLEASE',true)
-    }
+    // const goToSettings = () => {
+    //   openViewPrefs(!viewPrefs)
+    //   localStorage.setItem('NO_MESSAGE_PLEASE',true)
+    // }
 
     return (
       <ViewSettingsPanel>
@@ -107,6 +116,8 @@ const ViewSettings = (props) => {
           p={`fullscreen ${fullscreen? 'on' : 'off'}`}
           selected={fullscreen}
         />
+
+        {/* <DeviceSelection /> */}
 
         {!localStorage.getItem('NO_MESSAGE_PLEASE')&&<ResetViewMessage
           // visited={localStorage.getItem('NO_MESSAGE_PLEASE')}

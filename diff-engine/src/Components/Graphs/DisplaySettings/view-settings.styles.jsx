@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 import { TinyButton } from "../KeyPad/input.styles"
-import { basicDark,basicLight,backgroundColors } from "../../../global.styles"
+import { basicDark,basicLight,backgroundColors,widthParameters } from "../../../global.styles"
+import { OverLay } from "../../../App.styles"
 
 export const Zoom = styled(TinyButton)`
     height:30px;
@@ -18,7 +19,7 @@ export const ViewSettingsPanel = styled.div`
     top:-40px;
     width:100%;
     right:0px;
-    height:30px;
+    height:${widthParameters.viewSettingsHeight}px;
     display:flex;
     justify-content:space-evenly;
     align-items:center;
@@ -26,24 +27,59 @@ export const ViewSettingsPanel = styled.div`
     button {position:relative;}
 `
 
+export const ViewControllerOverlay = styled(OverLay)`
+    flex-direction:column;
+    justify-content:flex-start;
+`
+
 export const ViewControlContainer = styled.div`
     position:relative;
     width:100px;
     min-height:130px;
-    margin:auto;
+    margin:20px auto 0px auto;
     display:flex;
     flex-wrap:wrap;
     z-index:1;
     box-shadow:10px 5px 60px 10px rgba(36, 36, 36, 1);
     padding:10px;
     border-radius:10px;
-    pointer-events:auto ;
+    pointer-events:auto;
 
     ${({darkmode}) => darkmode ? basicDark : basicLight}
 
     button {
         position:relative;
         margin:5px;
+    }
+`
+
+export const DeviceSelectionContainer = styled.ul`
+    width:200px;
+    min-height:200px;
+    background-color:blue;
+    position:absolute;
+    z-index:2;
+    // margin:auto;
+    text-align:left;
+    list-style-type:none;
+    display-flex;
+    flex-direction:column;
+    align-items:left;
+    pointer-events:auto;
+    
+    li {
+        position:relative;
+        background-color:yellow;
+        margin:0px;
+        text-align:left;
+        width:200px;
+        padding-right:0px;
+
+        button {
+            position:relative;
+            width:100%;
+            height:20px;
+        }
     }
 `
 

@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
-import { OverLay } from "../../../App.styles";
-import { ViewControlContainer } from "./view-settings.styles"
+// import { OverLay } from "../../../App.styles";
+import { ViewControlContainer,ViewControllerOverlay } from "./view-settings.styles"
 import Button from "../KeyPad/Button";
+import DeviceSelection from "./device-selection.component";
 import { zoomIn,zoomOut } from "../SVG";
 import { resetSize,changeSize } from "./viewLogic";
 
@@ -17,8 +18,17 @@ const ViewController = () => {
         darkmode,
     } = useContext(ViewContext)
 
+    const [localState,setLocalState] = useState({
+        selectDeviceMenu:false
+    })
+
+    const {
+        selectDeviceMenu
+    } = localState
+
     return (
-        <OverLay>
+        <ViewControllerOverlay>
+            {selectDeviceMenu && <DeviceSelection localState={localState} setLocalState={setLocalState} />}
             <ViewControlContainer darkmode={darkmode}>
                 <Button
                     onClick={(e) => changeSize(e,viewScale,.01,setViewScale)}
@@ -31,21 +41,28 @@ const ViewController = () => {
                     text={zoomOut()}
                 />
                 <Button
-                    onClick={() => resetSize(setViewScale)}
+                    onClick={() => resetSize(setViewScale,.5)}
                     styles={wideButton}
                     buttonClass={'tiny'}
                     text={'reset size'}
+                />
+
+                <Button 
+                    text={'my device'}
+                    buttonClass={'tiny'}
+                    styles={wideButton}
+                    onClick={() => setLocalState({...localState,selectDeviceMenu:!selectDeviceMenu})}
                 />
 
                 <Button
                     onClick={() => openViewPrefs(!viewPrefs)}
                     styles={wideButton}
                     buttonClass={'tiny'}
-                    text={'close'}
+                    text={'done'}
                 />
 
             </ViewControlContainer>
-        </OverLay>
+        </ViewControllerOverlay>
     )
 }
 

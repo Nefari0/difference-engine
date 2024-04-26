@@ -31,8 +31,10 @@ export const backgroundColors = {
 
 // --- Global app size parameters --- //
 const enclosureHeight = 900
+const viewSettingsHeight = 30
 const enclosureWidth = 495
 const enclosurePadding = 10
+const headerHight = 40
 
 // --- Viewport dimensions --- //
 export const viewPortSize = 500
@@ -43,7 +45,8 @@ export const widthParameters = {
     enclosureHeight:enclosureHeight,
     enclosureWidth:enclosureWidth,
     enclosurePadding:enclosurePadding,
-    // widthPercent:widthPercent,
+    headerHight:headerHight,
+    viewSettingsHeight:viewSettingsHeight
 }
 // -------------------- // 
 

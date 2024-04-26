@@ -8,12 +8,12 @@ const {
     midDark,
     lightDark
 } = backgroundColors
-const {enclosureWidth,enclosurePadding} = widthParameters
+const {enclosureWidth,enclosurePadding,headerHight} = widthParameters
 
 export const Header = styled.header`
     background-color:${({darkmode}) => !darkmode ? light:darkLight};
     width:100vw;
-    height:40px;
+    height:${headerHight}px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 
     display: flex;
