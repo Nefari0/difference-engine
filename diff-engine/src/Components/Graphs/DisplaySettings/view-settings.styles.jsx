@@ -53,33 +53,24 @@ export const ViewControlContainer = styled.div`
     }
 `
 
-export const DeviceSelectionContainer = styled.ul`
+export const DeviceSelectionContainer = styled.form`
     width:200px;
     min-height:200px;
-    background-color:blue;
     position:absolute;
     z-index:2;
-    // margin:auto;
     text-align:left;
     list-style-type:none;
     display-flex;
     flex-direction:column;
-    align-items:left;
     pointer-events:auto;
+    padding:10px;
+    ${({darkmode}) => darkmode ? basicDark : basicLight}
     
-    li {
+    button {
         position:relative;
-        background-color:yellow;
-        margin:0px;
-        text-align:left;
-        width:200px;
-        padding-right:0px;
-
-        button {
-            position:relative;
-            width:100%;
-            height:20px;
-        }
+        width:95%;
+        height:20px;
+        border-radius:5px;
     }
 `
 

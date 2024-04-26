@@ -18,15 +18,13 @@ import {
 // const { blue,red } = backgroundColors
 // --- FITTING APP ONTO DEVICE --- //
 const resetViewMessageText = 'You might have to adjust the app size settings in the preference controller'
-const { enclosureWidth,enclosureHeight,enclosurePadding,viewSettingsHeight } = widthParameters
+const { enclosureWidth,enclosureHeight,enclosurePadding } = widthParameters
 const appHeight = (enclosureHeight+enclosurePadding)
 const appHeightOnePercent = appHeight/100
 const appWidthToHeightRate = (enclosureWidth+enclosurePadding)/appHeightOnePercent
 const windowHeightPercent = window.innerHeight/100
 const deviceWidthToHeightRate = (window.innerWidth)/windowHeightPercent
 const outOfRange = deviceWidthToHeightRate < appWidthToHeightRate
-// console.log('app',appWidthToHeightRate)
-// console.log('device',deviceWidthToHeightRate)
 
 const ViewSettings = (props) => {
   
@@ -42,10 +40,7 @@ const ViewSettings = (props) => {
     // viewScale
     
   } = useContext(ViewContext)
-  // console.log('app',appHeight)
-  // console.log('device',window.innerHeight)
-  // const deviceHeightToAppHeightRatio = enclosureHeight*viewScale
-  // console.log(deviceHeightToAppHeightRatio)
+
     useEffect(() => {getSavedViewSettings()},[])
 
 
@@ -130,9 +125,7 @@ const ViewSettings = (props) => {
             buttonClass={'tiny'}
             style={{position:'relative',margin:'auto',height:'20px',width:'130px'}}
             text={'go to preferences'}
-            // onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
             onClick={() => openViewPrefs(!viewPrefs)}
-            // onClick={}
           />
         </ResetViewMessage>}
 
