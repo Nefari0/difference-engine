@@ -1,14 +1,15 @@
 import { widthParameters } from "../../../global.styles"
-const { enclosureWidth } = widthParameters
+const { enclosureWidth,enclosureHeight } = widthParameters
 const totalWidth = enclosureWidth+30
-const onePercent = totalWidth/100
+const widthOnePercent = totalWidth/100
+const totalHeight = enclosureHeight+30
+const heightOnePercent = totalHeight/100
 const windowWidth = window.innerWidth
-const windowHight = window.innerHeight
+const windowHeight = window.innerHeight
 
 // --- For saving selected screen size preferences on device, though this might not be implemtented.
 export const checkDeviceSize = (setViewScale) => {
   const savedSize = localStorage.getItem('screenWidth')
-    screenSizeExtraction(windowWidth)
     try {
       if (savedSize === null) {
         return (setViewScale(screenSizeExtraction()))
@@ -21,13 +22,19 @@ export const checkDeviceSize = (setViewScale) => {
 }
 
 export const screenSizeExtraction = () => {
-  if (windowWidth > totalWidth) {
+  const widthScale = parseFloat((windowWidth/widthOnePercent)/100)
+  const heightScale = parseFloat((windowHeight/heightOnePercent)/100)
+  if (windowWidth > totalWidth && windowHeight > totalHeight) {
       return (parseFloat(1.0))
   } else {
-    return (parseFloat((windowWidth/onePercent)/100))
+    if (windowHeight < totalHeight && windowWidth > totalWidth) {
+      return (parseFloat(1*heightScale))
+    } else {
+      return (parseFloat(widthScale))
+
+    }
   }
 }
-
 
 export const changeSize = (e,viewScale,size,setViewScale) => {
     var newVal = () => {
@@ -49,12 +56,10 @@ export const verticalTranslation = (e,size,state,execute) => {
 
   return (
     execute(e,'verticalAdjustment',verticalAdjustment-size)
-    // localStorage.setItem('verticalAdjustment',verticalAdjustment) 
   )
 }
 
 export const resetSize = (setViewScale,value) => {
   setViewScale(value)
   localStorage.removeItem('screenWidth');
-  // localStorage.setItem('screenWidth',parseFloat(value))
 }
