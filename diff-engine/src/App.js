@@ -43,7 +43,8 @@ function App() {
   return (
     <AppContainer darkmode={darkmode} fullscreen={fullscreen}>
 
-      {!fullscreen && <Header darkmode={darkmode}>
+      {!fullscreen && 
+      <Header darkmode={darkmode}>
         <h1>The Difference Engine</h1>
       </Header>}
 
@@ -53,9 +54,10 @@ function App() {
       </Adapter>
 
 
+      {!fullscreen && 
       <Footer>
         <Nav />
-      </Footer>
+      </Footer>}
 
     </AppContainer>
   );
