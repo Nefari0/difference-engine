@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 import { AlertContainer } from "../Alert/alert.styles";
-import { backgroundColors } from "../../global.styles";
+import { backgroundColors } from "../../../../global.styles";
 
 const {
     light,paper,midLight,darkLight,

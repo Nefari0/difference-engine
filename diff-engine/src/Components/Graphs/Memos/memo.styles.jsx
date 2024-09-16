@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { backgroundColors,viewPortSize } from "../global.styles";
+import { backgroundColors,viewPortSize } from "../../../global.styles";
 
 const dark = css`
     background-color:${backgroundColors.lightDark};

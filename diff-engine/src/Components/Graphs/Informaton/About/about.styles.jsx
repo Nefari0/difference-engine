@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { DocumentContainer } from "../Help/info.styles";
-import { basicDark,basicLight } from "../../global.styles";
+import { basicDark,basicLight } from "../../../../global.styles";
 
 export const AboutPageContainer = styled(DocumentContainer)`
     ${({darkmode}) => darkmode ? basicDark : basicLight}

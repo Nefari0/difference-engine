@@ -127,7 +127,7 @@ export default function Graph() {
     unitType:'Length',
 
     // --- Zoom in/out --- //
-    viewScale:.5,
+    // viewScale:.5,
     verticalAdjustment:0,
 
     // --- Percentages --- //

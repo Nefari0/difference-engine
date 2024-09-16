@@ -1,13 +1,15 @@
-import { widthParameters } from "../global.styles"
-const { enclosureWidth } = widthParameters
+import { widthParameters } from "../../../global.styles"
+const { enclosureWidth,enclosureHeight } = widthParameters
 const totalWidth = enclosureWidth+30
-const onePercent = totalWidth/100
-const windowSize = window.innerWidth
+const widthOnePercent = totalWidth/100
+const totalHeight = enclosureHeight+30
+const heightOnePercent = totalHeight/100
+const windowWidth = window.innerWidth
+const windowHeight = window.innerHeight
 
 // --- For saving selected screen size preferences on device, though this might not be implemtented.
 export const checkDeviceSize = (setViewScale) => {
   const savedSize = localStorage.getItem('screenWidth')
-    screenSizeExtraction(windowSize)
     try {
       if (savedSize === null) {
         return (setViewScale(screenSizeExtraction()))
@@ -20,16 +22,21 @@ export const checkDeviceSize = (setViewScale) => {
 }
 
 export const screenSizeExtraction = () => {
-  if (windowSize > totalWidth) {
+  const widthScale = parseFloat((windowWidth/widthOnePercent)/100)
+  const heightScale = parseFloat((windowHeight/heightOnePercent)/100)
+  if (windowWidth > totalWidth && windowHeight > totalHeight) {
       return (parseFloat(1.0))
   } else {
-    return (parseFloat((windowSize/onePercent)/100))
+    if (windowHeight < totalHeight && windowWidth > totalWidth) {
+      return (parseFloat(1*heightScale))
+    } else {
+      return (parseFloat(widthScale))
+
+    }
   }
 }
 
-
 export const changeSize = (e,viewScale,size,setViewScale) => {
-    
     var newVal = () => {
 
       return (
@@ -38,7 +45,7 @@ export const changeSize = (e,viewScale,size,setViewScale) => {
       )
     }
 
-    if (viewScale+size < 1 && viewScale+size > .5) {
+    if (viewScale+size < 1 && viewScale+size > .2) {
       newVal()
     }
 }
@@ -49,11 +56,10 @@ export const verticalTranslation = (e,size,state,execute) => {
 
   return (
     execute(e,'verticalAdjustment',verticalAdjustment-size)
-    // localStorage.setItem('verticalAdjustment',verticalAdjustment) 
   )
 }
 
-export const resetSize = (setViewScale) => {
-  setViewScale(.5)
+export const resetSize = (setViewScale,value) => {
+  setViewScale(value)
   localStorage.removeItem('screenWidth');
 }

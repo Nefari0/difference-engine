@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { backgroundColors,errorIndicator } from "../../../../global.styles";
+import { backgroundColors,errorIndicator } from "../../../../../../global.styles";
 
 const { paper,dark } = backgroundColors
 export const widthOfLeverBar = 400; // --- In pixels

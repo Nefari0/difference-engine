@@ -1,5 +1,5 @@
 import Graph from './Components/Graphs/graph.component';
-import { AppContainer,Adapter,Header,Footer,SizeController } from './App.styles';
+import { AppContainer,Adapter,Header,Footer } from './App.styles';
 import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
@@ -43,7 +43,8 @@ function App() {
   return (
     <AppContainer darkmode={darkmode} fullscreen={fullscreen}>
 
-      {!fullscreen && <Header darkmode={darkmode}>
+      {!fullscreen && 
+      <Header darkmode={darkmode}>
         <h1>The Difference Engine</h1>
       </Header>}
 
@@ -53,9 +54,10 @@ function App() {
       </Adapter>
 
 
+      {!fullscreen && 
       <Footer>
         <Nav />
-      </Footer>
+      </Footer>}
 
     </AppContainer>
   );

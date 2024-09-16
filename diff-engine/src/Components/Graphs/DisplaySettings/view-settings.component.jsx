@@ -1,36 +1,46 @@
 import { useContext,useEffect,useState } from "react";
 import { ViewContext } from "../../Context/view.context";
+// import DeviceSelection from "./device-selection.component";
 import Button from "../KeyPad/Button";
-import { backgroundColors } from "../global.styles";
+// import ViewController from "./preferences.component";
+import { widthParameters } from "../../../global.styles";
+// import { backgroundColors } from "../global.styles";
 
 import {
   ViewSettingsPanel,
   ResetViewButton,
   AboutButton,
   DarkmodeButton,
-  ResetViewMessage
+  ResetViewMessage,
+  // ViewControllerOverlay,
 } from "./view-settings.styles";
 
-const { blue,red } = backgroundColors
-
-const resetViewMessageText = 'If this app does not fit on your device, you can adjust the size in the preferences menu'
+// const { blue,red } = backgroundColors
+// --- FITTING APP ONTO DEVICE --- //
+const resetViewMessageText = 'You might have to adjust the app size settings in the preference controller'
+const { enclosureWidth,enclosureHeight,enclosurePadding } = widthParameters
+const appHeight = (enclosureHeight+enclosurePadding)
+const appHeightOnePercent = appHeight/100
+const appWidthToHeightRate = (enclosureWidth+enclosurePadding)/appHeightOnePercent
+const windowHeightPercent = window.innerHeight/100
+const deviceWidthToHeightRate = (window.innerWidth)/windowHeightPercent
+const outOfRange = deviceWidthToHeightRate < appWidthToHeightRate
 
 const ViewSettings = (props) => {
-
-    const {
-      about,setAbout,
-
-      darkmode,setDarkMode,
-
-      viewPrefs,openViewPrefs,
-
-      fullscreen,setFullScreen
-
-    } = useContext(ViewContext)
+  
+  const {
+    about,setAbout,
     
-    const [localState,setLocalState] = useState({
-      display:true
-    })
+    darkmode,setDarkMode,
+    
+    viewPrefs,openViewPrefs,
+    
+    fullscreen,setFullScreen,
+    
+    // viewScale
+    
+  } = useContext(ViewContext)
+
     useEffect(() => {getSavedViewSettings()},[])
 
 
@@ -64,6 +74,7 @@ const ViewSettings = (props) => {
       <ViewSettingsPanel>
 
         <ResetViewButton
+          selected={viewPrefs}
           onClick={() => openViewPrefs(!viewPrefs)}
         >
           preferences
@@ -82,7 +93,7 @@ const ViewSettings = (props) => {
           about
         </AboutButton>
 
-        {/* --- SCROLLING LOCK --- */}
+        {/* --- FULL SCREEN OPTION --- */}
         <Button 
           style={{
           height:'30px',
@@ -96,19 +107,20 @@ const ViewSettings = (props) => {
           selected={fullscreen}
         />
 
+        {!localStorage.getItem('NO_MESSAGE_PLEASE') &&
         <ResetViewMessage
-          visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
+          visited={outOfRange}
           darkmode={darkmode}
         >
           <p>{resetViewMessageText}</p>
 
           <Button 
             buttonClass={'tiny'}
-            style={{position:'relative',margin:'auto',height:'20px'}}
-            text={'got it!'}
-            onClick={() => localStorage.setItem('NO_MESSAGE_PLEASE',true)}
+            style={{position:'relative',margin:'auto',height:'20px',width:'130px'}}
+            text={'go to preferences'}
+            onClick={() => saveSettings('NO_MESSAGE_PLEASE',false,openViewPrefs)}
           />
-        </ResetViewMessage>
+        </ResetViewMessage>}
 
       </ViewSettingsPanel>
     )
