@@ -54,7 +54,9 @@ export const ViewControlContainer = styled.div`
 `
 
 export const DeviceSelectionContainer = styled.form`
-    width:200px;
+    width:80%;
+    margin:10%;
+    border-radius:5px;
     min-height:200px;
     position:absolute;
     z-index:2;
@@ -63,14 +65,14 @@ export const DeviceSelectionContainer = styled.form`
     display-flex;
     flex-direction:column;
     pointer-events:auto;
-    padding:10px;
     ${({darkmode}) => darkmode ? basicDark : basicLight}
     
     button {
         position:relative;
-        width:95%;
+        width:96%;
         height:20px;
         border-radius:5px;
+        margin-left:2%;
     }
 `
 
@@ -86,7 +88,6 @@ export const ResetViewMessage = styled.div`
         color:${backgroundColors.midDark};
         width: 200px;
         height: 100px;
-        // border-radius: 5px;
         border-radius: 0px 20px 20px 20px;
         visibility: visible;
         opacity: 1;

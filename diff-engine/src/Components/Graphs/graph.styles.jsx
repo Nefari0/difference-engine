@@ -43,9 +43,7 @@ export const Enclosure = styled.main`
     flex-direction:column;
     // background-color:#B1BDC5;
     background-color:${({darkmode}) => darkmode ? midDark : darkLight};
-    top:${({viewScale,verticalAdjustment}) => (parseInt(100*viewScale) !== 50 ? ((-1*100%parseInt(viewScale*100)*9)/2)+verticalAdjustment : (-220))}px;
-
-    // top:${({viewScale}) => (parseInt(100*viewScale) !== 50 ? (-1*100%parseInt(viewScale*100)*9)/2 : (-220))}px;
+    top:${({viewScale,verticalAdjustment}) => (parseInt(100*viewScale) !== 50 ? ((-100%parseInt(viewScale*100)*9)/2)+verticalAdjustment : (-220))}px;
 
     @media (max-width:620px) {${mediumEnclosure}}
     @media (max-width:400px) {${smallEnclosure}}

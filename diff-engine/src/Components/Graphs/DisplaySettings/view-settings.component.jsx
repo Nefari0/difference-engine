@@ -70,11 +70,6 @@ const ViewSettings = (props) => {
       });
     }
 
-    // const goToSettings = () => {
-    //   openViewPrefs(!viewPrefs)
-    //   localStorage.setItem('NO_MESSAGE_PLEASE',true)
-    // }
-
     return (
       <ViewSettingsPanel>
 
@@ -98,7 +93,7 @@ const ViewSettings = (props) => {
           about
         </AboutButton>
 
-        {/* --- SCROLLING LOCK --- */}
+        {/* --- FULL SCREEN OPTION --- */}
         <Button 
           style={{
           height:'30px',
@@ -112,10 +107,8 @@ const ViewSettings = (props) => {
           selected={fullscreen}
         />
 
-        {/* <DeviceSelection /> */}
-
-        {!localStorage.getItem('NO_MESSAGE_PLEASE')&&<ResetViewMessage
-          // visited={localStorage.getItem('NO_MESSAGE_PLEASE')}
+        {!localStorage.getItem('NO_MESSAGE_PLEASE') &&
+        <ResetViewMessage
           visited={outOfRange}
           darkmode={darkmode}
         >
@@ -125,7 +118,7 @@ const ViewSettings = (props) => {
             buttonClass={'tiny'}
             style={{position:'relative',margin:'auto',height:'20px',width:'130px'}}
             text={'go to preferences'}
-            onClick={() => openViewPrefs(!viewPrefs)}
+            onClick={() => saveSettings('NO_MESSAGE_PLEASE',false,openViewPrefs)}
           />
         </ResetViewMessage>}
 

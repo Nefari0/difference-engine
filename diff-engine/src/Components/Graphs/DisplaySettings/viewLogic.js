@@ -45,7 +45,7 @@ export const changeSize = (e,viewScale,size,setViewScale) => {
       )
     }
 
-    if (viewScale+size < 1 && viewScale+size > .5) {
+    if (viewScale+size < 1 && viewScale+size > .2) {
       newVal()
     }
 }

@@ -28,7 +28,9 @@ const ViewController = () => {
 
     return (
         <ViewControllerOverlay>
+
             {selectDeviceMenu && <DeviceSelection localState={localState} setLocalState={setLocalState} />}
+            
             <ViewControlContainer darkmode={darkmode}>
                 <Button
                     onClick={(e) => changeSize(e,viewScale,.01,setViewScale)}

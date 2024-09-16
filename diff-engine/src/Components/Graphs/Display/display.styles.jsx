@@ -41,12 +41,7 @@ export const ViewPort = styled.div`
     
     ${({scrollSnap}) => scrollSnap && scrollSnapOn}
     ${({scrollBar}) => !scrollBar ? hideScrollBar : scrollingOn}
-    
-    @media (max-height:400px) {
-        transform: scale(0.60);
-        top:120px;
-    }
-    `
+`
     
 export const OriginContainer = styled.div`
     width:500px;

@@ -4,10 +4,12 @@ import { ViewContext } from '../../Context/view.context';
 import { devices } from './deviceData'
 import { DeviceSelectionContainer } from "./view-settings.styles";
 import Button from '../KeyPad/Button';
+import { backgroundColors } from '../../../global.styles';
 const DeviceSelection = ({setLocalState,localState}) => {
 
     const { 
-        setViewScale
+        setViewScale,
+        darkmode
     } = useContext(ViewContext)
 
     function setDeviceHandler(scale) {
@@ -17,17 +19,25 @@ const DeviceSelection = ({setLocalState,localState}) => {
     }
 
     return (
-        <DeviceSelectionContainer>
+        <DeviceSelectionContainer darkmode={darkmode}>
             {devices.map((el,i) => {
                 return (
                     <Button
                         text={el.deviceName}
                         buttonClass={'tiny'}
-                        onClick={() => setDeviceHandler(el.deviceName,el.scale)}
+                        onClick={() => setDeviceHandler(el.scale)}
                         key={i}
                     />
                 )
             })}
+            <Button
+                text={'Close'}
+                buttonClass={'tiny'}
+                onClick={() => setLocalState({...localState, selectDeviceMenu:false})}
+                styles={{
+                    backgroundColor:backgroundColors.blue,
+                }}
+            />
         </DeviceSelectionContainer>
     )
 }
