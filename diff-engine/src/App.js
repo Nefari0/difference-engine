@@ -1,5 +1,5 @@
 import Graph from './Components/Graphs/graph.component';
-import { AppContainer,Adapter,Header,Footer,SizeController } from './App.styles';
+import { AppContainer,Adapter,Header,Footer } from './App.styles';
 import { useBooleanState } from 'webrix/hooks';
 import Nav from './Components/Nav/nav.component';
 import { ViewContext } from './Components/Context/view.context';
