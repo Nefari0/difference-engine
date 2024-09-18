@@ -29,7 +29,7 @@ export const Blendering = styled.div`
     a {
         font-size:20px;
         position:relative;
-        left:0px;
+        left:4px;
 
         cursor:pointer;
         transition: all 1s ease-out;
