@@ -9,6 +9,7 @@ import { motor_gen } from "../../../py-scripts/motor-rigging/motor-rig";
 import { create_mesh } from "../../../py-scripts/mesh-generator/create_mesh.py";
 import { studio_setup } from "../../../py-scripts/backdrop-generator/backdrop.py";
 import { rename_objects } from "../../../py-scripts/rename-objects/rename.py";
+import { verts_to_point } from "../../../py-scripts/verts-to-point/verts_to_point.py.jsx";
 import BlenderLink from "./BlenderItem/item.component";
 
 const alertMessage = 'code has been copied to the clipboard'
@@ -37,7 +38,8 @@ const BlenderScripts = (props) => {
         >
             <Button
                 styles={{
-                    right:'0px',
+                    top:'4px',
+                    right:'4px',
                     zIndex:'1'
                 }}
                 text={!selectedScript ? backButton() : uturnArrow()}
@@ -46,9 +48,9 @@ const BlenderScripts = (props) => {
 
             <Button
                 styles={{
-                    right:'0px',
+                    right:'4px',
                     zIndex:'1',
-                    top:'80px'
+                    top:'84px'
                 }}
                 buttonClass={'help'}
                 text={'?'}
@@ -81,6 +83,12 @@ const BlenderScripts = (props) => {
                         onClick={() => setLocalState({...localState, selectedScript:'rename'})}
                         title={'rename-objects'}
                         description={'Renane selected objects'}
+                    />
+
+                    <BlenderLink
+                        onClick={() => copyVal(verts_to_point(),null,alertMessage)}
+                        title={'verts to point'}
+                        description={'Move selected vertices to given coordinate. default value: x = 0'}
                     />
                 </>
             }
