@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import { css } from "styled-components"
 
 // color pallete:
 const tier1 = '#FFFFFF'
