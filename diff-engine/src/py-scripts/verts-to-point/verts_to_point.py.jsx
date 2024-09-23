@@ -1,6 +1,6 @@
 export const verts_to_point = () => {
     const script =
-    `\nimport bpy` +
+    `import bpy` +
     `\nimport bmesh` +
 
     `\nobj=bpy.context.object` +

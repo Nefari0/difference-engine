@@ -27,6 +27,7 @@ export const Blendering = styled.div`
 	align-items: baseline;
 	align-content: stretch;
     a {
+        margin-left:4px;
         font-size:20px;
         position:relative;
         left:4px;
