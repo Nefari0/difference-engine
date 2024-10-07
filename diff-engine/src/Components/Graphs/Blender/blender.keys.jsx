@@ -82,13 +82,13 @@ const BlenderScripts = (props) => {
                     <BlenderLink
                         onClick={() => setLocalState({...localState, selectedScript:'rename'})}
                         title={'rename-objects'}
-                        description={'Renane selected objects'}
+                        description={'Rename selected objects'}
                     />
 
                     <BlenderLink
                         onClick={() => copyVal(verts_to_point(),null,alertMessage)}
                         title={'verts to point'}
-                        description={'Move selected vertices to given coordinate. default value: x = 0'}
+                        description={'Move selected vertices to given coordinate. Must be in edit mode. default value: x = 0'}
                     />
                 </>
             }
